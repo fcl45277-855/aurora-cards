@@ -1,6 +1,6 @@
 # aurora-cards: 4-bit inference for the Aurora weather foundation model
 
-Code for the paper **"Four-bit inference for a weather foundation model: where NVFP4 quantisation of Aurora fails, why, and how to deploy it safely"** (Y. Guan, J. Li, L. Lu, Q. Hou; submitted to *Computers & Geosciences*).
+Code for the paper **"NVFP4 quantisation of Aurora: attention sensitivity, forecast consistency and deployment"** (Y. Guan, J. Li, L. Lu, G. Pan, J. Song and Q. Hou; prepared for submission to *Computers & Geosciences*).
 
 The repository contains a quantisation harness for [Microsoft Aurora](https://github.com/microsoft/aurora) 0.25° (1.3 B parameters) and every script behind the paper's tables and figures:
 
@@ -16,7 +16,7 @@ The repository contains a quantisation harness for [Microsoft Aurora](https://gi
 Python 3.12. Model runs need an NVIDIA GPU with at least 24 GB (see *Computational requirements*); the tests, examples 1–2 and the table check run on a CPU.
 
 ```bash
-git clone <this repository> && cd aurora-cards
+git clone https://github.com/fcl45277-855/aurora-cards.git && cd aurora-cards
 python -m venv .venv && source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt                          # CPU or CUDA build of torch, see requirements.txt
 python scripts/check_env.py
@@ -52,7 +52,7 @@ GPU memory and times were measured on a cloud instance with one RTX 5090 (32 GB)
 
 - **Aurora checkpoints**: `aurora-0.25-pretrained.ckpt`, `aurora-0.25-finetuned.ckpt` and `aurora-0.25-small-pretrained.ckpt` from [huggingface.co/microsoft/aurora](https://huggingface.co/microsoft/aurora). Set `AQ_CKPT_DIR` to their directory.
 - **ERA5** (Copernicus Climate Data Store, CC-BY 4.0): `scripts/download_static.py` and `scripts/download_era5_day.py` write the files the harness reads into `AQ_ERA5_DIR`. [docs/DATA.md](docs/DATA.md) lists the dates of every split and the disk space they need.
-- **Result archive** (Zenodo, DOI: *to be added*): full per-date records, diagnostic fields and maps behind every figure. The small summaries are already in `results_summary/`.
+- **Result archive** (Zenodo data DOI: pending deposition): full per-date records, diagnostic fields and maps behind every figure. The small summaries are already in `results_summary/`.
 
 ## Repository layout
 
@@ -74,6 +74,10 @@ docs/             USER_GUIDE.md, TUTORIAL.md, REPRODUCE.md, DATA.md, aurora_pack
 - All results use Aurora's own reduced-precision mode (`autocast`: BF16 backbone, FP32 encoder/decoder/IO). The quantised layers replace `torch.nn.Linear` modules of that model.
 - The Aurora package version matters. `scripts/check_env.py` compares the installed package source with the version used for the paper (`docs/aurora_package_md5.txt`).
 - Simulated and native results agree to within 0.2 % on average (paper Sect. 4.6). The MXFP8-activation path of t7_mx has no NVFP4 × MXFP8 kernel in TorchAO 0.18 and is simulated.
+
+## AI-assisted development
+
+Claude Code (Anthropic) assisted development of this repository. The authors manually reviewed and verified the AI-assisted code and take responsibility for the final implementation.
 
 ## Citation
 

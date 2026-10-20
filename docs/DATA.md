@@ -50,4 +50,4 @@ Licence: ERA5 is © ECMWF, distributed by the Copernicus Climate Change Service 
 
 ## Result archive
 
-The Zenodo archive (DOI to be added) mirrors the `results/` layout written by the scripts. It holds per-card `records.jsonl` files with per-date, per-step and per-variable RMSE, the `_diag_fields_*` and `_physmetrics_*` files with the physical diagnostics, error maps (`*_maps.npz`), the replay, profiling and Beryl outputs, and the same `summary.json` files as `results_summary/`. Set `AQ_RESULTS` to the unpacked archive to redraw the figures with `scripts/paper_figures.py`.
+The planned Zenodo archive (data DOI pending deposition) mirrors the `results/` layout written by the scripts. It holds per-card `records.jsonl` files with per-date, per-step and per-variable RMSE, the `_diag_fields_*` and `_physmetrics_*` files with the physical diagnostics, error maps (`*_maps.npz`), the replay, profiling and Beryl outputs, and the same `summary.json` files as `results_summary/`. Set `AQ_RESULTS` to the unpacked archive to redraw the figures with `scripts/paper_figures.py`.

@@ -17,9 +17,10 @@ authors:
   - family-names: Hou
     given-names: Qingchun
     affiliation: "Zhejiang University - University of Illinois Urbana-Champaign Institute, Zhejiang University"
+repository-code: "https://github.com/fcl45277-855/aurora-cards"
 preferred-citation:
   type: article
-  title: "Four-bit inference for a weather foundation model: where NVFP4 quantisation of Aurora fails, why, and how to deploy it safely"
+  title: "NVFP4 quantisation of Aurora: attention sensitivity, forecast consistency and deployment"
   authors:
     - family-names: Guan
       given-names: Yue
@@ -27,8 +28,12 @@ preferred-citation:
       given-names: Jiaxuan
     - family-names: Lu
       given-names: Liangchen
+    - family-names: Pan
+      given-names: Guyang
+    - family-names: Song
+      given-names: Junfeng
     - family-names: Hou
       given-names: Qingchun
   journal: "Computers & Geosciences"
-  status: submitted
+  status: in-preparation
   year: 2026
