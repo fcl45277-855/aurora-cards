@@ -1,0 +1,6 @@
+{
+ "name": "router_softmax_both",
+ "kind": "fp32",
+ "router_mode": "softmax",
+ "modules": "both"
+}

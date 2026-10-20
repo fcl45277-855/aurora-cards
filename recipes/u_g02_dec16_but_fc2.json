@@ -1,0 +1,31 @@
+{
+ "name": "u_g02_dec16_but_fc2",
+ "layers": "q0",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "act_overrides": [
+  [
+   "level_decoder.layers.0.1.net.2",
+   "nvfp4"
+  ],
+  [
+   "decoder.",
+   "bf16"
+  ]
+ ]
+}

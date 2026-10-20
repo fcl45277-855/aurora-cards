@@ -1,0 +1,19 @@
+{
+ "name": "c10_norot_46",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "fp32",
+  "scale_search": [
+   1.0,
+   1.5
+  ]
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ]
+}

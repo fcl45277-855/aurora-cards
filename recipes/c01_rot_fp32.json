@@ -1,0 +1,12 @@
+{
+ "name": "c01_rot_fp32",
+ "layers": "q0",
+ "rotation": {
+  "block": "full",
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "fp32"
+ }
+}

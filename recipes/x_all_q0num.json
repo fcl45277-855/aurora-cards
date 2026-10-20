@@ -1,0 +1,12 @@
+{
+ "name": "x_all_q0num",
+ "layers": "all314",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ }
+}

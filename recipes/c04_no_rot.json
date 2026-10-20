@@ -1,0 +1,11 @@
+{
+ "name": "c04_no_rot",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "fp32"
+ }
+}

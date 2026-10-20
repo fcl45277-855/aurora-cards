@@ -1,0 +1,32 @@
+{
+ "kind": "sim",
+ "layers": "all314:exc=backbone.encoder_layers.2.&.attn.,decoder.level_decoder.&.0.0.to_,backbone.decoder_layers.1.&.attn.",
+ "surface_fp32": false,
+ "precision": "autocast",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "percdamp": 0.01,
+  "scale_mult": 1.0,
+  "source": "bf16"
+ },
+ "act": "nvfp4",
+ "smooth": null,
+ "act_scale_search": null,
+ "act_overrides": [],
+ "calib": {
+  "split": "calib",
+  "steps": 2,
+  "budget_gib": 2.5
+ },
+ "name": "alloc_de1+en2+perc_dec",
+ "_protected": [
+  "en2",
+  "perc_dec",
+  "de1"
+ ],
+ "_protected_params_M": 180.29999999999998
+}

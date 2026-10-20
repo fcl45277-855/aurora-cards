@@ -1,0 +1,12 @@
+{
+ "name": "n_sim_w4a4_bb16",
+ "layers": "q0:inc=backbone",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ },
+ "act": "nvfp4"
+}

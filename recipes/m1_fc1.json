@@ -1,0 +1,12 @@
+{
+ "name": "m1_fc1",
+ "layers": "q0:inc=decoder.level_decoder.layers.0.1.net.0",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ }
+}

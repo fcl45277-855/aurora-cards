@@ -1,0 +1,12 @@
+{
+ "name": "c08_norot",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "bf16"
+}

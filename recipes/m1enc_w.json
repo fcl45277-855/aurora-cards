@@ -1,0 +1,13 @@
+{
+ "name": "m1enc_w",
+ "layers": "all314:inc=encoder.level_agg",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ },
+ "act": "bf16"
+}

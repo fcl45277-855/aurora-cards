@@ -1,0 +1,6 @@
+{
+ "name": "input_b4_init",
+ "kind": "fp32",
+ "input_bits": 4,
+ "mode": "init"
+}

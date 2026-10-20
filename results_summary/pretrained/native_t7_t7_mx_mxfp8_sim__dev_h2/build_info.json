@@ -1,0 +1,33 @@
+{
+ "name": "native_t7_t7_mx_mxfp8_sim",
+ "recipe": "t7_mx",
+ "act": "mxfp8_sim",
+ "config": "NVFP4WeightOnlyConfig",
+ "torchao": "0.18.0",
+ "torch": "2.12.1+cu130",
+ "device": "NVIDIA GeForce RTX 5090",
+ "capability": [
+  12,
+  0
+ ],
+ "sim_build_seconds": 336.18524503707886,
+ "convert_seconds": 0.5914013385772705,
+ "gpu_mem_after_build_gib": 2.3344435691833496,
+ "perceiver_chunk": 16384,
+ "n": 138,
+ "n_quantized": 138,
+ "bytes_before": 1626341376,
+ "bytes_after": 501832232,
+ "mismatch_frac_mean": 0.22410798526328543,
+ "mismatch_frac_max": 0.6810584664344788,
+ "mismatch_max_rel_max": 0.018292682245373726,
+ "note": "NVFP4 weights with the W4A16 kernel; MXFP8 activations rounded in software (no NVFP4 x MXFP8 kernel in this toolchain)",
+ "step_seconds_median": 3.4186174869537354,
+ "step_seconds_all": [
+  3.300794839859009,
+  3.6465401649475098,
+  3.6182868480682373,
+  3.4186174869537354,
+  3.282132863998413
+ ]
+}

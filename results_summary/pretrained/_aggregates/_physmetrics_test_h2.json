@@ -1,0 +1,3876 @@
+{
+ "model": "pretrained",
+ "split": "test",
+ "steps": 2,
+ "dates": [
+  "2024-03-01",
+  "2024-03-02",
+  "2024-03-03",
+  "2024-03-04",
+  "2024-03-05",
+  "2024-03-06",
+  "2024-03-07",
+  "2024-03-08",
+  "2024-03-09",
+  "2024-03-10",
+  "2024-03-11",
+  "2024-03-12",
+  "2024-03-13",
+  "2024-03-14",
+  "2024-03-15",
+  "2024-03-16",
+  "2024-03-17",
+  "2024-03-18",
+  "2024-03-19",
+  "2024-03-20",
+  "2024-03-21",
+  "2024-03-22",
+  "2024-03-23",
+  "2024-03-24",
+  "2024-03-25",
+  "2024-03-26",
+  "2024-03-27",
+  "2024-03-28",
+  "2024-03-29",
+  "2024-03-30"
+ ],
+ "definitions": "PhysMetrics.Weather (arXiv:2606.10642) hydrostatic 500-850 hPa with virtual temperature, geostrophic 500 hPa |lat|>=20, L_eff from spherical-harmonic KE(500) with threshold 0.5 over 5 consecutive l >= 10",
+ "truth": {
+  "1": {
+   "2024-03-01": {
+    "hydrostatic_rmse": 230.09023236361529,
+    "geostrophic_rmse": 5.323345450971039
+   },
+   "2024-03-02": {
+    "hydrostatic_rmse": 235.45751146441157,
+    "geostrophic_rmse": 5.4649788138389965
+   },
+   "2024-03-03": {
+    "hydrostatic_rmse": 232.9494318180223,
+    "geostrophic_rmse": 5.384050141680013
+   },
+   "2024-03-04": {
+    "hydrostatic_rmse": 231.26346539584202,
+    "geostrophic_rmse": 5.087301688194913
+   },
+   "2024-03-05": {
+    "hydrostatic_rmse": 232.39058359194354,
+    "geostrophic_rmse": 4.852549372944093
+   },
+   "2024-03-06": {
+    "hydrostatic_rmse": 228.57191189400717,
+    "geostrophic_rmse": 4.7594396235261005
+   },
+   "2024-03-07": {
+    "hydrostatic_rmse": 224.94675824100776,
+    "geostrophic_rmse": 4.905401289964242
+   },
+   "2024-03-08": {
+    "hydrostatic_rmse": 222.90611312717846,
+    "geostrophic_rmse": 5.137751936837514
+   },
+   "2024-03-09": {
+    "hydrostatic_rmse": 224.97658419600543,
+    "geostrophic_rmse": 4.895113317373752
+   },
+   "2024-03-10": {
+    "hydrostatic_rmse": 223.66449366692962,
+    "geostrophic_rmse": 5.0406345148054355
+   },
+   "2024-03-11": {
+    "hydrostatic_rmse": 229.5435618269224,
+    "geostrophic_rmse": 5.118163435596588
+   },
+   "2024-03-12": {
+    "hydrostatic_rmse": 233.24861700115002,
+    "geostrophic_rmse": 5.1318663303181316
+   },
+   "2024-03-13": {
+    "hydrostatic_rmse": 227.1141035506396,
+    "geostrophic_rmse": 5.132777610906559
+   },
+   "2024-03-14": {
+    "hydrostatic_rmse": 219.466483189838,
+    "geostrophic_rmse": 5.051417830308859
+   },
+   "2024-03-15": {
+    "hydrostatic_rmse": 223.81130864036686,
+    "geostrophic_rmse": 4.987831676725056
+   },
+   "2024-03-16": {
+    "hydrostatic_rmse": 231.43313234136463,
+    "geostrophic_rmse": 4.7845903991461185
+   },
+   "2024-03-17": {
+    "hydrostatic_rmse": 229.88447569987213,
+    "geostrophic_rmse": 4.841093717566085
+   },
+   "2024-03-18": {
+    "hydrostatic_rmse": 220.72286221903065,
+    "geostrophic_rmse": 4.869742325941806
+   },
+   "2024-03-19": {
+    "hydrostatic_rmse": 216.2421633406852,
+    "geostrophic_rmse": 4.977519353168146
+   },
+   "2024-03-20": {
+    "hydrostatic_rmse": 212.4372902934929,
+    "geostrophic_rmse": 5.291525554123165
+   },
+   "2024-03-21": {
+    "hydrostatic_rmse": 208.53946535417276,
+    "geostrophic_rmse": 5.295904102842344
+   },
+   "2024-03-22": {
+    "hydrostatic_rmse": 214.7350647487913,
+    "geostrophic_rmse": 5.399457685272382
+   },
+   "2024-03-23": {
+    "hydrostatic_rmse": 223.36780539575994,
+    "geostrophic_rmse": 5.350447381788328
+   },
+   "2024-03-24": {
+    "hydrostatic_rmse": 225.07279462726413,
+    "geostrophic_rmse": 5.414495846613067
+   },
+   "2024-03-25": {
+    "hydrostatic_rmse": 229.80271063786336,
+    "geostrophic_rmse": 5.360964878625372
+   },
+   "2024-03-26": {
+    "hydrostatic_rmse": 235.39074316756057,
+    "geostrophic_rmse": 5.156126602575504
+   },
+   "2024-03-27": {
+    "hydrostatic_rmse": 236.94756608380757,
+    "geostrophic_rmse": 5.0399575785271455
+   },
+   "2024-03-28": {
+    "hydrostatic_rmse": 236.32629566591436,
+    "geostrophic_rmse": 4.999228222762955
+   },
+   "2024-03-29": {
+    "hydrostatic_rmse": 240.6105213862423,
+    "geostrophic_rmse": 5.108325815597941
+   },
+   "2024-03-30": {
+    "hydrostatic_rmse": 245.26001451671561,
+    "geostrophic_rmse": 5.220561420440936
+   }
+  },
+  "2": {
+   "2024-03-01": {
+    "hydrostatic_rmse": 229.97181331619873,
+    "geostrophic_rmse": 5.348362298169193
+   },
+   "2024-03-02": {
+    "hydrostatic_rmse": 234.98817655132717,
+    "geostrophic_rmse": 5.387501263148261
+   },
+   "2024-03-03": {
+    "hydrostatic_rmse": 231.2409534213106,
+    "geostrophic_rmse": 5.3611635369252655
+   },
+   "2024-03-04": {
+    "hydrostatic_rmse": 229.97695785027486,
+    "geostrophic_rmse": 5.090763166069503
+   },
+   "2024-03-05": {
+    "hydrostatic_rmse": 229.52335835073336,
+    "geostrophic_rmse": 4.810175012927479
+   },
+   "2024-03-06": {
+    "hydrostatic_rmse": 224.6897305987545,
+    "geostrophic_rmse": 4.687910077089854
+   },
+   "2024-03-07": {
+    "hydrostatic_rmse": 222.9181459058336,
+    "geostrophic_rmse": 4.856131889025741
+   },
+   "2024-03-08": {
+    "hydrostatic_rmse": 220.20482935767532,
+    "geostrophic_rmse": 5.101816751886423
+   },
+   "2024-03-09": {
+    "hydrostatic_rmse": 224.41728381031368,
+    "geostrophic_rmse": 4.826604451787465
+   },
+   "2024-03-10": {
+    "hydrostatic_rmse": 223.12937832028874,
+    "geostrophic_rmse": 4.956901446563623
+   },
+   "2024-03-11": {
+    "hydrostatic_rmse": 226.25398354644847,
+    "geostrophic_rmse": 5.156873847962171
+   },
+   "2024-03-12": {
+    "hydrostatic_rmse": 230.66541031328188,
+    "geostrophic_rmse": 5.122199693535556
+   },
+   "2024-03-13": {
+    "hydrostatic_rmse": 222.89164947613023,
+    "geostrophic_rmse": 5.162971708955277
+   },
+   "2024-03-14": {
+    "hydrostatic_rmse": 219.2391309834726,
+    "geostrophic_rmse": 5.072848006241948
+   },
+   "2024-03-15": {
+    "hydrostatic_rmse": 221.93040100011643,
+    "geostrophic_rmse": 4.881359003436074
+   },
+   "2024-03-16": {
+    "hydrostatic_rmse": 226.02881761505606,
+    "geostrophic_rmse": 4.81975185526658
+   },
+   "2024-03-17": {
+    "hydrostatic_rmse": 223.49644939355204,
+    "geostrophic_rmse": 4.708087024645934
+   },
+   "2024-03-18": {
+    "hydrostatic_rmse": 216.94741310910578,
+    "geostrophic_rmse": 4.857371842075987
+   },
+   "2024-03-19": {
+    "hydrostatic_rmse": 214.73695153483055,
+    "geostrophic_rmse": 4.9611332667350965
+   },
+   "2024-03-20": {
+    "hydrostatic_rmse": 212.36535191375253,
+    "geostrophic_rmse": 5.074819431443097
+   },
+   "2024-03-21": {
+    "hydrostatic_rmse": 209.12574809875696,
+    "geostrophic_rmse": 5.132091851396559
+   },
+   "2024-03-22": {
+    "hydrostatic_rmse": 215.9711952044826,
+    "geostrophic_rmse": 5.345026450453388
+   },
+   "2024-03-23": {
+    "hydrostatic_rmse": 219.7175475057668,
+    "geostrophic_rmse": 5.2359985785047884
+   },
+   "2024-03-24": {
+    "hydrostatic_rmse": 222.65863700560266,
+    "geostrophic_rmse": 5.158303530223072
+   },
+   "2024-03-25": {
+    "hydrostatic_rmse": 229.41436890234004,
+    "geostrophic_rmse": 5.247615145681759
+   },
+   "2024-03-26": {
+    "hydrostatic_rmse": 234.32850377274144,
+    "geostrophic_rmse": 5.006625443706774
+   },
+   "2024-03-27": {
+    "hydrostatic_rmse": 233.18947845106004,
+    "geostrophic_rmse": 5.089618378279716
+   },
+   "2024-03-28": {
+    "hydrostatic_rmse": 235.23229810652845,
+    "geostrophic_rmse": 5.097305537584491
+   },
+   "2024-03-29": {
+    "hydrostatic_rmse": 241.40611476313344,
+    "geostrophic_rmse": 5.046864433927055
+   },
+   "2024-03-30": {
+    "hydrostatic_rmse": 244.58344894924895,
+    "geostrophic_rmse": 5.208940367037767
+   }
+  }
+ },
+ "fp32": {
+  "1": {
+   "2024-03-01": {
+    "hydrostatic_rmse": 225.73585139874396,
+    "geostrophic_rmse": 6.6284121755326,
+    "vs_truth": {
+     "L_eff_km": 194.32123102932593,
+     "small_scale_ratio": 0.2938205472374445,
+     "k_cut": 206.0,
+     "spectral_divergence": 0.46613977222487235,
+     "spectral_residual": 0.869935152379925,
+     "hydrostatic_excess": -4.354380964871325,
+     "geostrophic_excess": 1.305066724561561
+    }
+   },
+   "2024-03-02": {
+    "hydrostatic_rmse": 230.88405820838668,
+    "geostrophic_rmse": 6.685621341986672,
+    "vs_truth": {
+     "L_eff_km": 206.3411009899028,
+     "small_scale_ratio": 0.2949319118944869,
+     "k_cut": 194.0,
+     "spectral_divergence": 0.4515981826367981,
+     "spectral_residual": 0.9038462031339012,
+     "hydrostatic_excess": -4.573453256024891,
+     "geostrophic_excess": 1.2206425281476756
+    }
+   },
+   "2024-03-03": {
+    "hydrostatic_rmse": 229.68861166605004,
+    "geostrophic_rmse": 6.6166871675100305,
+    "vs_truth": {
+     "L_eff_km": 208.49048745854762,
+     "small_scale_ratio": 0.31195783351556033,
+     "k_cut": 192.0,
+     "spectral_divergence": 0.4658817201412335,
+     "spectral_residual": 0.8654673888301202,
+     "hydrostatic_excess": -3.2608201519722684,
+     "geostrophic_excess": 1.2326370258300177
+    }
+   },
+   "2024-03-04": {
+    "hydrostatic_rmse": 226.0485547463281,
+    "geostrophic_rmse": 6.250877364869257,
+    "vs_truth": {
+     "L_eff_km": 200.15086796020572,
+     "small_scale_ratio": 0.3097604596216835,
+     "k_cut": 200.0,
+     "spectral_divergence": 0.5100372011837467,
+     "spectral_residual": 0.8524688699881606,
+     "hydrostatic_excess": -5.214910649513911,
+     "geostrophic_excess": 1.163575676674344
+    }
+   },
+   "2024-03-05": {
+    "hydrostatic_rmse": 227.1181930885659,
+    "geostrophic_rmse": 5.912292766904642,
+    "vs_truth": {
+     "L_eff_km": 203.19885072102105,
+     "small_scale_ratio": 0.3019007591273288,
+     "k_cut": 197.0,
+     "spectral_divergence": 0.47800205493353365,
+     "spectral_residual": 0.8825855631151046,
+     "hydrostatic_excess": -5.272390503377636,
+     "geostrophic_excess": 1.0597433939605487
+    }
+   },
+   "2024-03-06": {
+    "hydrostatic_rmse": 223.29987374167854,
+    "geostrophic_rmse": 5.9437454241400545,
+    "vs_truth": {
+     "L_eff_km": 194.32123102932593,
+     "small_scale_ratio": 0.3111575981398302,
+     "k_cut": 206.0,
+     "spectral_divergence": 0.42572019794658966,
+     "spectral_residual": 0.8291880167823558,
+     "hydrostatic_excess": -5.2720381523286335,
+     "geostrophic_excess": 1.184305800613954
+    }
+   },
+   "2024-03-07": {
+    "hydrostatic_rmse": 221.18896384269772,
+    "geostrophic_rmse": 6.032896512795478,
+    "vs_truth": {
+     "L_eff_km": 206.3411009899028,
+     "small_scale_ratio": 0.2877222183133996,
+     "k_cut": 194.0,
+     "spectral_divergence": 0.4407416661658673,
+     "spectral_residual": 0.9198034665102149,
+     "hydrostatic_excess": -3.7577943983100397,
+     "geostrophic_excess": 1.1274952228312358
+    }
+   },
+   "2024-03-08": {
+    "hydrostatic_rmse": 219.7193271331234,
+    "geostrophic_rmse": 6.100773209227606,
+    "vs_truth": {
+     "L_eff_km": 207.41022586549815,
+     "small_scale_ratio": 0.3067066910457287,
+     "k_cut": 193.0,
+     "spectral_divergence": 0.50599806936254,
+     "spectral_residual": 0.8673584470706028,
+     "hydrostatic_excess": -3.1867859940550716,
+     "geostrophic_excess": 0.9630212723900922
+    }
+   },
+   "2024-03-09": {
+    "hydrostatic_rmse": 221.3885960284749,
+    "geostrophic_rmse": 5.992339809653888,
+    "vs_truth": {
+     "L_eff_km": 210.6851241686376,
+     "small_scale_ratio": 0.29241744478856585,
+     "k_cut": 190.0,
+     "spectral_divergence": 0.46296529382079243,
+     "spectral_residual": 0.9161349694807076,
+     "hydrostatic_excess": -3.58798816753054,
+     "geostrophic_excess": 1.0972264922801358
+    }
+   },
+   "2024-03-10": {
+    "hydrostatic_rmse": 221.28763167855357,
+    "geostrophic_rmse": 6.383988077205304,
+    "vs_truth": {
+     "L_eff_km": 208.49048745854762,
+     "small_scale_ratio": 0.2930619264882832,
+     "k_cut": 192.0,
+     "spectral_divergence": 0.4690174036970821,
+     "spectral_residual": 0.916887226968566,
+     "hydrostatic_excess": -2.3768619883760493,
+     "geostrophic_excess": 1.3433535623998685
+    }
+   },
+   "2024-03-11": {
+    "hydrostatic_rmse": 224.85141392320688,
+    "geostrophic_rmse": 6.467458507266419,
+    "vs_truth": {
+     "L_eff_km": 198.16917619822348,
+     "small_scale_ratio": 0.27342468319832774,
+     "k_cut": 202.0,
+     "spectral_divergence": 0.49199901035841465,
+     "spectral_residual": 0.9311701885674665,
+     "hydrostatic_excess": -4.692147903715522,
+     "geostrophic_excess": 1.3492950716698306
+    }
+   },
+   "2024-03-12": {
+    "hydrostatic_rmse": 226.5930054861031,
+    "geostrophic_rmse": 6.5382551587242075,
+    "vs_truth": {
+     "L_eff_km": 201.15665121628714,
+     "small_scale_ratio": 0.29568439322458745,
+     "k_cut": 199.0,
+     "spectral_divergence": 0.4528789809405693,
+     "spectral_residual": 0.8795274501468109,
+     "hydrostatic_excess": -6.655611515046928,
+     "geostrophic_excess": 1.406388828406076
+    }
+   },
+   "2024-03-13": {
+    "hydrostatic_rmse": 223.06492402632838,
+    "geostrophic_rmse": 6.488263828269861,
+    "vs_truth": {
+     "L_eff_km": 205.28294149764687,
+     "small_scale_ratio": 0.28279142106895677,
+     "k_cut": 195.0,
+     "spectral_divergence": 0.5103013959910826,
+     "spectral_residual": 0.922543070546561,
+     "hydrostatic_excess": -4.049179524311228,
+     "geostrophic_excess": 1.3554862173633015
+    }
+   },
+   "2024-03-14": {
+    "hydrostatic_rmse": 215.68807218688394,
+    "geostrophic_rmse": 6.336188130048922,
+    "vs_truth": {
+     "L_eff_km": 205.28294149764687,
+     "small_scale_ratio": 0.2780757841608069,
+     "k_cut": 195.0,
+     "spectral_divergence": 0.5419605889271315,
+     "spectral_residual": 0.9367655017725615,
+     "hydrostatic_excess": -3.7784110029540443,
+     "geostrophic_excess": 1.284770299740063
+    }
+   },
+   "2024-03-15": {
+    "hydrostatic_rmse": 220.26562120777334,
+    "geostrophic_rmse": 6.307560760730077,
+    "vs_truth": {
+     "L_eff_km": 209.5820606913149,
+     "small_scale_ratio": 0.2837647958307227,
+     "k_cut": 191.0,
+     "spectral_divergence": 0.5402560652819669,
+     "spectral_residual": 0.9271233869813124,
+     "hydrostatic_excess": -3.5456874325935246,
+     "geostrophic_excess": 1.3197290840050204
+    }
+   },
+   "2024-03-16": {
+    "hydrostatic_rmse": 226.8381238272624,
+    "geostrophic_rmse": 6.1927976266167795,
+    "vs_truth": {
+     "L_eff_km": 205.28294149764687,
+     "small_scale_ratio": 0.298979489979745,
+     "k_cut": 195.0,
+     "spectral_divergence": 0.470097710442278,
+     "spectral_residual": 0.8903720982513625,
+     "hydrostatic_excess": -4.595008514102233,
+     "geostrophic_excess": 1.408207227470661
+    }
+   },
+   "2024-03-17": {
+    "hydrostatic_rmse": 226.91569184442008,
+    "geostrophic_rmse": 6.072726234620612,
+    "vs_truth": {
+     "L_eff_km": 206.3411009899028,
+     "small_scale_ratio": 0.30131299211183343,
+     "k_cut": 194.0,
+     "spectral_divergence": 0.5006613166884163,
+     "spectral_residual": 0.8866276725184039,
+     "hydrostatic_excess": -2.9687838554520454,
+     "geostrophic_excess": 1.2316325170545275
+    }
+   },
+   "2024-03-18": {
+    "hydrostatic_rmse": 217.68940107531216,
+    "geostrophic_rmse": 6.053585933308164,
+    "vs_truth": {
+     "L_eff_km": 211.79986027534997,
+     "small_scale_ratio": 0.28115638618840005,
+     "k_cut": 189.0,
+     "spectral_divergence": 0.494512903693142,
+     "spectral_residual": 0.9471086308970114,
+     "hydrostatic_excess": -3.0334611437184833,
+     "geostrophic_excess": 1.1838436073663585
+    }
+   },
+   "2024-03-19": {
+    "hydrostatic_rmse": 211.68467860723095,
+    "geostrophic_rmse": 6.261342588673484,
+    "vs_truth": {
+     "L_eff_km": 204.23557955123033,
+     "small_scale_ratio": 0.28399204694687585,
+     "k_cut": 196.0,
+     "spectral_divergence": 0.47974958974898585,
+     "spectral_residual": 0.9189871367058,
+     "hydrostatic_excess": -4.55748473345426,
+     "geostrophic_excess": 1.2838232355053378
+    }
+   },
+   "2024-03-20": {
+    "hydrostatic_rmse": 209.23255081352883,
+    "geostrophic_rmse": 6.287138451412563,
+    "vs_truth": {
+     "L_eff_km": 203.19885072102105,
+     "small_scale_ratio": 0.29795660995045775,
+     "k_cut": 197.0,
+     "spectral_divergence": 0.4938779689631325,
+     "spectral_residual": 0.8857432168040502,
+     "hydrostatic_excess": -3.2047394799640756,
+     "geostrophic_excess": 0.9956128972893978
+    }
+   },
+   "2024-03-21": {
+    "hydrostatic_rmse": 203.83535517607584,
+    "geostrophic_rmse": 6.267087107681726,
+    "vs_truth": {
+     "L_eff_km": 206.3411009899028,
+     "small_scale_ratio": 0.2830124164697739,
+     "k_cut": 194.0,
+     "spectral_divergence": 0.45024695875202203,
+     "spectral_residual": 0.9283189834771166,
+     "hydrostatic_excess": -4.704110178096926,
+     "geostrophic_excess": 0.9711830048393821
+    }
+   },
+   "2024-03-22": {
+    "hydrostatic_rmse": 209.06282275896518,
+    "geostrophic_rmse": 6.403577098901886,
+    "vs_truth": {
+     "L_eff_km": 203.19885072102105,
+     "small_scale_ratio": 0.3069881827809733,
+     "k_cut": 197.0,
+     "spectral_divergence": 0.4900176216427409,
+     "spectral_residual": 0.8601771609332942,
+     "hydrostatic_excess": -5.672241989826119,
+     "geostrophic_excess": 1.0041194136295042
+    }
+   },
+   "2024-03-23": {
+    "hydrostatic_rmse": 215.8674546003896,
+    "geostrophic_rmse": 6.472181885189483,
+    "vs_truth": {
+     "L_eff_km": 201.15665121628714,
+     "small_scale_ratio": 0.27946994072104714,
+     "k_cut": 199.0,
+     "spectral_divergence": 0.5456375929683382,
+     "spectral_residual": 0.9302219383061323,
+     "hydrostatic_excess": -7.500350795370338,
+     "geostrophic_excess": 1.1217345034011545
+    }
+   },
+   "2024-03-24": {
+    "hydrostatic_rmse": 219.43230334735793,
+    "geostrophic_rmse": 6.446952614394297,
+    "vs_truth": {
+     "L_eff_km": 224.8886156856244,
+     "small_scale_ratio": 0.28652042750651924,
+     "k_cut": 178.0,
+     "spectral_divergence": 0.5144907470142603,
+     "spectral_residual": 0.9715684678785212,
+     "hydrostatic_excess": -5.6404912799062,
+     "geostrophic_excess": 1.0324567677812295
+    }
+   },
+   "2024-03-25": {
+    "hydrostatic_rmse": 225.7005704154535,
+    "geostrophic_rmse": 6.631130009786096,
+    "vs_truth": {
+     "L_eff_km": 216.3793167137359,
+     "small_scale_ratio": 0.29191955997022967,
+     "k_cut": 185.0,
+     "spectral_divergence": 0.4846412968123477,
+     "spectral_residual": 0.9389620740358388,
+     "hydrostatic_excess": -4.102140222409844,
+     "geostrophic_excess": 1.2701651311607245
+    }
+   },
+   "2024-03-26": {
+    "hydrostatic_rmse": 229.86855682100352,
+    "geostrophic_rmse": 6.543424931067504,
+    "vs_truth": {
+     "L_eff_km": 207.41022586549815,
+     "small_scale_ratio": 0.263435498029411,
+     "k_cut": 193.0,
+     "spectral_divergence": 0.4933329458010093,
+     "spectral_residual": 0.9945931296771036,
+     "hydrostatic_excess": -5.522186346557049,
+     "geostrophic_excess": 1.3872983284920002
+    }
+   },
+   "2024-03-27": {
+    "hydrostatic_rmse": 231.25901045228136,
+    "geostrophic_rmse": 6.546509566232775,
+    "vs_truth": {
+     "L_eff_km": 205.28294149764687,
+     "small_scale_ratio": 0.2834634096460036,
+     "k_cut": 195.0,
+     "spectral_divergence": 0.4404102931516829,
+     "spectral_residual": 0.9272855375697113,
+     "hydrostatic_excess": -5.688555631526214,
+     "geostrophic_excess": 1.5065519877056293
+    }
+   },
+   "2024-03-28": {
+    "hydrostatic_rmse": 229.62599450825635,
+    "geostrophic_rmse": 6.365627279544726,
+    "vs_truth": {
+     "L_eff_km": 212.92645527681458,
+     "small_scale_ratio": 0.2954997232682806,
+     "k_cut": 188.0,
+     "spectral_divergence": 0.49648319464441026,
+     "spectral_residual": 0.9144444446867901,
+     "hydrostatic_excess": -6.700301157658004,
+     "geostrophic_excess": 1.3663990567817708
+    }
+   },
+   "2024-03-29": {
+    "hydrostatic_rmse": 236.48276280907712,
+    "geostrophic_rmse": 6.50047425079883,
+    "vs_truth": {
+     "L_eff_km": 209.5820606913149,
+     "small_scale_ratio": 0.3127437340186975,
+     "k_cut": 191.0,
+     "spectral_divergence": 0.46931019344079644,
+     "spectral_residual": 0.8601279510603052,
+     "hydrostatic_excess": -4.127758577165196,
+     "geostrophic_excess": 1.3921484352008893
+    }
+   },
+   "2024-03-30": {
+    "hydrostatic_rmse": 241.47130762873496,
+    "geostrophic_rmse": 6.639358047380664,
+    "vs_truth": {
+     "L_eff_km": 200.15086796020572,
+     "small_scale_ratio": 0.28465594416996887,
+     "k_cut": 200.0,
+     "spectral_divergence": 0.4478476471506978,
+     "spectral_residual": 0.9074466903182699,
+     "hydrostatic_excess": -3.788706887980652,
+     "geostrophic_excess": 1.418796626939728
+    }
+   }
+  },
+  "2": {
+   "2024-03-01": {
+    "hydrostatic_rmse": 227.3455313581889,
+    "geostrophic_rmse": 6.686939917439587,
+    "vs_truth": {
+     "L_eff_km": 222.38985328911747,
+     "small_scale_ratio": 0.2722508574042579,
+     "k_cut": 180.0,
+     "spectral_divergence": 0.5386471729778591,
+     "spectral_residual": 1.0037240745737597,
+     "hydrostatic_excess": -2.6262819580098267,
+     "geostrophic_excess": 1.338577619270394
+    }
+   },
+   "2024-03-02": {
+    "hydrostatic_rmse": 230.58527491211407,
+    "geostrophic_rmse": 6.662057614108193,
+    "vs_truth": {
+     "L_eff_km": 228.74384909737796,
+     "small_scale_ratio": 0.27464961240821406,
+     "k_cut": 175.0,
+     "spectral_divergence": 0.514341865535695,
+     "spectral_residual": 1.007112833053775,
+     "hydrostatic_excess": -4.402901639213098,
+     "geostrophic_excess": 1.2745563509599318
+    }
+   },
+   "2024-03-03": {
+    "hydrostatic_rmse": 227.94272797277478,
+    "geostrophic_rmse": 6.591709754825444,
+    "vs_truth": {
+     "L_eff_km": 227.4441681365974,
+     "small_scale_ratio": 0.3041928096281766,
+     "k_cut": 176.0,
+     "spectral_divergence": 0.5659204208896886,
+     "spectral_residual": 0.9327018763273087,
+     "hydrostatic_excess": -3.298225448535817,
+     "geostrophic_excess": 1.2305462179001783
+    }
+   },
+   "2024-03-04": {
+    "hydrostatic_rmse": 224.8667706807125,
+    "geostrophic_rmse": 6.140611289947832,
+    "vs_truth": {
+     "L_eff_km": 217.55529126109317,
+     "small_scale_ratio": 0.28383537088537975,
+     "k_cut": 184.0,
+     "spectral_divergence": 0.5010847135861509,
+     "spectral_residual": 0.9533160323226838,
+     "hydrostatic_excess": -5.1101871695623515,
+     "geostrophic_excess": 1.0498481238783288
+    }
+   },
+   "2024-03-05": {
+    "hydrostatic_rmse": 225.01940685934818,
+    "geostrophic_rmse": 5.85364927517295,
+    "vs_truth": {
+     "L_eff_km": 212.92645527681458,
+     "small_scale_ratio": 0.270147335937407,
+     "k_cut": 188.0,
+     "spectral_divergence": 0.4932363719850258,
+     "spectral_residual": 0.9876659201212488,
+     "hydrostatic_excess": -4.50395149138518,
+     "geostrophic_excess": 1.0434742622454714
+    }
+   },
+   "2024-03-06": {
+    "hydrostatic_rmse": 220.19587974704368,
+    "geostrophic_rmse": 5.92536762398237,
+    "vs_truth": {
+     "L_eff_km": 209.5820606913149,
+     "small_scale_ratio": 0.2837595278366519,
+     "k_cut": 191.0,
+     "spectral_divergence": 0.4683967093844843,
+     "spectral_residual": 0.9342177661736654,
+     "hydrostatic_excess": -4.4938508517108176,
+     "geostrophic_excess": 1.2374575468925162
+    }
+   },
+   "2024-03-07": {
+    "hydrostatic_rmse": 219.06697591315424,
+    "geostrophic_rmse": 5.968640205180817,
+    "vs_truth": {
+     "L_eff_km": 212.92645527681458,
+     "small_scale_ratio": 0.27066310852212744,
+     "k_cut": 188.0,
+     "spectral_divergence": 0.5040079624256747,
+     "spectral_residual": 0.9867334058030289,
+     "hydrostatic_excess": -3.8511699926793597,
+     "geostrophic_excess": 1.1125083161550755
+    }
+   },
+   "2024-03-08": {
+    "hydrostatic_rmse": 218.21790491164506,
+    "geostrophic_rmse": 6.042805482172439,
+    "vs_truth": {
+     "L_eff_km": 236.86493249728488,
+     "small_scale_ratio": 0.28978328013081367,
+     "k_cut": 169.0,
+     "spectral_divergence": 0.5293125439498872,
+     "spectral_residual": 0.9784570190437439,
+     "hydrostatic_excess": -1.9869244460302582,
+     "geostrophic_excess": 0.9409887302860165
+    }
+   },
+   "2024-03-09": {
+    "hydrostatic_rmse": 221.58180793543238,
+    "geostrophic_rmse": 6.014934516248118,
+    "vs_truth": {
+     "L_eff_km": 232.73356739558804,
+     "small_scale_ratio": 0.2739062217943396,
+     "k_cut": 172.0,
+     "spectral_divergence": 0.5322869146025553,
+     "spectral_residual": 1.0219383858797704,
+     "hydrostatic_excess": -2.835475874881297,
+     "geostrophic_excess": 1.1883300644606534
+    }
+   },
+   "2024-03-10": {
+    "hydrostatic_rmse": 220.76481010112283,
+    "geostrophic_rmse": 6.374047861002346,
+    "vs_truth": {
+     "L_eff_km": 223.63225470414045,
+     "small_scale_ratio": 0.27639709936612367,
+     "k_cut": 179.0,
+     "spectral_divergence": 0.5582036820604788,
+     "spectral_residual": 1.000177878646409,
+     "hydrostatic_excess": -2.3645682191659034,
+     "geostrophic_excess": 1.4171464144387231
+    }
+   },
+   "2024-03-11": {
+    "hydrostatic_rmse": 222.4191656688405,
+    "geostrophic_rmse": 6.485390007976444,
+    "vs_truth": {
+     "L_eff_km": 222.38985328911747,
+     "small_scale_ratio": 0.2671453865851647,
+     "k_cut": 180.0,
+     "spectral_divergence": 0.5419621781955972,
+     "spectral_residual": 1.0193557088951553,
+     "hydrostatic_excess": -3.834817877607975,
+     "geostrophic_excess": 1.3285161600142734
+    }
+   },
+   "2024-03-12": {
+    "hydrostatic_rmse": 224.8613841656333,
+    "geostrophic_rmse": 6.519342490982537,
+    "vs_truth": {
+     "L_eff_km": 221.16118006652565,
+     "small_scale_ratio": 0.2773116180983127,
+     "k_cut": 181.0,
+     "spectral_divergence": 0.5375535267629004,
+     "spectral_residual": 0.9770479635378294,
+     "hydrostatic_excess": -5.804026147648585,
+     "geostrophic_excess": 1.397142797446981
+    }
+   },
+   "2024-03-13": {
+    "hydrostatic_rmse": 219.94641452660687,
+    "geostrophic_rmse": 6.487540473737327,
+    "vs_truth": {
+     "L_eff_km": 235.47160936494788,
+     "small_scale_ratio": 0.26748787609777736,
+     "k_cut": 170.0,
+     "spectral_divergence": 0.579319555482263,
+     "spectral_residual": 1.045952579023582,
+     "hydrostatic_excess": -2.9452349495233534,
+     "geostrophic_excess": 1.3245687647820494
+    }
+   },
+   "2024-03-14": {
+    "hydrostatic_rmse": 215.4629244923904,
+    "geostrophic_rmse": 6.335907320010857,
+    "vs_truth": {
+     "L_eff_km": 239.70163827569547,
+     "small_scale_ratio": 0.2764535915547616,
+     "k_cut": 167.0,
+     "spectral_divergence": 0.6340069047814264,
+     "spectral_residual": 1.0436905119579636,
+     "hydrostatic_excess": -3.7762064910821778,
+     "geostrophic_excess": 1.2630593137689088
+    }
+   },
+   "2024-03-15": {
+    "hydrostatic_rmse": 218.31910786504494,
+    "geostrophic_rmse": 6.231097233752468,
+    "vs_truth": {
+     "L_eff_km": 228.74384909737796,
+     "small_scale_ratio": 0.27674870134021534,
+     "k_cut": 175.0,
+     "spectral_divergence": 0.6021842646639681,
+     "spectral_residual": 1.0066183217514644,
+     "hydrostatic_excess": -3.6112931350714916,
+     "geostrophic_excess": 1.3497382303163938
+    }
+   },
+   "2024-03-16": {
+    "hydrostatic_rmse": 220.73885784942274,
+    "geostrophic_rmse": 6.1714501686434655,
+    "vs_truth": {
+     "L_eff_km": 218.74411798929586,
+     "small_scale_ratio": 0.27765865879145013,
+     "k_cut": 183.0,
+     "spectral_divergence": 0.562319621301469,
+     "spectral_residual": 0.9754002404376184,
+     "hydrostatic_excess": -5.289959765633313,
+     "geostrophic_excess": 1.3516983133768852
+    }
+   },
+   "2024-03-17": {
+    "hydrostatic_rmse": 220.3575269148899,
+    "geostrophic_rmse": 6.0054183406072275,
+    "vs_truth": {
+     "L_eff_km": 218.74411798929586,
+     "small_scale_ratio": 0.27052200511037094,
+     "k_cut": 183.0,
+     "spectral_divergence": 0.5803730485600452,
+     "spectral_residual": 1.0014862445882242,
+     "hydrostatic_excess": -3.1389224786621526,
+     "geostrophic_excess": 1.2973313159612934
+    }
+   },
+   "2024-03-18": {
+    "hydrostatic_rmse": 214.6010322541981,
+    "geostrophic_rmse": 6.058226767032452,
+    "vs_truth": {
+     "L_eff_km": 222.38985328911747,
+     "small_scale_ratio": 0.2551088082064635,
+     "k_cut": 180.0,
+     "spectral_divergence": 0.5806901365747045,
+     "spectral_residual": 1.0674253831178055,
+     "hydrostatic_excess": -2.346380854907693,
+     "geostrophic_excess": 1.2008549249564648
+    }
+   },
+   "2024-03-19": {
+    "hydrostatic_rmse": 211.63684384607885,
+    "geostrophic_rmse": 6.276737812917671,
+    "vs_truth": {
+     "L_eff_km": 222.38985328911747,
+     "small_scale_ratio": 0.2736754071053958,
+     "k_cut": 180.0,
+     "spectral_divergence": 0.5131364917759367,
+     "spectral_residual": 1.0011609783054345,
+     "hydrostatic_excess": -3.100107688751706,
+     "geostrophic_excess": 1.3156045461825743
+    }
+   },
+   "2024-03-20": {
+    "hydrostatic_rmse": 208.3598266577984,
+    "geostrophic_rmse": 6.182847870283072,
+    "vs_truth": {
+     "L_eff_km": 226.15917283639064,
+     "small_scale_ratio": 0.2755339778074286,
+     "k_cut": 177.0,
+     "spectral_divergence": 0.5387898706430118,
+     "spectral_residual": 1.0191825404875055,
+     "hydrostatic_excess": -4.005525255954126,
+     "geostrophic_excess": 1.108028438839975
+    }
+   },
+   "2024-03-21": {
+    "hydrostatic_rmse": 204.7845528594282,
+    "geostrophic_rmse": 6.196552216915847,
+    "vs_truth": {
+     "L_eff_km": 212.92645527681458,
+     "small_scale_ratio": 0.26739763132051664,
+     "k_cut": 188.0,
+     "spectral_divergence": 0.5173746904870502,
+     "spectral_residual": 0.9968523751604602,
+     "hydrostatic_excess": -4.341195239328755,
+     "geostrophic_excess": 1.0644603655192872
+    }
+   },
+   "2024-03-22": {
+    "hydrostatic_rmse": 210.52520953315695,
+    "geostrophic_rmse": 6.404805326089144,
+    "vs_truth": {
+     "L_eff_km": 211.79986027534997,
+     "small_scale_ratio": 0.2840999813272353,
+     "k_cut": 189.0,
+     "spectral_divergence": 0.5642421960061564,
+     "spectral_residual": 0.9412597518303495,
+     "hydrostatic_excess": -5.445985671325644,
+     "geostrophic_excess": 1.0597788756357556
+    }
+   },
+   "2024-03-23": {
+    "hydrostatic_rmse": 213.2416916091918,
+    "geostrophic_rmse": 6.335624018899483,
+    "vs_truth": {
+     "L_eff_km": 228.74384909737796,
+     "small_scale_ratio": 0.26431016688614034,
+     "k_cut": 175.0,
+     "spectral_divergence": 0.6011443932737849,
+     "spectral_residual": 1.0419172307803413,
+     "hydrostatic_excess": -6.475855896574984,
+     "geostrophic_excess": 1.0996254403946946
+    }
+   },
+   "2024-03-24": {
+    "hydrostatic_rmse": 217.8171785917913,
+    "geostrophic_rmse": 6.333511585890616,
+    "vs_truth": {
+     "L_eff_km": 221.16118006652565,
+     "small_scale_ratio": 0.2496957122409898,
+     "k_cut": 181.0,
+     "spectral_divergence": 0.5329497284617389,
+     "spectral_residual": 1.0729467679796314,
+     "hydrostatic_excess": -4.841458413811353,
+     "geostrophic_excess": 1.175208055667544
+    }
+   },
+   "2024-03-25": {
+    "hydrostatic_rmse": 224.63766978769723,
+    "geostrophic_rmse": 6.571664702805985,
+    "vs_truth": {
+     "L_eff_km": 224.8886156856244,
+     "small_scale_ratio": 0.2560300596892239,
+     "k_cut": 178.0,
+     "spectral_divergence": 0.5380411898186322,
+     "spectral_residual": 1.0652809213950705,
+     "hydrostatic_excess": -4.77669911464281,
+     "geostrophic_excess": 1.3240495571242263
+    }
+   },
+   "2024-03-26": {
+    "hydrostatic_rmse": 229.69666441740523,
+    "geostrophic_rmse": 6.473050334701603,
+    "vs_truth": {
+     "L_eff_km": 231.38828665919735,
+     "small_scale_ratio": 0.27211708327717965,
+     "k_cut": 173.0,
+     "spectral_divergence": 0.5217395990461691,
+     "spectral_residual": 1.0198749496914152,
+     "hydrostatic_excess": -4.631839355336211,
+     "geostrophic_excess": 1.466424890994829
+    }
+   },
+   "2024-03-27": {
+    "hydrostatic_rmse": 228.6428052579552,
+    "geostrophic_rmse": 6.488504734629848,
+    "vs_truth": {
+     "L_eff_km": 217.55529126109317,
+     "small_scale_ratio": 0.25466778023512665,
+     "k_cut": 184.0,
+     "spectral_divergence": 0.5780901507326278,
+     "spectral_residual": 1.047042517230576,
+     "hydrostatic_excess": -4.546673193104851,
+     "geostrophic_excess": 1.3988863563501326
+    }
+   },
+   "2024-03-28": {
+    "hydrostatic_rmse": 229.6731767204929,
+    "geostrophic_rmse": 6.383597891820681,
+    "vs_truth": {
+     "L_eff_km": 236.86493249728488,
+     "small_scale_ratio": 0.2868567613736542,
+     "k_cut": 169.0,
+     "spectral_divergence": 0.5026189897383386,
+     "spectral_residual": 0.9984426057205325,
+     "hydrostatic_excess": -5.559121386035542,
+     "geostrophic_excess": 1.2862923542361901
+    }
+   },
+   "2024-03-29": {
+    "hydrostatic_rmse": 236.9728004061458,
+    "geostrophic_rmse": 6.573645871669447,
+    "vs_truth": {
+     "L_eff_km": 209.5820606913149,
+     "small_scale_ratio": 0.29228612798937287,
+     "k_cut": 191.0,
+     "spectral_divergence": 0.5502144699792932,
+     "spectral_residual": 0.9271427991022951,
+     "hydrostatic_excess": -4.433314356987637,
+     "geostrophic_excess": 1.5267814377423914
+    }
+   },
+   "2024-03-30": {
+    "hydrostatic_rmse": 240.1173941340866,
+    "geostrophic_rmse": 6.461413943060508,
+    "vs_truth": {
+     "L_eff_km": 217.55529126109317,
+     "small_scale_ratio": 0.26808324913487086,
+     "k_cut": 184.0,
+     "spectral_divergence": 0.5496213512297515,
+     "spectral_residual": 1.0076588547844776,
+     "hydrostatic_excess": -4.466054815162352,
+     "geostrophic_excess": 1.2524735760227408
+    }
+   }
+  }
+ },
+ "recipes": {
+  "q0_sim": {
+   "per_date": {
+    "1": {
+     "2024-03-01": {
+      "hydrostatic_rmse": 290.5547529532065,
+      "geostrophic_rmse": 74.37536890894926,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.552146648664626,
+       "k_cut": null,
+       "spectral_divergence": 1.3122212989958517,
+       "spectral_residual": 1.3948971578713243,
+       "hydrostatic_excess": 60.46452058959122,
+       "geostrophic_excess": 69.05202345797822
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 15.49266058244584,
+       "k_cut": null,
+       "spectral_divergence": 1.551715901854274,
+       "spectral_residual": 2.25169637706136,
+       "hydrostatic_excess": 64.81890155446254,
+       "geostrophic_excess": 67.74695673341665
+      }
+     },
+     "2024-03-02": {
+      "hydrostatic_rmse": 287.3630014663128,
+      "geostrophic_rmse": 56.24265710770633,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.574092293137058,
+       "k_cut": null,
+       "spectral_divergence": 1.3125497441218752,
+       "spectral_residual": 1.4032833150564534,
+       "hydrostatic_excess": 51.905490001901256,
+       "geostrophic_excess": 50.77767829386733
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 16.27506009699171,
+       "k_cut": null,
+       "spectral_divergence": 1.5804545679917565,
+       "spectral_residual": 2.293808600149274,
+       "hydrostatic_excess": 56.47894325792615,
+       "geostrophic_excess": 49.557035765719654
+      }
+     },
+     "2024-03-03": {
+      "hydrostatic_rmse": 289.8157129623133,
+      "geostrophic_rmse": 48.50085197876792,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.614370912978519,
+       "k_cut": null,
+       "spectral_divergence": 1.381482372439606,
+       "spectral_residual": 1.4134365537777007,
+       "hydrostatic_excess": 56.86628114429098,
+       "geostrophic_excess": 43.116801837087905
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 15.411954868223987,
+       "k_cut": null,
+       "spectral_divergence": 1.6142745690073275,
+       "spectral_residual": 2.265964727829712,
+       "hydrostatic_excess": 60.12710129626325,
+       "geostrophic_excess": 41.88416481125789
+      }
+     },
+     "2024-03-04": {
+      "hydrostatic_rmse": 287.5541937681456,
+      "geostrophic_rmse": 50.08200580423195,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.813476955882568,
+       "k_cut": null,
+       "spectral_divergence": 1.50293258858951,
+       "spectral_residual": 1.4402814492745744,
+       "hydrostatic_excess": 56.29072837230356,
+       "geostrophic_excess": 44.994704116037035
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 16.091682944605314,
+       "k_cut": null,
+       "spectral_divergence": 1.6997318441814957,
+       "spectral_residual": 2.2800965661277495,
+       "hydrostatic_excess": 61.50563902181747,
+       "geostrophic_excess": 43.83112843936269
+      }
+     },
+     "2024-03-05": {
+      "hydrostatic_rmse": 288.40491339324814,
+      "geostrophic_rmse": 48.64898573850988,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.765908721758775,
+       "k_cut": null,
+       "spectral_divergence": 1.4764498405189599,
+       "spectral_residual": 1.439078568844391,
+       "hydrostatic_excess": 56.0143298013046,
+       "geostrophic_excess": 43.79643636556578
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 16.599407412913678,
+       "k_cut": null,
+       "spectral_divergence": 1.7234940511294221,
+       "spectral_residual": 2.3107690811096426,
+       "hydrostatic_excess": 61.286720304682234,
+       "geostrophic_excess": 42.73669297160524
+      }
+     },
+     "2024-03-06": {
+      "hydrostatic_rmse": 287.68713415962833,
+      "geostrophic_rmse": 53.234171409461915,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.429515121280845,
+       "k_cut": null,
+       "spectral_divergence": 1.5834160601096996,
+       "spectral_residual": 1.5376531647832261,
+       "hydrostatic_excess": 59.115222265621156,
+       "geostrophic_excess": 48.474731785935816
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 17.380019786769203,
+       "k_cut": null,
+       "spectral_divergence": 1.8217974550489335,
+       "spectral_residual": 2.3576664713660644,
+       "hydrostatic_excess": 64.38726041794979,
+       "geostrophic_excess": 47.29042598532186
+      }
+     },
+     "2024-03-07": {
+      "hydrostatic_rmse": 284.4107757503906,
+      "geostrophic_rmse": 53.67053476594184,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.913881564573304,
+       "k_cut": null,
+       "spectral_divergence": 1.5313751713457886,
+       "spectral_residual": 1.4693398194947216,
+       "hydrostatic_excess": 59.46401750938284,
+       "geostrophic_excess": 48.76513347597759
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 17.761113542649827,
+       "k_cut": null,
+       "spectral_divergence": 1.8438834714295775,
+       "spectral_residual": 2.3786495962536756,
+       "hydrostatic_excess": 63.22181190769288,
+       "geostrophic_excess": 47.63763825314636
+      }
+     },
+     "2024-03-08": {
+      "hydrostatic_rmse": 283.2337761469773,
+      "geostrophic_rmse": 48.35659571347427,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.452736346083008,
+       "k_cut": null,
+       "spectral_divergence": 1.6212622004162747,
+       "spectral_residual": 1.543379553647974,
+       "hydrostatic_excess": 60.32766301979882,
+       "geostrophic_excess": 43.21884377663676
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.074939325028428,
+       "k_cut": null,
+       "spectral_divergence": 1.846719762893702,
+       "spectral_residual": 2.3998994679082086,
+       "hydrostatic_excess": 63.51444901385389,
+       "geostrophic_excess": 42.255822504246666
+      }
+     },
+     "2024-03-09": {
+      "hydrostatic_rmse": 286.137572071339,
+      "geostrophic_rmse": 46.20584968182166,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.364005853678838,
+       "k_cut": null,
+       "spectral_divergence": 1.5663736530934207,
+       "spectral_residual": 1.5342926272728914,
+       "hydrostatic_excess": 61.16098787533355,
+       "geostrophic_excess": 41.310736364447905
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 19.161209286022398,
+       "k_cut": null,
+       "spectral_divergence": 1.8238615110962393,
+       "spectral_residual": 2.4396540788713486,
+       "hydrostatic_excess": 64.74897604286409,
+       "geostrophic_excess": 40.213509872167776
+      }
+     },
+     "2024-03-10": {
+      "hydrostatic_rmse": 283.68103010865684,
+      "geostrophic_rmse": 49.51337337113823,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.1217264636939195,
+       "k_cut": null,
+       "spectral_divergence": 1.5846986825125993,
+       "spectral_residual": 1.4976585224097028,
+       "hydrostatic_excess": 60.016536441727226,
+       "geostrophic_excess": 44.472738856332796
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.42577370769821,
+       "k_cut": null,
+       "spectral_divergence": 1.873149485309701,
+       "spectral_residual": 2.4030765161709993,
+       "hydrostatic_excess": 62.393398430103275,
+       "geostrophic_excess": 43.12938529393293
+      }
+     },
+     "2024-03-11": {
+      "hydrostatic_rmse": 285.24704876237405,
+      "geostrophic_rmse": 48.808926007134865,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.591196801341059,
+       "k_cut": null,
+       "spectral_divergence": 1.4956392699709176,
+       "spectral_residual": 1.411422459466836,
+       "hydrostatic_excess": 55.70348693545165,
+       "geostrophic_excess": 43.69076257153828
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 16.891274146470572,
+       "k_cut": null,
+       "spectral_divergence": 1.7640890513560334,
+       "spectral_residual": 2.3309434645301503,
+       "hydrostatic_excess": 60.39563483916717,
+       "geostrophic_excess": 42.34146749986844
+      }
+     },
+     "2024-03-12": {
+      "hydrostatic_rmse": 285.57266934854533,
+      "geostrophic_rmse": 52.465035749179926,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.099271619527458,
+       "k_cut": null,
+       "spectral_divergence": 1.4729774405802503,
+       "spectral_residual": 1.4843047941279355,
+       "hydrostatic_excess": 52.32405234739531,
+       "geostrophic_excess": 47.33316941886179
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 17.367429039995518,
+       "k_cut": null,
+       "spectral_divergence": 1.7414920283680013,
+       "spectral_residual": 2.3524975607382594,
+       "hydrostatic_excess": 58.97966386244224,
+       "geostrophic_excess": 45.92678059045572
+      }
+     },
+     "2024-03-13": {
+      "hydrostatic_rmse": 282.2144849308518,
+      "geostrophic_rmse": 56.90124136109764,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.8436695551032605,
+       "k_cut": null,
+       "spectral_divergence": 1.4658670474681776,
+       "spectral_residual": 1.4469854709686019,
+       "hydrostatic_excess": 55.10038138021221,
+       "geostrophic_excess": 51.76846375019108
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 17.46275123521094,
+       "k_cut": null,
+       "spectral_divergence": 1.7001870060915008,
+       "spectral_residual": 2.3572349294004367,
+       "hydrostatic_excess": 59.14956090452344,
+       "geostrophic_excess": 50.41297753282778
+      }
+     },
+     "2024-03-14": {
+      "hydrostatic_rmse": 276.85463999806,
+      "geostrophic_rmse": 55.91348031017241,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.808887112223575,
+       "k_cut": null,
+       "spectral_divergence": 1.5591596858982784,
+       "spectral_residual": 1.45294048812693,
+       "hydrostatic_excess": 57.38815680822202,
+       "geostrophic_excess": 50.86206247986355
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 17.46329108235143,
+       "k_cut": null,
+       "spectral_divergence": 1.811433732549983,
+       "spectral_residual": 2.3775274819388983,
+       "hydrostatic_excess": 61.166567811176066,
+       "geostrophic_excess": 49.577292180123486
+      }
+     },
+     "2024-03-15": {
+      "hydrostatic_rmse": 281.92358883432667,
+      "geostrophic_rmse": 59.25402998432152,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.8892241139595685,
+       "k_cut": null,
+       "spectral_divergence": 1.611037295300516,
+       "spectral_residual": 1.4534105369493457,
+       "hydrostatic_excess": 58.112280193959805,
+       "geostrophic_excess": 54.26619830759646
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 17.485101686808644,
+       "k_cut": null,
+       "spectral_divergence": 1.8627909337788102,
+       "spectral_residual": 2.3673444129851515,
+       "hydrostatic_excess": 61.65796762655333,
+       "geostrophic_excess": 52.94646922359144
+      }
+     },
+     "2024-03-16": {
+      "hydrostatic_rmse": 286.6307497586958,
+      "geostrophic_rmse": 54.684730274701344,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.827984232695387,
+       "k_cut": null,
+       "spectral_divergence": 1.55133276553372,
+       "spectral_residual": 1.4420082198524606,
+       "hydrostatic_excess": 55.19761741733117,
+       "geostrophic_excess": 49.900139875555226
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 16.514942190209958,
+       "k_cut": null,
+       "spectral_divergence": 1.7987907458106716,
+       "spectral_residual": 2.320443112864172,
+       "hydrostatic_excess": 59.792625931433406,
+       "geostrophic_excess": 48.491932648084564
+      }
+     },
+     "2024-03-17": {
+      "hydrostatic_rmse": 286.55303637875556,
+      "geostrophic_rmse": 81.94807386298926,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.985428463546996,
+       "k_cut": null,
+       "spectral_divergence": 1.5259670936347685,
+       "spectral_residual": 1.4672621794695286,
+       "hydrostatic_excess": 56.66856067888344,
+       "geostrophic_excess": 77.10698014542318
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 17.553979999470275,
+       "k_cut": null,
+       "spectral_divergence": 1.7873123033555984,
+       "spectral_residual": 2.3430663403822547,
+       "hydrostatic_excess": 59.63734453433548,
+       "geostrophic_excess": 75.87534762836864
+      }
+     },
+     "2024-03-18": {
+      "hydrostatic_rmse": 279.5842000519011,
+      "geostrophic_rmse": 65.55108434616245,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.011365566521764,
+       "k_cut": null,
+       "spectral_divergence": 1.51431072671625,
+       "spectral_residual": 1.4723410757207336,
+       "hydrostatic_excess": 58.861337832870475,
+       "geostrophic_excess": 60.68134202022065
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.971483997946873,
+       "k_cut": null,
+       "spectral_divergence": 1.7749852384716207,
+       "spectral_residual": 2.4081154530544007,
+       "hydrostatic_excess": 61.89479897658896,
+       "geostrophic_excess": 59.49749841285429
+      }
+     },
+     "2024-03-19": {
+      "hydrostatic_rmse": 276.51859593155797,
+      "geostrophic_rmse": 67.247973620365,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.030979668865464,
+       "k_cut": null,
+       "spectral_divergence": 1.5454884796565111,
+       "spectral_residual": 1.4763954702811515,
+       "hydrostatic_excess": 60.27643259087276,
+       "geostrophic_excess": 62.270454267196854
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.23110755594616,
+       "k_cut": null,
+       "spectral_divergence": 1.7813396681518192,
+       "spectral_residual": 2.383780207204193,
+       "hydrostatic_excess": 64.83391732432702,
+       "geostrophic_excess": 60.986631031691516
+      }
+     },
+     "2024-03-20": {
+      "hydrostatic_rmse": 270.6032783055024,
+      "geostrophic_rmse": 71.94734886298059,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.929192161895614,
+       "k_cut": null,
+       "spectral_divergence": 1.47774230458316,
+       "spectral_residual": 1.4523684285206948,
+       "hydrostatic_excess": 58.16598801200948,
+       "geostrophic_excess": 66.65582330885742
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 17.123549295049287,
+       "k_cut": null,
+       "spectral_divergence": 1.6916088500914972,
+       "spectral_residual": 2.325685076191598,
+       "hydrostatic_excess": 61.370727491973554,
+       "geostrophic_excess": 65.66021041156803
+      }
+     },
+     "2024-03-21": {
+      "hydrostatic_rmse": 269.6984985390753,
+      "geostrophic_rmse": 66.08865157765588,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.2056377004402865,
+       "k_cut": null,
+       "spectral_divergence": 1.4921526605494877,
+       "spectral_residual": 1.4970968676192618,
+       "hydrostatic_excess": 61.15903318490251,
+       "geostrophic_excess": 60.79274747481354
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 19.42854261959892,
+       "k_cut": null,
+       "spectral_divergence": 1.7489475883399659,
+       "spectral_residual": 2.4152770532285,
+       "hydrostatic_excess": 65.86314336299944,
+       "geostrophic_excess": 59.821564469974156
+      }
+     },
+     "2024-03-22": {
+      "hydrostatic_rmse": 278.31353348905924,
+      "geostrophic_rmse": 51.44736715206367,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.596999967021541,
+       "k_cut": null,
+       "spectral_divergence": 1.4132960516021114,
+       "spectral_residual": 1.4112136563835056,
+       "hydrostatic_excess": 63.57846874026794,
+       "geostrophic_excess": 46.04790946679129
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 15.431265040113157,
+       "k_cut": null,
+       "spectral_divergence": 1.676660150516843,
+       "spectral_residual": 2.260300482833046,
+       "hydrostatic_excess": 69.25071073009406,
+       "geostrophic_excess": 45.043790053161786
+      }
+     },
+     "2024-03-23": {
+      "hydrostatic_rmse": 281.1719969459077,
+      "geostrophic_rmse": 50.70650498703555,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.744101496943438,
+       "k_cut": null,
+       "spectral_divergence": 1.5022570897622816,
+       "spectral_residual": 1.4355626451599892,
+       "hydrostatic_excess": 57.80419155014778,
+       "geostrophic_excess": 45.35605760524722
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 17.56851461133179,
+       "k_cut": null,
+       "spectral_divergence": 1.7249900164405536,
+       "spectral_residual": 2.352856279499808,
+       "hydrostatic_excess": 65.30454234551812,
+       "geostrophic_excess": 44.234323101846066
+      }
+     },
+     "2024-03-24": {
+      "hydrostatic_rmse": 278.93459347518393,
+      "geostrophic_rmse": 49.55827562064292,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.858158736439167,
+       "k_cut": null,
+       "spectral_divergence": 1.4521262833224593,
+       "spectral_residual": 1.4489626409813128,
+       "hydrostatic_excess": 53.8617988479198,
+       "geostrophic_excess": 44.14377977402985
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.831890302031418,
+       "k_cut": null,
+       "spectral_divergence": 1.7268502807450254,
+       "spectral_residual": 2.4070953039428984,
+       "hydrostatic_excess": 59.502290127826,
+       "geostrophic_excess": 43.11132300624862
+      }
+     },
+     "2024-03-25": {
+      "hydrostatic_rmse": 281.976963929381,
+      "geostrophic_rmse": 52.55558416220122,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.821231849697048,
+       "k_cut": null,
+       "spectral_divergence": 1.3765137567562429,
+       "spectral_residual": 1.44259381099522,
+       "hydrostatic_excess": 52.17425329151763,
+       "geostrophic_excess": 47.19461928357585
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.13390823185355,
+       "k_cut": null,
+       "spectral_divergence": 1.5910798420180263,
+       "spectral_residual": 2.3690376941051206,
+       "hydrostatic_excess": 56.276393513927474,
+       "geostrophic_excess": 45.92445415241512
+      }
+     },
+     "2024-03-26": {
+      "hydrostatic_rmse": 284.5871461123406,
+      "geostrophic_rmse": 50.27345708007765,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.489401827425701,
+       "k_cut": null,
+       "spectral_divergence": 1.318950504897758,
+       "spectral_residual": 1.3877322683805584,
+       "hydrostatic_excess": 49.196402944780004,
+       "geostrophic_excess": 45.11733047750214
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.395854566723344,
+       "k_cut": null,
+       "spectral_divergence": 1.5553101491408081,
+       "spectral_residual": 2.36953817950924,
+       "hydrostatic_excess": 54.718589291337054,
+       "geostrophic_excess": 43.73003214901014
+      }
+     },
+     "2024-03-27": {
+      "hydrostatic_rmse": 287.72872966199816,
+      "geostrophic_rmse": 52.778970642926,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.948832075014955,
+       "k_cut": null,
+       "spectral_divergence": 1.3141467182125983,
+       "spectral_residual": 1.460240861843133,
+       "hydrostatic_excess": 50.781163578190586,
+       "geostrophic_excess": 47.739013064398854
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.55405151892823,
+       "k_cut": null,
+       "spectral_divergence": 1.5381605628840305,
+       "spectral_residual": 2.3744937350342536,
+       "hydrostatic_excess": 56.4697192097168,
+       "geostrophic_excess": 46.23246107669323
+      }
+     },
+     "2024-03-28": {
+      "hydrostatic_rmse": 285.5321489837657,
+      "geostrophic_rmse": 63.804134121626944,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.632078990832466,
+       "k_cut": null,
+       "spectral_divergence": 1.3050549239203602,
+       "spectral_residual": 1.4102055490442644,
+       "hydrostatic_excess": 49.205853317851336,
+       "geostrophic_excess": 58.80490589886399
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 16.62587478993035,
+       "k_cut": null,
+       "spectral_divergence": 1.5240184316561325,
+       "spectral_residual": 2.3094095059328885,
+       "hydrostatic_excess": 55.90615447550934,
+       "geostrophic_excess": 57.43850684208222
+      }
+     },
+     "2024-03-29": {
+      "hydrostatic_rmse": 291.78727198278335,
+      "geostrophic_rmse": 53.333289342580855,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.403281613192104,
+       "k_cut": null,
+       "spectral_divergence": 1.3255169722379123,
+       "spectral_residual": 1.371131885189148,
+       "hydrostatic_excess": 51.17675059654104,
+       "geostrophic_excess": 48.22496352698291
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 14.516473514307433,
+       "k_cut": null,
+       "spectral_divergence": 1.5759165080771984,
+       "spectral_residual": 2.2167425517329242,
+       "hydrostatic_excess": 55.304509173706236,
+       "geostrophic_excess": 46.832815091782024
+      }
+     },
+     "2024-03-30": {
+      "hydrostatic_rmse": 296.61237920209993,
+      "geostrophic_rmse": 62.5179704803395,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.453033854977174,
+       "k_cut": null,
+       "spectral_divergence": 1.3323502425376812,
+       "spectral_residual": 1.3842853320440158,
+       "hydrostatic_excess": 51.352364685384316,
+       "geostrophic_excess": 57.29740905989856
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 16.104605218032233,
+       "k_cut": null,
+       "spectral_divergence": 1.5481121724315028,
+       "spectral_residual": 2.2800837352642325,
+       "hydrostatic_excess": 55.14107157336497,
+       "geostrophic_excess": 55.87861243295883
+      }
+     }
+    },
+    "2": {
+     "2024-03-01": {
+      "hydrostatic_rmse": 282.86922270043715,
+      "geostrophic_rmse": 63.90429500355588,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.615510000868716,
+       "k_cut": null,
+       "spectral_divergence": 1.5940777535117396,
+       "spectral_residual": 1.404526878691036,
+       "hydrostatic_excess": 52.897409384238415,
+       "geostrophic_excess": 58.55593270538669
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.616399557715116,
+       "k_cut": null,
+       "spectral_divergence": 1.816867120541219,
+       "spectral_residual": 2.3909143764431597,
+       "hydrostatic_excess": 55.52369134224824,
+       "geostrophic_excess": 57.21735508611629
+      }
+     },
+     "2024-03-02": {
+      "hydrostatic_rmse": 278.2330545747193,
+      "geostrophic_rmse": 54.84563803127658,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.703298293432142,
+       "k_cut": null,
+       "spectral_divergence": 1.5850407787008878,
+       "spectral_residual": 1.4235780165833287,
+       "hydrostatic_excess": 43.24487802339212,
+       "geostrophic_excess": 49.45813676812832
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 19.069906570143367,
+       "k_cut": null,
+       "spectral_divergence": 1.8266337932976984,
+       "spectral_residual": 2.414728713661879,
+       "hydrostatic_excess": 47.64777966260522,
+       "geostrophic_excess": 48.183580417168386
+      }
+     },
+     "2024-03-03": {
+      "hydrostatic_rmse": 280.8373375537444,
+      "geostrophic_rmse": 49.85432663217503,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.843636458349443,
+       "k_cut": null,
+       "spectral_divergence": 1.7406182984813907,
+       "spectral_residual": 1.4531260339242935,
+       "hydrostatic_excess": 49.596384132433826,
+       "geostrophic_excess": 44.49316309524976
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 17.639591728236525,
+       "k_cut": null,
+       "spectral_divergence": 1.9333959146850996,
+       "spectral_residual": 2.3704512828047246,
+       "hydrostatic_excess": 52.89460958096964,
+       "geostrophic_excess": 43.262616877349586
+      }
+     },
+     "2024-03-04": {
+      "hydrostatic_rmse": 277.72847092822684,
+      "geostrophic_rmse": 50.96596049126954,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.582475778907399,
+       "k_cut": null,
+       "spectral_divergence": 1.696952503213266,
+       "spectral_residual": 1.4012755332161508,
+       "hydrostatic_excess": 47.751513077951984,
+       "geostrophic_excess": 45.87519732520004
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 16.993347018524002,
+       "k_cut": null,
+       "spectral_divergence": 1.9112819443090523,
+       "spectral_residual": 2.337988871889706,
+       "hydrostatic_excess": 52.861700247514335,
+       "geostrophic_excess": 44.82534920132171
+      }
+     },
+     "2024-03-05": {
+      "hydrostatic_rmse": 279.6114404472496,
+      "geostrophic_rmse": 51.06897420235997,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.835604627768784,
+       "k_cut": null,
+       "spectral_divergence": 1.7600265137268822,
+       "spectral_residual": 1.4465639930719585,
+       "hydrostatic_excess": 50.088082096516246,
+       "geostrophic_excess": 46.25879918943249
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 19.10560368600027,
+       "k_cut": null,
+       "spectral_divergence": 2.0496379633562567,
+       "spectral_residual": 2.4210221692589164,
+       "hydrostatic_excess": 54.592033587901426,
+       "geostrophic_excess": 45.21532492718702
+      }
+     },
+     "2024-03-06": {
+      "hydrostatic_rmse": 278.04069526093497,
+      "geostrophic_rmse": 57.30037703002845,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.28303521865607,
+       "k_cut": null,
+       "spectral_divergence": 1.8066214174909137,
+       "spectral_residual": 1.5164789800271559,
+       "hydrostatic_excess": 53.35096466218047,
+       "geostrophic_excess": 52.6124669529386
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 19.132436047790822,
+       "k_cut": null,
+       "spectral_divergence": 2.1003608977582697,
+       "spectral_residual": 2.438213973675391,
+       "hydrostatic_excess": 57.84481551389129,
+       "geostrophic_excess": 51.37500940604608
+      }
+     },
+     "2024-03-07": {
+      "hydrostatic_rmse": 272.9784002392905,
+      "geostrophic_rmse": 53.59704570374894,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.088963855207054,
+       "k_cut": null,
+       "spectral_divergence": 1.8034227492033437,
+       "spectral_residual": 1.4819243834677072,
+       "hydrostatic_excess": 50.060254333456925,
+       "geostrophic_excess": 48.7409138147232
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 19.79761563371928,
+       "k_cut": null,
+       "spectral_divergence": 2.111155304153803,
+       "spectral_residual": 2.4559172538172422,
+       "hydrostatic_excess": 53.911424326136284,
+       "geostrophic_excess": 47.62840549856812
+      }
+     },
+     "2024-03-08": {
+      "hydrostatic_rmse": 276.96091140691635,
+      "geostrophic_rmse": 50.64390335698073,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.149832361606983,
+       "k_cut": null,
+       "spectral_divergence": 1.837036927047956,
+       "spectral_residual": 1.4956149036667963,
+       "hydrostatic_excess": 56.75608204924103,
+       "geostrophic_excess": 45.542086605094305
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 19.139770460184096,
+       "k_cut": null,
+       "spectral_divergence": 2.104698981295572,
+       "spectral_residual": 2.4581399752461515,
+       "hydrostatic_excess": 58.74300649527129,
+       "geostrophic_excess": 44.60109787480829
+      }
+     },
+     "2024-03-09": {
+      "hydrostatic_rmse": 278.5103500078707,
+      "geostrophic_rmse": 47.0744275148538,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.451229535037434,
+       "k_cut": null,
+       "spectral_divergence": 1.9220539568434725,
+       "spectral_residual": 1.5477853412809002,
+       "hydrostatic_excess": 54.09306619755705,
+       "geostrophic_excess": 42.247823063066335
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 22.345981798817075,
+       "k_cut": null,
+       "spectral_divergence": 2.1694506578675594,
+       "spectral_residual": 2.557321176703327,
+       "hydrostatic_excess": 56.92854207243835,
+       "geostrophic_excess": 41.059492998605684
+      }
+     },
+     "2024-03-10": {
+      "hydrostatic_rmse": 274.44285465363765,
+      "geostrophic_rmse": 53.351596233983436,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.985395997531415,
+       "k_cut": null,
+       "spectral_divergence": 1.8222275697535988,
+       "spectral_residual": 1.4721590181563682,
+       "hydrostatic_excess": 51.313476333348916,
+       "geostrophic_excess": 48.394694787419816
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 19.796413973960792,
+       "k_cut": null,
+       "spectral_divergence": 2.0922339686534337,
+       "spectral_residual": 2.4572607223624314,
+       "hydrostatic_excess": 53.67804455251482,
+       "geostrophic_excess": 46.97754837298109
+      }
+     },
+     "2024-03-11": {
+      "hydrostatic_rmse": 275.2194283687565,
+      "geostrophic_rmse": 54.165923483701526,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.3378681621704525,
+       "k_cut": null,
+       "spectral_divergence": 1.7485141258775494,
+       "spectral_residual": 1.36563077873976,
+       "hydrostatic_excess": 48.96544482230803,
+       "geostrophic_excess": 49.00904963573936
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 17.615782973426533,
+       "k_cut": null,
+       "spectral_divergence": 2.0172477639265907,
+       "spectral_residual": 2.369289344237407,
+       "hydrostatic_excess": 52.800262699916004,
+       "geostrophic_excess": 47.680533475725085
+      }
+     },
+     "2024-03-12": {
+      "hydrostatic_rmse": 275.98891443443733,
+      "geostrophic_rmse": 57.63504694507493,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.890429582407411,
+       "k_cut": null,
+       "spectral_divergence": 1.7228468351789805,
+       "spectral_residual": 1.4519161954083573,
+       "hydrostatic_excess": 45.32350412115545,
+       "geostrophic_excess": 52.51284725153938
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.790535097134246,
+       "k_cut": null,
+       "spectral_divergence": 1.9868803042266618,
+       "spectral_residual": 2.4141791700790995,
+       "hydrostatic_excess": 51.12753026880404,
+       "geostrophic_excess": 51.115704454092395
+      }
+     },
+     "2024-03-13": {
+      "hydrostatic_rmse": 274.0805264379543,
+      "geostrophic_rmse": 58.43582603368318,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.720593151832719,
+       "k_cut": null,
+       "spectral_divergence": 1.7229798827460447,
+       "spectral_residual": 1.430941898448176,
+       "hydrostatic_excess": 51.188876961824064,
+       "geostrophic_excess": 53.2728543247279
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 19.6590803337332,
+       "k_cut": null,
+       "spectral_divergence": 1.9641968087722876,
+       "spectral_residual": 2.4619546268133417,
+       "hydrostatic_excess": 54.13411191134742,
+       "geostrophic_excess": 51.94828555994585
+      }
+     },
+     "2024-03-14": {
+      "hydrostatic_rmse": 271.1542958030542,
+      "geostrophic_rmse": 59.16383984235556,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.566505247006873,
+       "k_cut": null,
+       "spectral_divergence": 1.8709995465625358,
+       "spectral_residual": 1.409037989705318,
+       "hydrostatic_excess": 51.915164819581605,
+       "geostrophic_excess": 54.09099183611361
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 19.135370056920802,
+       "k_cut": null,
+       "spectral_divergence": 2.1567595393062007,
+       "spectral_residual": 2.437113386917559,
+       "hydrostatic_excess": 55.69137131066378,
+       "geostrophic_excess": 52.8279325223447
+      }
+     },
+     "2024-03-15": {
+      "hydrostatic_rmse": 273.7241397062804,
+      "geostrophic_rmse": 60.733178251958975,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.804733428087585,
+       "k_cut": null,
+       "spectral_divergence": 1.8507599952174254,
+       "spectral_residual": 1.4364013198836911,
+       "hydrostatic_excess": 51.79373870616399,
+       "geostrophic_excess": 55.8518192485229
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.961676850554753,
+       "k_cut": null,
+       "spectral_divergence": 2.1201035071904086,
+       "spectral_residual": 2.426396476222891,
+       "hydrostatic_excess": 55.405031841235484,
+       "geostrophic_excess": 54.50208101820651
+      }
+     },
+     "2024-03-16": {
+      "hydrostatic_rmse": 277.609427409327,
+      "geostrophic_rmse": 60.426148816104174,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.857647308267103,
+       "k_cut": null,
+       "spectral_divergence": 1.881738687573277,
+       "spectral_residual": 1.4454658145061776,
+       "hydrostatic_excess": 51.58060979427094,
+       "geostrophic_excess": 55.60639696083759
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.632078983252402,
+       "k_cut": null,
+       "spectral_divergence": 2.116049098172425,
+       "spectral_residual": 2.407014917037101,
+       "hydrostatic_excess": 56.870569559904254,
+       "geostrophic_excess": 54.25469864746071
+      }
+     },
+     "2024-03-17": {
+      "hydrostatic_rmse": 275.25250716421044,
+      "geostrophic_rmse": 81.09464138799177,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.917712654164082,
+       "k_cut": null,
+       "spectral_divergence": 1.763276967697602,
+       "spectral_residual": 1.4549054589364252,
+       "hydrostatic_excess": 51.7560577706584,
+       "geostrophic_excess": 76.38655436334584
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 20.03303435588812,
+       "k_cut": null,
+       "spectral_divergence": 2.040655355143996,
+       "spectral_residual": 2.4422633075957125,
+       "hydrostatic_excess": 54.894980249320554,
+       "geostrophic_excess": 75.08922304738455
+      }
+     },
+     "2024-03-18": {
+      "hydrostatic_rmse": 267.30032830376604,
+      "geostrophic_rmse": 64.2512843616236,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.994260564178604,
+       "k_cut": null,
+       "spectral_divergence": 1.771055762944695,
+       "spectral_residual": 1.4662106417433534,
+       "hydrostatic_excess": 50.352915194660255,
+       "geostrophic_excess": 59.39391251954762
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 22.18977604350316,
+       "k_cut": null,
+       "spectral_divergence": 2.0360024515251816,
+       "spectral_residual": 2.5173885161311897,
+       "hydrostatic_excess": 52.69929604956795,
+       "geostrophic_excess": 58.19305759459115
+      }
+     },
+     "2024-03-19": {
+      "hydrostatic_rmse": 269.21993982276814,
+      "geostrophic_rmse": 63.47285811638954,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.075100037695688,
+       "k_cut": null,
+       "spectral_divergence": 1.7957614225457408,
+       "spectral_residual": 1.4798507063699236,
+       "hydrostatic_excess": 54.48298828793759,
+       "geostrophic_excess": 58.51172484965444
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 20.447039544557246,
+       "k_cut": null,
+       "spectral_divergence": 2.057707193963039,
+       "spectral_residual": 2.466359465824738,
+       "hydrostatic_excess": 57.58309597668929,
+       "geostrophic_excess": 57.196120303471865
+      }
+     },
+     "2024-03-20": {
+      "hydrostatic_rmse": 267.1396702958738,
+      "geostrophic_rmse": 65.54058102916935,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.8756093236277,
+       "k_cut": null,
+       "spectral_divergence": 1.6926647682050007,
+       "spectral_residual": 1.4485002101446502,
+       "hydrostatic_excess": 54.774318382121294,
+       "geostrophic_excess": 60.46576159772625
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 20.286865606247833,
+       "k_cut": null,
+       "spectral_divergence": 1.9568774820506751,
+       "spectral_residual": 2.453247697961029,
+       "hydrostatic_excess": 58.77984363807542,
+       "geostrophic_excess": 59.357733158886276
+      }
+     },
+     "2024-03-21": {
+      "hydrostatic_rmse": 265.4234168415925,
+      "geostrophic_rmse": 58.218438831679876,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 5.217572450806999,
+       "k_cut": null,
+       "spectral_divergence": 1.7145078304707946,
+       "spectral_residual": 1.4873153415094957,
+       "hydrostatic_excess": 56.297668742835526,
+       "geostrophic_excess": 53.08634698028332
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 21.152245444527292,
+       "k_cut": null,
+       "spectral_divergence": 1.9676697009406787,
+       "spectral_residual": 2.4687886569987145,
+       "hydrostatic_excess": 60.63886398216428,
+       "geostrophic_excess": 52.02188661476403
+      }
+     },
+     "2024-03-22": {
+      "hydrostatic_rmse": 272.0027750387124,
+      "geostrophic_rmse": 53.545275351657324,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.629833683737408,
+       "k_cut": null,
+       "spectral_divergence": 1.702210938548776,
+       "spectral_residual": 1.4042229763503324,
+       "hydrostatic_excess": 56.0315798342298,
+       "geostrophic_excess": 48.200248901203935
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 17.134153628863466,
+       "k_cut": null,
+       "spectral_divergence": 1.96356771763505,
+       "spectral_residual": 2.329873746284164,
+       "hydrostatic_excess": 61.47756550555545,
+       "geostrophic_excess": 47.14047002556818
+      }
+     },
+     "2024-03-23": {
+      "hydrostatic_rmse": 272.9805783071404,
+      "geostrophic_rmse": 52.16997249606977,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.6855525354182594,
+       "k_cut": null,
+       "spectral_divergence": 1.7351949513376812,
+       "spectral_residual": 1.4156148391395227,
+       "hydrostatic_excess": 53.26303080137359,
+       "geostrophic_excess": 46.93397391756498
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 19.964584081685782,
+       "k_cut": null,
+       "spectral_divergence": 1.9931553588958075,
+       "spectral_residual": 2.440468265311622,
+       "hydrostatic_excess": 59.73888669794857,
+       "geostrophic_excess": 45.83434847717029
+      }
+     },
+     "2024-03-24": {
+      "hydrostatic_rmse": 267.7042821829222,
+      "geostrophic_rmse": 49.537638941474306,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.8313120062679555,
+       "k_cut": null,
+       "spectral_divergence": 1.6306969170601304,
+       "spectral_residual": 1.4450170085826937,
+       "hydrostatic_excess": 45.04564517731956,
+       "geostrophic_excess": 44.37933541125123
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 21.5348270969941,
+       "k_cut": null,
+       "spectral_divergence": 1.8996628280820356,
+       "spectral_residual": 2.5022588021502608,
+       "hydrostatic_excess": 49.88710359113091,
+       "geostrophic_excess": 43.204127355583694
+      }
+     },
+     "2024-03-25": {
+      "hydrostatic_rmse": 271.3737508285081,
+      "geostrophic_rmse": 53.28180887622821,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.912888450526123,
+       "k_cut": null,
+       "spectral_divergence": 1.649644522252291,
+       "spectral_residual": 1.458973956098534,
+       "hydrostatic_excess": 41.95938192616805,
+       "geostrophic_excess": 48.034193730546455
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 21.734675811409183,
+       "k_cut": null,
+       "spectral_divergence": 1.8904988725723904,
+       "spectral_residual": 2.5085511629719637,
+       "hydrostatic_excess": 46.73608104081086,
+       "geostrophic_excess": 46.71014417342223
+      }
+     },
+     "2024-03-26": {
+      "hydrostatic_rmse": 276.2310592361158,
+      "geostrophic_rmse": 50.72276767588423,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.836594102782495,
+       "k_cut": null,
+       "spectral_divergence": 1.614339232074394,
+       "spectral_residual": 1.4402041727764183,
+       "hydrostatic_excess": 41.90255546337437,
+       "geostrophic_excess": 45.716142232177454
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 19.906950788370306,
+       "k_cut": null,
+       "spectral_divergence": 1.8225366547757655,
+       "spectral_residual": 2.4436462040721185,
+       "hydrostatic_excess": 46.53439481871058,
+       "geostrophic_excess": 44.249717341182624
+      }
+     },
+     "2024-03-27": {
+      "hydrostatic_rmse": 276.5392139116338,
+      "geostrophic_rmse": 57.69842241502085,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.703390002601532,
+       "k_cut": null,
+       "spectral_divergence": 1.5940634493949424,
+       "spectral_residual": 1.4193854111954682,
+       "hydrostatic_excess": 43.349735460573754,
+       "geostrophic_excess": 52.608804036741134
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 20.640944608954197,
+       "k_cut": null,
+       "spectral_divergence": 1.8130603532097331,
+       "spectral_residual": 2.4477514604305655,
+       "hydrostatic_excess": 47.896408653678606,
+       "geostrophic_excess": 51.209917680391
+      }
+     },
+     "2024-03-28": {
+      "hydrostatic_rmse": 275.76676070848026,
+      "geostrophic_rmse": 63.06329876301862,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.693278492044856,
+       "k_cut": null,
+       "spectral_divergence": 1.610709650568405,
+       "spectral_residual": 1.416905098463002,
+       "hydrostatic_excess": 40.534462601951816,
+       "geostrophic_excess": 57.96599322543413
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.748071913742557,
+       "k_cut": null,
+       "spectral_divergence": 1.8386352698309372,
+       "spectral_residual": 2.398328766070042,
+       "hydrostatic_excess": 46.09358398798736,
+       "geostrophic_excess": 56.67970087119794
+      }
+     },
+     "2024-03-29": {
+      "hydrostatic_rmse": 285.27351217881966,
+      "geostrophic_rmse": 57.540852799237605,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.522394946823993,
+       "k_cut": null,
+       "spectral_divergence": 1.6535421419142227,
+       "spectral_residual": 1.3967635789589787,
+       "hydrostatic_excess": 43.86739741568621,
+       "geostrophic_excess": 52.49398836531055
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 16.51321683190113,
+       "k_cut": null,
+       "spectral_divergence": 1.8639096836622935,
+       "spectral_residual": 2.308391350078784,
+       "hydrostatic_excess": 48.30071177267385,
+       "geostrophic_excess": 50.96720692756816
+      }
+     },
+     "2024-03-30": {
+      "hydrostatic_rmse": 288.34560090988936,
+      "geostrophic_rmse": 69.99062761001812,
+      "vs_truth": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 4.457059782792242,
+       "k_cut": null,
+       "spectral_divergence": 1.6597742967403217,
+       "spectral_residual": 1.3831369713479702,
+       "hydrostatic_excess": 43.76215196064041,
+       "geostrophic_excess": 64.78168724298035
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 18.08821235674928,
+       "k_cut": null,
+       "spectral_divergence": 1.8987907548242422,
+       "spectral_residual": 2.373044294589266,
+       "hydrostatic_excess": 48.22820677580276,
+       "geostrophic_excess": 63.52921366695762
+      }
+     }
+    }
+   },
+   "per_step": {
+    "1": {
+     "hydrostatic_rmse": 283.89628058007946,
+     "geostrophic_rmse": 56.553884134208616,
+     "truth": {
+      "hydrostatic_rmse": 227.5724688482139,
+      "geostrophic_rmse": 5.112752130632753
+     },
+     "fp32": {
+      "hydrostatic_rmse": 223.05964276827498,
+      "geostrophic_rmse": 6.345642462015819
+     },
+     "vs_truth": {
+      "L_eff_km": 111.50466181627057,
+      "small_scale_ratio": 4.859060609646516,
+      "spectral_divergence": 1.4641549641761675,
+      "spectral_residual": 1.4493921791185862,
+      "hydrostatic_excess": 56.32381173186556,
+      "geostrophic_excess": 51.441132003575866
+     },
+     "vs_fp32": {
+      "L_eff_km": 111.50466181627057,
+      "small_scale_ratio": 17.310990406521956,
+      "spectral_divergence": 1.710105262673935,
+      "spectral_residual": 2.3434251347740154,
+      "hydrostatic_excess": 60.836637811804536,
+      "geostrophic_excess": 50.2082416721928
+     },
+     "fp32_vs_truth": {
+      "L_eff_km": 205.9133299475079,
+      "small_scale_ratio": 0.2922761609804644,
+      "spectral_divergence": 0.48282718615088266,
+      "spectral_residual": 0.9060930011798027,
+      "hydrostatic_excess": -4.512826079938975,
+      "geostrophic_excess": 1.2328903313830675
+     }
+    },
+    "2": {
+     "hydrostatic_rmse": 275.2847621887757,
+     "geostrophic_rmse": 57.443165874285796,
+     "truth": {
+      "hydrostatic_rmse": 225.7081175709373,
+      "geostrophic_rmse": 5.060437843022864
+     },
+     "fp32": {
+      "hydrostatic_rmse": 221.61331059832642,
+      "geostrophic_rmse": 6.307903088416892
+     },
+     "vs_truth": {
+      "L_eff_km": 111.50466181627057,
+      "small_scale_ratio": 4.835643934686852,
+      "spectral_divergence": 1.7317786797628087,
+      "spectral_residual": 1.4433144483464653,
+      "hydrostatic_excess": 49.57664461783839,
+      "geostrophic_excess": 52.38272803126293
+     },
+     "vs_fp32": {
+      "L_eff_km": 111.50466181627057,
+      "small_scale_ratio": 19.426872962783566,
+      "spectral_divergence": 1.9839894414874786,
+      "spectral_residual": 2.430608937788016,
+      "hydrostatic_excess": 53.67145159044927,
+      "geostrophic_excess": 51.1352627858689
+     },
+     "fp32_vs_truth": {
+      "L_eff_km": 223.10533186282336,
+      "small_scale_ratio": 0.27375919360283807,
+      "spectral_divergence": 0.5443936904970789,
+      "spectral_residual": 1.0027261479241043,
+      "hydrostatic_excess": -4.094806972610887,
+      "geostrophic_excess": 1.2474652453940294
+     }
+    }
+   }
+  },
+  "t7_mx": {
+   "per_date": {
+    "1": {
+     "2024-03-01": {
+      "hydrostatic_rmse": 225.4539276007942,
+      "geostrophic_rmse": 6.6455448038740625,
+      "vs_truth": {
+       "L_eff_km": 204.23557955123033,
+       "small_scale_ratio": 0.3014193748009278,
+       "k_cut": 196.0,
+       "spectral_divergence": 0.4958081554526371,
+       "spectral_residual": 0.8777297008316237,
+       "hydrostatic_excess": -4.636304762821084,
+       "geostrophic_excess": 1.3221993529030236
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9874381717703594,
+       "k_cut": null,
+       "spectral_divergence": 0.02970837679444671,
+       "spectral_residual": 0.02544289656020346,
+       "hydrostatic_excess": -0.28192379794975864,
+       "geostrophic_excess": 0.017132628341462564
+      }
+     },
+     "2024-03-02": {
+      "hydrostatic_rmse": 230.54242214617645,
+      "geostrophic_rmse": 6.701125781034993,
+      "vs_truth": {
+       "L_eff_km": 209.5820606913149,
+       "small_scale_ratio": 0.29755622211903815,
+       "k_cut": 191.0,
+       "spectral_divergence": 0.4849355229620888,
+       "spectral_residual": 0.9032574357259853,
+       "hydrostatic_excess": -4.915089318235118,
+       "geostrophic_excess": 1.2361469671959968
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9929317357937463,
+       "k_cut": null,
+       "spectral_divergence": 0.03342732395949505,
+       "spectral_residual": 0.025001103768661912,
+       "hydrostatic_excess": -0.34163606221022746,
+       "geostrophic_excess": 0.015504439048321217
+      }
+     },
+     "2024-03-03": {
+      "hydrostatic_rmse": 229.30501158825058,
+      "geostrophic_rmse": 6.634722601270724,
+      "vs_truth": {
+       "L_eff_km": 211.79986027534997,
+       "small_scale_ratio": 0.31194200486977886,
+       "k_cut": 189.0,
+       "spectral_divergence": 0.4993067855526686,
+       "spectral_residual": 0.8705357956963529,
+       "hydrostatic_excess": -3.6444202297717254,
+       "geostrophic_excess": 1.250672459590711
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9892768101455524,
+       "k_cut": null,
+       "spectral_divergence": 0.03347257303598361,
+       "spectral_residual": 0.02307383189361986,
+       "hydrostatic_excess": -0.38360007779945704,
+       "geostrophic_excess": 0.018035433760693387
+      }
+     },
+     "2024-03-04": {
+      "hydrostatic_rmse": 225.72744059930142,
+      "geostrophic_rmse": 6.268781727756931,
+      "vs_truth": {
+       "L_eff_km": 201.15665121628714,
+       "small_scale_ratio": 0.30901550374786274,
+       "k_cut": 199.0,
+       "spectral_divergence": 0.5475189523807279,
+       "spectral_residual": 0.8554894117302446,
+       "hydrostatic_excess": -5.536024796540602,
+       "geostrophic_excess": 1.1814800395620182
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9902711130992599,
+       "k_cut": null,
+       "spectral_divergence": 0.037544186885142716,
+       "spectral_residual": 0.024610221319971055,
+       "hydrostatic_excess": -0.32111414702669094,
+       "geostrophic_excess": 0.017904362887674274
+      }
+     },
+     "2024-03-05": {
+      "hydrostatic_rmse": 226.7569829547463,
+      "geostrophic_rmse": 5.939536289361179,
+      "vs_truth": {
+       "L_eff_km": 204.23557955123033,
+       "small_scale_ratio": 0.3018629246513405,
+       "k_cut": 196.0,
+       "spectral_divergence": 0.5127738847681301,
+       "spectral_residual": 0.8835426882235845,
+       "hydrostatic_excess": -5.633600637197247,
+       "geostrophic_excess": 1.0869869164170858
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9917254819247744,
+       "k_cut": null,
+       "spectral_divergence": 0.03485213877149246,
+       "spectral_residual": 0.022527114839461994,
+       "hydrostatic_excess": -0.3612101338196112,
+       "geostrophic_excess": 0.02724352245653705
+      }
+     },
+     "2024-03-06": {
+      "hydrostatic_rmse": 223.0070545503153,
+      "geostrophic_rmse": 5.973474943667699,
+      "vs_truth": {
+       "L_eff_km": 194.32123102932593,
+       "small_scale_ratio": 0.3098044707099557,
+       "k_cut": 206.0,
+       "spectral_divergence": 0.4569187694447746,
+       "spectral_residual": 0.8307125374600796,
+       "hydrostatic_excess": -5.56485734369187,
+       "geostrophic_excess": 1.2140353201415985
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9915317279080107,
+       "k_cut": null,
+       "spectral_divergence": 0.0312749890708163,
+       "spectral_residual": 0.025330617469717747,
+       "hydrostatic_excess": -0.2928191913632361,
+       "geostrophic_excess": 0.029729519527644577
+      }
+     },
+     "2024-03-07": {
+      "hydrostatic_rmse": 220.89058579564784,
+      "geostrophic_rmse": 6.056536589130242,
+      "vs_truth": {
+       "L_eff_km": 207.41022586549815,
+       "small_scale_ratio": 0.28770796721728115,
+       "k_cut": 193.0,
+       "spectral_divergence": 0.4681367080050225,
+       "spectral_residual": 0.9201030341917359,
+       "hydrostatic_excess": -4.05617244535992,
+       "geostrophic_excess": 1.1511352991659995
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9925020952008117,
+       "k_cut": null,
+       "spectral_divergence": 0.027513005426765713,
+       "spectral_residual": 0.02337144863614513,
+       "hydrostatic_excess": -0.29837804704988,
+       "geostrophic_excess": 0.023640076334763727
+      }
+     },
+     "2024-03-08": {
+      "hydrostatic_rmse": 219.3987738027524,
+      "geostrophic_rmse": 6.122542020399272,
+      "vs_truth": {
+       "L_eff_km": 212.92645527681458,
+       "small_scale_ratio": 0.31135521488520534,
+       "k_cut": 188.0,
+       "spectral_divergence": 0.5374995875107232,
+       "spectral_residual": 0.8671889633491325,
+       "hydrostatic_excess": -3.507339324426056,
+       "geostrophic_excess": 0.9847900835617578
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9931267071685048,
+       "k_cut": null,
+       "spectral_divergence": 0.03160881873741178,
+       "spectral_residual": 0.025832599966538396,
+       "hydrostatic_excess": -0.3205533303709842,
+       "geostrophic_excess": 0.021768811171665625
+      }
+     },
+     "2024-03-09": {
+      "hydrostatic_rmse": 221.04324424574287,
+      "geostrophic_rmse": 6.019636196704794,
+      "vs_truth": {
+       "L_eff_km": 212.92645527681458,
+       "small_scale_ratio": 0.2952071078240134,
+       "k_cut": 188.0,
+       "spectral_divergence": 0.48727813520020913,
+       "spectral_residual": 0.9125287742866275,
+       "hydrostatic_excess": -3.933339950262564,
+       "geostrophic_excess": 1.1245228793310416
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9961588174107882,
+       "k_cut": null,
+       "spectral_divergence": 0.024443680589088218,
+       "spectral_residual": 0.027577432686166994,
+       "hydrostatic_excess": -0.34535178273202405,
+       "geostrophic_excess": 0.027296387050905757
+      }
+     },
+     "2024-03-10": {
+      "hydrostatic_rmse": 220.94559963492873,
+      "geostrophic_rmse": 6.40869445444105,
+      "vs_truth": {
+       "L_eff_km": 208.49048745854762,
+       "small_scale_ratio": 0.2929856147251939,
+       "k_cut": 192.0,
+       "spectral_divergence": 0.4934862124695256,
+       "spectral_residual": 0.9135806518196844,
+       "hydrostatic_excess": -2.7188940320008896,
+       "geostrophic_excess": 1.3680599396356143
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9954419852593985,
+       "k_cut": null,
+       "spectral_divergence": 0.024591902266928645,
+       "spectral_residual": 0.025776061350410107,
+       "hydrostatic_excess": -0.3420320436248403,
+       "geostrophic_excess": 0.02470637723574587
+      }
+     },
+     "2024-03-11": {
+      "hydrostatic_rmse": 224.67113829116968,
+      "geostrophic_rmse": 6.482489203631587,
+      "vs_truth": {
+       "L_eff_km": 198.16917619822348,
+       "small_scale_ratio": 0.2742611800730755,
+       "k_cut": 202.0,
+       "spectral_divergence": 0.522038846494975,
+       "spectral_residual": 0.927374984432943,
+       "hydrostatic_excess": -4.872423535752716,
+       "geostrophic_excess": 1.3643257680349992
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9950691767531449,
+       "k_cut": null,
+       "spectral_divergence": 0.03018601585763908,
+       "spectral_residual": 0.02588516714555639,
+       "hydrostatic_excess": -0.1802756320371941,
+       "geostrophic_excess": 0.015030696365168517
+      }
+     },
+     "2024-03-12": {
+      "hydrostatic_rmse": 226.347649223584,
+      "geostrophic_rmse": 6.5525612649550045,
+      "vs_truth": {
+       "L_eff_km": 204.23557955123033,
+       "small_scale_ratio": 0.2975330943486459,
+       "k_cut": 196.0,
+       "spectral_divergence": 0.482823471386963,
+       "spectral_residual": 0.8804436265144552,
+       "hydrostatic_excess": -6.900967777566024,
+       "geostrophic_excess": 1.420694934636873
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9921699809839041,
+       "k_cut": null,
+       "spectral_divergence": 0.030036113254018365,
+       "spectral_residual": 0.026009989986233762,
+       "hydrostatic_excess": -0.24535626251909548,
+       "geostrophic_excess": 0.014306106230796978
+      }
+     },
+     "2024-03-13": {
+      "hydrostatic_rmse": 222.82050823862244,
+      "geostrophic_rmse": 6.512129712640472,
+      "vs_truth": {
+       "L_eff_km": 205.28294149764687,
+       "small_scale_ratio": 0.2820582956204399,
+       "k_cut": 195.0,
+       "spectral_divergence": 0.5397670956077912,
+       "spectral_residual": 0.9219764988175276,
+       "hydrostatic_excess": -4.293595312017175,
+       "geostrophic_excess": 1.3793521017339128
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9937597245426246,
+       "k_cut": null,
+       "spectral_divergence": 0.02956638869009759,
+       "spectral_residual": 0.025195477832129685,
+       "hydrostatic_excess": -0.24441578770594674,
+       "geostrophic_excess": 0.023865884370611212
+      }
+     },
+     "2024-03-14": {
+      "hydrostatic_rmse": 215.3716455812717,
+      "geostrophic_rmse": 6.353280818500933,
+      "vs_truth": {
+       "L_eff_km": 205.28294149764687,
+       "small_scale_ratio": 0.276305604598963,
+       "k_cut": 195.0,
+       "spectral_divergence": 0.5700695096899896,
+       "spectral_residual": 0.9395462240672565,
+       "hydrostatic_excess": -4.09483760856628,
+       "geostrophic_excess": 1.3018629881920738
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9912688838032563,
+       "k_cut": null,
+       "spectral_divergence": 0.028188034845825743,
+       "spectral_residual": 0.02337717714184365,
+       "hydrostatic_excess": -0.3164266056122358,
+       "geostrophic_excess": 0.01709268845201084
+      }
+     },
+     "2024-03-15": {
+      "hydrostatic_rmse": 219.9528974359453,
+      "geostrophic_rmse": 6.3209620454355235,
+      "vs_truth": {
+       "L_eff_km": 210.6851241686376,
+       "small_scale_ratio": 0.2837493105948012,
+       "k_cut": 190.0,
+       "spectral_divergence": 0.571031815080094,
+       "spectral_residual": 0.9283550421242242,
+       "hydrostatic_excess": -3.8584112044215715,
+       "geostrophic_excess": 1.3331303687104672
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9920066128550042,
+       "k_cut": null,
+       "spectral_divergence": 0.030886361150524372,
+       "spectral_residual": 0.025861668671226665,
+       "hydrostatic_excess": -0.3127237718280469,
+       "geostrophic_excess": 0.01340128470544677
+      }
+     },
+     "2024-03-16": {
+      "hydrostatic_rmse": 226.5533681016674,
+      "geostrophic_rmse": 6.217100082987553,
+      "vs_truth": {
+       "L_eff_km": 205.28294149764687,
+       "small_scale_ratio": 0.29694064225354455,
+       "k_cut": 195.0,
+       "spectral_divergence": 0.5010875406940449,
+       "spectral_residual": 0.8920909492507336,
+       "hydrostatic_excess": -4.879764239697238,
+       "geostrophic_excess": 1.4325096838414346
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9920290275699197,
+       "k_cut": null,
+       "spectral_divergence": 0.03107545584701582,
+       "spectral_residual": 0.025404301023176534,
+       "hydrostatic_excess": -0.28475572559500506,
+       "geostrophic_excess": 0.024302456370773662
+      }
+     },
+     "2024-03-17": {
+      "hydrostatic_rmse": 226.4770209089309,
+      "geostrophic_rmse": 6.100415862950373,
+      "vs_truth": {
+       "L_eff_km": 206.3411009899028,
+       "small_scale_ratio": 0.29964561042994214,
+       "k_cut": 194.0,
+       "spectral_divergence": 0.5314747335422456,
+       "spectral_residual": 0.8875713974009525,
+       "hydrostatic_excess": -3.407454790941216,
+       "geostrophic_excess": 1.2593221453842887
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9919400137034837,
+       "k_cut": null,
+       "spectral_divergence": 0.030889475682218198,
+       "spectral_residual": 0.02431222435863775,
+       "hydrostatic_excess": -0.4386709354891707,
+       "geostrophic_excess": 0.027689628329761184
+      }
+     },
+     "2024-03-18": {
+      "hydrostatic_rmse": 217.53020114027095,
+      "geostrophic_rmse": 6.07823403068328,
+      "vs_truth": {
+       "L_eff_km": 211.79986027534997,
+       "small_scale_ratio": 0.27936072078289903,
+       "k_cut": 189.0,
+       "spectral_divergence": 0.5281771127567375,
+       "spectral_residual": 0.9480816778423111,
+       "hydrostatic_excess": -3.1926610787596985,
+       "geostrophic_excess": 1.2084917047414745
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9916308981719553,
+       "k_cut": null,
+       "spectral_divergence": 0.033753913609240016,
+       "spectral_residual": 0.025284078782273546,
+       "hydrostatic_excess": -0.1591999350412152,
+       "geostrophic_excess": 0.024648097375115974
+      }
+     },
+     "2024-03-19": {
+      "hydrostatic_rmse": 211.30552636647835,
+      "geostrophic_rmse": 6.2861244135395955,
+      "vs_truth": {
+       "L_eff_km": 205.28294149764687,
+       "small_scale_ratio": 0.2837929085613241,
+       "k_cut": 195.0,
+       "spectral_divergence": 0.5120893058320335,
+       "spectral_residual": 0.920688210594205,
+       "hydrostatic_excess": -4.936636974206863,
+       "geostrophic_excess": 1.3086050603714492
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.991291066581543,
+       "k_cut": null,
+       "spectral_divergence": 0.03241742711539519,
+       "spectral_residual": 0.024727961023346498,
+       "hydrostatic_excess": -0.3791522407526031,
+       "geostrophic_excess": 0.024781824866111357
+      }
+     },
+     "2024-03-20": {
+      "hydrostatic_rmse": 208.9337763373906,
+      "geostrophic_rmse": 6.312144505466922,
+      "vs_truth": {
+       "L_eff_km": 208.49048745854762,
+       "small_scale_ratio": 0.30189875764025426,
+       "k_cut": 192.0,
+       "spectral_divergence": 0.5263642861836437,
+       "spectral_residual": 0.8868658280632113,
+       "hydrostatic_excess": -3.503513956102296,
+       "geostrophic_excess": 1.0206189513437565
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9916526753628213,
+       "k_cut": null,
+       "spectral_divergence": 0.03256248845461779,
+       "spectral_residual": 0.025250453807069983,
+       "hydrostatic_excess": -0.2987744761382203,
+       "geostrophic_excess": 0.02500605405435863
+      }
+     },
+     "2024-03-21": {
+      "hydrostatic_rmse": 203.4514918927877,
+      "geostrophic_rmse": 6.284126405301068,
+      "vs_truth": {
+       "L_eff_km": 211.79986027534997,
+       "small_scale_ratio": 0.2882502484835746,
+       "k_cut": 189.0,
+       "spectral_divergence": 0.48108969913196276,
+       "spectral_residual": 0.9275355468290135,
+       "hydrostatic_excess": -5.087973461385076,
+       "geostrophic_excess": 0.9882223024587242
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9933526439981921,
+       "k_cut": null,
+       "spectral_divergence": 0.030932598707937853,
+       "spectral_residual": 0.024921225399779243,
+       "hydrostatic_excess": -0.3838632832881501,
+       "geostrophic_excess": 0.017039297619342086
+      }
+     },
+     "2024-03-22": {
+      "hydrostatic_rmse": 208.67481871279438,
+      "geostrophic_rmse": 6.425142100591832,
+      "vs_truth": {
+       "L_eff_km": 203.19885072102105,
+       "small_scale_ratio": 0.30549328738407205,
+       "k_cut": 197.0,
+       "spectral_divergence": 0.5239172777200616,
+       "spectral_residual": 0.861007536344934,
+       "hydrostatic_excess": -6.060246035996926,
+       "geostrophic_excess": 1.02568441531945
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9918896865141323,
+       "k_cut": null,
+       "spectral_divergence": 0.03399769217623422,
+       "spectral_residual": 0.024720599549267384,
+       "hydrostatic_excess": -0.3880040461708063,
+       "geostrophic_excess": 0.021565001689945795
+      }
+     },
+     "2024-03-23": {
+      "hydrostatic_rmse": 215.42078439214734,
+      "geostrophic_rmse": 6.4918978569849015,
+      "vs_truth": {
+       "L_eff_km": 201.15665121628714,
+       "small_scale_ratio": 0.2786340505780747,
+       "k_cut": 199.0,
+       "spectral_divergence": 0.5772121668252663,
+       "spectral_residual": 0.9305363573718725,
+       "hydrostatic_excess": -7.947021003612605,
+       "geostrophic_excess": 1.1414504751965735
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.991917859624022,
+       "k_cut": null,
+       "spectral_divergence": 0.031659664823246725,
+       "spectral_residual": 0.02350603051166696,
+       "hydrostatic_excess": -0.4466702082422671,
+       "geostrophic_excess": 0.01971597179541895
+      }
+     },
+     "2024-03-24": {
+      "hydrostatic_rmse": 218.9083915432249,
+      "geostrophic_rmse": 6.467609491991104,
+      "vs_truth": {
+       "L_eff_km": 224.8886156856244,
+       "small_scale_ratio": 0.2848398581458188,
+       "k_cut": 178.0,
+       "spectral_divergence": 0.5416804143162876,
+       "spectral_residual": 0.970750319305141,
+       "hydrostatic_excess": -6.164403084039236,
+       "geostrophic_excess": 1.053113645378037
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9935909765148419,
+       "k_cut": null,
+       "spectral_divergence": 0.027289760328326307,
+       "spectral_residual": 0.025419880909802774,
+       "hydrostatic_excess": -0.5239118041330357,
+       "geostrophic_excess": 0.020656877596807455
+      }
+     },
+     "2024-03-25": {
+      "hydrostatic_rmse": 225.0863284652793,
+      "geostrophic_rmse": 6.65682139481765,
+      "vs_truth": {
+       "L_eff_km": 217.55529126109317,
+       "small_scale_ratio": 0.2940681083936649,
+       "k_cut": 184.0,
+       "spectral_divergence": 0.5165175022452578,
+       "spectral_residual": 0.931920915803285,
+       "hydrostatic_excess": -4.716382172584048,
+       "geostrophic_excess": 1.295856516192278
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9973355390749316,
+       "k_cut": null,
+       "spectral_divergence": 0.03203745331084826,
+       "spectral_residual": 0.02911994865521402,
+       "hydrostatic_excess": -0.614241950174204,
+       "geostrophic_excess": 0.025691385031553438
+      }
+     },
+     "2024-03-26": {
+      "hydrostatic_rmse": 229.43433624471365,
+      "geostrophic_rmse": 6.56076850806553,
+      "vs_truth": {
+       "L_eff_km": 224.8886156856244,
+       "small_scale_ratio": 0.2788414852628489,
+       "k_cut": 178.0,
+       "spectral_divergence": 0.527608058363971,
+       "spectral_residual": 0.9963066800779065,
+       "hydrostatic_excess": -5.956406922846924,
+       "geostrophic_excess": 1.4046419054900259
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9899996449419702,
+       "k_cut": null,
+       "spectral_divergence": 0.03434969852366471,
+       "spectral_residual": 0.027855511286048816,
+       "hydrostatic_excess": -0.4342205762898743,
+       "geostrophic_excess": 0.01734357699802569
+      }
+     },
+     "2024-03-27": {
+      "hydrostatic_rmse": 230.80327832245672,
+      "geostrophic_rmse": 6.564624048182523,
+      "vs_truth": {
+       "L_eff_km": 212.92645527681458,
+       "small_scale_ratio": 0.28987277070819634,
+       "k_cut": 188.0,
+       "spectral_divergence": 0.4710489402302372,
+       "spectral_residual": 0.9273879951727872,
+       "hydrostatic_excess": -6.144287761350853,
+       "geostrophic_excess": 1.5246664696553776
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.991880981940275,
+       "k_cut": null,
+       "spectral_divergence": 0.030726312289026475,
+       "spectral_residual": 0.027512768592247234,
+       "hydrostatic_excess": -0.4557321298246393,
+       "geostrophic_excess": 0.018114481949748296
+      }
+     },
+     "2024-03-28": {
+      "hydrostatic_rmse": 229.20760471456802,
+      "geostrophic_rmse": 6.391349863863491,
+      "vs_truth": {
+       "L_eff_km": 216.3793167137359,
+       "small_scale_ratio": 0.2962819729431901,
+       "k_cut": 185.0,
+       "spectral_divergence": 0.5278165595035375,
+       "spectral_residual": 0.9174003861184648,
+       "hydrostatic_excess": -7.118690951346338,
+       "geostrophic_excess": 1.3921216411005357
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9906076003357974,
+       "k_cut": null,
+       "spectral_divergence": 0.03140030005505656,
+       "spectral_residual": 0.02511350219968995,
+       "hydrostatic_excess": -0.41838979368833407,
+       "geostrophic_excess": 0.02572258431876495
+      }
+     },
+     "2024-03-29": {
+      "hydrostatic_rmse": 236.0848556249636,
+      "geostrophic_rmse": 6.518812365790104,
+      "vs_truth": {
+       "L_eff_km": 209.5820606913149,
+       "small_scale_ratio": 0.31106312675912384,
+       "k_cut": 191.0,
+       "spectral_divergence": 0.5026383220777483,
+       "spectral_residual": 0.8619143070973952,
+       "hydrostatic_excess": -4.525665761278702,
+       "geostrophic_excess": 1.4104865501921626
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9912542333072251,
+       "k_cut": null,
+       "spectral_divergence": 0.03341393654880048,
+       "spectral_residual": 0.022224654986969707,
+       "hydrostatic_excess": -0.3979071841135067,
+       "geostrophic_excess": 0.018338114991273358
+      }
+     },
+     "2024-03-30": {
+      "hydrostatic_rmse": 240.98495739179086,
+      "geostrophic_rmse": 6.6572427376990655,
+      "vs_truth": {
+       "L_eff_km": 200.15086796020572,
+       "small_scale_ratio": 0.28451389371338426,
+       "k_cut": 200.0,
+       "spectral_divergence": 0.4810986773390691,
+       "spectral_residual": 0.9049801540780353,
+       "hydrostatic_excess": -4.275057124924757,
+       "geostrophic_excess": 1.4366813172581292
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9941318852166101,
+       "k_cut": null,
+       "spectral_divergence": 0.033357316282204064,
+       "spectral_residual": 0.022891789149575098,
+       "hydrostatic_excess": -0.48635023694410506,
+       "geostrophic_excess": 0.01788469031840112
+      }
+     }
+    },
+    "2": {
+     "2024-03-01": {
+      "hydrostatic_rmse": 226.90441607429054,
+      "geostrophic_rmse": 6.70315041866488,
+      "vs_truth": {
+       "L_eff_km": 222.38985328911747,
+       "small_scale_ratio": 0.2656956800418064,
+       "k_cut": 180.0,
+       "spectral_divergence": 0.5935758276560338,
+       "spectral_residual": 1.0191120507738587,
+       "hydrostatic_excess": -3.0673972419081963,
+       "geostrophic_excess": 1.3547881204956864
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9768036494567597,
+       "k_cut": null,
+       "spectral_divergence": 0.05496428539473133,
+       "spectral_residual": 0.036514601973843465,
+       "hydrostatic_excess": -0.4411152838983696,
+       "geostrophic_excess": 0.01621050122529244
+      }
+     },
+     "2024-03-02": {
+      "hydrostatic_rmse": 230.07296210943386,
+      "geostrophic_rmse": 6.676379467150829,
+      "vs_truth": {
+       "L_eff_km": 230.05846891977666,
+       "small_scale_ratio": 0.2692530454131928,
+       "k_cut": 174.0,
+       "spectral_divergence": 0.5736054668268193,
+       "spectral_residual": 1.021206308621821,
+       "hydrostatic_excess": -4.915214441893312,
+       "geostrophic_excess": 1.2888782040025681
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9779720424849035,
+       "k_cut": null,
+       "spectral_divergence": 0.05930900406136952,
+       "spectral_residual": 0.038256420436267,
+       "hydrostatic_excess": -0.5123128026802135,
+       "geostrophic_excess": 0.014321853042636334
+      }
+     },
+     "2024-03-03": {
+      "hydrostatic_rmse": 227.40758172990908,
+      "geostrophic_rmse": 6.614163806130368,
+      "vs_truth": {
+       "L_eff_km": 227.4441681365974,
+       "small_scale_ratio": 0.2954854089011093,
+       "k_cut": 176.0,
+       "spectral_divergence": 0.6270183870301653,
+       "spectral_residual": 0.949857594394176,
+       "hydrostatic_excess": -3.83337169140151,
+       "geostrophic_excess": 1.2530002692051028
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9759921707637146,
+       "k_cut": null,
+       "spectral_divergence": 0.06113011287446832,
+       "spectral_residual": 0.0355312256435414,
+       "hydrostatic_excess": -0.535146242865693,
+       "geostrophic_excess": 0.022454051304924505
+      }
+     },
+     "2024-03-04": {
+      "hydrostatic_rmse": 224.4339124210794,
+      "geostrophic_rmse": 6.156100143279016,
+      "vs_truth": {
+       "L_eff_km": 224.8886156856244,
+       "small_scale_ratio": 0.28519961492419166,
+       "k_cut": 178.0,
+       "spectral_divergence": 0.563835120043312,
+       "spectral_residual": 0.9662528861127411,
+       "hydrostatic_excess": -5.543045429195445,
+       "geostrophic_excess": 1.0653369772095127
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.978583458407459,
+       "k_cut": null,
+       "spectral_divergence": 0.06279200019516487,
+       "spectral_residual": 0.03470879023947687,
+       "hydrostatic_excess": -0.4328582596330932,
+       "geostrophic_excess": 0.015488853331183883
+      }
+     },
+     "2024-03-05": {
+      "hydrostatic_rmse": 224.4810254408668,
+      "geostrophic_rmse": 5.883876386079169,
+      "vs_truth": {
+       "L_eff_km": 214.0650994226799,
+       "small_scale_ratio": 0.2669936994349709,
+       "k_cut": 187.0,
+       "spectral_divergence": 0.553908087538192,
+       "spectral_residual": 0.9968221233443426,
+       "hydrostatic_excess": -5.042332909866559,
+       "geostrophic_excess": 1.0737013731516907
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9812606854920908,
+       "k_cut": null,
+       "spectral_divergence": 0.06073271167933142,
+       "spectral_residual": 0.0351679537866008,
+       "hydrostatic_excess": -0.5383814184813787,
+       "geostrophic_excess": 0.030227110906219323
+      }
+     },
+     "2024-03-06": {
+      "hydrostatic_rmse": 219.73804145711736,
+      "geostrophic_rmse": 5.957359052427974,
+      "vs_truth": {
+       "L_eff_km": 226.15917283639064,
+       "small_scale_ratio": 0.2927316043604345,
+       "k_cut": 177.0,
+       "spectral_divergence": 0.5239130595822097,
+       "spectral_residual": 0.9481594646620488,
+       "hydrostatic_excess": -4.951689141637132,
+       "geostrophic_excess": 1.2694489753381202
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9781195400201822,
+       "k_cut": null,
+       "spectral_divergence": 0.0555515362811832,
+       "spectral_residual": 0.03474328244164934,
+       "hydrostatic_excess": -0.4578382899263147,
+       "geostrophic_excess": 0.03199142844560399
+      }
+     },
+     "2024-03-07": {
+      "hydrostatic_rmse": 218.6039290234913,
+      "geostrophic_rmse": 5.9977756183830735,
+      "vs_truth": {
+       "L_eff_km": 234.0945824095973,
+       "small_scale_ratio": 0.28433714172254704,
+       "k_cut": 171.0,
+       "spectral_divergence": 0.5535625888872738,
+       "spectral_residual": 0.9955373888332889,
+       "hydrostatic_excess": -4.3142168823422935,
+       "geostrophic_excess": 1.141643729357332
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.982734661682351,
+       "k_cut": null,
+       "spectral_divergence": 0.04961544138004434,
+       "spectral_residual": 0.03206107788907338,
+       "hydrostatic_excess": -0.46304688966293384,
+       "geostrophic_excess": 0.029135413202256544
+      }
+     },
+     "2024-03-08": {
+      "hydrostatic_rmse": 217.8229232654681,
+      "geostrophic_rmse": 6.071748916876631,
+      "vs_truth": {
+       "L_eff_km": 238.2748428097687,
+       "small_scale_ratio": 0.2851319819383195,
+       "k_cut": 168.0,
+       "spectral_divergence": 0.5872171839494064,
+       "spectral_residual": 0.9908389836665707,
+       "hydrostatic_excess": -2.381906092207231,
+       "geostrophic_excess": 0.9699321649902082
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9803721565065147,
+       "k_cut": null,
+       "spectral_divergence": 0.057962894776247637,
+       "spectral_residual": 0.03298129861416735,
+       "hydrostatic_excess": -0.39498164617697284,
+       "geostrophic_excess": 0.028943434704191695
+      }
+     },
+     "2024-03-09": {
+      "hydrostatic_rmse": 221.066677881225,
+      "geostrophic_rmse": 6.046364080849345,
+      "vs_truth": {
+       "L_eff_km": 234.0945824095973,
+       "small_scale_ratio": 0.27144045969257363,
+       "k_cut": 171.0,
+       "spectral_divergence": 0.5798475435338903,
+       "spectral_residual": 1.027468712797902,
+       "hydrostatic_excess": -3.3506059290886867,
+       "geostrophic_excess": 1.2197596290618797
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9844582131849832,
+       "k_cut": null,
+       "spectral_divergence": 0.04765672912384877,
+       "spectral_residual": 0.03705436200397338,
+       "hydrostatic_excess": -0.5151300542073898,
+       "geostrophic_excess": 0.03142956460122637
+      }
+     },
+     "2024-03-10": {
+      "hydrostatic_rmse": 220.39956534749936,
+      "geostrophic_rmse": 6.397407909207182,
+      "vs_truth": {
+       "L_eff_km": 236.86493249728488,
+       "small_scale_ratio": 0.28262742669328433,
+       "k_cut": 169.0,
+       "spectral_divergence": 0.6093054323880442,
+       "spectral_residual": 1.0086522338304715,
+       "hydrostatic_excess": -2.729812972789375,
+       "geostrophic_excess": 1.440506462643559
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9828179223616711,
+       "k_cut": null,
+       "spectral_divergence": 0.051166809852235096,
+       "spectral_residual": 0.033381825240424594,
+       "hydrostatic_excess": -0.36524475362347175,
+       "geostrophic_excess": 0.023360048204835948
+      }
+     },
+     "2024-03-11": {
+      "hydrostatic_rmse": 222.11770202033338,
+      "geostrophic_rmse": 6.497354241055316,
+      "vs_truth": {
+       "L_eff_km": 222.38985328911747,
+       "small_scale_ratio": 0.2623978765112277,
+       "k_cut": 180.0,
+       "spectral_divergence": 0.5977366778022326,
+       "spectral_residual": 1.0294446704857243,
+       "hydrostatic_excess": -4.136281526115084,
+       "geostrophic_excess": 1.340480393093145
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9805537662191448,
+       "k_cut": null,
+       "spectral_divergence": 0.05582584208181929,
+       "spectral_residual": 0.032370286229618586,
+       "hydrostatic_excess": -0.3014636485071094,
+       "geostrophic_excess": 0.011964233078871622
+      }
+     },
+     "2024-03-12": {
+      "hydrostatic_rmse": 224.4640724658767,
+      "geostrophic_rmse": 6.533533596833823,
+      "vs_truth": {
+       "L_eff_km": 228.74384909737796,
+       "small_scale_ratio": 0.2768949544635916,
+       "k_cut": 175.0,
+       "spectral_divergence": 0.5920629327970016,
+       "spectral_residual": 0.9934400430315006,
+       "hydrostatic_excess": -6.201337847405171,
+       "geostrophic_excess": 1.4113339032982664
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9770735858600275,
+       "k_cut": null,
+       "spectral_divergence": 0.05454577496575927,
+       "spectral_residual": 0.03565826952998103,
+       "hydrostatic_excess": -0.3973116997565853,
+       "geostrophic_excess": 0.014191105851285357
+      }
+     },
+     "2024-03-13": {
+      "hydrostatic_rmse": 219.5077876515206,
+      "geostrophic_rmse": 6.508128225885809,
+      "vs_truth": {
+       "L_eff_km": 235.47160936494788,
+       "small_scale_ratio": 0.2621158223157375,
+       "k_cut": 170.0,
+       "spectral_divergence": 0.6278998788753478,
+       "spectral_residual": 1.05574839070459,
+       "hydrostatic_excess": -3.3838618246096246,
+       "geostrophic_excess": 1.3451565169305315
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9821807117955117,
+       "k_cut": null,
+       "spectral_divergence": 0.04863288358533999,
+       "spectral_residual": 0.032664205783970154,
+       "hydrostatic_excess": -0.4386268750862712,
+       "geostrophic_excess": 0.020587752148482075
+      }
+     },
+     "2024-03-14": {
+      "hydrostatic_rmse": 214.97354800745848,
+      "geostrophic_rmse": 6.34777281423719,
+      "vs_truth": {
+       "L_eff_km": 253.35552906355153,
+       "small_scale_ratio": 0.2797917153850492,
+       "k_cut": 158.0,
+       "spectral_divergence": 0.6848099760392796,
+       "spectral_residual": 1.0547468302565877,
+       "hydrostatic_excess": -4.265582976014116,
+       "geostrophic_excess": 1.2749248079952418
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9813895550845495,
+       "k_cut": null,
+       "spectral_divergence": 0.050848232899977364,
+       "spectral_residual": 0.030243474975474346,
+       "hydrostatic_excess": -0.4893764849319382,
+       "geostrophic_excess": 0.011865494226332984
+      }
+     },
+     "2024-03-15": {
+      "hydrostatic_rmse": 217.88638448212237,
+      "geostrophic_rmse": 6.2400562984656975,
+      "vs_truth": {
+       "L_eff_km": 228.74384909737796,
+       "small_scale_ratio": 0.2706549436932322,
+       "k_cut": 175.0,
+       "spectral_divergence": 0.6524226115205096,
+       "spectral_residual": 1.020691530123883,
+       "hydrostatic_excess": -4.044016517994066,
+       "geostrophic_excess": 1.3586972950296232
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9792043044103362,
+       "k_cut": null,
+       "spectral_divergence": 0.05027643039340968,
+       "spectral_residual": 0.032657813342582394,
+       "hydrostatic_excess": -0.43272338292257473,
+       "geostrophic_excess": 0.008959064713229381
+      }
+     },
+     "2024-03-16": {
+      "hydrostatic_rmse": 220.30101600036704,
+      "geostrophic_rmse": 6.189703614294346,
+      "vs_truth": {
+       "L_eff_km": 224.8886156856244,
+       "small_scale_ratio": 0.2766968549088812,
+       "k_cut": 178.0,
+       "spectral_divergence": 0.6214366417061561,
+       "spectral_residual": 0.990262703836621,
+       "hydrostatic_excess": -5.727801614689014,
+       "geostrophic_excess": 1.3699517590277654
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.977883348425051,
+       "k_cut": null,
+       "spectral_divergence": 0.059156270687900026,
+       "spectral_residual": 0.03407354294284314,
+       "hydrostatic_excess": -0.437841849055701,
+       "geostrophic_excess": 0.018253445650880273
+      }
+     },
+     "2024-03-17": {
+      "hydrostatic_rmse": 219.84038801299315,
+      "geostrophic_rmse": 6.038699384696741,
+      "vs_truth": {
+       "L_eff_km": 224.8886156856244,
+       "small_scale_ratio": 0.2701709282772747,
+       "k_cut": 178.0,
+       "spectral_divergence": 0.6368380917266672,
+       "spectral_residual": 1.0135495434752508,
+       "hydrostatic_excess": -3.6560613805588957,
+       "geostrophic_excess": 1.3306123600508073
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9797172114427573,
+       "k_cut": null,
+       "spectral_divergence": 0.05650876098246471,
+       "spectral_residual": 0.03420360085521451,
+       "hydrostatic_excess": -0.5171389018967432,
+       "geostrophic_excess": 0.033281044089513934
+      }
+     },
+     "2024-03-18": {
+      "hydrostatic_rmse": 214.23284756847792,
+      "geostrophic_rmse": 6.081664717306593,
+      "vs_truth": {
+       "L_eff_km": 245.58388706773707,
+       "small_scale_ratio": 0.269166867731422,
+       "k_cut": 163.0,
+       "spectral_divergence": 0.6365708770614982,
+       "spectral_residual": 1.0781099388870627,
+       "hydrostatic_excess": -2.7145655406278593,
+       "geostrophic_excess": 1.2242928752306055
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9805847014533874,
+       "k_cut": null,
+       "spectral_divergence": 0.05593345791504162,
+       "spectral_residual": 0.03624417056557561,
+       "hydrostatic_excess": -0.36818468572016627,
+       "geostrophic_excess": 0.02343795027414064
+      }
+     },
+     "2024-03-19": {
+      "hydrostatic_rmse": 211.08642273547915,
+      "geostrophic_rmse": 6.292776658014169,
+      "vs_truth": {
+       "L_eff_km": 222.38985328911747,
+       "small_scale_ratio": 0.2660543041609581,
+       "k_cut": 180.0,
+       "spectral_divergence": 0.5750769042511574,
+       "spectral_residual": 1.0179286733185677,
+       "hydrostatic_excess": -3.650528799351406,
+       "geostrophic_excess": 1.3316433912790728
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9747819378267711,
+       "k_cut": null,
+       "spectral_divergence": 0.0619787984795204,
+       "spectral_residual": 0.03917611532573027,
+       "hydrostatic_excess": -0.5504211105997001,
+       "geostrophic_excess": 0.016038845096498555
+      }
+     },
+     "2024-03-20": {
+      "hydrostatic_rmse": 207.77951234442494,
+      "geostrophic_rmse": 6.203369952242053,
+      "vs_truth": {
+       "L_eff_km": 242.60711267903724,
+       "small_scale_ratio": 0.28304008840882733,
+       "k_cut": 165.0,
+       "spectral_divergence": 0.5994538937388447,
+       "spectral_residual": 1.029083881816931,
+       "hydrostatic_excess": -4.5858395693275895,
+       "geostrophic_excess": 1.1285505207989557
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9796465198046923,
+       "k_cut": null,
+       "spectral_divergence": 0.06072689668529152,
+       "spectral_residual": 0.03680840068933783,
+       "hydrostatic_excess": -0.5803143133734636,
+       "geostrophic_excess": 0.020522081958980642
+      }
+     },
+     "2024-03-21": {
+      "hydrostatic_rmse": 204.24228462821924,
+      "geostrophic_rmse": 6.2166588595439025,
+      "vs_truth": {
+       "L_eff_km": 224.8886156856244,
+       "small_scale_ratio": 0.2718133773561835,
+       "k_cut": 178.0,
+       "spectral_divergence": 0.5770684628530481,
+       "spectral_residual": 1.0137902732698696,
+       "hydrostatic_excess": -4.88346347053772,
+       "geostrophic_excess": 1.084567008147343
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9754417898454992,
+       "k_cut": null,
+       "spectral_divergence": 0.05971963586745066,
+       "spectral_residual": 0.036914473386552425,
+       "hydrostatic_excess": -0.5422682312089648,
+       "geostrophic_excess": 0.020106642628055837
+      }
+     },
+     "2024-03-22": {
+      "hydrostatic_rmse": 209.94198194376713,
+      "geostrophic_rmse": 6.420114416416982,
+      "vs_truth": {
+       "L_eff_km": 226.15917283639064,
+       "small_scale_ratio": 0.2884117631436353,
+       "k_cut": 177.0,
+       "spectral_divergence": 0.6234971974044122,
+       "spectral_residual": 0.9602240251032567,
+       "hydrostatic_excess": -6.029213260715466,
+       "geostrophic_excess": 1.0750879659635935
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9755182244683047,
+       "k_cut": null,
+       "spectral_divergence": 0.059280693717280925,
+       "spectral_residual": 0.0353960936932901,
+       "hydrostatic_excess": -0.5832275893898213,
+       "geostrophic_excess": 0.015309090327837893
+      }
+     },
+     "2024-03-23": {
+      "hydrostatic_rmse": 212.4718298167279,
+      "geostrophic_rmse": 6.36001741923993,
+      "vs_truth": {
+       "L_eff_km": 230.05846891977666,
+       "small_scale_ratio": 0.25987692314402616,
+       "k_cut": 174.0,
+       "spectral_divergence": 0.6544496293365495,
+       "spectral_residual": 1.053533119534775,
+       "hydrostatic_excess": -7.245717689038884,
+       "geostrophic_excess": 1.1240188407351415
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9791775253785792,
+       "k_cut": null,
+       "spectral_divergence": 0.05335856608674433,
+       "spectral_residual": 0.03603157181469907,
+       "hydrostatic_excess": -0.7698617924638995,
+       "geostrophic_excess": 0.024393400340446902
+      }
+     },
+     "2024-03-24": {
+      "hydrostatic_rmse": 217.07850843314344,
+      "geostrophic_rmse": 6.355975694564142,
+      "vs_truth": {
+       "L_eff_km": 238.2748428097687,
+       "small_scale_ratio": 0.26107898935379986,
+       "k_cut": 168.0,
+       "spectral_divergence": 0.5804638836374839,
+       "spectral_residual": 1.0792291576100725,
+       "hydrostatic_excess": -5.580128572459216,
+       "geostrophic_excess": 1.1976721643410704
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9837724565013618,
+       "k_cut": null,
+       "spectral_divergence": 0.04758490946114391,
+       "spectral_residual": 0.034902123662582704,
+       "hydrostatic_excess": -0.7386701586478637,
+       "geostrophic_excess": 0.02246410867352644
+      }
+     },
+     "2024-03-25": {
+      "hydrostatic_rmse": 223.92103700996302,
+      "geostrophic_rmse": 6.598775218712185,
+      "vs_truth": {
+       "L_eff_km": 242.60711267903724,
+       "small_scale_ratio": 0.2667681065618675,
+       "k_cut": 165.0,
+       "spectral_divergence": 0.5948430370998569,
+       "spectral_residual": 1.0711726359355598,
+       "hydrostatic_excess": -5.493331892377029,
+       "geostrophic_excess": 1.3511600730304263
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9835788260034792,
+       "k_cut": null,
+       "spectral_divergence": 0.056878401518349136,
+       "spectral_residual": 0.03486624534994062,
+       "hydrostatic_excess": -0.716632777734219,
+       "geostrophic_excess": 0.02711051590619995
+      }
+     },
+     "2024-03-26": {
+      "hydrostatic_rmse": 229.00812539669653,
+      "geostrophic_rmse": 6.4927561100397115,
+      "vs_truth": {
+       "L_eff_km": 239.70163827569547,
+       "small_scale_ratio": 0.27168677954204673,
+       "k_cut": 167.0,
+       "spectral_divergence": 0.5824096772317646,
+       "spectral_residual": 1.0350692193977402,
+       "hydrostatic_excess": -5.320378376044914,
+       "geostrophic_excess": 1.4861306663329374
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9762855135601454,
+       "k_cut": null,
+       "spectral_divergence": 0.06070670081506585,
+       "spectral_residual": 0.0371041553201698,
+       "hydrostatic_excess": -0.6885390207087028,
+       "geostrophic_excess": 0.019705775338108467
+      }
+     },
+     "2024-03-27": {
+      "hydrostatic_rmse": 227.97806017629674,
+      "geostrophic_rmse": 6.514890434190363,
+      "vs_truth": {
+       "L_eff_km": 224.8886156856244,
+       "small_scale_ratio": 0.2542957223988033,
+       "k_cut": 178.0,
+       "spectral_divergence": 0.6374399533786373,
+       "spectral_residual": 1.0659000191496315,
+       "hydrostatic_excess": -5.211418274763304,
+       "geostrophic_excess": 1.4252720559106473
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9736077106249439,
+       "k_cut": null,
+       "spectral_divergence": 0.0593738583118148,
+       "spectral_residual": 0.03786780425056508,
+       "hydrostatic_excess": -0.6647450816584524,
+       "geostrophic_excess": 0.02638569956051473
+      }
+     },
+     "2024-03-28": {
+      "hydrostatic_rmse": 228.96254982749335,
+      "geostrophic_rmse": 6.41069147120244,
+      "vs_truth": {
+       "L_eff_km": 236.86493249728488,
+       "small_scale_ratio": 0.2773273614768269,
+       "k_cut": 169.0,
+       "spectral_divergence": 0.5636617777181647,
+       "spectral_residual": 1.0163681248946188,
+       "hydrostatic_excess": -6.269748279035099,
+       "geostrophic_excess": 1.3133859336179485
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9738585877051192,
+       "k_cut": null,
+       "spectral_divergence": 0.061076404540740564,
+       "spectral_residual": 0.03875803164833083,
+       "hydrostatic_excess": -0.7106268929995565,
+       "geostrophic_excess": 0.02709357938175838
+      }
+     },
+     "2024-03-29": {
+      "hydrostatic_rmse": 236.26524926588385,
+      "geostrophic_rmse": 6.596821576445763,
+      "vs_truth": {
+       "L_eff_km": 216.3793167137359,
+       "small_scale_ratio": 0.2915241655719513,
+       "k_cut": 185.0,
+       "spectral_divergence": 0.6108866606271315,
+       "spectral_residual": 0.9423789726777306,
+       "hydrostatic_excess": -5.140865497249592,
+       "geostrophic_excess": 1.549957142518708
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9764100782987295,
+       "k_cut": null,
+       "spectral_divergence": 0.060695146278866796,
+       "spectral_residual": 0.03309122390407368,
+       "hydrostatic_excess": -0.7075511402619554,
+       "geostrophic_excess": 0.023175704776316586
+      }
+     },
+     "2024-03-30": {
+      "hydrostatic_rmse": 239.39120838221544,
+      "geostrophic_rmse": 6.479299087911496,
+      "vs_truth": {
+       "L_eff_km": 231.38828665919735,
+       "small_scale_ratio": 0.27588642428120164,
+       "k_cut": 173.0,
+       "spectral_divergence": 0.6106921031406058,
+       "spectral_residual": 1.017886893471745,
+       "hydrostatic_excess": -5.192240567033508,
+       "geostrophic_excess": 1.2703587208737286
+      },
+      "vs_fp32": {
+       "L_eff_km": 111.50466181627058,
+       "small_scale_ratio": 0.9802317604938178,
+       "k_cut": null,
+       "spectral_divergence": 0.061122791006094995,
+       "spectral_residual": 0.03318289033188929,
+       "hydrostatic_excess": -0.7261857518711565,
+       "geostrophic_excess": 0.0178851448509878
+      }
+     }
+    }
+   },
+   "per_step": {
+    "1": {
+     "hydrostatic_rmse": 222.70305406162385,
+     "geostrophic_rmse": 6.366814404057317,
+     "truth": {
+      "hydrostatic_rmse": 227.5724688482139,
+      "geostrophic_rmse": 5.112752130632753
+     },
+     "fp32": {
+      "hydrostatic_rmse": 223.05964276827498,
+      "geostrophic_rmse": 6.345642462015819
+     },
+     "vs_truth": {
+      "L_eff_km": 208.34880887706544,
+      "small_scale_ratio": 0.2935420444275479,
+      "spectral_divergence": 0.5139738016256141,
+      "spectral_residual": 0.9065801210207237,
+      "hydrostatic_excess": -4.869414786590121,
+      "geostrophic_excess": 1.2540622734245623
+     },
+     "vs_fp32": {
+      "L_eff_km": 111.50466181627057,
+      "small_scale_ratio": 0.9923061252492286,
+      "spectral_divergence": 0.031238780102983636,
+      "spectral_residual": 0.02510459131675508,
+      "hydrostatic_excess": -0.35658870665114556,
+      "geostrophic_excess": 0.02117194204149501
+     },
+     "fp32_vs_truth": {
+      "L_eff_km": 205.9133299475079,
+      "small_scale_ratio": 0.2922761609804644,
+      "spectral_divergence": 0.48282718615088266,
+      "spectral_residual": 0.9060930011798027,
+      "hydrostatic_excess": -4.512826079938975,
+      "geostrophic_excess": 1.2328903313830675
+     }
+    },
+    "2": {
+     "hydrostatic_rmse": 221.07938503066134,
+     "geostrophic_rmse": 6.329446186344904,
+     "truth": {
+      "hydrostatic_rmse": 225.7081175709373,
+      "geostrophic_rmse": 5.060437843022864
+     },
+     "fp32": {
+      "hydrostatic_rmse": 221.61331059832642,
+      "geostrophic_rmse": 6.307903088416892
+     },
+     "vs_truth": {
+      "L_eff_km": 230.95360318326948,
+      "small_scale_ratio": 0.2744850010602991,
+      "spectral_divergence": 0.6008503188460566,
+      "spectral_residual": 1.015415546467298,
+      "hydrostatic_excess": -4.62873254027591,
+      "geostrophic_excess": 1.269008343322041
+     },
+     "vs_fp32": {
+      "L_eff_km": 111.50466181627057,
+      "small_scale_ratio": 0.9790004205187615,
+      "spectral_divergence": 0.056503732729956686,
+      "spectral_residual": 0.03508717772904797,
+      "hydrostatic_excess": -0.5339255676650225,
+      "geostrophic_excess": 0.021543097928011314
+     },
+     "fp32_vs_truth": {
+      "L_eff_km": 223.10533186282336,
+      "small_scale_ratio": 0.27375919360283807,
+      "spectral_divergence": 0.5443936904970789,
+      "spectral_residual": 1.0027261479241043,
+      "hydrostatic_excess": -4.094806972610887,
+      "geostrophic_excess": 1.2474652453940294
+     }
+    }
+   }
+  }
+ }
+}

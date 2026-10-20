@@ -1,0 +1,19 @@
+{
+ "name": "alloc_de0+de2+en0+en1",
+ "layers": "all314:exc=backbone.encoder_layers.1.&.attn.,backbone.encoder_layers.0.&.attn.,backbone.decoder_layers.2.&.attn.,backbone.decoder_layers.0.&.attn.",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ },
+ "_protected": [
+  "en1",
+  "en0",
+  "de2",
+  "de0"
+ ],
+ "_protected_params_M": 188.7
+}

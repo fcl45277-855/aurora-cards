@@ -1,0 +1,31 @@
+{
+ "kind": "sim",
+ "layers": "q0",
+ "surface_fp32": false,
+ "precision": "autocast",
+ "rotation": {
+  "block": null,
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "gptq",
+  "percdamp": 0.01,
+  "scale_mult": 1.0,
+  "source": "fp32"
+ },
+ "act": "nvfp4",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "act_scale_search": null,
+ "act_overrides": [],
+ "calib": {
+  "split": "calib",
+  "steps": 2,
+  "budget_gib": 2.5
+ },
+ "name": "rne_g02",
+ "low_rank": {
+  "rank": 32
+ }
+}

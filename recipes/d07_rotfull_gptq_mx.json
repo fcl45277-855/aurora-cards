@@ -1,0 +1,13 @@
+{
+ "name": "d07_rotfull_gptq_mx",
+ "layers": "q0",
+ "rotation": {
+  "block": "full",
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "mxfp8"
+}

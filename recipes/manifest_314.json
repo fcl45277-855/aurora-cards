@@ -1,0 +1,1586 @@
+{
+  "all_linear_count": 314,
+  "omniquant_all_linear_count": 314,
+  "group_counts": {
+    "backbone": 296,
+    "decoder": 6,
+    "encoder": 12
+  },
+  "excluded_sensitive_heads": [],
+  "dimensions": {
+    "encoder.surf_mlp.net.0": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "encoder.surf_mlp.net.2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "encoder.pos_embed": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "encoder.scale_embed": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "encoder.lead_time_embed": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "encoder.absolute_time_embed": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "encoder.atmos_levels_embed": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "encoder.level_agg.layers.0.0.to_q": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "encoder.level_agg.layers.0.0.to_kv": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "encoder.level_agg.layers.0.0.to_out": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "encoder.level_agg.layers.0.1.net.0": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "encoder.level_agg.layers.0.1.net.2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "backbone.time_mlp.0": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.time_mlp.2": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.blocks.0.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.0.blocks.0.attn.qkv": {
+      "in_features": 512,
+      "out_features": 1536
+    },
+    "backbone.encoder_layers.0.blocks.0.attn.proj": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.blocks.0.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.0.blocks.0.mlp.fc1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.0.blocks.0.mlp.fc2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.blocks.1.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.0.blocks.1.attn.qkv": {
+      "in_features": 512,
+      "out_features": 1536
+    },
+    "backbone.encoder_layers.0.blocks.1.attn.proj": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.blocks.1.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.0.blocks.1.mlp.fc1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.0.blocks.1.mlp.fc2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.blocks.2.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.0.blocks.2.attn.qkv": {
+      "in_features": 512,
+      "out_features": 1536
+    },
+    "backbone.encoder_layers.0.blocks.2.attn.proj": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.blocks.2.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.0.blocks.2.mlp.fc1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.0.blocks.2.mlp.fc2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.blocks.3.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.0.blocks.3.attn.qkv": {
+      "in_features": 512,
+      "out_features": 1536
+    },
+    "backbone.encoder_layers.0.blocks.3.attn.proj": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.blocks.3.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.0.blocks.3.mlp.fc1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.0.blocks.3.mlp.fc2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.blocks.4.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.0.blocks.4.attn.qkv": {
+      "in_features": 512,
+      "out_features": 1536
+    },
+    "backbone.encoder_layers.0.blocks.4.attn.proj": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.blocks.4.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.0.blocks.4.mlp.fc1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.0.blocks.4.mlp.fc2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.blocks.5.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.0.blocks.5.attn.qkv": {
+      "in_features": 512,
+      "out_features": 1536
+    },
+    "backbone.encoder_layers.0.blocks.5.attn.proj": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.blocks.5.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.0.blocks.5.mlp.fc1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.0.blocks.5.mlp.fc2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "backbone.encoder_layers.0.downsample.reduction": {
+      "in_features": 2048,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.0.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.0.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.encoder_layers.1.blocks.0.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.0.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.0.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.1.blocks.0.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.1.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.1.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.encoder_layers.1.blocks.1.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.1.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.1.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.1.blocks.1.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.2.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.2.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.encoder_layers.1.blocks.2.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.2.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.2.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.1.blocks.2.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.3.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.3.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.encoder_layers.1.blocks.3.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.3.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.3.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.1.blocks.3.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.4.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.4.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.encoder_layers.1.blocks.4.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.4.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.4.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.1.blocks.4.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.5.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.5.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.encoder_layers.1.blocks.5.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.5.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.5.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.1.blocks.5.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.6.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.6.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.encoder_layers.1.blocks.6.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.6.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.6.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.1.blocks.6.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.7.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.7.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.encoder_layers.1.blocks.7.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.7.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.7.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.1.blocks.7.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.8.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.8.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.encoder_layers.1.blocks.8.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.8.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.8.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.1.blocks.8.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.9.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.9.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.encoder_layers.1.blocks.9.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.blocks.9.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.1.blocks.9.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.1.blocks.9.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.encoder_layers.1.downsample.reduction": {
+      "in_features": 4096,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.0.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.0.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.encoder_layers.2.blocks.0.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.0.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.0.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.encoder_layers.2.blocks.0.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.1.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.1.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.encoder_layers.2.blocks.1.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.1.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.1.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.encoder_layers.2.blocks.1.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.2.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.2.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.encoder_layers.2.blocks.2.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.2.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.2.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.encoder_layers.2.blocks.2.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.3.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.3.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.encoder_layers.2.blocks.3.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.3.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.3.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.encoder_layers.2.blocks.3.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.4.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.4.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.encoder_layers.2.blocks.4.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.4.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.4.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.encoder_layers.2.blocks.4.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.5.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.5.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.encoder_layers.2.blocks.5.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.5.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.5.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.encoder_layers.2.blocks.5.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.6.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.6.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.encoder_layers.2.blocks.6.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.6.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.6.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.encoder_layers.2.blocks.6.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.7.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.7.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.encoder_layers.2.blocks.7.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.encoder_layers.2.blocks.7.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.encoder_layers.2.blocks.7.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.encoder_layers.2.blocks.7.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.0.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.0.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.decoder_layers.0.blocks.0.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.0.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.0.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.decoder_layers.0.blocks.0.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.1.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.1.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.decoder_layers.0.blocks.1.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.1.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.1.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.decoder_layers.0.blocks.1.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.2.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.2.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.decoder_layers.0.blocks.2.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.2.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.2.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.decoder_layers.0.blocks.2.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.3.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.3.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.decoder_layers.0.blocks.3.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.3.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.3.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.decoder_layers.0.blocks.3.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.4.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.4.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.decoder_layers.0.blocks.4.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.4.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.4.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.decoder_layers.0.blocks.4.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.5.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.5.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.decoder_layers.0.blocks.5.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.5.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.5.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.decoder_layers.0.blocks.5.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.6.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.6.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.decoder_layers.0.blocks.6.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.6.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.6.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.decoder_layers.0.blocks.6.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.7.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.7.attn.qkv": {
+      "in_features": 2048,
+      "out_features": 6144
+    },
+    "backbone.decoder_layers.0.blocks.7.attn.proj": {
+      "in_features": 2048,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.blocks.7.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.blocks.7.mlp.fc1": {
+      "in_features": 2048,
+      "out_features": 8192
+    },
+    "backbone.decoder_layers.0.blocks.7.mlp.fc2": {
+      "in_features": 8192,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.0.upsample.lin1": {
+      "in_features": 2048,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.0.upsample.lin2": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.0.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.0.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.decoder_layers.1.blocks.0.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.0.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.0.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.1.blocks.0.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.1.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.1.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.decoder_layers.1.blocks.1.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.1.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.1.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.1.blocks.1.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.2.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.2.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.decoder_layers.1.blocks.2.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.2.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.2.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.1.blocks.2.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.3.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.3.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.decoder_layers.1.blocks.3.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.3.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.3.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.1.blocks.3.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.4.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.4.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.decoder_layers.1.blocks.4.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.4.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.4.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.1.blocks.4.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.5.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.5.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.decoder_layers.1.blocks.5.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.5.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.5.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.1.blocks.5.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.6.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.6.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.decoder_layers.1.blocks.6.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.6.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.6.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.1.blocks.6.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.7.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.7.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.decoder_layers.1.blocks.7.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.7.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.7.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.1.blocks.7.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.8.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.8.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.decoder_layers.1.blocks.8.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.8.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.8.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.1.blocks.8.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.9.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.9.attn.qkv": {
+      "in_features": 1024,
+      "out_features": 3072
+    },
+    "backbone.decoder_layers.1.blocks.9.attn.proj": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.blocks.9.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.blocks.9.mlp.fc1": {
+      "in_features": 1024,
+      "out_features": 4096
+    },
+    "backbone.decoder_layers.1.blocks.9.mlp.fc2": {
+      "in_features": 4096,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.1.upsample.lin1": {
+      "in_features": 1024,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.1.upsample.lin2": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.decoder_layers.2.blocks.0.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.2.blocks.0.attn.qkv": {
+      "in_features": 512,
+      "out_features": 1536
+    },
+    "backbone.decoder_layers.2.blocks.0.attn.proj": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.decoder_layers.2.blocks.0.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.2.blocks.0.mlp.fc1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.2.blocks.0.mlp.fc2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "backbone.decoder_layers.2.blocks.1.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.2.blocks.1.attn.qkv": {
+      "in_features": 512,
+      "out_features": 1536
+    },
+    "backbone.decoder_layers.2.blocks.1.attn.proj": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.decoder_layers.2.blocks.1.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.2.blocks.1.mlp.fc1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.2.blocks.1.mlp.fc2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "backbone.decoder_layers.2.blocks.2.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.2.blocks.2.attn.qkv": {
+      "in_features": 512,
+      "out_features": 1536
+    },
+    "backbone.decoder_layers.2.blocks.2.attn.proj": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.decoder_layers.2.blocks.2.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.2.blocks.2.mlp.fc1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.2.blocks.2.mlp.fc2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "backbone.decoder_layers.2.blocks.3.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.2.blocks.3.attn.qkv": {
+      "in_features": 512,
+      "out_features": 1536
+    },
+    "backbone.decoder_layers.2.blocks.3.attn.proj": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.decoder_layers.2.blocks.3.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.2.blocks.3.mlp.fc1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.2.blocks.3.mlp.fc2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "backbone.decoder_layers.2.blocks.4.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.2.blocks.4.attn.qkv": {
+      "in_features": 512,
+      "out_features": 1536
+    },
+    "backbone.decoder_layers.2.blocks.4.attn.proj": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.decoder_layers.2.blocks.4.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.2.blocks.4.mlp.fc1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.2.blocks.4.mlp.fc2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "backbone.decoder_layers.2.blocks.5.norm1.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.2.blocks.5.attn.qkv": {
+      "in_features": 512,
+      "out_features": 1536
+    },
+    "backbone.decoder_layers.2.blocks.5.attn.proj": {
+      "in_features": 512,
+      "out_features": 512
+    },
+    "backbone.decoder_layers.2.blocks.5.norm2.ln_modulation.1": {
+      "in_features": 512,
+      "out_features": 1024
+    },
+    "backbone.decoder_layers.2.blocks.5.mlp.fc1": {
+      "in_features": 512,
+      "out_features": 2048
+    },
+    "backbone.decoder_layers.2.blocks.5.mlp.fc2": {
+      "in_features": 2048,
+      "out_features": 512
+    },
+    "decoder.level_decoder.layers.0.0.to_q": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "decoder.level_decoder.layers.0.0.to_kv": {
+      "in_features": 1024,
+      "out_features": 2048
+    },
+    "decoder.level_decoder.layers.0.0.to_out": {
+      "in_features": 1024,
+      "out_features": 1024
+    },
+    "decoder.level_decoder.layers.0.1.net.0": {
+      "in_features": 1024,
+      "out_features": 2048
+    },
+    "decoder.level_decoder.layers.0.1.net.2": {
+      "in_features": 2048,
+      "out_features": 1024
+    },
+    "decoder.atmos_levels_embed": {
+      "in_features": 1024,
+      "out_features": 1024
+    }
+  },
+  "nvfp4_shape_incompatible": [],
+  "quarot_hadamard_incompatible": [],
+  "selected_layers": [
+    "encoder.surf_mlp.net.0",
+    "encoder.surf_mlp.net.2",
+    "encoder.pos_embed",
+    "encoder.scale_embed",
+    "encoder.lead_time_embed",
+    "encoder.absolute_time_embed",
+    "encoder.atmos_levels_embed",
+    "encoder.level_agg.layers.0.0.to_q",
+    "encoder.level_agg.layers.0.0.to_kv",
+    "encoder.level_agg.layers.0.0.to_out",
+    "encoder.level_agg.layers.0.1.net.0",
+    "encoder.level_agg.layers.0.1.net.2",
+    "backbone.time_mlp.0",
+    "backbone.time_mlp.2",
+    "backbone.encoder_layers.0.blocks.0.norm1.ln_modulation.1",
+    "backbone.encoder_layers.0.blocks.0.attn.qkv",
+    "backbone.encoder_layers.0.blocks.0.attn.proj",
+    "backbone.encoder_layers.0.blocks.0.norm2.ln_modulation.1",
+    "backbone.encoder_layers.0.blocks.0.mlp.fc1",
+    "backbone.encoder_layers.0.blocks.0.mlp.fc2",
+    "backbone.encoder_layers.0.blocks.1.norm1.ln_modulation.1",
+    "backbone.encoder_layers.0.blocks.1.attn.qkv",
+    "backbone.encoder_layers.0.blocks.1.attn.proj",
+    "backbone.encoder_layers.0.blocks.1.norm2.ln_modulation.1",
+    "backbone.encoder_layers.0.blocks.1.mlp.fc1",
+    "backbone.encoder_layers.0.blocks.1.mlp.fc2",
+    "backbone.encoder_layers.0.blocks.2.norm1.ln_modulation.1",
+    "backbone.encoder_layers.0.blocks.2.attn.qkv",
+    "backbone.encoder_layers.0.blocks.2.attn.proj",
+    "backbone.encoder_layers.0.blocks.2.norm2.ln_modulation.1",
+    "backbone.encoder_layers.0.blocks.2.mlp.fc1",
+    "backbone.encoder_layers.0.blocks.2.mlp.fc2",
+    "backbone.encoder_layers.0.blocks.3.norm1.ln_modulation.1",
+    "backbone.encoder_layers.0.blocks.3.attn.qkv",
+    "backbone.encoder_layers.0.blocks.3.attn.proj",
+    "backbone.encoder_layers.0.blocks.3.norm2.ln_modulation.1",
+    "backbone.encoder_layers.0.blocks.3.mlp.fc1",
+    "backbone.encoder_layers.0.blocks.3.mlp.fc2",
+    "backbone.encoder_layers.0.blocks.4.norm1.ln_modulation.1",
+    "backbone.encoder_layers.0.blocks.4.attn.qkv",
+    "backbone.encoder_layers.0.blocks.4.attn.proj",
+    "backbone.encoder_layers.0.blocks.4.norm2.ln_modulation.1",
+    "backbone.encoder_layers.0.blocks.4.mlp.fc1",
+    "backbone.encoder_layers.0.blocks.4.mlp.fc2",
+    "backbone.encoder_layers.0.blocks.5.norm1.ln_modulation.1",
+    "backbone.encoder_layers.0.blocks.5.attn.qkv",
+    "backbone.encoder_layers.0.blocks.5.attn.proj",
+    "backbone.encoder_layers.0.blocks.5.norm2.ln_modulation.1",
+    "backbone.encoder_layers.0.blocks.5.mlp.fc1",
+    "backbone.encoder_layers.0.blocks.5.mlp.fc2",
+    "backbone.encoder_layers.0.downsample.reduction",
+    "backbone.encoder_layers.1.blocks.0.norm1.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.0.attn.qkv",
+    "backbone.encoder_layers.1.blocks.0.attn.proj",
+    "backbone.encoder_layers.1.blocks.0.norm2.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.0.mlp.fc1",
+    "backbone.encoder_layers.1.blocks.0.mlp.fc2",
+    "backbone.encoder_layers.1.blocks.1.norm1.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.1.attn.qkv",
+    "backbone.encoder_layers.1.blocks.1.attn.proj",
+    "backbone.encoder_layers.1.blocks.1.norm2.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.1.mlp.fc1",
+    "backbone.encoder_layers.1.blocks.1.mlp.fc2",
+    "backbone.encoder_layers.1.blocks.2.norm1.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.2.attn.qkv",
+    "backbone.encoder_layers.1.blocks.2.attn.proj",
+    "backbone.encoder_layers.1.blocks.2.norm2.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.2.mlp.fc1",
+    "backbone.encoder_layers.1.blocks.2.mlp.fc2",
+    "backbone.encoder_layers.1.blocks.3.norm1.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.3.attn.qkv",
+    "backbone.encoder_layers.1.blocks.3.attn.proj",
+    "backbone.encoder_layers.1.blocks.3.norm2.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.3.mlp.fc1",
+    "backbone.encoder_layers.1.blocks.3.mlp.fc2",
+    "backbone.encoder_layers.1.blocks.4.norm1.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.4.attn.qkv",
+    "backbone.encoder_layers.1.blocks.4.attn.proj",
+    "backbone.encoder_layers.1.blocks.4.norm2.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.4.mlp.fc1",
+    "backbone.encoder_layers.1.blocks.4.mlp.fc2",
+    "backbone.encoder_layers.1.blocks.5.norm1.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.5.attn.qkv",
+    "backbone.encoder_layers.1.blocks.5.attn.proj",
+    "backbone.encoder_layers.1.blocks.5.norm2.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.5.mlp.fc1",
+    "backbone.encoder_layers.1.blocks.5.mlp.fc2",
+    "backbone.encoder_layers.1.blocks.6.norm1.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.6.attn.qkv",
+    "backbone.encoder_layers.1.blocks.6.attn.proj",
+    "backbone.encoder_layers.1.blocks.6.norm2.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.6.mlp.fc1",
+    "backbone.encoder_layers.1.blocks.6.mlp.fc2",
+    "backbone.encoder_layers.1.blocks.7.norm1.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.7.attn.qkv",
+    "backbone.encoder_layers.1.blocks.7.attn.proj",
+    "backbone.encoder_layers.1.blocks.7.norm2.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.7.mlp.fc1",
+    "backbone.encoder_layers.1.blocks.7.mlp.fc2",
+    "backbone.encoder_layers.1.blocks.8.norm1.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.8.attn.qkv",
+    "backbone.encoder_layers.1.blocks.8.attn.proj",
+    "backbone.encoder_layers.1.blocks.8.norm2.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.8.mlp.fc1",
+    "backbone.encoder_layers.1.blocks.8.mlp.fc2",
+    "backbone.encoder_layers.1.blocks.9.norm1.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.9.attn.qkv",
+    "backbone.encoder_layers.1.blocks.9.attn.proj",
+    "backbone.encoder_layers.1.blocks.9.norm2.ln_modulation.1",
+    "backbone.encoder_layers.1.blocks.9.mlp.fc1",
+    "backbone.encoder_layers.1.blocks.9.mlp.fc2",
+    "backbone.encoder_layers.1.downsample.reduction",
+    "backbone.encoder_layers.2.blocks.0.norm1.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.0.attn.qkv",
+    "backbone.encoder_layers.2.blocks.0.attn.proj",
+    "backbone.encoder_layers.2.blocks.0.norm2.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.0.mlp.fc1",
+    "backbone.encoder_layers.2.blocks.0.mlp.fc2",
+    "backbone.encoder_layers.2.blocks.1.norm1.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.1.attn.qkv",
+    "backbone.encoder_layers.2.blocks.1.attn.proj",
+    "backbone.encoder_layers.2.blocks.1.norm2.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.1.mlp.fc1",
+    "backbone.encoder_layers.2.blocks.1.mlp.fc2",
+    "backbone.encoder_layers.2.blocks.2.norm1.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.2.attn.qkv",
+    "backbone.encoder_layers.2.blocks.2.attn.proj",
+    "backbone.encoder_layers.2.blocks.2.norm2.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.2.mlp.fc1",
+    "backbone.encoder_layers.2.blocks.2.mlp.fc2",
+    "backbone.encoder_layers.2.blocks.3.norm1.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.3.attn.qkv",
+    "backbone.encoder_layers.2.blocks.3.attn.proj",
+    "backbone.encoder_layers.2.blocks.3.norm2.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.3.mlp.fc1",
+    "backbone.encoder_layers.2.blocks.3.mlp.fc2",
+    "backbone.encoder_layers.2.blocks.4.norm1.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.4.attn.qkv",
+    "backbone.encoder_layers.2.blocks.4.attn.proj",
+    "backbone.encoder_layers.2.blocks.4.norm2.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.4.mlp.fc1",
+    "backbone.encoder_layers.2.blocks.4.mlp.fc2",
+    "backbone.encoder_layers.2.blocks.5.norm1.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.5.attn.qkv",
+    "backbone.encoder_layers.2.blocks.5.attn.proj",
+    "backbone.encoder_layers.2.blocks.5.norm2.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.5.mlp.fc1",
+    "backbone.encoder_layers.2.blocks.5.mlp.fc2",
+    "backbone.encoder_layers.2.blocks.6.norm1.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.6.attn.qkv",
+    "backbone.encoder_layers.2.blocks.6.attn.proj",
+    "backbone.encoder_layers.2.blocks.6.norm2.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.6.mlp.fc1",
+    "backbone.encoder_layers.2.blocks.6.mlp.fc2",
+    "backbone.encoder_layers.2.blocks.7.norm1.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.7.attn.qkv",
+    "backbone.encoder_layers.2.blocks.7.attn.proj",
+    "backbone.encoder_layers.2.blocks.7.norm2.ln_modulation.1",
+    "backbone.encoder_layers.2.blocks.7.mlp.fc1",
+    "backbone.encoder_layers.2.blocks.7.mlp.fc2",
+    "backbone.decoder_layers.0.blocks.0.norm1.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.0.attn.qkv",
+    "backbone.decoder_layers.0.blocks.0.attn.proj",
+    "backbone.decoder_layers.0.blocks.0.norm2.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.0.mlp.fc1",
+    "backbone.decoder_layers.0.blocks.0.mlp.fc2",
+    "backbone.decoder_layers.0.blocks.1.norm1.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.1.attn.qkv",
+    "backbone.decoder_layers.0.blocks.1.attn.proj",
+    "backbone.decoder_layers.0.blocks.1.norm2.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.1.mlp.fc1",
+    "backbone.decoder_layers.0.blocks.1.mlp.fc2",
+    "backbone.decoder_layers.0.blocks.2.norm1.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.2.attn.qkv",
+    "backbone.decoder_layers.0.blocks.2.attn.proj",
+    "backbone.decoder_layers.0.blocks.2.norm2.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.2.mlp.fc1",
+    "backbone.decoder_layers.0.blocks.2.mlp.fc2",
+    "backbone.decoder_layers.0.blocks.3.norm1.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.3.attn.qkv",
+    "backbone.decoder_layers.0.blocks.3.attn.proj",
+    "backbone.decoder_layers.0.blocks.3.norm2.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.3.mlp.fc1",
+    "backbone.decoder_layers.0.blocks.3.mlp.fc2",
+    "backbone.decoder_layers.0.blocks.4.norm1.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.4.attn.qkv",
+    "backbone.decoder_layers.0.blocks.4.attn.proj",
+    "backbone.decoder_layers.0.blocks.4.norm2.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.4.mlp.fc1",
+    "backbone.decoder_layers.0.blocks.4.mlp.fc2",
+    "backbone.decoder_layers.0.blocks.5.norm1.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.5.attn.qkv",
+    "backbone.decoder_layers.0.blocks.5.attn.proj",
+    "backbone.decoder_layers.0.blocks.5.norm2.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.5.mlp.fc1",
+    "backbone.decoder_layers.0.blocks.5.mlp.fc2",
+    "backbone.decoder_layers.0.blocks.6.norm1.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.6.attn.qkv",
+    "backbone.decoder_layers.0.blocks.6.attn.proj",
+    "backbone.decoder_layers.0.blocks.6.norm2.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.6.mlp.fc1",
+    "backbone.decoder_layers.0.blocks.6.mlp.fc2",
+    "backbone.decoder_layers.0.blocks.7.norm1.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.7.attn.qkv",
+    "backbone.decoder_layers.0.blocks.7.attn.proj",
+    "backbone.decoder_layers.0.blocks.7.norm2.ln_modulation.1",
+    "backbone.decoder_layers.0.blocks.7.mlp.fc1",
+    "backbone.decoder_layers.0.blocks.7.mlp.fc2",
+    "backbone.decoder_layers.0.upsample.lin1",
+    "backbone.decoder_layers.0.upsample.lin2",
+    "backbone.decoder_layers.1.blocks.0.norm1.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.0.attn.qkv",
+    "backbone.decoder_layers.1.blocks.0.attn.proj",
+    "backbone.decoder_layers.1.blocks.0.norm2.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.0.mlp.fc1",
+    "backbone.decoder_layers.1.blocks.0.mlp.fc2",
+    "backbone.decoder_layers.1.blocks.1.norm1.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.1.attn.qkv",
+    "backbone.decoder_layers.1.blocks.1.attn.proj",
+    "backbone.decoder_layers.1.blocks.1.norm2.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.1.mlp.fc1",
+    "backbone.decoder_layers.1.blocks.1.mlp.fc2",
+    "backbone.decoder_layers.1.blocks.2.norm1.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.2.attn.qkv",
+    "backbone.decoder_layers.1.blocks.2.attn.proj",
+    "backbone.decoder_layers.1.blocks.2.norm2.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.2.mlp.fc1",
+    "backbone.decoder_layers.1.blocks.2.mlp.fc2",
+    "backbone.decoder_layers.1.blocks.3.norm1.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.3.attn.qkv",
+    "backbone.decoder_layers.1.blocks.3.attn.proj",
+    "backbone.decoder_layers.1.blocks.3.norm2.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.3.mlp.fc1",
+    "backbone.decoder_layers.1.blocks.3.mlp.fc2",
+    "backbone.decoder_layers.1.blocks.4.norm1.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.4.attn.qkv",
+    "backbone.decoder_layers.1.blocks.4.attn.proj",
+    "backbone.decoder_layers.1.blocks.4.norm2.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.4.mlp.fc1",
+    "backbone.decoder_layers.1.blocks.4.mlp.fc2",
+    "backbone.decoder_layers.1.blocks.5.norm1.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.5.attn.qkv",
+    "backbone.decoder_layers.1.blocks.5.attn.proj",
+    "backbone.decoder_layers.1.blocks.5.norm2.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.5.mlp.fc1",
+    "backbone.decoder_layers.1.blocks.5.mlp.fc2",
+    "backbone.decoder_layers.1.blocks.6.norm1.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.6.attn.qkv",
+    "backbone.decoder_layers.1.blocks.6.attn.proj",
+    "backbone.decoder_layers.1.blocks.6.norm2.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.6.mlp.fc1",
+    "backbone.decoder_layers.1.blocks.6.mlp.fc2",
+    "backbone.decoder_layers.1.blocks.7.norm1.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.7.attn.qkv",
+    "backbone.decoder_layers.1.blocks.7.attn.proj",
+    "backbone.decoder_layers.1.blocks.7.norm2.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.7.mlp.fc1",
+    "backbone.decoder_layers.1.blocks.7.mlp.fc2",
+    "backbone.decoder_layers.1.blocks.8.norm1.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.8.attn.qkv",
+    "backbone.decoder_layers.1.blocks.8.attn.proj",
+    "backbone.decoder_layers.1.blocks.8.norm2.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.8.mlp.fc1",
+    "backbone.decoder_layers.1.blocks.8.mlp.fc2",
+    "backbone.decoder_layers.1.blocks.9.norm1.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.9.attn.qkv",
+    "backbone.decoder_layers.1.blocks.9.attn.proj",
+    "backbone.decoder_layers.1.blocks.9.norm2.ln_modulation.1",
+    "backbone.decoder_layers.1.blocks.9.mlp.fc1",
+    "backbone.decoder_layers.1.blocks.9.mlp.fc2",
+    "backbone.decoder_layers.1.upsample.lin1",
+    "backbone.decoder_layers.1.upsample.lin2",
+    "backbone.decoder_layers.2.blocks.0.norm1.ln_modulation.1",
+    "backbone.decoder_layers.2.blocks.0.attn.qkv",
+    "backbone.decoder_layers.2.blocks.0.attn.proj",
+    "backbone.decoder_layers.2.blocks.0.norm2.ln_modulation.1",
+    "backbone.decoder_layers.2.blocks.0.mlp.fc1",
+    "backbone.decoder_layers.2.blocks.0.mlp.fc2",
+    "backbone.decoder_layers.2.blocks.1.norm1.ln_modulation.1",
+    "backbone.decoder_layers.2.blocks.1.attn.qkv",
+    "backbone.decoder_layers.2.blocks.1.attn.proj",
+    "backbone.decoder_layers.2.blocks.1.norm2.ln_modulation.1",
+    "backbone.decoder_layers.2.blocks.1.mlp.fc1",
+    "backbone.decoder_layers.2.blocks.1.mlp.fc2",
+    "backbone.decoder_layers.2.blocks.2.norm1.ln_modulation.1",
+    "backbone.decoder_layers.2.blocks.2.attn.qkv",
+    "backbone.decoder_layers.2.blocks.2.attn.proj",
+    "backbone.decoder_layers.2.blocks.2.norm2.ln_modulation.1",
+    "backbone.decoder_layers.2.blocks.2.mlp.fc1",
+    "backbone.decoder_layers.2.blocks.2.mlp.fc2",
+    "backbone.decoder_layers.2.blocks.3.norm1.ln_modulation.1",
+    "backbone.decoder_layers.2.blocks.3.attn.qkv",
+    "backbone.decoder_layers.2.blocks.3.attn.proj",
+    "backbone.decoder_layers.2.blocks.3.norm2.ln_modulation.1",
+    "backbone.decoder_layers.2.blocks.3.mlp.fc1",
+    "backbone.decoder_layers.2.blocks.3.mlp.fc2",
+    "backbone.decoder_layers.2.blocks.4.norm1.ln_modulation.1",
+    "backbone.decoder_layers.2.blocks.4.attn.qkv",
+    "backbone.decoder_layers.2.blocks.4.attn.proj",
+    "backbone.decoder_layers.2.blocks.4.norm2.ln_modulation.1",
+    "backbone.decoder_layers.2.blocks.4.mlp.fc1",
+    "backbone.decoder_layers.2.blocks.4.mlp.fc2",
+    "backbone.decoder_layers.2.blocks.5.norm1.ln_modulation.1",
+    "backbone.decoder_layers.2.blocks.5.attn.qkv",
+    "backbone.decoder_layers.2.blocks.5.attn.proj",
+    "backbone.decoder_layers.2.blocks.5.norm2.ln_modulation.1",
+    "backbone.decoder_layers.2.blocks.5.mlp.fc1",
+    "backbone.decoder_layers.2.blocks.5.mlp.fc2",
+    "decoder.level_decoder.layers.0.0.to_q",
+    "decoder.level_decoder.layers.0.0.to_kv",
+    "decoder.level_decoder.layers.0.0.to_out",
+    "decoder.level_decoder.layers.0.1.net.0",
+    "decoder.level_decoder.layers.0.1.net.2",
+    "decoder.atmos_levels_embed"
+  ]
+}

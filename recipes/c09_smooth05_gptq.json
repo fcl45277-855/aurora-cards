@@ -1,0 +1,15 @@
+{
+ "name": "c09_smooth05_gptq",
+ "layers": "q0",
+ "smooth": {
+  "alpha": 0.5
+ },
+ "rotation": {
+  "block": "full",
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ }
+}

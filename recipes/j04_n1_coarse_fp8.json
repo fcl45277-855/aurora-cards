@@ -1,0 +1,28 @@
+{
+ "name": "j04_n1_coarse_fp8",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "lowpass": {
+  "pool": 4,
+  "coarse_bits": "fp8",
+  "patterns": [
+   "mlp.fc1",
+   "mlp.fc2"
+  ],
+  "attn_window": [
+   6,
+   12
+  ],
+  "attn_pool": 2
+ }
+}

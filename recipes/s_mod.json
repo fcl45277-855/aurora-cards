@@ -1,0 +1,19 @@
+{
+ "name": "s_mod",
+ "layers": "q0",
+ "rotation": {
+  "block": "full",
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "bf16",
+ "act_overrides": [
+  [
+   "ln_modulation",
+   "nvfp4"
+  ]
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "name": "c06_gptq_block16",
+ "layers": "q0",
+ "rotation": {
+  "block": 16,
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ }
+}

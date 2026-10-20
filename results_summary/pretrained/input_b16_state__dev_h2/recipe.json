@@ -1,0 +1,6 @@
+{
+ "name": "input_b16_state",
+ "kind": "fp32",
+ "input_bits": 16,
+ "mode": "state"
+}

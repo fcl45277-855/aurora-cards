@@ -1,0 +1,12 @@
+{
+ "name": "c05_gptq_full",
+ "layers": "q0",
+ "rotation": {
+  "block": "full",
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ }
+}

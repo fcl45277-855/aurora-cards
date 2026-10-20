@@ -1,0 +1,236 @@
+{
+ "model": "pretrained",
+ "device": "NVIDIA GeForce RTX 5090",
+ "steps": 3,
+ "attribution": "leaf modules only; unattributed = total - leaves",
+ "configs": {
+  "bf16": {
+   "n_leaf_modules": 728,
+   "total_device_ms_per_step": 1693.120329,
+   "category_ms_per_step": {
+    "quant_linear": 0.0,
+    "backbone_linear_other": 1288.8462583333433,
+    "backbone_norm_act": 345.5731933333258,
+    "encoder_leaf": 125.51709633333382,
+    "decoder_leaf": 684.3960590000029,
+    "other_leaf": 0.0,
+    "unattributed": 0.0
+   },
+   "category_share": {
+    "quant_linear": 0.0,
+    "backbone_linear_other": 0.7612254346355694,
+    "backbone_norm_act": 0.2041043317561665,
+    "encoder_leaf": 0.07413359475015424,
+    "decoder_leaf": 0.4042217480220231,
+    "other_leaf": 0.0,
+    "unattributed": 0.0
+   },
+   "top_ops": [
+    {
+     "name": "aten::linear",
+     "device_ms_per_step": 1748.5262966666771,
+     "cpu_ms_per_step": 304.1528386666699,
+     "calls_per_step": 649.0
+    },
+    {
+     "name": "aten::addmm",
+     "device_ms_per_step": 862.5951983333356,
+     "cpu_ms_per_step": 59.22812099999979,
+     "calls_per_step": 322.0
+    },
+    {
+     "name": "Command Buffer Full",
+     "device_ms_per_step": 324.9327113333354,
+     "cpu_ms_per_step": 527.7826966666672,
+     "calls_per_step": 697.0
+    },
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x256_8x4_tn_align1>(cutlass_80_simt_sgemm_1",
+     "device_ms_per_step": 307.6967296666667,
+     "cpu_ms_per_step": 0.0,
+     "calls_per_step": 39.0
+    },
+    {
+     "name": "aten::add",
+     "device_ms_per_step": 263.95696233333405,
+     "cpu_ms_per_step": 114.13009033333128,
+     "calls_per_step": 447.0
+    },
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x256_32x3_tn_align8",
+     "device_ms_per_step": 244.93905600000198,
+     "cpu_ms_per_step": 0.0,
+     "calls_per_step": 81.0
+    },
+    {
+     "name": "aten::roll",
+     "device_ms_per_step": 236.72434533333168,
+     "cpu_ms_per_step": 102.8723779999968,
+     "calls_per_step": 240.0
+    },
+    {
+     "name": "aten::layer_norm",
+     "device_ms_per_step": 231.97535366666764,
+     "cpu_ms_per_step": 75.85763033333077,
+     "calls_per_step": 215.0
+    },
+    {
+     "name": "aten::copy_",
+     "device_ms_per_step": 219.98141000001223,
+     "cpu_ms_per_step": 811.2844926666656,
+     "calls_per_step": 1072.0
+    },
+    {
+     "name": "cudaLaunchKernel",
+     "device_ms_per_step": 180.67808966666726,
+     "cpu_ms_per_step": 474.9257293333308,
+     "calls_per_step": 2353.0
+    },
+    {
+     "name": "aten::matmul",
+     "device_ms_per_step": 165.21383300000062,
+     "cpu_ms_per_step": 2.841121666666966,
+     "calls_per_step": 31.0
+    },
+    {
+     "name": "aten::scaled_dot_product_attention",
+     "device_ms_per_step": 159.11835266666793,
+     "cpu_ms_per_step": 13.470284333333524,
+     "calls_per_step": 80.0
+    },
+    {
+     "name": "aten::mm",
+     "device_ms_per_step": 154.95275533333395,
+     "cpu_ms_per_step": 2.3567236666672127,
+     "calls_per_step": 31.0
+    },
+    {
+     "name": "cuLaunchKernel",
+     "device_ms_per_step": 137.6143816666674,
+     "cpu_ms_per_step": 50.13036500000172,
+     "calls_per_step": 278.0
+    },
+    {
+     "name": "aten::to",
+     "device_ms_per_step": 115.11863866667217,
+     "cpu_ms_per_step": 771.8771456666619,
+     "calls_per_step": 892.0
+    }
+   ]
+  },
+  "w4a4": {
+   "n_leaf_modules": 728,
+   "total_device_ms_per_step": 1651.9877193333332,
+   "category_ms_per_step": {
+    "quant_linear": 853.0019703333287,
+    "backbone_linear_other": 422.73883166666576,
+    "backbone_norm_act": 313.5435053333397,
+    "encoder_leaf": 135.7692300000018,
+    "decoder_leaf": 636.0646549999992,
+    "other_leaf": 0.0,
+    "unattributed": 0.0
+   },
+   "category_share": {
+    "quant_linear": 0.5163488568047959,
+    "backbone_linear_other": 0.255897078845879,
+    "backbone_norm_act": 0.18979772165610984,
+    "encoder_leaf": 0.08218537487360504,
+    "decoder_leaf": 0.38502989311366426,
+    "other_leaf": 0.0,
+    "unattributed": 0.0
+   },
+   "top_ops": [
+    {
+     "name": "aten::linear",
+     "device_ms_per_step": 1532.8081116666572,
+     "cpu_ms_per_step": 594.2606546666683,
+     "calls_per_step": 525.0
+    },
+    {
+     "name": "PythonSubclass",
+     "device_ms_per_step": 450.43158133332844,
+     "cpu_ms_per_step": 366.27962666666525,
+     "calls_per_step": 374.0
+    },
+    {
+     "name": "aten::addmm",
+     "device_ms_per_step": 414.3804846666673,
+     "cpu_ms_per_step": 31.69849633333364,
+     "calls_per_step": 136.0
+    },
+    {
+     "name": "aten::add",
+     "device_ms_per_step": 342.6505976666654,
+     "cpu_ms_per_step": 86.82513266666778,
+     "calls_per_step": 633.0
+    },
+    {
+     "name": "Command Buffer Full",
+     "device_ms_per_step": 312.0837780000026,
+     "cpu_ms_per_step": 504.047777999997,
+     "calls_per_step": 1070.3333333333333
+    },
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x256_8x4_tn_align1>(cutlass_80_simt_sgemm_1",
+     "device_ms_per_step": 293.12566133333297,
+     "cpu_ms_per_step": 0.0,
+     "calls_per_step": 39.0
+    },
+    {
+     "name": "aten::roll",
+     "device_ms_per_step": 216.92354633333323,
+     "cpu_ms_per_step": 57.061746333334106,
+     "calls_per_step": 240.0
+    },
+    {
+     "name": "cudaLaunchKernel",
+     "device_ms_per_step": 214.6292050000034,
+     "cpu_ms_per_step": 450.3771963333331,
+     "calls_per_step": 3629.0
+    },
+    {
+     "name": "aten::copy_",
+     "device_ms_per_step": 210.7595609999917,
+     "cpu_ms_per_step": 603.8130706666619,
+     "calls_per_step": 1073.0
+    },
+    {
+     "name": "aten::layer_norm",
+     "device_ms_per_step": 195.10409700000324,
+     "cpu_ms_per_step": 36.36967633333447,
+     "calls_per_step": 215.0
+    },
+    {
+     "name": "aten::mul",
+     "device_ms_per_step": 164.04166033334013,
+     "cpu_ms_per_step": 71.95162999999906,
+     "calls_per_step": 506.0
+    },
+    {
+     "name": "aten::scaled_dot_product_attention",
+     "device_ms_per_step": 160.16686633333228,
+     "cpu_ms_per_step": 26.08190800000052,
+     "calls_per_step": 80.0
+    },
+    {
+     "name": "aten::matmul",
+     "device_ms_per_step": 151.57734200000064,
+     "cpu_ms_per_step": 2.9866396666670396,
+     "calls_per_step": 30.0
+    },
+    {
+     "name": "aten::abs",
+     "device_ms_per_step": 141.4462626666708,
+     "cpu_ms_per_step": 52.22807200000145,
+     "calls_per_step": 410.0
+    },
+    {
+     "name": "aten::mm",
+     "device_ms_per_step": 138.3650040000002,
+     "cpu_ms_per_step": 2.4393876666661916,
+     "calls_per_step": 30.0
+    }
+   ]
+  }
+ }
+}

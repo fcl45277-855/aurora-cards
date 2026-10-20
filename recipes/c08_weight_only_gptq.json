@@ -1,0 +1,13 @@
+{
+ "name": "c08_weight_only_gptq",
+ "layers": "q0",
+ "rotation": {
+  "block": "full",
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "bf16"
+}

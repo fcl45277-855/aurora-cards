@@ -1,0 +1,6 @@
+{
+ "name": "input_b16_init",
+ "kind": "fp32",
+ "input_bits": 16,
+ "mode": "init"
+}

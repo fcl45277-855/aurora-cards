@@ -1,0 +1,12 @@
+{
+ "name": "a01_all_rtn",
+ "layers": "all314",
+ "rotation": {
+  "block": "full",
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "fp32"
+ }
+}

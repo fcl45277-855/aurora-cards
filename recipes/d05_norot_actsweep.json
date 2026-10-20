@@ -1,0 +1,23 @@
+{
+ "name": "d05_norot_actsweep",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "fp32",
+  "scale_search": [
+   1.0,
+   1.5
+  ]
+ },
+ "act_scale_search": [
+  0.75,
+  0.875,
+  1.0,
+  1.125,
+  1.25,
+  1.5
+ ]
+}

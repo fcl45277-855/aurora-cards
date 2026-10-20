@@ -1,0 +1,21 @@
+{
+ "name": "r04_svdq_a08_r16",
+ "layers": "q0",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 16
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ]
+}

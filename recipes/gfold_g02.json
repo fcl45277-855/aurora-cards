@@ -1,0 +1,21 @@
+{
+ "name": "gfold_g02",
+ "layers": "q0:exc=ln_modulation,time_mlp,_embed,level_decoder.layers.0.0.to_q",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ]
+}

@@ -1,0 +1,15 @@
+{
+ "name": "d03_norot_gptq_act46",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ]
+}

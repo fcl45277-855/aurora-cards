@@ -1,0 +1,12 @@
+{
+ "name": "d06_t128",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "fp8_tile128"
+}

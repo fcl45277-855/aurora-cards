@@ -1,0 +1,34 @@
+{
+ "name": "f_both_mx",
+ "layers": "all314:exc=ln_modulation,time_mlp,_embed,level_decoder.layers.0.0.to_q,level_agg.layers.0.0.to_q",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "act": "mxfp8",
+ "kv_split": [
+  {
+   "pattern": "level_decoder.layers.0.0.to_kv",
+   "quant_rows": "V",
+   "alpha": 1.0
+  },
+  {
+   "pattern": "level_agg.layers.0.0.to_kv",
+   "quant_rows": "V",
+   "alpha": 1.0
+  }
+ ]
+}

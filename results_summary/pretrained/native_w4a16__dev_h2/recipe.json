@@ -1,0 +1,5 @@
+{
+ "name": "native_w4a16",
+ "kind": "native_torchao_w4a16",
+ "layers": "q0:inc=backbone"
+}

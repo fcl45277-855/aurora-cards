@@ -1,0 +1,12 @@
+{
+ "name": "q0_sim",
+ "layers": "q0",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ }
+}

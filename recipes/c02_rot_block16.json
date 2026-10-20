@@ -1,0 +1,12 @@
+{
+ "name": "c02_rot_block16",
+ "layers": "q0",
+ "rotation": {
+  "block": 16,
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "fp32"
+ }
+}

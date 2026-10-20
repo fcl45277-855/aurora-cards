@@ -1,0 +1,31 @@
+{
+ "name": "t3_g02_posemb_bf16",
+ "layers": "q0",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "act_overrides": [
+  [
+   "pos_embed",
+   "bf16"
+  ],
+  [
+   "absolute_time_embed",
+   "bf16"
+  ]
+ ]
+}

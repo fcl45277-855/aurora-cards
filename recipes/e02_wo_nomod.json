@@ -1,0 +1,12 @@
+{
+ "name": "e02_wo_nomod",
+ "layers": "q0:exc=ln_modulation",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "fp32"
+ },
+ "act": "bf16"
+}

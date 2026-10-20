@@ -1,0 +1,19 @@
+{
+ "name": "s_benc0",
+ "layers": "q0",
+ "rotation": {
+  "block": "full",
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "bf16",
+ "act_overrides": [
+  [
+   "backbone.encoder_layers.0.",
+   "nvfp4"
+  ]
+ ]
+}

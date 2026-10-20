@@ -1,0 +1,12 @@
+{
+ "name": "d06_fold",
+ "layers": "q0:exc=ln_modulation,time_mlp,_embed,level_decoder.layers.0.0.to_q",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "mxfp8"
+}

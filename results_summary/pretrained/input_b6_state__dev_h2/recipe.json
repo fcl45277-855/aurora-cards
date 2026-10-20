@@ -1,0 +1,6 @@
+{
+ "name": "input_b6_state",
+ "kind": "fp32",
+ "input_bits": 6,
+ "mode": "state"
+}

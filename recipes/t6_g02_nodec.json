@@ -1,0 +1,21 @@
+{
+ "name": "t6_g02_nodec",
+ "layers": "q0:exc=decoder.level_decoder,decoder.atmos_levels_embed",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "name": "j02_stamp_haar_bf16",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "lowpass": {
+  "pool": 4,
+  "mode": "haar",
+  "patterns": [
+   "mlp.fc1",
+   "mlp.fc2"
+  ],
+  "attn_window": [
+   6,
+   12
+  ],
+  "attn_pool": 2
+ }
+}

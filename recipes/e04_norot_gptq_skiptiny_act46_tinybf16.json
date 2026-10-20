@@ -1,0 +1,44 @@
+{
+ "name": "e04_norot_gptq_skiptiny_act46_tinybf16",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32",
+  "gptq_skip": [
+   "ln_modulation",
+   "time_mlp",
+   "lead_time_embed",
+   "absolute_time_embed",
+   "atmos_levels_embed"
+  ]
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "act_overrides": [
+  [
+   "ln_modulation",
+   "bf16"
+  ],
+  [
+   "time_mlp",
+   "bf16"
+  ],
+  [
+   "lead_time_embed",
+   "bf16"
+  ],
+  [
+   "absolute_time_embed",
+   "bf16"
+  ],
+  [
+   "atmos_levels_embed",
+   "bf16"
+  ]
+ ]
+}

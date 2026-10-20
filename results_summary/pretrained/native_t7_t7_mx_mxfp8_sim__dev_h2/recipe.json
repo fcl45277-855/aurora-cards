@@ -1,0 +1,6 @@
+{
+ "name": "native_t7_t7_mx_mxfp8_sim",
+ "kind": "native_t7",
+ "recipe": "t7_mx",
+ "act": "mxfp8_sim"
+}

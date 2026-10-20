@@ -1,0 +1,577 @@
+{
+ "recipe": {
+  "kind": "sim",
+  "layers": "all314:exc=decoder.level_decoder,decoder.atmos_levels_embed,ln_modulation,time_mlp,_embed,encoder.level_agg",
+  "surface_fp32": false,
+  "precision": "autocast",
+  "rotation": {
+   "block": null,
+   "dtype": "bf16"
+  },
+  "weight": {
+   "method": "gptq",
+   "percdamp": 0.01,
+   "scale_mult": 1.0,
+   "source": "fp32"
+  },
+  "act": "mxfp8",
+  "smooth": {
+   "alpha": 0.8
+  },
+  "act_scale_search": [
+   1.0,
+   1.5
+  ],
+  "act_overrides": [],
+  "calib": {
+   "split": "calib",
+   "steps": 2,
+   "budget_gib": 2.5
+  },
+  "name": "t7mx_all314_noenc",
+  "low_rank": {
+   "rank": 32
+  }
+ },
+ "model": "small",
+ "ckpt": "aurora-0.25-small-pretrained.ckpt",
+ "precision": "autocast",
+ "layers": {
+  "encoder.surf_mlp.net.0": {
+   "gptq_loss": 29609.720703125,
+   "damp": 218.9042205810547,
+   "proxy_gptq": 39154.6484375,
+   "proxy_rtn": 1187988.375
+  },
+  "encoder.surf_mlp.net.2": {
+   "gptq_loss": 25706.71875,
+   "damp": 69.80290985107422,
+   "proxy_gptq": 39237.19921875,
+   "proxy_rtn": 543982.0625
+  },
+  "backbone.encoder_layers.0.blocks.0.attn.qkv": {
+   "gptq_loss": 3392316.0,
+   "damp": 4028.529296875,
+   "proxy_gptq": 5988865.5,
+   "proxy_rtn": 36251544.0
+  },
+  "backbone.encoder_layers.0.blocks.0.attn.proj": {
+   "gptq_loss": 924687.875,
+   "damp": 2024.1126708984375,
+   "proxy_gptq": 1672172.5,
+   "proxy_rtn": 10395480.0
+  },
+  "backbone.encoder_layers.0.blocks.0.mlp.fc1": {
+   "gptq_loss": 2645257.25,
+   "damp": 1557.616943359375,
+   "proxy_gptq": 4867218.0,
+   "proxy_rtn": 18899952.0
+  },
+  "backbone.encoder_layers.0.blocks.0.mlp.fc2": {
+   "gptq_loss": 420505.25,
+   "damp": 523.478515625,
+   "proxy_gptq": 755050.8125,
+   "proxy_rtn": 4996688.0
+  },
+  "backbone.encoder_layers.0.blocks.1.attn.qkv": {
+   "gptq_loss": 6055577.0,
+   "damp": 1949.450927734375,
+   "proxy_gptq": 11260968.0,
+   "proxy_rtn": 37293308.0
+  },
+  "backbone.encoder_layers.0.blocks.1.attn.proj": {
+   "gptq_loss": 561894.375,
+   "damp": 1310.4281005859375,
+   "proxy_gptq": 1002936.125,
+   "proxy_rtn": 5915252.0
+  },
+  "backbone.encoder_layers.0.blocks.1.mlp.fc1": {
+   "gptq_loss": 3744131.0,
+   "damp": 1572.978759765625,
+   "proxy_gptq": 6995281.0,
+   "proxy_rtn": 23268622.0
+  },
+  "backbone.encoder_layers.0.blocks.1.mlp.fc2": {
+   "gptq_loss": 299747.5,
+   "damp": 294.24066162109375,
+   "proxy_gptq": 562137.8125,
+   "proxy_rtn": 2273866.0
+  },
+  "backbone.encoder_layers.0.downsample.reduction": {
+   "gptq_loss": 34483.12890625,
+   "damp": 190.94325256347656,
+   "proxy_gptq": 57620.7421875,
+   "proxy_rtn": 615953.0
+  },
+  "backbone.encoder_layers.1.blocks.0.attn.qkv": {
+   "gptq_loss": 628258.6875,
+   "damp": 233.64613342285156,
+   "proxy_gptq": 1128126.375,
+   "proxy_rtn": 5495399.0
+  },
+  "backbone.encoder_layers.1.blocks.0.attn.proj": {
+   "gptq_loss": 700453.0,
+   "damp": 449.4006042480469,
+   "proxy_gptq": 1256990.0,
+   "proxy_rtn": 6743815.0
+  },
+  "backbone.encoder_layers.1.blocks.0.mlp.fc1": {
+   "gptq_loss": 641572.875,
+   "damp": 185.289794921875,
+   "proxy_gptq": 1187763.375,
+   "proxy_rtn": 4266454.5
+  },
+  "backbone.encoder_layers.1.blocks.0.mlp.fc2": {
+   "gptq_loss": 294223.09375,
+   "damp": 54.97570037841797,
+   "proxy_gptq": 552835.9375,
+   "proxy_rtn": 2137874.5
+  },
+  "backbone.encoder_layers.1.blocks.1.attn.qkv": {
+   "gptq_loss": 1077052.75,
+   "damp": 194.41726684570312,
+   "proxy_gptq": 2050507.75,
+   "proxy_rtn": 5477109.5
+  },
+  "backbone.encoder_layers.1.blocks.1.attn.proj": {
+   "gptq_loss": 613132.0,
+   "damp": 308.07952880859375,
+   "proxy_gptq": 1142027.75,
+   "proxy_rtn": 4626175.0
+  },
+  "backbone.encoder_layers.1.blocks.1.mlp.fc1": {
+   "gptq_loss": 1033211.5,
+   "damp": 183.45339965820312,
+   "proxy_gptq": 1981141.375,
+   "proxy_rtn": 4739622.0
+  },
+  "backbone.encoder_layers.1.blocks.1.mlp.fc2": {
+   "gptq_loss": 314873.25,
+   "damp": 48.70363235473633,
+   "proxy_gptq": 599546.875,
+   "proxy_rtn": 1927518.5
+  },
+  "backbone.encoder_layers.1.blocks.2.attn.qkv": {
+   "gptq_loss": 1317740.5,
+   "damp": 199.6874237060547,
+   "proxy_gptq": 2537216.5,
+   "proxy_rtn": 5648257.5
+  },
+  "backbone.encoder_layers.1.blocks.2.attn.proj": {
+   "gptq_loss": 802270.875,
+   "damp": 286.45172119140625,
+   "proxy_gptq": 1524932.125,
+   "proxy_rtn": 4472349.0
+  },
+  "backbone.encoder_layers.1.blocks.2.mlp.fc1": {
+   "gptq_loss": 1287539.0,
+   "damp": 192.07557678222656,
+   "proxy_gptq": 2486578.5,
+   "proxy_rtn": 5207558.0
+  },
+  "backbone.encoder_layers.1.blocks.2.mlp.fc2": {
+   "gptq_loss": 391160.875,
+   "damp": 46.85855484008789,
+   "proxy_gptq": 749134.0625,
+   "proxy_rtn": 2118874.75
+  },
+  "backbone.encoder_layers.1.blocks.3.attn.qkv": {
+   "gptq_loss": 1536158.25,
+   "damp": 209.11485290527344,
+   "proxy_gptq": 2972397.0,
+   "proxy_rtn": 6073560.0
+  },
+  "backbone.encoder_layers.1.blocks.3.attn.proj": {
+   "gptq_loss": 1073678.5,
+   "damp": 306.0198974609375,
+   "proxy_gptq": 2061662.75,
+   "proxy_rtn": 5641326.0
+  },
+  "backbone.encoder_layers.1.blocks.3.mlp.fc1": {
+   "gptq_loss": 1570558.25,
+   "damp": 215.75857543945312,
+   "proxy_gptq": 3041395.25,
+   "proxy_rtn": 6018048.5
+  },
+  "backbone.encoder_layers.1.blocks.3.mlp.fc2": {
+   "gptq_loss": 428440.25,
+   "damp": 42.774139404296875,
+   "proxy_gptq": 822919.375,
+   "proxy_rtn": 2200278.0
+  },
+  "backbone.encoder_layers.1.blocks.4.attn.qkv": {
+   "gptq_loss": 1945032.125,
+   "damp": 227.83355712890625,
+   "proxy_gptq": 3773692.25,
+   "proxy_rtn": 7175025.0
+  },
+  "backbone.encoder_layers.1.blocks.4.attn.proj": {
+   "gptq_loss": 1189096.5,
+   "damp": 290.5811767578125,
+   "proxy_gptq": 2273567.75,
+   "proxy_rtn": 6749935.5
+  },
+  "backbone.encoder_layers.1.blocks.4.mlp.fc1": {
+   "gptq_loss": 1927270.25,
+   "damp": 242.61761474609375,
+   "proxy_gptq": 3735994.25,
+   "proxy_rtn": 7266921.5
+  },
+  "backbone.encoder_layers.1.blocks.4.mlp.fc2": {
+   "gptq_loss": 633873.9375,
+   "damp": 44.55390548706055,
+   "proxy_gptq": 1220535.25,
+   "proxy_rtn": 2917877.0
+  },
+  "backbone.encoder_layers.1.blocks.5.attn.qkv": {
+   "gptq_loss": 2374421.75,
+   "damp": 242.3657684326172,
+   "proxy_gptq": 4612950.5,
+   "proxy_rtn": 8351060.0
+  },
+  "backbone.encoder_layers.1.blocks.5.attn.proj": {
+   "gptq_loss": 1793817.0,
+   "damp": 299.1627197265625,
+   "proxy_gptq": 3443032.5,
+   "proxy_rtn": 9631965.0
+  },
+  "backbone.encoder_layers.1.blocks.5.mlp.fc1": {
+   "gptq_loss": 1989286.5,
+   "damp": 238.1485137939453,
+   "proxy_gptq": 3858833.5,
+   "proxy_rtn": 7310553.0
+  },
+  "backbone.encoder_layers.1.blocks.5.mlp.fc2": {
+   "gptq_loss": 634690.625,
+   "damp": 53.859397888183594,
+   "proxy_gptq": 1213697.875,
+   "proxy_rtn": 3512040.75
+  },
+  "backbone.encoder_layers.1.downsample.reduction": {
+   "gptq_loss": 10033.638671875,
+   "damp": 28.015289306640625,
+   "proxy_gptq": 18593.00390625,
+   "proxy_rtn": 75941.515625
+  },
+  "backbone.encoder_layers.2.blocks.0.attn.qkv": {
+   "gptq_loss": 514298.75,
+   "damp": 57.34098434448242,
+   "proxy_gptq": 971066.0,
+   "proxy_rtn": 2728325.25
+  },
+  "backbone.encoder_layers.2.blocks.0.attn.proj": {
+   "gptq_loss": 878154.0625,
+   "damp": 65.92375946044922,
+   "proxy_gptq": 1693885.375,
+   "proxy_rtn": 3899906.0
+  },
+  "backbone.encoder_layers.2.blocks.0.mlp.fc1": {
+   "gptq_loss": 610143.25,
+   "damp": 57.85737991333008,
+   "proxy_gptq": 1161536.125,
+   "proxy_rtn": 3023199.0
+  },
+  "backbone.encoder_layers.2.blocks.0.mlp.fc2": {
+   "gptq_loss": 551153.6875,
+   "damp": 14.197672843933105,
+   "proxy_gptq": 1063667.5,
+   "proxy_rtn": 2661096.0
+  },
+  "backbone.encoder_layers.2.blocks.1.attn.qkv": {
+   "gptq_loss": 635866.75,
+   "damp": 56.04233169555664,
+   "proxy_gptq": 1221510.875,
+   "proxy_rtn": 2825788.0
+  },
+  "backbone.encoder_layers.2.blocks.1.attn.proj": {
+   "gptq_loss": 956682.375,
+   "damp": 78.763427734375,
+   "proxy_gptq": 1833822.5,
+   "proxy_rtn": 4855810.0
+  },
+  "backbone.encoder_layers.2.blocks.1.mlp.fc1": {
+   "gptq_loss": 797559.875,
+   "damp": 57.82082748413086,
+   "proxy_gptq": 1535156.5,
+   "proxy_rtn": 3460484.0
+  },
+  "backbone.encoder_layers.2.blocks.1.mlp.fc2": {
+   "gptq_loss": 592416.5625,
+   "damp": 12.312369346618652,
+   "proxy_gptq": 1146861.25,
+   "proxy_rtn": 2566851.25
+  },
+  "backbone.decoder_layers.0.blocks.0.attn.qkv": {
+   "gptq_loss": 627147.1875,
+   "damp": 55.36323165893555,
+   "proxy_gptq": 1211156.5,
+   "proxy_rtn": 2572551.0
+  },
+  "backbone.decoder_layers.0.blocks.0.attn.proj": {
+   "gptq_loss": 735093.3125,
+   "damp": 74.26329040527344,
+   "proxy_gptq": 1397673.25,
+   "proxy_rtn": 4097848.25
+  },
+  "backbone.decoder_layers.0.blocks.0.mlp.fc1": {
+   "gptq_loss": 741859.75,
+   "damp": 58.64988327026367,
+   "proxy_gptq": 1435530.5,
+   "proxy_rtn": 3011098.75
+  },
+  "backbone.decoder_layers.0.blocks.0.mlp.fc2": {
+   "gptq_loss": 501451.0,
+   "damp": 12.272955894470215,
+   "proxy_gptq": 965229.75,
+   "proxy_rtn": 2603794.0
+  },
+  "backbone.decoder_layers.0.blocks.1.attn.qkv": {
+   "gptq_loss": 1059787.5,
+   "damp": 58.318973541259766,
+   "proxy_gptq": 2057135.5,
+   "proxy_rtn": 4087553.75
+  },
+  "backbone.decoder_layers.0.blocks.1.attn.proj": {
+   "gptq_loss": 1266170.25,
+   "damp": 76.72576904296875,
+   "proxy_gptq": 2401383.75,
+   "proxy_rtn": 7462983.0
+  },
+  "backbone.decoder_layers.0.blocks.1.mlp.fc1": {
+   "gptq_loss": 1083094.75,
+   "damp": 58.733699798583984,
+   "proxy_gptq": 2102561.5,
+   "proxy_rtn": 4211159.5
+  },
+  "backbone.decoder_layers.0.blocks.1.mlp.fc2": {
+   "gptq_loss": 426904.9375,
+   "damp": 11.11447525024414,
+   "proxy_gptq": 825846.625,
+   "proxy_rtn": 1963362.0
+  },
+  "backbone.decoder_layers.0.upsample.lin1": {
+   "gptq_loss": 836573.5625,
+   "damp": 68.7452163696289,
+   "proxy_gptq": 1622118.0,
+   "proxy_rtn": 3419635.0
+  },
+  "backbone.decoder_layers.0.upsample.lin2": {
+   "gptq_loss": 55091.5390625,
+   "damp": 259.1321105957031,
+   "proxy_gptq": 102711.96875,
+   "proxy_rtn": 451999.0
+  },
+  "backbone.decoder_layers.1.blocks.0.attn.qkv": {
+   "gptq_loss": 497890.0,
+   "damp": 270.727783203125,
+   "proxy_gptq": 923338.625,
+   "proxy_rtn": 3172105.0
+  },
+  "backbone.decoder_layers.1.blocks.0.attn.proj": {
+   "gptq_loss": 399979.1875,
+   "damp": 279.7267761230469,
+   "proxy_gptq": 743239.0,
+   "proxy_rtn": 2818615.0
+  },
+  "backbone.decoder_layers.1.blocks.0.mlp.fc1": {
+   "gptq_loss": 831291.9375,
+   "damp": 275.7635192871094,
+   "proxy_gptq": 1568025.125,
+   "proxy_rtn": 4571063.0
+  },
+  "backbone.decoder_layers.1.blocks.0.mlp.fc2": {
+   "gptq_loss": 275806.4375,
+   "damp": 58.93246841430664,
+   "proxy_gptq": 524707.1875,
+   "proxy_rtn": 1753525.0
+  },
+  "backbone.decoder_layers.1.blocks.1.attn.qkv": {
+   "gptq_loss": 849371.625,
+   "damp": 264.84619140625,
+   "proxy_gptq": 1625002.5,
+   "proxy_rtn": 4111684.75
+  },
+  "backbone.decoder_layers.1.blocks.1.attn.proj": {
+   "gptq_loss": 426945.75,
+   "damp": 262.449951171875,
+   "proxy_gptq": 801337.4375,
+   "proxy_rtn": 2538961.0
+  },
+  "backbone.decoder_layers.1.blocks.1.mlp.fc1": {
+   "gptq_loss": 1177854.125,
+   "damp": 268.2281799316406,
+   "proxy_gptq": 2262720.75,
+   "proxy_rtn": 5319918.5
+  },
+  "backbone.decoder_layers.1.blocks.1.mlp.fc2": {
+   "gptq_loss": 282026.9375,
+   "damp": 52.639930725097656,
+   "proxy_gptq": 539467.5625,
+   "proxy_rtn": 1578829.375
+  },
+  "backbone.decoder_layers.1.blocks.2.attn.qkv": {
+   "gptq_loss": 1146339.25,
+   "damp": 264.9664001464844,
+   "proxy_gptq": 2209471.25,
+   "proxy_rtn": 4940409.5
+  },
+  "backbone.decoder_layers.1.blocks.2.attn.proj": {
+   "gptq_loss": 627255.6875,
+   "damp": 295.0104675292969,
+   "proxy_gptq": 1181545.0,
+   "proxy_rtn": 4070643.75
+  },
+  "backbone.decoder_layers.1.blocks.2.mlp.fc1": {
+   "gptq_loss": 1352209.75,
+   "damp": 271.1730651855469,
+   "proxy_gptq": 2610266.5,
+   "proxy_rtn": 5652636.5
+  },
+  "backbone.decoder_layers.1.blocks.2.mlp.fc2": {
+   "gptq_loss": 348871.6875,
+   "damp": 56.21661376953125,
+   "proxy_gptq": 665095.1875,
+   "proxy_rtn": 2056757.75
+  },
+  "backbone.decoder_layers.1.blocks.3.attn.qkv": {
+   "gptq_loss": 1335077.625,
+   "damp": 265.5137939453125,
+   "proxy_gptq": 2580804.0,
+   "proxy_rtn": 5505827.5
+  },
+  "backbone.decoder_layers.1.blocks.3.attn.proj": {
+   "gptq_loss": 1047524.625,
+   "damp": 330.11834716796875,
+   "proxy_gptq": 1998199.75,
+   "proxy_rtn": 5791875.0
+  },
+  "backbone.decoder_layers.1.blocks.3.mlp.fc1": {
+   "gptq_loss": 1464872.75,
+   "damp": 267.5568542480469,
+   "proxy_gptq": 2831679.5,
+   "proxy_rtn": 5931809.0
+  },
+  "backbone.decoder_layers.1.blocks.3.mlp.fc2": {
+   "gptq_loss": 348029.375,
+   "damp": 57.65891647338867,
+   "proxy_gptq": 664122.875,
+   "proxy_rtn": 2054870.5
+  },
+  "backbone.decoder_layers.1.blocks.4.attn.qkv": {
+   "gptq_loss": 1593866.5,
+   "damp": 274.0201110839844,
+   "proxy_gptq": 3079778.0,
+   "proxy_rtn": 6689969.0
+  },
+  "backbone.decoder_layers.1.blocks.4.attn.proj": {
+   "gptq_loss": 1133790.75,
+   "damp": 380.9595947265625,
+   "proxy_gptq": 2116102.0,
+   "proxy_rtn": 8159530.0
+  },
+  "backbone.decoder_layers.1.blocks.4.mlp.fc1": {
+   "gptq_loss": 1585354.5,
+   "damp": 266.42059326171875,
+   "proxy_gptq": 3058128.25,
+   "proxy_rtn": 6918950.0
+  },
+  "backbone.decoder_layers.1.blocks.4.mlp.fc2": {
+   "gptq_loss": 396877.625,
+   "damp": 57.55280685424805,
+   "proxy_gptq": 752883.0625,
+   "proxy_rtn": 2583880.0
+  },
+  "backbone.decoder_layers.1.blocks.5.attn.qkv": {
+   "gptq_loss": 1907169.5,
+   "damp": 286.0152893066406,
+   "proxy_gptq": 3675258.75,
+   "proxy_rtn": 8687902.0
+  },
+  "backbone.decoder_layers.1.blocks.5.attn.proj": {
+   "gptq_loss": 1553425.25,
+   "damp": 425.10205078125,
+   "proxy_gptq": 2933015.5,
+   "proxy_rtn": 10818895.0
+  },
+  "backbone.decoder_layers.1.blocks.5.mlp.fc1": {
+   "gptq_loss": 1724908.75,
+   "damp": 279.55438232421875,
+   "proxy_gptq": 3310808.5,
+   "proxy_rtn": 8602976.0
+  },
+  "backbone.decoder_layers.1.blocks.5.mlp.fc2": {
+   "gptq_loss": 363273.09375,
+   "damp": 57.69575119018555,
+   "proxy_gptq": 683751.8125,
+   "proxy_rtn": 2738708.75
+  },
+  "backbone.decoder_layers.1.upsample.lin1": {
+   "gptq_loss": 1365484.125,
+   "damp": 293.6700744628906,
+   "proxy_gptq": 2619222.0,
+   "proxy_rtn": 6846144.0
+  },
+  "backbone.decoder_layers.1.upsample.lin2": {
+   "gptq_loss": 1050469.625,
+   "damp": 2401.727294921875,
+   "proxy_gptq": 1872045.75,
+   "proxy_rtn": 13040708.0
+  },
+  "backbone.decoder_layers.2.blocks.0.attn.qkv": {
+   "gptq_loss": 47844644.0,
+   "damp": 9511.494140625,
+   "proxy_gptq": 82600032.0,
+   "proxy_rtn": 747504128.0
+  },
+  "backbone.decoder_layers.2.blocks.0.attn.proj": {
+   "gptq_loss": 2383047.5,
+   "damp": 6846.2744140625,
+   "proxy_gptq": 3923074.75,
+   "proxy_rtn": 54752176.0
+  },
+  "backbone.decoder_layers.2.blocks.0.mlp.fc1": {
+   "gptq_loss": 8410288.0,
+   "damp": 2616.225830078125,
+   "proxy_gptq": 14893321.0,
+   "proxy_rtn": 107894720.0
+  },
+  "backbone.decoder_layers.2.blocks.0.mlp.fc2": {
+   "gptq_loss": 562355.3125,
+   "damp": 326.2408447265625,
+   "proxy_gptq": 1050961.0,
+   "proxy_rtn": 4272302.5
+  },
+  "backbone.decoder_layers.2.blocks.1.attn.qkv": {
+   "gptq_loss": 22223108.0,
+   "damp": 2596.470947265625,
+   "proxy_gptq": 40327616.0,
+   "proxy_rtn": 204824288.0
+  },
+  "backbone.decoder_layers.2.blocks.1.attn.proj": {
+   "gptq_loss": 3942450.5,
+   "damp": 2180.2470703125,
+   "proxy_gptq": 7028566.5,
+   "proxy_rtn": 39438304.0
+  },
+  "backbone.decoder_layers.2.blocks.1.mlp.fc1": {
+   "gptq_loss": 8640293.0,
+   "damp": 1960.9112548828125,
+   "proxy_gptq": 15838734.0,
+   "proxy_rtn": 75997512.0
+  },
+  "backbone.decoder_layers.2.blocks.1.mlp.fc2": {
+   "gptq_loss": 608263.0,
+   "damp": 320.2962951660156,
+   "proxy_gptq": 1140743.25,
+   "proxy_rtn": 4205666.0
+  }
+ },
+ "proxy_total": {
+  "gptq": 322868632.0625,
+  "rtn": 1703177908.578125,
+  "ratio": 0.18956835362668747
+ },
+ "build_seconds": 77.36482381820679,
+ "perceiver_chunk": 16384,
+ "mem_frac": 0.57
+}

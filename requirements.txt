@@ -1,0 +1,21 @@
+# Versions used for the paper (Python 3.12, CUDA 13.0, NVIDIA RTX 5090).
+# torch: install the build matching your CUDA from https://pytorch.org (the paper used 2.12.1+cu130); the CPU build
+# is enough for tests/ and examples 1-2.
+torch==2.12.1
+torchao==0.18.0
+numpy==2.5.0
+scipy==1.18.0
+xarray==2026.4.0
+netCDF4==1.7.4
+einops==0.8.2
+timm==1.0.27
+matplotlib==3.11.0
+pyshtools              # spherical-harmonic spectra for the PhysMetrics.Weather metrics
+cdsapi                 # ERA5 download
+huggingface_hub        # checkpoint download
+pytest
+# Aurora: the paper used the microsoft/aurora source of July 2026 (docs/aurora_package_md5.txt lists the file checksums;
+# scripts/check_env.py compares them with your installation)
+microsoft-aurora
+# native NVFP4 W4A4 kernels (scripts/native_*.py only; Blackwell GPU):
+#   pip install mslk==1.2.0 --no-deps --index-url https://download.pytorch.org/whl/cu130

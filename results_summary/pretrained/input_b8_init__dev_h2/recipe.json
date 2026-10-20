@@ -1,0 +1,6 @@
+{
+ "name": "input_b8_init",
+ "kind": "fp32",
+ "input_bits": 8,
+ "mode": "init"
+}

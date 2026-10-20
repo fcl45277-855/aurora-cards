@@ -1,0 +1,12 @@
+{
+ "name": "b_attn_de2",
+ "layers": "all314:inc=backbone.decoder_layers.2.&.attn.",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ }
+}

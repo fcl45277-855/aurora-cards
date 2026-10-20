@@ -1,0 +1,28 @@
+{
+ "name": "example_t7_mx_calib1",
+ "layers": "q0:exc=decoder.level_decoder,decoder.atmos_levels_embed,ln_modulation,time_mlp,_embed",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "act": "mxfp8",
+ "calib": {
+  "split": "calib1",
+  "steps": 2,
+  "budget_gib": 2.5
+ },
+ "_note": "t7_mx calibrated on one January day (2024-01-04) instead of the paper's week, for examples/03_one_date.sh"
+}

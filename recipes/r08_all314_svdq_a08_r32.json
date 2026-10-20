@@ -1,0 +1,21 @@
+{
+ "name": "r08_all314_svdq_a08_r32",
+ "layers": "all314",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ]
+}

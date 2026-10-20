@@ -1,0 +1,18 @@
+{
+ "name": "f01_smooth05_norot_gptq_act46",
+ "layers": "q0",
+ "smooth": {
+  "alpha": 0.5
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ]
+}

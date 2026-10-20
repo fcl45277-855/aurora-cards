@@ -1,0 +1,26 @@
+{
+ "name": "h04_n1_pool4_rtn46",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "fp32",
+  "scale_search": [
+   1.0,
+   1.5
+  ]
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "lowpass": {
+  "pool": 4,
+  "patterns": [
+   "mlp.fc1",
+   "mlp.fc2"
+  ]
+ }
+}

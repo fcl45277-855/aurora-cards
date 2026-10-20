@@ -1,0 +1,12 @@
+{
+ "name": "d06_tok",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "fp8_token"
+}

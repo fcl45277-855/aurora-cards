@@ -1,0 +1,13 @@
+{
+ "name": "c07_weight_only_rtn",
+ "layers": "q0",
+ "rotation": {
+  "block": "full",
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "fp32"
+ },
+ "act": "bf16"
+}

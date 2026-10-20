@@ -1,0 +1,16 @@
+{
+ "name": "alloc_de2",
+ "layers": "all314:exc=backbone.decoder_layers.2.&.attn.",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ },
+ "_protected": [
+  "de2"
+ ],
+ "_protected_params_M": 6.3
+}

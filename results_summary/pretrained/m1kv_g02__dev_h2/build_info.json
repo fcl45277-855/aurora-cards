@@ -1,0 +1,51 @@
+{
+ "recipe": {
+  "kind": "sim",
+  "layers": "q0:inc=decoder.level_decoder.layers.0.0.to_kv",
+  "surface_fp32": false,
+  "precision": "autocast",
+  "rotation": {
+   "block": null,
+   "dtype": "bf16"
+  },
+  "weight": {
+   "method": "gptq",
+   "percdamp": 0.01,
+   "scale_mult": 1.0,
+   "source": "fp32"
+  },
+  "act": "nvfp4",
+  "smooth": {
+   "alpha": 0.8
+  },
+  "act_scale_search": [
+   1.0,
+   1.5
+  ],
+  "act_overrides": [],
+  "calib": {
+   "split": "calib",
+   "steps": 2,
+   "budget_gib": 2.5
+  },
+  "name": "m1kv_g02",
+  "low_rank": {
+   "rank": 32
+  }
+ },
+ "precision": "autocast",
+ "layers": {
+  "decoder.level_decoder.layers.0.0.to_kv": {
+   "gptq_loss": 13975766.0,
+   "damp": 1293.629638671875,
+   "proxy_gptq": 22418656.0,
+   "proxy_rtn": 224243056.0
+  }
+ },
+ "proxy_total": {
+  "gptq": 22418656.0,
+  "rtn": 224243056.0,
+  "ratio": 0.09997480590881708
+ },
+ "build_seconds": 56.00640606880188
+}

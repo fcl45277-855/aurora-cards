@@ -1,0 +1,13 @@
+{
+ "name": "m1kv_mx_floor",
+ "layers": "q0:inc=decoder.level_decoder.layers.0.0.to_kv",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "none",
+  "source": "bf16"
+ },
+ "act": "mxfp8_floor"
+}

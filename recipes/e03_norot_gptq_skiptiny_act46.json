@@ -1,0 +1,22 @@
+{
+ "name": "e03_norot_gptq_skiptiny_act46",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32",
+  "gptq_skip": [
+   "ln_modulation",
+   "time_mlp",
+   "lead_time_embed",
+   "absolute_time_embed",
+   "atmos_levels_embed"
+  ]
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ]
+}

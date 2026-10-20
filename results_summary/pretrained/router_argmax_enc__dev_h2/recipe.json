@@ -1,0 +1,6 @@
+{
+ "name": "router_argmax_enc",
+ "kind": "fp32",
+ "router_mode": "argmax",
+ "modules": "enc"
+}

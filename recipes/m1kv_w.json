@@ -1,0 +1,13 @@
+{
+ "name": "m1kv_w",
+ "layers": "q0:inc=decoder.level_decoder.layers.0.0.to_kv",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ },
+ "act": "bf16"
+}

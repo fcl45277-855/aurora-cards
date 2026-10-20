@@ -1,0 +1,16 @@
+{
+ "name": "alloc_en1",
+ "layers": "all314:exc=backbone.encoder_layers.1.&.attn.",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ },
+ "_protected": [
+  "en1"
+ ],
+ "_protected_params_M": 41.9
+}

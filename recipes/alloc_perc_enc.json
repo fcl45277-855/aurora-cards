@@ -1,0 +1,16 @@
+{
+ "name": "alloc_perc_enc",
+ "layers": "all314:exc=encoder.level_agg.&.0.0.to_",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ },
+ "_protected": [
+  "perc_enc"
+ ],
+ "_protected_params_M": 1.0
+}

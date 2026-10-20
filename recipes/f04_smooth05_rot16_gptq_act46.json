@@ -1,0 +1,19 @@
+{
+ "name": "f04_smooth05_rot16_gptq_act46",
+ "layers": "q0",
+ "smooth": {
+  "alpha": 0.5
+ },
+ "rotation": {
+  "block": 16,
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ]
+}

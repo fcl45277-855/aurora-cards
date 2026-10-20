@@ -1,0 +1,21 @@
+{
+ "name": "m1g_to_out",
+ "layers": "q0:inc=level_decoder.layers.0.0.to_out",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ }
+}

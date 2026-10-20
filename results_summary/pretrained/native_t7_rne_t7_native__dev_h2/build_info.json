@@ -1,0 +1,33 @@
+{
+ "name": "native_t7_rne_t7_native",
+ "recipe": "rne_t7",
+ "act": "native",
+ "config": "NVFP4DynamicActivationNVFP4WeightConfig",
+ "torchao": "0.18.0",
+ "torch": "2.12.1+cu130",
+ "device": "NVIDIA GeForce RTX 5090",
+ "capability": [
+  12,
+  0
+ ],
+ "sim_build_seconds": 325.98525881767273,
+ "convert_seconds": 0.6382296085357666,
+ "gpu_mem_after_build_gib": 2.3344435691833496,
+ "perceiver_chunk": 16384,
+ "n": 138,
+ "n_quantized": 138,
+ "bytes_before": 1626341376,
+ "bytes_after": 501832232,
+ "mismatch_frac_mean": 0.22410798526328543,
+ "mismatch_frac_max": 0.6810584664344788,
+ "mismatch_max_rel_max": 0.018292682245373726,
+ "note": "fully native W4A4: NVFP4 weights + mslk dynamic NVFP4 activations; smoothing and low rank in BF16",
+ "step_seconds_median": 2.5401077270507812,
+ "step_seconds_all": [
+  2.275327444076538,
+  2.8106493949890137,
+  2.464921236038208,
+  2.5401077270507812,
+  2.57552170753479
+ ]
+}

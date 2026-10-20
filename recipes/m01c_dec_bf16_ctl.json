@@ -1,0 +1,13 @@
+{
+ "name": "m01c_dec_bf16_ctl",
+ "layers": "q0:inc=decoder.level_decoder,decoder.atmos_levels_embed",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "none",
+  "source": "bf16"
+ },
+ "act": "bf16"
+}

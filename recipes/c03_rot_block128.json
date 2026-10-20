@@ -1,0 +1,12 @@
+{
+ "name": "c03_rot_block128",
+ "layers": "q0",
+ "rotation": {
+  "block": 128,
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "fp32"
+ }
+}

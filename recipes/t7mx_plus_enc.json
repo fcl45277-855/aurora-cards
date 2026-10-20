@@ -1,0 +1,22 @@
+{
+ "name": "t7mx_plus_enc",
+ "layers": "recipes/layers_t7_plus_enc.txt",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "act": "mxfp8"
+}

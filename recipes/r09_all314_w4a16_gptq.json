@@ -1,0 +1,13 @@
+{
+ "name": "r09_all314_w4a16_gptq",
+ "layers": "all314",
+ "rotation": {
+  "block": "full",
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "bf16"
+}

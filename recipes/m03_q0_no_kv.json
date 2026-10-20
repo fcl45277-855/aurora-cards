@@ -1,0 +1,12 @@
+{
+ "name": "m03_q0_no_kv",
+ "layers": "q0:exc=level_decoder.layers.0.0.to_kv",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ }
+}

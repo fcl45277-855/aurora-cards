@@ -1,0 +1,6 @@
+{
+ "name": "router_top2_both",
+ "kind": "fp32",
+ "router_mode": "top2",
+ "modules": "both"
+}

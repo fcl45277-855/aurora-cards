@@ -1,0 +1,12 @@
+{
+ "name": "x_kv_only",
+ "layers": "all314:inc=decoder.level_decoder.layers.0.0.to_kv",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "name": "m1enc_kv_V",
+ "layers": "all314:inc=encoder.level_agg.layers.0.0.to_kv",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "none",
+  "source": "bf16"
+ },
+ "kv_split": {
+  "pattern": "level_agg.layers.0.0.to_kv",
+  "quant_rows": "V",
+  "alpha": 1.0
+ }
+}

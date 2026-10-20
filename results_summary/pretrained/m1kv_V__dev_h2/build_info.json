@@ -1,0 +1,38 @@
+{
+ "recipe": {
+  "kind": "sim",
+  "layers": "q0:inc=decoder.level_decoder.layers.0.0.to_kv",
+  "surface_fp32": false,
+  "precision": "autocast",
+  "rotation": {
+   "block": "full",
+   "dtype": "bf16"
+  },
+  "weight": {
+   "method": "none",
+   "percdamp": 0.01,
+   "scale_mult": 1.0,
+   "source": "bf16"
+  },
+  "act": "nvfp4",
+  "smooth": null,
+  "act_scale_search": null,
+  "act_overrides": [],
+  "calib": {
+   "split": "calib",
+   "steps": 2,
+   "budget_gib": 2.5
+  },
+  "name": "m1kv_V",
+  "kv_split": {
+   "pattern": "to_kv",
+   "quant_rows": [
+    1024,
+    2048
+   ],
+   "alpha": 1.0
+  }
+ },
+ "precision": "autocast",
+ "build_seconds": 27.56059455871582
+}

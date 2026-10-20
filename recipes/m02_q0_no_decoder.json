@@ -1,0 +1,12 @@
+{
+ "name": "m02_q0_no_decoder",
+ "layers": "q0:exc=decoder.level_decoder,decoder.atmos_levels_embed",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ }
+}

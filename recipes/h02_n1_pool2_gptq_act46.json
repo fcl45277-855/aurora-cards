@@ -1,0 +1,22 @@
+{
+ "name": "h02_n1_pool2_gptq_act46",
+ "layers": "q0",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "lowpass": {
+  "pool": 2,
+  "patterns": [
+   "mlp.fc1",
+   "mlp.fc2"
+  ]
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "name": "m1_to_out",
+ "layers": "q0:inc=decoder.level_decoder.layers.0.0.to_out",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ }
+}

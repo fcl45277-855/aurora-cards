@@ -1,0 +1,11 @@
+{
+ "name": "a03_all_norot_gptq",
+ "layers": "all314",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ }
+}

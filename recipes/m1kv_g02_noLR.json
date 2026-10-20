@@ -1,0 +1,18 @@
+{
+ "name": "m1kv_g02_noLR",
+ "layers": "q0:inc=decoder.level_decoder.layers.0.0.to_kv",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "smooth": {
+  "alpha": 0.8
+ }
+}

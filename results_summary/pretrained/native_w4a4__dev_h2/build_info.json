@@ -1,0 +1,22 @@
+{
+ "name": "native_w4a4",
+ "layers": "q0:inc=backbone",
+ "act": "nvfp4",
+ "config": "NVFP4DynamicActivationNVFP4WeightConfig",
+ "n_layers": 187,
+ "n_quantized": 187,
+ "torchao": "0.18.0",
+ "torch": "2.12.1+cu130",
+ "device": "NVIDIA GeForce RTX 5090",
+ "capability": [
+  12,
+  0
+ ],
+ "weight_bytes_fp32": 3497000960,
+ "weight_bytes_nvfp4": 491766508,
+ "ratio": 7.111100294776479,
+ "gpu_mem_after_load_gib": 4.680086612701416,
+ "gpu_mem_after_quant_gib": 1.8804092407226562,
+ "build_seconds": 24.769435167312622,
+ "perceiver_chunk": 16384
+}

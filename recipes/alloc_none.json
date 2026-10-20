@@ -1,0 +1,14 @@
+{
+ "name": "alloc_none",
+ "layers": "all314",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ },
+ "_protected": [],
+ "_protected_params_M": 0
+}

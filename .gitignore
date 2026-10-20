@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+checkpoints/
+data/
+era5_tmp/
+results/
+logs/
+figures/
+*.ckpt
+*.npz
+*.nc

@@ -1,0 +1,19 @@
+{
+ "name": "r02_smooth08_rotfull_gptq_act46",
+ "layers": "q0",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "rotation": {
+  "block": "full",
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ]
+}

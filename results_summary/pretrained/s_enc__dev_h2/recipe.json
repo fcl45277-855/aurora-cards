@@ -1,0 +1,31 @@
+{
+ "kind": "sim",
+ "layers": "q0",
+ "surface_fp32": false,
+ "precision": "autocast",
+ "rotation": {
+  "block": "full",
+  "dtype": "fp32"
+ },
+ "weight": {
+  "method": "gptq",
+  "percdamp": 0.01,
+  "scale_mult": 1.0,
+  "source": "fp32"
+ },
+ "act": "bf16",
+ "smooth": null,
+ "act_scale_search": null,
+ "act_overrides": [
+  [
+   "encoder.",
+   "nvfp4"
+  ]
+ ],
+ "calib": {
+  "split": "calib",
+  "steps": 2,
+  "budget_gib": 2.5
+ },
+ "name": "s_enc"
+}

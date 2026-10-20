@@ -1,0 +1,18 @@
+{
+ "name": "alloc_de2+perc_dec+perc_enc",
+ "layers": "all314:exc=encoder.level_agg.&.0.0.to_,decoder.level_decoder.&.0.0.to_,backbone.decoder_layers.2.&.attn.",
+ "rotation": {
+  "block": "full",
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "bf16"
+ },
+ "_protected": [
+  "perc_enc",
+  "perc_dec",
+  "de2"
+ ],
+ "_protected_params_M": 11.5
+}

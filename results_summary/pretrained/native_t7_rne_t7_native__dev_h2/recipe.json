@@ -1,0 +1,6 @@
+{
+ "name": "native_t7_rne_t7_native",
+ "kind": "native_t7",
+ "recipe": "rne_t7",
+ "act": "native"
+}
