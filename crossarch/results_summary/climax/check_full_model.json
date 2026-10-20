@@ -1,0 +1,26 @@
+{
+  "pred_shape": [
+    1,
+    5,
+    32,
+    64
+  ],
+  "loss": 0.4508552551269531,
+  "parameters": 108088512,
+  "params_without_grad": 20,
+  "unexpected_without_grad": [],
+  "device": "cuda",
+  "unused_pretrained_variables": [
+    "land_sea_mask",
+    "orography",
+    "lattitude",
+    "relative_humidity_50",
+    "relative_humidity_250",
+    "relative_humidity_500",
+    "relative_humidity_600",
+    "relative_humidity_700",
+    "relative_humidity_850",
+    "relative_humidity_925"
+  ],
+  "passed": true
+}

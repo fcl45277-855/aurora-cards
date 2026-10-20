@@ -1,0 +1,105 @@
+{
+  "task": "era5_finetuned",
+  "task_id": "own_era5_2010_2016_6h_v1",
+  "scope": "Own bounded-data ERA5 adaptation, not a replication of the published ClimaX benchmark",
+  "utc_finished": "2026-10-20T21:50:28.845095+00:00",
+  "checkpoint": {
+    "path": "$CROSSARCH_ROOT/climax_finetune_run/best.ckpt",
+    "sha256": "4234103f58f2a1874d94b2dd4e8c51ef9d33b8c070e36de592ca04f4483cd32a"
+  },
+  "pretrained": {
+    "path": "$CROSSARCH_ROOT/weights/climax_5.625deg.ckpt",
+    "sha256": "6393876948b8244e65f8b341474a5a14e4242dd4ff4c1db811700935be347c43"
+  },
+  "task_plan_sha256": "8232721b7acd338e83c88a7227ffe670b166960008e43d850fb461f8294324de",
+  "training_data_manifest_sha256": "d94754facdbf2134c09e2454470d201bb0a1c3a9acaf36f6ecae6828266c3dbc",
+  "script_sha256": "dfd31f80c6c6c63a99b08f7083523a6f0babb3ee6e2eed238a6bc0cfbf32987b",
+  "train_log_sha256": "61ff7f335ca30497e37802fcc2509f5c0076677bcb3344df4a8c2624fa166074",
+  "history_sha256": "d983550811c64d84e20e656b87fb708bb2c53ab593ba5bfeb7985725ee83e982",
+  "device": "NVIDIA GeForce RTX 5090",
+  "torch": "2.12.1+cu130",
+  "timm": "1.0.27",
+  "variables": [
+    "2m_temperature",
+    "10m_u_component_of_wind",
+    "10m_v_component_of_wind",
+    "geopotential_50",
+    "geopotential_250",
+    "geopotential_500",
+    "geopotential_600",
+    "geopotential_700",
+    "geopotential_850",
+    "geopotential_925",
+    "temperature_50",
+    "temperature_250",
+    "temperature_500",
+    "temperature_600",
+    "temperature_700",
+    "temperature_850",
+    "temperature_925",
+    "u_component_of_wind_50",
+    "u_component_of_wind_250",
+    "u_component_of_wind_500",
+    "u_component_of_wind_600",
+    "u_component_of_wind_700",
+    "u_component_of_wind_850",
+    "u_component_of_wind_925",
+    "v_component_of_wind_50",
+    "v_component_of_wind_250",
+    "v_component_of_wind_500",
+    "v_component_of_wind_600",
+    "v_component_of_wind_700",
+    "v_component_of_wind_850",
+    "v_component_of_wind_925",
+    "specific_humidity_50",
+    "specific_humidity_250",
+    "specific_humidity_500",
+    "specific_humidity_600",
+    "specific_humidity_700",
+    "specific_humidity_850",
+    "specific_humidity_925"
+  ],
+  "out_variables": [
+    "geopotential_500",
+    "temperature_850",
+    "2m_temperature",
+    "10m_u_component_of_wind",
+    "10m_v_component_of_wind"
+  ],
+  "lead_hours": 6,
+  "lead_embedding_divisor": 100,
+  "dropout": "drop_rate = drop_path = 0 (model_support.build_climax)",
+  "steps_per_epoch": 1095,
+  "epochs_run": 20,
+  "best_epoch": 19,
+  "stopped_early": false,
+  "validation_at_best": {
+    "epoch": 19,
+    "train_loss": 0.00286976705261689,
+    "lr_end": 1.0000005643382741e-06,
+    "model": {
+      "geopotential_500": 0.00015601727287485823,
+      "temperature_850": 0.0008795623365160653,
+      "2m_temperature": 0.0006129447834744339,
+      "10m_u_component_of_wind": 0.006072549396733824,
+      "10m_v_component_of_wind": 0.0089701422668005
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.0033382432112799365,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  "forecast_gate": {
+    "passed": true,
+    "checks": {
+      "aggregate": true,
+      "geopotential_500": true,
+      "temperature_850": true
+    }
+  }
+}

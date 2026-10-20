@@ -1,0 +1,422 @@
+[
+  {
+    "epoch": 0,
+    "train_loss": 0.03823731591197828,
+    "lr_end": 9.990868493150685e-05,
+    "model": {
+      "geopotential_500": 0.0002569985115890512,
+      "temperature_850": 0.002030015038702347,
+      "2m_temperature": 0.0016542095722428042,
+      "10m_u_component_of_wind": 0.012345301464653971,
+      "10m_v_component_of_wind": 0.017681085733692266
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.006793522064176089,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 1,
+    "train_loss": 0.005933375055391392,
+    "lr_end": 9.93261142387992e-05,
+    "model": {
+      "geopotential_500": 0.00022376827295128476,
+      "temperature_850": 0.0016398547498060363,
+      "2m_temperature": 0.0012453161940285966,
+      "10m_u_component_of_wind": 0.009854492648714054,
+      "10m_v_component_of_wind": 0.014346388340067741
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.005461964041113543,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.005090510635052012,
+    "lr_end": 9.732037992568267e-05,
+    "model": {
+      "geopotential_500": 0.00021081162227639535,
+      "temperature_850": 0.0014422650509477346,
+      "2m_temperature": 0.0010591738889932853,
+      "10m_u_component_of_wind": 0.008972616675445655,
+      "10m_v_component_of_wind": 0.013086627127386714
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.004954298873009957,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.004623213061663114,
+    "lr_end": 9.403750769981484e-05,
+    "model": {
+      "geopotential_500": 0.00019439277053291036,
+      "temperature_850": 0.0013306161431909224,
+      "2m_temperature": 0.000954341931490931,
+      "10m_u_component_of_wind": 0.008275717340888104,
+      "10m_v_component_of_wind": 0.012230251518005098
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.0045970639408215936,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.004298932763767008,
+    "lr_end": 8.956704575770817e-05,
+    "model": {
+      "geopotential_500": 0.00021259895970312875,
+      "temperature_850": 0.001233030684445048,
+      "2m_temperature": 0.0008628468390430935,
+      "10m_u_component_of_wind": 0.007798680056751256,
+      "10m_v_component_of_wind": 0.011576174867405767
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.004336666281469659,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.0040450272324163315,
+    "lr_end": 8.403093664751883e-05,
+    "model": {
+      "geopotential_500": 0.00018352329551979667,
+      "temperature_850": 0.0011615013013755785,
+      "2m_temperature": 0.0008112715600036575,
+      "10m_u_component_of_wind": 0.007557601351013525,
+      "10m_v_component_of_wind": 0.011167940109833883
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.004176367523549288,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 6,
+    "train_loss": 0.003848204523384503,
+    "lr_end": 7.758019099421339e-05,
+    "model": {
+      "geopotential_500": 0.00018299676218824621,
+      "temperature_850": 0.0011130228809997141,
+      "2m_temperature": 0.0007851731601570543,
+      "10m_u_component_of_wind": 0.007296383700794056,
+      "10m_v_component_of_wind": 0.010732688713090825
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.004022053043445979,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 7,
+    "train_loss": 0.0036772942004117213,
+    "lr_end": 7.039076832337513e-05,
+    "model": {
+      "geopotential_500": 0.00018351623137300043,
+      "temperature_850": 0.0010918695183862138,
+      "2m_temperature": 0.0007502834705532444,
+      "10m_u_component_of_wind": 0.007039228024073438,
+      "10m_v_component_of_wind": 0.010321820289730827
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.0038773435068233447,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 8,
+    "train_loss": 0.0035335714645475386,
+    "lr_end": 6.265877734403838e-05,
+    "model": {
+      "geopotential_500": 0.0001990051959088642,
+      "temperature_850": 0.0010742264979875665,
+      "2m_temperature": 0.0007236564935472318,
+      "10m_u_component_of_wind": 0.006840694399850862,
+      "10m_v_component_of_wind": 0.01020561103645042
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.0038086387247489887,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 9,
+    "train_loss": 0.003410962689189521,
+    "lr_end": 5.459512661432322e-05,
+    "model": {
+      "geopotential_500": 0.0001786974493267807,
+      "temperature_850": 0.000986974368622897,
+      "2m_temperature": 0.000688126149967767,
+      "10m_u_component_of_wind": 0.006691814729555344,
+      "10m_v_component_of_wind": 0.009873430370882171
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.003683808613670992,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 10,
+    "train_loss": 0.0033024012860650683,
+    "lr_end": 4.641977150576769e-05,
+    "model": {
+      "geopotential_500": 0.00016601337059831865,
+      "temperature_850": 0.0009975348040490585,
+      "2m_temperature": 0.0006706724933915356,
+      "10m_u_component_of_wind": 0.006546637916888102,
+      "10m_v_component_of_wind": 0.009684948554993364
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.0036131614279840754,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 11,
+    "train_loss": 0.003212359767634694,
+    "lr_end": 3.835571439417297e-05,
+    "model": {
+      "geopotential_500": 0.00016759546808077665,
+      "temperature_850": 0.00096814807826254,
+      "2m_temperature": 0.0006624820989757799,
+      "10m_u_component_of_wind": 0.006513724182046723,
+      "10m_v_component_of_wind": 0.009573475729086716
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.0035770851112905074,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 12,
+    "train_loss": 0.0031322351445286583,
+    "lr_end": 3.062292173611537e-05,
+    "model": {
+      "geopotential_500": 0.00016832693212644542,
+      "temperature_850": 0.0009357735064365475,
+      "2m_temperature": 0.0006594385389371415,
+      "10m_u_component_of_wind": 0.0063212782452785644,
+      "10m_v_component_of_wind": 0.009378479408700732
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.003492659326295886,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 13,
+    "train_loss": 0.0030654728560938105,
+    "lr_end": 2.3432323957420682e-05,
+    "model": {
+      "geopotential_500": 0.00017364928659519623,
+      "temperature_850": 0.0009072965954382535,
+      "2m_temperature": 0.0006320483447719197,
+      "10m_u_component_of_wind": 0.006289073999506555,
+      "10m_v_component_of_wind": 0.009234079100032008
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.003447229465268786,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 14,
+    "train_loss": 0.003008755482361146,
+    "lr_end": 1.6980061821002287e-05,
+    "model": {
+      "geopotential_500": 0.00016913069635835748,
+      "temperature_850": 0.0009057836598611005,
+      "2m_temperature": 0.0006326932544915756,
+      "10m_u_component_of_wind": 0.006198788324085629,
+      "10m_v_component_of_wind": 0.009141405234861044
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.003409560233931541,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 15,
+    "train_loss": 0.0029617790764274255,
+    "lr_end": 1.1442136218149592e-05,
+    "model": {
+      "geopotential_500": 0.00016390486482854014,
+      "temperature_850": 0.000890908094822842,
+      "2m_temperature": 0.0006379389369424208,
+      "10m_u_component_of_wind": 0.006148734997534496,
+      "10m_v_component_of_wind": 0.009103461001760873
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.003388989579177834,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 16,
+    "train_loss": 0.00292531482749895,
+    "lr_end": 6.969607323013823e-06,
+    "model": {
+      "geopotential_500": 0.0001567226947553086,
+      "temperature_850": 0.0008899952540427556,
+      "2m_temperature": 0.0006163085925238179,
+      "10m_u_component_of_wind": 0.006120428149017134,
+      "10m_v_component_of_wind": 0.009028870971490105
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.0033624651323658243,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 17,
+    "train_loss": 0.0028984072376319024,
+    "lr_end": 3.684474064841574e-06,
+    "model": {
+      "geopotential_500": 0.00015655236925659347,
+      "temperature_850": 0.000883951264970246,
+      "2m_temperature": 0.0006169584836107105,
+      "10m_u_component_of_wind": 0.006098316274024116,
+      "10m_v_component_of_wind": 0.009000110731031234
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.0033511778245785802,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 18,
+    "train_loss": 0.00287967947371236,
+    "lr_end": 1.6763463152125599e-06,
+    "model": {
+      "geopotential_500": 0.00015750463018382994,
+      "temperature_850": 0.0008835981114817168,
+      "2m_temperature": 0.000613102991450385,
+      "10m_u_component_of_wind": 0.006083911106325582,
+      "10m_v_component_of_wind": 0.008986828564095094
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.0033449890807073215,
+    "persistence_aggregate": 0.05679178998186565
+  },
+  {
+    "epoch": 19,
+    "train_loss": 0.00286976705261689,
+    "lr_end": 1.0000005643382741e-06,
+    "model": {
+      "geopotential_500": 0.00015601727287485823,
+      "temperature_850": 0.0008795623365160653,
+      "2m_temperature": 0.0006129447834744339,
+      "10m_u_component_of_wind": 0.006072549396733824,
+      "10m_v_component_of_wind": 0.0089701422668005
+    },
+    "persistence": {
+      "geopotential_500": 0.004327396159858615,
+      "temperature_850": 0.006038239877744427,
+      "2m_temperature": 0.014582285077135678,
+      "10m_u_component_of_wind": 0.08578349237406871,
+      "10m_v_component_of_wind": 0.1732275364205208
+    },
+    "model_aggregate": 0.0033382432112799365,
+    "persistence_aggregate": 0.05679178998186565
+  }
+]

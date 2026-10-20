@@ -1,0 +1,169 @@
+{
+  "result_sha256": "e8894c6642249cf496d08e64d3241913df96a72fef4b670524af43d31bb27560",
+  "err_in_flip": null,
+  "synthetic_only": false,
+  "groups": [
+    {
+      "name": "patch_embed",
+      "mean_isolated_damage": 0.005130358842641348,
+      "parameters": 983040,
+      "damage_per_million_parameters": 0.005218870892986397
+    },
+    {
+      "name": "head",
+      "mean_isolated_damage": 0.0024124131157135732,
+      "parameters": 983040,
+      "damage_per_million_parameters": 0.0024540335242854545
+    },
+    {
+      "name": "blocks.0.filter",
+      "mean_isolated_damage": 0.0009104639690887968,
+      "parameters": 294912,
+      "damage_per_million_parameters": 0.003087239478518327
+    },
+    {
+      "name": "blocks.11.mlp",
+      "mean_isolated_damage": 0.000655776925947343,
+      "parameters": 4718592,
+      "damage_per_million_parameters": 0.00013897724701507206
+    },
+    {
+      "name": "blocks.11.filter",
+      "mean_isolated_damage": 0.00026679643957507824,
+      "parameters": 294912,
+      "damage_per_million_parameters": 0.0009046645764671436
+    },
+    {
+      "name": "blocks.10.mlp",
+      "mean_isolated_damage": 0.00025990188696165364,
+      "parameters": 4718592,
+      "damage_per_million_parameters": 5.5080389862411e-05
+    },
+    {
+      "name": "blocks.9.mlp",
+      "mean_isolated_damage": 0.00022062518288061005,
+      "parameters": 4718592,
+      "damage_per_million_parameters": 4.675657121459326e-05
+    },
+    {
+      "name": "blocks.7.mlp",
+      "mean_isolated_damage": 0.0001974037598959934,
+      "parameters": 4718592,
+      "damage_per_million_parameters": 4.183531017218556e-05
+    },
+    {
+      "name": "blocks.8.mlp",
+      "mean_isolated_damage": 0.00019416320413364092,
+      "parameters": 4718592,
+      "damage_per_million_parameters": 4.114854688297715e-05
+    },
+    {
+      "name": "blocks.5.filter",
+      "mean_isolated_damage": 0.0001794628124417139,
+      "parameters": 294912,
+      "damage_per_million_parameters": 0.0006085300443580251
+    },
+    {
+      "name": "blocks.6.mlp",
+      "mean_isolated_damage": 0.00017392500285628312,
+      "parameters": 4718592,
+      "damage_per_million_parameters": 3.685951293442687e-05
+    },
+    {
+      "name": "blocks.1.mlp",
+      "mean_isolated_damage": 0.00015762561934518996,
+      "parameters": 4718592,
+      "damage_per_million_parameters": 3.3405223283807957e-05
+    },
+    {
+      "name": "blocks.9.filter",
+      "mean_isolated_damage": 0.00013464426997549441,
+      "parameters": 294912,
+      "damage_per_million_parameters": 0.0004565574475623047
+    },
+    {
+      "name": "blocks.5.mlp",
+      "mean_isolated_damage": 0.00012539655591486772,
+      "parameters": 4718592,
+      "damage_per_million_parameters": 2.6574994387068794e-05
+    },
+    {
+      "name": "blocks.4.mlp",
+      "mean_isolated_damage": 0.0001114458717001071,
+      "parameters": 4718592,
+      "damage_per_million_parameters": 2.3618459002199618e-05
+    },
+    {
+      "name": "blocks.6.filter",
+      "mean_isolated_damage": 0.00010871929011903641,
+      "parameters": 294912,
+      "damage_per_million_parameters": 0.00036864993665580384
+    },
+    {
+      "name": "blocks.7.filter",
+      "mean_isolated_damage": 0.00010812401085884228,
+      "parameters": 294912,
+      "damage_per_million_parameters": 0.0003666314387303408
+    },
+    {
+      "name": "blocks.10.filter",
+      "mean_isolated_damage": 0.00010768856246070148,
+      "parameters": 294912,
+      "damage_per_million_parameters": 0.0003651549020070444
+    },
+    {
+      "name": "blocks.8.filter",
+      "mean_isolated_damage": 0.00010408367547038562,
+      "parameters": 294912,
+      "damage_per_million_parameters": 0.00035293129974495993
+    },
+    {
+      "name": "blocks.2.mlp",
+      "mean_isolated_damage": 8.557253647136736e-05,
+      "parameters": 4718592,
+      "damage_per_million_parameters": 1.813518449388448e-05
+    },
+    {
+      "name": "blocks.3.mlp",
+      "mean_isolated_damage": 8.516552272377699e-05,
+      "parameters": 4718592,
+      "damage_per_million_parameters": 1.804892703666199e-05
+    },
+    {
+      "name": "blocks.0.mlp",
+      "mean_isolated_damage": 7.64647915663172e-05,
+      "parameters": 4718592,
+      "damage_per_million_parameters": 1.620500173914532e-05
+    },
+    {
+      "name": "blocks.4.filter",
+      "mean_isolated_damage": 6.24195113890517e-05,
+      "parameters": 294912,
+      "damage_per_million_parameters": 0.0002116547017044125
+    },
+    {
+      "name": "blocks.3.filter",
+      "mean_isolated_damage": 5.438942191810334e-05,
+      "parameters": 294912,
+      "damage_per_million_parameters": 0.00018442593695103398
+    },
+    {
+      "name": "blocks.1.filter",
+      "mean_isolated_damage": 3.7166499831284824e-05,
+      "parameters": 294912,
+      "damage_per_million_parameters": 0.0001260257291371149
+    },
+    {
+      "name": "blocks.2.filter",
+      "mean_isolated_damage": 3.2119102841740924e-05,
+      "parameters": 294912,
+      "damage_per_million_parameters": 0.00010891080336419313
+    }
+  ],
+  "top_k_share_of_summed_isolated_damage": {
+    "1": 0.42780382688845714,
+    "3": 0.7048876677580638,
+    "5": 0.7818180401669955
+  },
+  "interpretation": "Isolated damage is non-additive. These shares are descriptive, not fractions of full-model error. No absence-of-hotspots or uniformity conclusion is assumed."
+}

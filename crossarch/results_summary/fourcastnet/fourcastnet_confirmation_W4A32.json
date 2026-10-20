@@ -1,0 +1,2168 @@
+{
+  "mode": "W4A32 RTN, FP32 reference/activations/accumulation",
+  "err_in_flip": null,
+  "original_download_sha256": "8a86a8c487a42283f97b9f119abcba11bc66b0103fc97854d881a0d6ace52827",
+  "model_asset_sha256": "2f726d4d5096e6b9d6c91c3abe646d5b5d2539905e8c978ea2bf9ece0497d6bb",
+  "groups": {
+    "patch_embed": [
+      {
+        "parameter": "patch_embed.proj.weight",
+        "shape": [
+          768,
+          20,
+          8,
+          8
+        ],
+        "input_axis": 1
+      }
+    ],
+    "blocks.0.filter": [
+      {
+        "parameter": "blocks.0.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.0.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.0.mlp": [
+      {
+        "parameter": "blocks.0.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.0.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.1.filter": [
+      {
+        "parameter": "blocks.1.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.1.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.1.mlp": [
+      {
+        "parameter": "blocks.1.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.1.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.2.filter": [
+      {
+        "parameter": "blocks.2.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.2.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.2.mlp": [
+      {
+        "parameter": "blocks.2.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.2.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.3.filter": [
+      {
+        "parameter": "blocks.3.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.3.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.3.mlp": [
+      {
+        "parameter": "blocks.3.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.3.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.4.filter": [
+      {
+        "parameter": "blocks.4.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.4.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.4.mlp": [
+      {
+        "parameter": "blocks.4.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.4.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.5.filter": [
+      {
+        "parameter": "blocks.5.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.5.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.5.mlp": [
+      {
+        "parameter": "blocks.5.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.5.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.6.filter": [
+      {
+        "parameter": "blocks.6.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.6.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.6.mlp": [
+      {
+        "parameter": "blocks.6.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.6.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.7.filter": [
+      {
+        "parameter": "blocks.7.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.7.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.7.mlp": [
+      {
+        "parameter": "blocks.7.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.7.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.8.filter": [
+      {
+        "parameter": "blocks.8.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.8.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.8.mlp": [
+      {
+        "parameter": "blocks.8.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.8.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.9.filter": [
+      {
+        "parameter": "blocks.9.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.9.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.9.mlp": [
+      {
+        "parameter": "blocks.9.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.9.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.10.filter": [
+      {
+        "parameter": "blocks.10.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.10.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.10.mlp": [
+      {
+        "parameter": "blocks.10.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.10.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.11.filter": [
+      {
+        "parameter": "blocks.11.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.11.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.11.mlp": [
+      {
+        "parameter": "blocks.11.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.11.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "head": [
+      {
+        "parameter": "head.weight",
+        "shape": [
+          1280,
+          768
+        ],
+        "input_axis": -1
+      }
+    ]
+  },
+  "dates": [
+    {
+      "input_sha256": "64a9c34c4586cfdd0aa386e163ee6f80873db57c5410a1ab210120d47f880a7c",
+      "init_time": "2024-03-01T00:00:00Z",
+      "reference_mse_vs_truth": 0.011064206631108926,
+      "persistence_mse_vs_truth": 0.14773833556565588,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.005292325399466752,
+          "mse_vs_truth": 0.0163996698802636,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.0009528851512293568,
+          "mse_vs_truth": 0.012054514276570033,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.988860566622657e-05,
+          "mse_vs_truth": 0.011186563592630478,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.8623905247898404e-05,
+          "mse_vs_truth": 0.011081291081182843,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.00015862015967755966,
+          "mse_vs_truth": 0.011188889299403149,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.202517577410439e-05,
+          "mse_vs_truth": 0.01108334583273326,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 9.219283958279986e-05,
+          "mse_vs_truth": 0.011137944953283373,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.787729423357188e-05,
+          "mse_vs_truth": 0.011126183203387003,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 9.259894089050198e-05,
+          "mse_vs_truth": 0.011161756266395909,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 6.585262804952877e-05,
+          "mse_vs_truth": 0.01112723206032684,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.00011714910403251668,
+          "mse_vs_truth": 0.011206440650796876,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.00018275928934268623,
+          "mse_vs_truth": 0.011241283033549106,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.00012792665606718205,
+          "mse_vs_truth": 0.011186353334446661,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.0001102063593425181,
+          "mse_vs_truth": 0.01116611657177623,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.00019092753136241592,
+          "mse_vs_truth": 0.01127859342584344,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.00011369300742752683,
+          "mse_vs_truth": 0.011173227505765415,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.0002121432659300852,
+          "mse_vs_truth": 0.011251835752656213,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010317480509472778,
+          "mse_vs_truth": 0.011167568226692128,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.00020648231390463633,
+          "mse_vs_truth": 0.01125230668606031,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.00013263122575003547,
+          "mse_vs_truth": 0.011156370925799661,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.0002321916222457442,
+          "mse_vs_truth": 0.01126587649680114,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.00010991276855961992,
+          "mse_vs_truth": 0.011176225756984938,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.00026892378474717687,
+          "mse_vs_truth": 0.011348438378137116,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.00026586168124335025,
+          "mse_vs_truth": 0.011353212051033476,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.0006631066262429089,
+          "mse_vs_truth": 0.01172550802222833,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.0024574409669597353,
+          "mse_vs_truth": 0.013520637356118208,
+          "quantized_parameters": 983040
+        }
+      }
+    },
+    {
+      "input_sha256": "d16b205ae861750e2b1600a8329dc445f8f1f44ec37ace5303b6adf8a8fc0f3b",
+      "init_time": "2024-03-02T00:00:00Z",
+      "reference_mse_vs_truth": 0.01090591369350784,
+      "persistence_mse_vs_truth": 0.15177847199646247,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.005188917726975188,
+          "mse_vs_truth": 0.016092605777148834,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.000924837339592874,
+          "mse_vs_truth": 0.011852789043852457,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.963085053997911e-05,
+          "mse_vs_truth": 0.010972644920791825,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.800847615608817e-05,
+          "mse_vs_truth": 0.010927852069003397,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.0001643457314848552,
+          "mse_vs_truth": 0.01108391363620635,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.291286526293743e-05,
+          "mse_vs_truth": 0.010937281979668818,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 8.990435693393808e-05,
+          "mse_vs_truth": 0.01099789584045707,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.7411453865220116e-05,
+          "mse_vs_truth": 0.010953550180841728,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 8.856659383019757e-05,
+          "mse_vs_truth": 0.010992562419234091,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 6.677242622537499e-05,
+          "mse_vs_truth": 0.010973792968263467,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.0001202627353834718,
+          "mse_vs_truth": 0.01104654627227137,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.0001861157704024527,
+          "mse_vs_truth": 0.011123822916083227,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.00012942707339282664,
+          "mse_vs_truth": 0.010991445095955284,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.00011374038380224901,
+          "mse_vs_truth": 0.011019326360618545,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.00019296740231598207,
+          "mse_vs_truth": 0.011117464308350212,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.0001142329840995443,
+          "mse_vs_truth": 0.011012755313272097,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.00020611176060601294,
+          "mse_vs_truth": 0.011086747109886415,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010822773221736867,
+          "mse_vs_truth": 0.011002107190084065,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.00020357599786717499,
+          "mse_vs_truth": 0.011149047244903737,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.00013821547797864496,
+          "mse_vs_truth": 0.01103771239895654,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.00022705855904520567,
+          "mse_vs_truth": 0.011113102948042746,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.00011226447619325378,
+          "mse_vs_truth": 0.011050314271970566,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.0002666351504405884,
+          "mse_vs_truth": 0.01119135421025812,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.0002660808814651434,
+          "mse_vs_truth": 0.011211158559248459,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.0006584667887979039,
+          "mse_vs_truth": 0.011571660258749415,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.002422525218785739,
+          "mse_vs_truth": 0.01333456484427762,
+          "quantized_parameters": 983040
+        }
+      }
+    },
+    {
+      "input_sha256": "2c98d2aa7de05785902edb09785e445a4903aac92c4b3ce356d0b3febb3f42f1",
+      "init_time": "2024-03-03T00:00:00Z",
+      "reference_mse_vs_truth": 0.011062399005663155,
+      "persistence_mse_vs_truth": 0.1435516038231472,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.00512780304068254,
+          "mse_vs_truth": 0.016133364111353927,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.0009230854227530777,
+          "mse_vs_truth": 0.011998333223201362,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.857655194659507e-05,
+          "mse_vs_truth": 0.011140141932850407,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.717855715176265e-05,
+          "mse_vs_truth": 0.011096152566254416,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.00016148455818548846,
+          "mse_vs_truth": 0.011225618459101042,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.347224657131021e-05,
+          "mse_vs_truth": 0.011095893354901855,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 9.149391235800487e-05,
+          "mse_vs_truth": 0.011161134571032915,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.394732908926542e-05,
+          "mse_vs_truth": 0.011110181739709164,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 8.706346541106726e-05,
+          "mse_vs_truth": 0.011159331593333724,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 6.62170917293622e-05,
+          "mse_vs_truth": 0.011139013324667867,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.00011505836522680305,
+          "mse_vs_truth": 0.011171612370960041,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.0001800720186043013,
+          "mse_vs_truth": 0.011227670122145863,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.00012849552231096117,
+          "mse_vs_truth": 0.011200781871866398,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.00011499076084526168,
+          "mse_vs_truth": 0.0111917247500865,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.00018090875569637616,
+          "mse_vs_truth": 0.011227791812527402,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.00011097391563214821,
+          "mse_vs_truth": 0.011155056425430167,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.00019827298835659233,
+          "mse_vs_truth": 0.011239166870830224,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010482810232036229,
+          "mse_vs_truth": 0.011156725782125922,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.00019741114247507342,
+          "mse_vs_truth": 0.011275089500030196,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.00013558557170475114,
+          "mse_vs_truth": 0.01116952454568793,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.0002221438367135797,
+          "mse_vs_truth": 0.011261300703629884,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.00010776042829550622,
+          "mse_vs_truth": 0.011169979699807096,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.0002584055901771794,
+          "mse_vs_truth": 0.011322288147581098,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.0002663277274174753,
+          "mse_vs_truth": 0.011353877409793852,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.0006510744764819943,
+          "mse_vs_truth": 0.011740430473121328,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.0024068931289877773,
+          "mse_vs_truth": 0.013464093273889052,
+          "quantized_parameters": 983040
+        }
+      }
+    },
+    {
+      "input_sha256": "8b7b9e60e5578131af792e84c2a4a4721703fb187bc2a25e7dd4b87cab8035ce",
+      "init_time": "2024-03-04T00:00:00Z",
+      "reference_mse_vs_truth": 0.01078215373995686,
+      "persistence_mse_vs_truth": 0.14874893528917255,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.005066508985228278,
+          "mse_vs_truth": 0.0156917444752976,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.0009243162029710953,
+          "mse_vs_truth": 0.011711101475237849,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.604942429441223e-05,
+          "mse_vs_truth": 0.010878796957308708,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.714119842000038e-05,
+          "mse_vs_truth": 0.010817153549045217,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.00015820092661802726,
+          "mse_vs_truth": 0.010900068469325737,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.26832652100005e-05,
+          "mse_vs_truth": 0.010812222175989537,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 8.55003004969993e-05,
+          "mse_vs_truth": 0.010854477563990026,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.465776701243522e-05,
+          "mse_vs_truth": 0.010806591079175368,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 8.831509441495454e-05,
+          "mse_vs_truth": 0.010848687377210526,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 6.111761617421388e-05,
+          "mse_vs_truth": 0.010825871771708791,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.00010989525001981868,
+          "mse_vs_truth": 0.010864477345546781,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.00017972447694284733,
+          "mse_vs_truth": 0.010969540510309298,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.00012671507001203288,
+          "mse_vs_truth": 0.0109212787812359,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.00010668687862508595,
+          "mse_vs_truth": 0.01088744814622631,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.0001681851691730484,
+          "mse_vs_truth": 0.010939274159329479,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.00010859254370818299,
+          "mse_vs_truth": 0.010874911350336322,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.00019655324384223853,
+          "mse_vs_truth": 0.010954370069209,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010396385856952385,
+          "mse_vs_truth": 0.010880178680628412,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.00019313373587509603,
+          "mse_vs_truth": 0.010972095969203104,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.0001370346339357399,
+          "mse_vs_truth": 0.010905636089998247,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.00021583665216717287,
+          "mse_vs_truth": 0.010978797045159965,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.00010963177771503503,
+          "mse_vs_truth": 0.01090377868224064,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.00025843589386618257,
+          "mse_vs_truth": 0.01101108887047704,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.00026549629282075136,
+          "mse_vs_truth": 0.01104478332113127,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.0006487272218337188,
+          "mse_vs_truth": 0.011442524565683378,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.0023923783906968036,
+          "mse_vs_truth": 0.013177479118973094,
+          "quantized_parameters": 983040
+        }
+      }
+    },
+    {
+      "input_sha256": "3aec769789af0dba44c413d590f85f8e2792c8fd4f08b74f4efb327091b23c57",
+      "init_time": "2024-03-05T00:00:00Z",
+      "reference_mse_vs_truth": 0.010399262236202923,
+      "persistence_mse_vs_truth": 0.1414441776592637,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.005024004215335029,
+          "mse_vs_truth": 0.015425157729849428,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.0009079557910953163,
+          "mse_vs_truth": 0.011321428238434322,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.318747764486995e-05,
+          "mse_vs_truth": 0.010452666196391569,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.6436165213675567e-05,
+          "mse_vs_truth": 0.010434881518767477,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.00015361336566687756,
+          "mse_vs_truth": 0.01053618546145754,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.130004738411852e-05,
+          "mse_vs_truth": 0.010422640156890426,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 8.293637723612059e-05,
+          "mse_vs_truth": 0.010496365390086403,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.215501473052382e-05,
+          "mse_vs_truth": 0.010427820739575686,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 8.275660520055519e-05,
+          "mse_vs_truth": 0.010468395591052476,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 6.124692594799188e-05,
+          "mse_vs_truth": 0.010446944431626139,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.00010841456873723096,
+          "mse_vs_truth": 0.010528235643880177,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.0001759390355101989,
+          "mse_vs_truth": 0.010545584331092274,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.00012169419334969859,
+          "mse_vs_truth": 0.010493130635879573,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.00010609373975445896,
+          "mse_vs_truth": 0.010497604763036086,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.00016543849520886183,
+          "mse_vs_truth": 0.010554186708616811,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.00010619651268344368,
+          "mse_vs_truth": 0.010483057451934686,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.00018959809303699567,
+          "mse_vs_truth": 0.010577931967119978,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010314444789571809,
+          "mse_vs_truth": 0.010498287700512664,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.00018529583964646667,
+          "mse_vs_truth": 0.010593400262664518,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.000127592028844583,
+          "mse_vs_truth": 0.010518475051785523,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.00021207648963868106,
+          "mse_vs_truth": 0.010603969352380201,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.00010636490417430951,
+          "mse_vs_truth": 0.010507070630588264,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.00025446884165828396,
+          "mse_vs_truth": 0.01063546911687245,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.0002662409816992518,
+          "mse_vs_truth": 0.010689176557845995,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.0006474587661677223,
+          "mse_vs_truth": 0.01104591116165989,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.002393231661063735,
+          "mse_vs_truth": 0.012796833978948348,
+          "quantized_parameters": 983040
+        }
+      }
+    },
+    {
+      "input_sha256": "3f52f1dba9551084f482d40df5012f2922a653b010fc40045c061f4d9f3f645f",
+      "init_time": "2024-03-06T00:00:00Z",
+      "reference_mse_vs_truth": 0.010263265869632263,
+      "persistence_mse_vs_truth": 0.13151790500230173,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.0050968198265493635,
+          "mse_vs_truth": 0.015380508367271622,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.0008803320159848836,
+          "mse_vs_truth": 0.011127266205693077,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.474923786765679e-05,
+          "mse_vs_truth": 0.010340666465326808,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.633717140581985e-05,
+          "mse_vs_truth": 0.010304991483311264,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.0001559361609962597,
+          "mse_vs_truth": 0.010415219521415492,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.1257063124180344e-05,
+          "mse_vs_truth": 0.010287215504857656,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 8.34284471918188e-05,
+          "mse_vs_truth": 0.01035731878315937,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.080952264169439e-05,
+          "mse_vs_truth": 0.010299054095088307,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 8.218438281840752e-05,
+          "mse_vs_truth": 0.010335672439892873,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 6.157361018155322e-05,
+          "mse_vs_truth": 0.010324100149103085,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.00010794851617089039,
+          "mse_vs_truth": 0.010350778687609556,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.00017605589455025263,
+          "mse_vs_truth": 0.010448310614475367,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.0001208214450156456,
+          "mse_vs_truth": 0.010401565123307187,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.00010333253609423047,
+          "mse_vs_truth": 0.010371178957267206,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.00016669860118279212,
+          "mse_vs_truth": 0.010459270244521857,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.00010475785376952127,
+          "mse_vs_truth": 0.010370950040395566,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.00019212488544101568,
+          "mse_vs_truth": 0.01044540458636288,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010095385790298877,
+          "mse_vs_truth": 0.010334053702697308,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.00018392432410488008,
+          "mse_vs_truth": 0.010457250422852032,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.00012496031426007423,
+          "mse_vs_truth": 0.010384919503156188,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.00021079487625120825,
+          "mse_vs_truth": 0.010483720059779694,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.0001058245908502595,
+          "mse_vs_truth": 0.010394180033662624,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.00025375943993599854,
+          "mse_vs_truth": 0.01053258627188294,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.00026857376881375374,
+          "mse_vs_truth": 0.010568906859478113,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.0006424333159688188,
+          "mse_vs_truth": 0.010931610251585396,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.0023860368925922863,
+          "mse_vs_truth": 0.01264393085795845,
+          "quantized_parameters": 983040
+        }
+      }
+    },
+    {
+      "input_sha256": "9a815788a8a9e284a2f04f907ed034542f2beed8e15b452275549389e719f3d2",
+      "init_time": "2024-03-07T00:00:00Z",
+      "reference_mse_vs_truth": 0.010173176890851971,
+      "persistence_mse_vs_truth": 0.1402608368132235,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.005054407700843216,
+          "mse_vs_truth": 0.015299559447764632,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.0009227163301727477,
+          "mse_vs_truth": 0.011089858923517843,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.462194523249993e-05,
+          "mse_vs_truth": 0.010234785297561751,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.6511135066548207e-05,
+          "mse_vs_truth": 0.01021808067889473,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.00015881611930669735,
+          "mse_vs_truth": 0.010342424929938886,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.154369949545415e-05,
+          "mse_vs_truth": 0.01020009155160699,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 7.985775092776983e-05,
+          "mse_vs_truth": 0.010262140545163707,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.336418918325247e-05,
+          "mse_vs_truth": 0.010217059771077017,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 8.215361093451206e-05,
+          "mse_vs_truth": 0.01023183526862459,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 6.17958321178447e-05,
+          "mse_vs_truth": 0.010250615246507597,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.00010754698806948275,
+          "mse_vs_truth": 0.010257093865171511,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.00018008588374788135,
+          "mse_vs_truth": 0.010344658709588447,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.00012453674988554696,
+          "mse_vs_truth": 0.010300182340145637,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.0001045837625995213,
+          "mse_vs_truth": 0.010275730827359185,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.000169692178763073,
+          "mse_vs_truth": 0.010348798651853992,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.00010565244933454297,
+          "mse_vs_truth": 0.010267839178893914,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.00019089088397117323,
+          "mse_vs_truth": 0.010361755317424445,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010385118403572257,
+          "mse_vs_truth": 0.010268441494192922,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.00018943949567049652,
+          "mse_vs_truth": 0.010341279437848894,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.0001371564145580553,
+          "mse_vs_truth": 0.010318941641577109,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.00021932131711980489,
+          "mse_vs_truth": 0.010382914526273804,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.00010925938810151546,
+          "mse_vs_truth": 0.010296727669843403,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.00025448968695622584,
+          "mse_vs_truth": 0.010454482116048864,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.0002691067228338451,
+          "mse_vs_truth": 0.010476588315745194,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.0006441291276814017,
+          "mse_vs_truth": 0.010824529107128106,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.0023954954583711007,
+          "mse_vs_truth": 0.012574083205151052,
+          "quantized_parameters": 983040
+        }
+      }
+    },
+    {
+      "input_sha256": "29c8553ec40c6d235254d8e15552512ff79a1560e5a716888b2389e2895347d1",
+      "init_time": "2024-03-08T00:00:00Z",
+      "reference_mse_vs_truth": 0.010496624446494776,
+      "persistence_mse_vs_truth": 0.150164596805865,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.005158440760042108,
+          "mse_vs_truth": 0.015579999651006492,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.0009047479248975477,
+          "mse_vs_truth": 0.011343271859749324,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.515383269253669e-05,
+          "mse_vs_truth": 0.010565520697543483,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.6507095063297764e-05,
+          "mse_vs_truth": 0.010526015642588269,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.0001588570188745748,
+          "mse_vs_truth": 0.010631489721722759,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.2576061408464605e-05,
+          "mse_vs_truth": 0.010528749233194062,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 8.368328280808136e-05,
+          "mse_vs_truth": 0.010581896605255582,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.4151783662687006e-05,
+          "mse_vs_truth": 0.010545445500524027,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 8.337388956493284e-05,
+          "mse_vs_truth": 0.010556835986575412,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 6.353789753507964e-05,
+          "mse_vs_truth": 0.010566165762350243,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.00011545211539899714,
+          "mse_vs_truth": 0.010613371318404074,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.00017847986694871182,
+          "mse_vs_truth": 0.010685714840814636,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.00012694715724990692,
+          "mse_vs_truth": 0.010650955183122474,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.00011110348733975634,
+          "mse_vs_truth": 0.010617002583577015,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.00017259232437329613,
+          "mse_vs_truth": 0.010650692539528456,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.00010804342173048004,
+          "mse_vs_truth": 0.010573019410221754,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.00019616338136169175,
+          "mse_vs_truth": 0.010731877070772281,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010496226033133386,
+          "mse_vs_truth": 0.010605848338792006,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.00019658605804126456,
+          "mse_vs_truth": 0.010706390719922776,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.00014031005676206975,
+          "mse_vs_truth": 0.01063155591508993,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.00022541718282733113,
+          "mse_vs_truth": 0.010744848571331298,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.00010820272292684986,
+          "mse_vs_truth": 0.010611435327223103,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.00026745053261294,
+          "mse_vs_truth": 0.01075194731189117,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.0002692029914790281,
+          "mse_vs_truth": 0.010783246886780227,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.0006644189519285657,
+          "mse_vs_truth": 0.011167781377536462,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.0024196897686706007,
+          "mse_vs_truth": 0.012924600539155158,
+          "quantized_parameters": 983040
+        }
+      }
+    },
+    {
+      "input_sha256": "9b5287ea4d4c97c590e2a57a579c9690f9c23e592a2b061b52fcb8f4c3299bb9",
+      "init_time": "2024-03-09T00:00:00Z",
+      "reference_mse_vs_truth": 0.010557691885234954,
+      "persistence_mse_vs_truth": 0.14458914372797618,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.00514113678307474,
+          "mse_vs_truth": 0.015597224040122358,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.0009145726699245785,
+          "mse_vs_truth": 0.011533414908022075,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.76123899208639e-05,
+          "mse_vs_truth": 0.010634571334835705,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.729702924901862e-05,
+          "mse_vs_truth": 0.010593660301748159,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.0001578219304741085,
+          "mse_vs_truth": 0.010707258527800774,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.1917964656511524e-05,
+          "mse_vs_truth": 0.010600382806134545,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 8.411624312721162e-05,
+          "mse_vs_truth": 0.010639623499600856,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.505699824670503e-05,
+          "mse_vs_truth": 0.010601243666080605,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 8.639802150274566e-05,
+          "mse_vs_truth": 0.010649075884128313,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 6.236943886020313e-05,
+          "mse_vs_truth": 0.010612079920818881,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.00011182536989433919,
+          "mse_vs_truth": 0.010662914081094581,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.0001804581888137818,
+          "mse_vs_truth": 0.010746210952809969,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.00012527834439618712,
+          "mse_vs_truth": 0.010683368570408297,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.00010868533996134021,
+          "mse_vs_truth": 0.010684297770834232,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.0001720002371800326,
+          "mse_vs_truth": 0.010733467443349253,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.00010483977523448214,
+          "mse_vs_truth": 0.010642351517136906,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.0002013953352633504,
+          "mse_vs_truth": 0.010769569507726054,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010500272616139619,
+          "mse_vs_truth": 0.010659418872373694,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.0001962695346138786,
+          "mse_vs_truth": 0.010730649788270718,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.00013386831894863835,
+          "mse_vs_truth": 0.010678000477263366,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.00022466336808780234,
+          "mse_vs_truth": 0.01074522726088574,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.00010841244418404776,
+          "mse_vs_truth": 0.010676569219876544,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.00026129917995168934,
+          "mse_vs_truth": 0.010842494981864036,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.0002722891166182451,
+          "mse_vs_truth": 0.010854814668121835,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.0006641587014676011,
+          "mse_vs_truth": 0.011235032084984558,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.002425908035415354,
+          "mse_vs_truth": 0.012980373946884703,
+          "quantized_parameters": 983040
+        }
+      }
+    },
+    {
+      "input_sha256": "96c32f97dca640a64f3f909ddcfc46102f8d6b7f79a8ee518ee5c30ee9b99dce",
+      "init_time": "2024-03-10T00:00:00Z",
+      "reference_mse_vs_truth": 0.010722860801841401,
+      "persistence_mse_vs_truth": 0.14379615728953407,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.0051710513739755765,
+          "mse_vs_truth": 0.01577410897524129,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.0008902430601321359,
+          "mse_vs_truth": 0.011658145458203829,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.60777901553852e-05,
+          "mse_vs_truth": 0.010801019277633918,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.813754889861557e-05,
+          "mse_vs_truth": 0.010759665152231482,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.00015618128638044204,
+          "mse_vs_truth": 0.010857713124346148,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.1953766397209344e-05,
+          "mse_vs_truth": 0.010745938986494773,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 8.473636438462815e-05,
+          "mse_vs_truth": 0.010802716480949036,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.475483527591631e-05,
+          "mse_vs_truth": 0.010775246053315502,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 8.44300167059688e-05,
+          "mse_vs_truth": 0.010811118066157135,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 6.0773071486639934e-05,
+          "mse_vs_truth": 0.010779160159885165,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.00010842587553622745,
+          "mse_vs_truth": 0.010843924561448018,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.00017996858979501163,
+          "mse_vs_truth": 0.010894560718448132,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.00012410042633421062,
+          "mse_vs_truth": 0.010881136807565382,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.00010897460088370192,
+          "mse_vs_truth": 0.010835940264821264,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.00016891774962548748,
+          "mse_vs_truth": 0.010881470219047727,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.00010627290097435879,
+          "mse_vs_truth": 0.010809461009744472,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.00019292949130221088,
+          "mse_vs_truth": 0.010916447475732975,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010267526996702565,
+          "mse_vs_truth": 0.010805122871128689,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.00019430882138657326,
+          "mse_vs_truth": 0.010918840019672922,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.00013852990817064418,
+          "mse_vs_truth": 0.010868120242883928,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.0002185795389319868,
+          "mse_vs_truth": 0.010936670644883573,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.00010508413645514132,
+          "mse_vs_truth": 0.010830510100235663,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.0002589554847113619,
+          "mse_vs_truth": 0.010983515408223902,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.00026554981037626855,
+          "mse_vs_truth": 0.011010786391045468,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.0006591569263130413,
+          "mse_vs_truth": 0.01139798609922576,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.002419846561714976,
+          "mse_vs_truth": 0.013131472060241947,
+          "quantized_parameters": 983040
+        }
+      }
+    },
+    {
+      "input_sha256": "422164890e92bbd70e84b7f10a32b63cc101274e36b6eaaabb77506b827d39b6",
+      "init_time": "2024-03-11T00:00:00Z",
+      "reference_mse_vs_truth": 0.010897181202326517,
+      "persistence_mse_vs_truth": 0.14942529714478137,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.0050810474315956325,
+          "mse_vs_truth": 0.0160756068841285,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.0008923443381960712,
+          "mse_vs_truth": 0.01182802432968276,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.618570316671296e-05,
+          "mse_vs_truth": 0.010984483097661788,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.6828263974815714e-05,
+          "mse_vs_truth": 0.010943012851668496,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.0001518291408233938,
+          "mse_vs_truth": 0.011029066645782144,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.19905355040742e-05,
+          "mse_vs_truth": 0.010918945953121659,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 8.401187949363217e-05,
+          "mse_vs_truth": 0.010969879199881172,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.4187865384117496e-05,
+          "mse_vs_truth": 0.01093158715787069,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 8.180441838460577e-05,
+          "mse_vs_truth": 0.010972047603531456,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 5.839194881217887e-05,
+          "mse_vs_truth": 0.010947544536018287,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.00010597989822488085,
+          "mse_vs_truth": 0.01100210036561047,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.00017807576437560646,
+          "mse_vs_truth": 0.011086031155790906,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.00012109019500780054,
+          "mse_vs_truth": 0.011050887076756598,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.00010791061306020644,
+          "mse_vs_truth": 0.01099511162676331,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.00016996441887276326,
+          "mse_vs_truth": 0.011085054905026469,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.00010732677113942733,
+          "mse_vs_truth": 0.01099662092488412,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.00019511825887091368,
+          "mse_vs_truth": 0.011079414267305021,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010333039077573842,
+          "mse_vs_truth": 0.010978972237536615,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.00018917790635104075,
+          "mse_vs_truth": 0.011088382620698656,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.0001359130464424307,
+          "mse_vs_truth": 0.011039099784754926,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.00021818464726847643,
+          "mse_vs_truth": 0.011134065711566067,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.00010389036154730773,
+          "mse_vs_truth": 0.010993077500037743,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.0002565343522517815,
+          "mse_vs_truth": 0.011168615554511884,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.00026351334291042043,
+          "mse_vs_truth": 0.011199940777054919,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.0006638378828712762,
+          "mse_vs_truth": 0.01157920293178515,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.002416290813285483,
+          "mse_vs_truth": 0.013310986811222818,
+          "quantized_parameters": 983040
+        }
+      }
+    },
+    {
+      "input_sha256": "dc19532cc298888309fb9344c30b4b88fabf0ca977e5ab6350c64465e9bd575c",
+      "init_time": "2024-03-12T00:00:00Z",
+      "reference_mse_vs_truth": 0.01105588623051325,
+      "persistence_mse_vs_truth": 0.14596385237456566,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.00516184286792775,
+          "mse_vs_truth": 0.016170636122274967,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.0008875313821158745,
+          "mse_vs_truth": 0.012031982620773025,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.584368966806822e-05,
+          "mse_vs_truth": 0.011127923176253308,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.699145212787703e-05,
+          "mse_vs_truth": 0.011092946809614701,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.00015580103365399532,
+          "mse_vs_truth": 0.011218398738424014,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.179654331252584e-05,
+          "mse_vs_truth": 0.011095237715239226,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 8.500868311540373e-05,
+          "mse_vs_truth": 0.011149305977287666,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.429900969185091e-05,
+          "mse_vs_truth": 0.011096730363675556,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 8.234123302687468e-05,
+          "mse_vs_truth": 0.011121177320872595,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 5.9385649548649054e-05,
+          "mse_vs_truth": 0.011126318717842556,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.00010939167370662626,
+          "mse_vs_truth": 0.011168195425846673,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.00017581897026683452,
+          "mse_vs_truth": 0.011248416863992848,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.0001277258379564137,
+          "mse_vs_truth": 0.011178132451266472,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.0001083230191201066,
+          "mse_vs_truth": 0.011171409437201792,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.00016880717052126823,
+          "mse_vs_truth": 0.011222946163762645,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.00010690599457244879,
+          "mse_vs_truth": 0.011151560130003419,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.00019754353076964007,
+          "mse_vs_truth": 0.01128036001140723,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010488947037272137,
+          "mse_vs_truth": 0.011162650672330797,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.00019435327966710968,
+          "mse_vs_truth": 0.01124012962502176,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.000133934242350266,
+          "mse_vs_truth": 0.011187446787216672,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.00022123410427032743,
+          "mse_vs_truth": 0.011272100065669885,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.00010565475052557169,
+          "mse_vs_truth": 0.011158372978068612,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.00025946470623043497,
+          "mse_vs_truth": 0.011325158638256009,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.0002633139572234055,
+          "mse_vs_truth": 0.011337206636500539,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.000662354325613162,
+          "mse_vs_truth": 0.011729950452076225,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.0024132204920192823,
+          "mse_vs_truth": 0.013462088196738381,
+          "quantized_parameters": 983040
+        }
+      }
+    }
+  ]
+}

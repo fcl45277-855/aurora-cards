@@ -1,0 +1,650 @@
+{
+  "mode": "W4A32 RTN, FP32 reference/activations/accumulation",
+  "err_in_flip": null,
+  "original_download_sha256": "8a86a8c487a42283f97b9f119abcba11bc66b0103fc97854d881a0d6ace52827",
+  "model_asset_sha256": "2f726d4d5096e6b9d6c91c3abe646d5b5d2539905e8c978ea2bf9ece0497d6bb",
+  "groups": {
+    "patch_embed": [
+      {
+        "parameter": "patch_embed.proj.weight",
+        "shape": [
+          768,
+          20,
+          8,
+          8
+        ],
+        "input_axis": 1
+      }
+    ],
+    "blocks.0.filter": [
+      {
+        "parameter": "blocks.0.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.0.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.0.mlp": [
+      {
+        "parameter": "blocks.0.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.0.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.1.filter": [
+      {
+        "parameter": "blocks.1.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.1.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.1.mlp": [
+      {
+        "parameter": "blocks.1.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.1.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.2.filter": [
+      {
+        "parameter": "blocks.2.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.2.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.2.mlp": [
+      {
+        "parameter": "blocks.2.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.2.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.3.filter": [
+      {
+        "parameter": "blocks.3.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.3.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.3.mlp": [
+      {
+        "parameter": "blocks.3.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.3.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.4.filter": [
+      {
+        "parameter": "blocks.4.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.4.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.4.mlp": [
+      {
+        "parameter": "blocks.4.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.4.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.5.filter": [
+      {
+        "parameter": "blocks.5.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.5.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.5.mlp": [
+      {
+        "parameter": "blocks.5.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.5.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.6.filter": [
+      {
+        "parameter": "blocks.6.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.6.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.6.mlp": [
+      {
+        "parameter": "blocks.6.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.6.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.7.filter": [
+      {
+        "parameter": "blocks.7.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.7.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.7.mlp": [
+      {
+        "parameter": "blocks.7.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.7.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.8.filter": [
+      {
+        "parameter": "blocks.8.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.8.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.8.mlp": [
+      {
+        "parameter": "blocks.8.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.8.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.9.filter": [
+      {
+        "parameter": "blocks.9.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.9.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.9.mlp": [
+      {
+        "parameter": "blocks.9.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.9.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.10.filter": [
+      {
+        "parameter": "blocks.10.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.10.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.10.mlp": [
+      {
+        "parameter": "blocks.10.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.10.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "blocks.11.filter": [
+      {
+        "parameter": "blocks.11.filter.w1",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      },
+      {
+        "parameter": "blocks.11.filter.w2",
+        "shape": [
+          2,
+          8,
+          96,
+          96
+        ],
+        "input_axis": -2
+      }
+    ],
+    "blocks.11.mlp": [
+      {
+        "parameter": "blocks.11.mlp.fc1.weight",
+        "shape": [
+          3072,
+          768
+        ],
+        "input_axis": -1
+      },
+      {
+        "parameter": "blocks.11.mlp.fc2.weight",
+        "shape": [
+          768,
+          3072
+        ],
+        "input_axis": -1
+      }
+    ],
+    "head": [
+      {
+        "parameter": "head.weight",
+        "shape": [
+          1280,
+          768
+        ],
+        "input_axis": -1
+      }
+    ]
+  },
+  "dates": [
+    {
+      "input_sha256": "a54e2e111406a66c801f12e43a21bfdd59d31b00e1bf541de0b6922fa0323b02",
+      "init_time": "2024-02-02T00:00:00Z",
+      "reference_mse_vs_truth": 0.010626544289846643,
+      "persistence_mse_vs_truth": 0.14089571215209964,
+      "damage": {
+        "patch_embed": {
+          "mse_vs_reference": 0.005270822997825245,
+          "mse_vs_truth": 0.015849346442974806,
+          "quantized_parameters": 983040
+        },
+        "blocks.0.filter": {
+          "mse_vs_reference": 0.000906141545823343,
+          "mse_vs_truth": 0.011490929847260103,
+          "quantized_parameters": 294912
+        },
+        "blocks.0.mlp": {
+          "mse_vs_reference": 7.95614624829041e-05,
+          "mse_vs_truth": 0.010702939450125805,
+          "quantized_parameters": 4718592
+        },
+        "blocks.1.filter": {
+          "mse_vs_reference": 3.6435253124175834e-05,
+          "mse_vs_truth": 0.010643364495177552,
+          "quantized_parameters": 294912
+        },
+        "blocks.1.mlp": {
+          "mse_vs_reference": 0.00015765912423529904,
+          "mse_vs_truth": 0.010760243503366934,
+          "quantized_parameters": 4718592
+        },
+        "blocks.2.filter": {
+          "mse_vs_reference": 3.480914186164535e-05,
+          "mse_vs_truth": 0.010657337275377488,
+          "quantized_parameters": 294912
+        },
+        "blocks.2.mlp": {
+          "mse_vs_reference": 8.534064815404048e-05,
+          "mse_vs_truth": 0.010728153507011012,
+          "quantized_parameters": 4718592
+        },
+        "blocks.3.filter": {
+          "mse_vs_reference": 5.4391128366076674e-05,
+          "mse_vs_truth": 0.010666672363470606,
+          "quantized_parameters": 294912
+        },
+        "blocks.3.mlp": {
+          "mse_vs_reference": 8.838511475714204e-05,
+          "mse_vs_truth": 0.010705224599756502,
+          "quantized_parameters": 4718592
+        },
+        "blocks.4.filter": {
+          "mse_vs_reference": 6.555365757355928e-05,
+          "mse_vs_truth": 0.010679148536900204,
+          "quantized_parameters": 294912
+        },
+        "blocks.4.mlp": {
+          "mse_vs_reference": 0.0001069235667871322,
+          "mse_vs_truth": 0.01076060452649274,
+          "quantized_parameters": 4718592
+        },
+        "blocks.5.filter": {
+          "mse_vs_reference": 0.00018801426902412402,
+          "mse_vs_truth": 0.010835884953036277,
+          "quantized_parameters": 294912
+        },
+        "blocks.5.mlp": {
+          "mse_vs_reference": 0.00012597640627383757,
+          "mse_vs_truth": 0.010763938181769876,
+          "quantized_parameters": 4718592
+        },
+        "blocks.6.filter": {
+          "mse_vs_reference": 0.00010846338191605058,
+          "mse_vs_truth": 0.010744522861485552,
+          "quantized_parameters": 294912
+        },
+        "blocks.6.mlp": {
+          "mse_vs_reference": 0.00016727904718303704,
+          "mse_vs_truth": 0.010785324701912128,
+          "quantized_parameters": 4718592
+        },
+        "blocks.7.filter": {
+          "mse_vs_reference": 0.00010694047857001343,
+          "mse_vs_truth": 0.010720091904763326,
+          "quantized_parameters": 294912
+        },
+        "blocks.7.mlp": {
+          "mse_vs_reference": 0.000200479026423565,
+          "mse_vs_truth": 0.0107938424062699,
+          "quantized_parameters": 4718592
+        },
+        "blocks.8.filter": {
+          "mse_vs_reference": 0.00010754086125911188,
+          "mse_vs_truth": 0.010735745823753287,
+          "quantized_parameters": 294912
+        },
+        "blocks.8.mlp": {
+          "mse_vs_reference": 0.00019850400818592184,
+          "mse_vs_truth": 0.010810145391073158,
+          "quantized_parameters": 4718592
+        },
+        "blocks.9.filter": {
+          "mse_vs_reference": 0.0001343299264327905,
+          "mse_vs_truth": 0.010722477466570353,
+          "quantized_parameters": 294912
+        },
+        "blocks.9.mlp": {
+          "mse_vs_reference": 0.00022406689362153366,
+          "mse_vs_truth": 0.010832155692302009,
+          "quantized_parameters": 4718592
+        },
+        "blocks.10.filter": {
+          "mse_vs_reference": 0.00011083023647633941,
+          "mse_vs_truth": 0.01074127041365449,
+          "quantized_parameters": 294912
+        },
+        "blocks.10.mlp": {
+          "mse_vs_reference": 0.0002568711558744865,
+          "mse_vs_truth": 0.010900675952716576,
+          "quantized_parameters": 4718592
+        },
+        "blocks.11.filter": {
+          "mse_vs_reference": 0.0002711412137546422,
+          "mse_vs_truth": 0.010915615027935583,
+          "quantized_parameters": 294912
+        },
+        "blocks.11.mlp": {
+          "mse_vs_reference": 0.0006571830932499345,
+          "mse_vs_truth": 0.011281285374322892,
+          "quantized_parameters": 4718592
+        },
+        "head": {
+          "mse_vs_reference": 0.0024036782758624594,
+          "mse_vs_truth": 0.013026636613690563,
+          "quantized_parameters": 983040
+        }
+      }
+    }
+  ]
+}

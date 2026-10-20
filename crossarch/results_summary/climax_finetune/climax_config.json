@@ -1,0 +1,177 @@
+{
+  "task": "era5_finetuned",
+  "training_provenance": {
+    "provenance": {
+      "path": "$CROSSARCH_ROOT/climax_finetune_run/provenance.json",
+      "sha256": "fb9a16f6920d59c52239cadf90d0b5bee53bb448bbc494170457aceb5a5c4893"
+    },
+    "task_id": "own_era5_2010_2016_6h_v1",
+    "scope": "Own bounded-data ERA5 adaptation, not a replication of the published ClimaX benchmark",
+    "best_epoch": 19,
+    "forecast_gate": {
+      "passed": true,
+      "checks": {
+        "aggregate": true,
+        "geopotential_500": true,
+        "temperature_850": true
+      }
+    },
+    "training_data_manifest_sha256": "d94754facdbf2134c09e2454470d201bb0a1c3a9acaf36f6ecae6828266c3dbc",
+    "pretrained": {
+      "path": "$CROSSARCH_ROOT/weights/climax_5.625deg.ckpt",
+      "sha256": "6393876948b8244e65f8b341474a5a14e4242dd4ff4c1db811700935be347c43"
+    }
+  },
+  "lead_hours": 6,
+  "lead_embedding_divisor": 100,
+  "checkpoint": {
+    "path": "$CROSSARCH_ROOT/climax_finetune_run/best.ckpt",
+    "sha256": "4234103f58f2a1874d94b2dd4e8c51ef9d33b8c070e36de592ca04f4483cd32a"
+  },
+  "mean": {
+    "path": "$CROSSARCH_ROOT/finetune_era5_20261020/normalize_mean.npz",
+    "sha256": "5621e2fbd09f6ae62309d54eeee5c27de77ccfde0544a345ef47c51ae60e817e"
+  },
+  "std": {
+    "path": "$CROSSARCH_ROOT/finetune_era5_20261020/normalize_std.npz",
+    "sha256": "1aff018659fd8db0d274b6e272f154f0ecf5df66c8b68410e7a8e9ad4f6a056d"
+  },
+  "lat": {
+    "path": "$CROSSARCH_ROOT/finetune_era5_20261020/latitude.npy",
+    "sha256": "aff53922ef0f512f764e5637e94de6f67892486e45c238d2a908e02830d9ac44"
+  },
+  "lon": {
+    "path": "$CROSSARCH_ROOT/finetune_era5_20261020/longitude.npy",
+    "sha256": "baa449e5ce4778e60a2d06a9503a8b965ab2ac97516db4b7f36b818f41a31f2a"
+  },
+  "inputs": {
+    "plumbing": [
+      {
+        "date": "2024-02-02",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-02-02.npz",
+        "sha256": "721f7779d05dfc5f2c862307341e1437b1850ce9eb4494a69f64b8ff6edda9d0"
+      }
+    ],
+    "predictor": [
+      {
+        "date": "2024-01-04",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-01-04.npz",
+        "sha256": "4fae832c5fc89eb10fe4e3dd53d06070b984a0c295fc9bf1c4fcfd087caee83f"
+      },
+      {
+        "date": "2024-01-06",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-01-06.npz",
+        "sha256": "18fd3e7fd23fd000ff39499cec9a3c08c4d07e4d466e8453b95f3dec4c4695cb"
+      },
+      {
+        "date": "2024-01-08",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-01-08.npz",
+        "sha256": "2e5febc83cc5e1dfda7a2d4b66ab6a82b9b73fccedeab64a785bf1b8b8a1246a"
+      }
+    ],
+    "confirmation": [
+      {
+        "date": "2024-03-01",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-03-01.npz",
+        "sha256": "ceda51ccd2b629c28dfcefc6498cbb8ab703de915bd62578d045b5b32ea5eb9e"
+      },
+      {
+        "date": "2024-03-02",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-03-02.npz",
+        "sha256": "7f8b35ccd6786008b9c9c090a7c5ade0b74f3c20c282eab8bb98fadd46e8ec5b"
+      },
+      {
+        "date": "2024-03-03",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-03-03.npz",
+        "sha256": "3d6fd32b30e0f22d1b2e1d0b744df135473f41316b0ad56bec42668f035e6f8f"
+      },
+      {
+        "date": "2024-03-04",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-03-04.npz",
+        "sha256": "9e25e1abe97ef85b6cc66c75e09e43fe06f9af4e9c4f31fa87ae6894604b4491"
+      },
+      {
+        "date": "2024-03-05",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-03-05.npz",
+        "sha256": "dce0ff93fcb539edf986032da87d6fd3c97d53066316fa600d4659dc2537aa42"
+      },
+      {
+        "date": "2024-03-06",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-03-06.npz",
+        "sha256": "39c8c4e2895f2d02f51c6e81049063fc4621b4a5ca85761a7fbcb60a50e6f7c8"
+      },
+      {
+        "date": "2024-03-07",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-03-07.npz",
+        "sha256": "7d9598a67f0f9af71fa71efe9dc01860aa01fb55a5f2a4c6172bbe1865a560ed"
+      },
+      {
+        "date": "2024-03-08",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-03-08.npz",
+        "sha256": "246f3d977f9bd11e78e16ec8e495d32e3fbc8f236356eec8773caecab062a54a"
+      },
+      {
+        "date": "2024-03-09",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-03-09.npz",
+        "sha256": "fb3dab99f79dd7ae0e9f40c5947fe680758d7af5bea443089a3b29c562367524"
+      },
+      {
+        "date": "2024-03-10",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-03-10.npz",
+        "sha256": "a3d93f972859f83ba6b8a70292adc0b47d7af3577163ab9daf37aa99c53fe81b"
+      },
+      {
+        "date": "2024-03-11",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-03-11.npz",
+        "sha256": "53bd7feede7deed59a27b7fc287887e749b7f11593177b28af1ede5ac1d72084"
+      },
+      {
+        "date": "2024-03-12",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-03-12.npz",
+        "sha256": "ce1d129954af049036c2807303cdf5888eab3335c05623de9bb53e9a65065702"
+      }
+    ],
+    "summer": [
+      {
+        "date": "2024-07-01",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-07-01.npz",
+        "sha256": "cf270215245817e709c4221f87ed22ff1c1e76e9a429d3d902c5fad190226d89"
+      },
+      {
+        "date": "2024-07-02",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-07-02.npz",
+        "sha256": "aec25410d787679210d07c5cc28c92513b6014a045c8077e2d50b30f3c89e8cc"
+      },
+      {
+        "date": "2024-07-03",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-07-03.npz",
+        "sha256": "19a629066aee02d21e1dcf013135b6ac769d26e6b0018d3af74a403a5f05832f"
+      },
+      {
+        "date": "2024-07-04",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-07-04.npz",
+        "sha256": "8b0a84897a7efa5e03054ee7205262e0c65c171b7cce26638c7e44cd408b2715"
+      },
+      {
+        "date": "2024-07-05",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-07-05.npz",
+        "sha256": "dc34e54da4dcfa200cf79e29cba9238188cd2465b5f382407ed5f564d51b1fbb"
+      },
+      {
+        "date": "2024-07-06",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-07-06.npz",
+        "sha256": "b9629334295f6ecef7412c92ce342c7f73594017e0620cd61ad5b6832e468ee5"
+      },
+      {
+        "date": "2024-07-07",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-07-07.npz",
+        "sha256": "f83b363864c33a71b616c8ce7a09e568ae654887aa68d42dda461e7475ca10c2"
+      },
+      {
+        "date": "2024-07-08",
+        "path": "$CROSSARCH_ROOT/finetune_era5_20261020/holdout/2024-07-08.npz",
+        "sha256": "184a26d01d511503f83f46a6c6a905aa8ae090618040dc382d210d9b03239725"
+      }
+    ]
+  }
+}

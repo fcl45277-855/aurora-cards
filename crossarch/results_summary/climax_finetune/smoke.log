@@ -1,0 +1,25 @@
+{
+  "learns": true,
+  "beats_persistence": true,
+  "best_reload_exact": true,
+  "resume_exact": true,
+  "partial_stopped_at_2": true,
+  "lr_schedule": [
+    1e-08,
+    5.000500000000001e-05,
+    0.0001,
+    1e-06
+  ],
+  "train_loss_by_epoch": [
+    0.9856618481713373,
+    0.9179285631791966,
+    0.8576283744863562,
+    0.8000533077362422
+  ],
+  "val_vs_persistence": [
+    0.7938364438062983,
+    2.0551808667249682
+  ],
+  "lr_ok": true
+}
+SMOKE PASS

@@ -13,6 +13,7 @@ matplotlib==3.11.0
 pyshtools              # spherical-harmonic spectra for the PhysMetrics.Weather metrics
 cdsapi                 # ERA5 download
 huggingface_hub        # checkpoint download
+numcodecs              # WeatherBench2 Zarr chunks (crossarch/ only)
 pytest
 # Aurora: the paper used the microsoft/aurora source of July 2026 (docs/aurora_package_md5.txt lists the file checksums;
 # scripts/check_env.py compares them with your installation)

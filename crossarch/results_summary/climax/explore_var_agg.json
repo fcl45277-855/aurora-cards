@@ -1,0 +1,75 @@
+{
+  "exploratory": true,
+  "config_sha256": "f13b2e3f9a90edd199c0a94a10f7d0d9c075fb01a16e35da82831393c8778366",
+  "mean_damage": {
+    "W4A4 all (= run_climax)": 0.0035726472251760098,
+    "weights only (W4A32)": 0.0002274077382379368,
+    "activations only (W32A4)": 0.0033938749617760332,
+    "Q/K/V in_proj only (W4A4)": 0.0025031610463447716,
+    "out_proj only (W4A4)": 0.0009795817138456844,
+    "K/V token activations only": 0.0024100183511099747,
+    "out_proj input activation only": 0.0008798604362743396
+  },
+  "token_scale_by_date": [
+    {
+      "token_rms_max_over_min": 2.510898751883715,
+      "token_absmax": 6.349088668823242,
+      "token_rms_median": 0.5155479329684872
+    },
+    {
+      "token_rms_max_over_min": 2.4863005020008204,
+      "token_absmax": 7.178594589233398,
+      "token_rms_median": 0.5172103212068166
+    },
+    {
+      "token_rms_max_over_min": 2.495801159092362,
+      "token_absmax": 7.032338619232178,
+      "token_rms_median": 0.5184234628597173
+    },
+    {
+      "token_rms_max_over_min": 2.4961720383778787,
+      "token_absmax": 6.543519973754883,
+      "token_rms_median": 0.5201390805833644
+    },
+    {
+      "token_rms_max_over_min": 2.5108430993846413,
+      "token_absmax": 7.462657928466797,
+      "token_rms_median": 0.5234617977682343
+    },
+    {
+      "token_rms_max_over_min": 2.516824206267186,
+      "token_absmax": 6.6612067222595215,
+      "token_rms_median": 0.524347037998449
+    },
+    {
+      "token_rms_max_over_min": 2.5153559160067736,
+      "token_absmax": 6.768482685089111,
+      "token_rms_median": 0.5248360175972797
+    },
+    {
+      "token_rms_max_over_min": 2.513499051598288,
+      "token_absmax": 6.661286354064941,
+      "token_rms_median": 0.5248675301620577
+    },
+    {
+      "token_rms_max_over_min": 2.5180991809320417,
+      "token_absmax": 8.090677261352539,
+      "token_rms_median": 0.5216223523653967
+    },
+    {
+      "token_rms_max_over_min": 2.5140453198230723,
+      "token_absmax": 7.399606227874756,
+      "token_rms_median": 0.5196249071059376
+    },
+    {
+      "token_rms_max_over_min": 2.52502763109823,
+      "token_absmax": 7.187957763671875,
+      "token_rms_median": 0.5189043607016481
+    },
+    {
+      "token_rms_max_over_min": 2.52099861685788,
+      "token_absmax": 8.499469757080078,
+      "token_rms_median": 0.517751543913155
+    }
+  ]
+}

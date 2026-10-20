@@ -8,7 +8,8 @@ This repository accompanies **NVFP4 quantisation of Aurora: attention sensitivit
 
 - **Quantisation and evaluation.** Block-format NVFP4 and MXFP8 simulators, GPTQ, SmoothQuant scaling, low-rank branches, experiment recipes and rollout scoring. Evaluation separates error relative to full-precision Aurora from forecast error against ERA5, and includes block-bootstrap confidence intervals, lead-time loss and physical-consistency diagnostics.
 - **The `t7_mx` recipe.** NVFP4 weights and MXFP8 activations, with SmoothQuant scaling and a rank-32 branch; GPTQ is applied to 138 of Aurora's 314 linear layers. [cards/deployable.py](cards/deployable.py) exposes the layer construction for use with other PyTorch models. Its return value is a simulated quantised layer.
-- **An attention diagnostic.** [cards/switching.py](cards/switching.py) replays attention under a quantisation-induced key perturbation and measures the share of output error associated with a change in the highest-logit key. The paper evaluates its ability to rank module sensitivity across three Aurora variants; independent architectures have not yet been validated here.
+- **An attention diagnostic.** [cards/switching.py](cards/switching.py) replays attention under a quantisation-induced key perturbation and measures the share of output error associated with a change in the highest-logit key. The paper evaluates its ability to rank module sensitivity across three Aurora variants. In an independent architecture, ClimaX, the analogous variable-aggregation module is again the most sensitive, but its attention is diffuse and the diagnostic does not rank the modules ([crossarch/](crossarch/)); treat it as specific to few-key, sharply attended cross-attention.
+- **Cross-architecture check.** [crossarch/](crossarch/) quantises ClimaX (fine-tuned by us on ERA5 at 5.625°) and FourCastNet module by module under a pre-run protocol, with code, protocol and result summaries.
 - **Hardware experiments.** Native NVFP4 builds with TorchAO/mslk on Blackwell GPUs, plus timing and profiling scripts. These experiments are separate from the simulated `t7_mx` activation path.
 
 **Simulation and hardware coverage:** NVFP4 uses E2M1 values, a UE4M3 scale per 16 elements and an FP32 tensor scale. The simulator is checked for bit-exact agreement with TorchAO's `NVFP4Tensor`. MXFP8 uses E4M3 values and a power-of-two scale per 32 elements. In the native comparisons reported in Sect. 4.6, simulated and native results agree within 0.2% on average. The best `t7_mx` path uses simulated MXFP8 activations: no native NVFP4 × MXFP8 kernel was evaluated with TorchAO 0.18. It should not be interpreted as a demonstrated whole-model speedup.
@@ -110,6 +111,7 @@ GPU memory use and per-card times were measured on an RTX 5090 with 32 GB of mem
 | [tests/](tests/) | Data-free unit tests and script-style checks |
 | [examples/](examples/) | Two CPU examples and one GPU forecast example |
 | [results_summary/](results_summary/) | Released per-card summaries and aggregate diagnostics for the pretrained, finetuned and small models |
+| [crossarch/](crossarch/) | ClimaX and FourCastNet cross-architecture check: protocol, scripts, result summaries |
 | [docs/](docs/) | [User guide](docs/USER_GUIDE.md), [tutorial](docs/TUTORIAL.md), [reproduction guide](docs/REPRODUCE.md) and [data specification](docs/DATA.md) |
 
 ## AI-assisted development

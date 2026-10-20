@@ -1,0 +1,61 @@
+{
+  "confirmation_sha256": "d2a12c06e58f95392cb79903ce336c85862b28019cfe7c9bcf2fcd99afd804d2",
+  "frozen_predictor_sha256": "20ebbdebefba21ed5221954b91ee53d96278097d168c939b39bac5135b413b3e",
+  "synthetic_only": false,
+  "module_order": [
+    "blocks.0.attn",
+    "blocks.1.attn",
+    "blocks.2.attn",
+    "blocks.3.attn",
+    "blocks.4.attn",
+    "blocks.5.attn",
+    "blocks.6.attn",
+    "blocks.7.attn",
+    "var_agg"
+  ],
+  "mean_damage": [
+    9.243215049577544e-05,
+    0.00010139680010312002,
+    6.611853648042037e-05,
+    3.580783696285646e-05,
+    6.287068803846018e-05,
+    4.916963166641008e-05,
+    0.00020197392638553104,
+    0.0007418984266824554,
+    0.0035726472251760098
+  ],
+  "variable_aggregation_rank": 1.0,
+  "H1_top_quartile_supported": true,
+  "spearman_rho": {
+    "err_in_flip": -0.5166666666666667,
+    "local_yerr": -0.09999999999999999,
+    "flip_rate": -0.6166666666666666,
+    "flip_rate_times_conditional_value_gap": 0.18333333333333335,
+    "parameter_count": null
+  },
+  "rho_date_block_bootstrap_95ci": {
+    "err_in_flip": [
+      -0.5166666666666667,
+      -0.5166666666666667
+    ],
+    "local_yerr": [
+      -0.09999999999999999,
+      -0.09999999999999999
+    ],
+    "flip_rate": [
+      -0.6166666666666666,
+      -0.6166666666666666
+    ],
+    "flip_rate_times_conditional_value_gap": [
+      0.18333333333333335,
+      0.18333333333333335
+    ],
+    "parameter_count": null
+  },
+  "H2_supported": false,
+  "limitations": [
+    "Only nine attention modules; no claim of universal allocation optimality.",
+    "Bootstrap intervals condition on the frozen January predictor; they do not include predictor-set uncertainty.",
+    "Isolated-module damage is not additive and is not a causal decomposition."
+  ]
+}

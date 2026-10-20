@@ -1,0 +1,86 @@
+{
+  "stock_repeat": {
+    "max_abs": 0.0,
+    "max_ref": 3.8216488361358643,
+    "global_rel": 0.0,
+    "allclose_1e-6_1e-5": true
+  },
+  "var_agg": {
+    "model_output": {
+      "max_abs": 4.9173831939697266e-06,
+      "max_ref": 3.8216488361358643,
+      "global_rel": 5.72767445721096e-07,
+      "allclose_1e-6_1e-5": false
+    }
+  },
+  "blocks.0.attn": {
+    "model_output": {
+      "max_abs": 1.6689300537109375e-06,
+      "max_ref": 3.8216488361358643,
+      "global_rel": 2.4810836815379283e-07,
+      "allclose_1e-6_1e-5": true
+    }
+  },
+  "blocks.1.attn": {
+    "model_output": {
+      "max_abs": 1.6689300537109375e-06,
+      "max_ref": 3.8216488361358643,
+      "global_rel": 2.365838311496664e-07,
+      "allclose_1e-6_1e-5": true
+    }
+  },
+  "blocks.2.attn": {
+    "model_output": {
+      "max_abs": 1.5497207641601562e-06,
+      "max_ref": 3.8216488361358643,
+      "global_rel": 2.308131925168611e-07,
+      "allclose_1e-6_1e-5": true
+    }
+  },
+  "blocks.3.attn": {
+    "model_output": {
+      "max_abs": 1.6689300537109375e-06,
+      "max_ref": 3.8216488361358643,
+      "global_rel": 2.2860792910019167e-07,
+      "allclose_1e-6_1e-5": true
+    }
+  },
+  "blocks.4.attn": {
+    "model_output": {
+      "max_abs": 2.086162567138672e-06,
+      "max_ref": 3.8216488361358643,
+      "global_rel": 2.2541073735333207e-07,
+      "allclose_1e-6_1e-5": true
+    }
+  },
+  "blocks.5.attn": {
+    "model_output": {
+      "max_abs": 1.5497207641601562e-06,
+      "max_ref": 3.8216488361358643,
+      "global_rel": 2.1880194547810967e-07,
+      "allclose_1e-6_1e-5": true
+    }
+  },
+  "blocks.6.attn": {
+    "model_output": {
+      "max_abs": 1.9073486328125e-06,
+      "max_ref": 3.8216488361358643,
+      "global_rel": 2.253716371728147e-07,
+      "allclose_1e-6_1e-5": true
+    }
+  },
+  "blocks.7.attn": {
+    "model_output": {
+      "max_abs": 1.9073486328125e-06,
+      "max_ref": 3.8216488361358643,
+      "global_rel": 2.5346999179239305e-07,
+      "allclose_1e-6_1e-5": false
+    }
+  },
+  "var_agg_module_output": {
+    "max_abs": 2.288818359375e-05,
+    "max_ref": 96.69540405273438,
+    "global_rel": 3.0411398135982153e-07,
+    "allclose_1e-6_1e-5": false
+  }
+}

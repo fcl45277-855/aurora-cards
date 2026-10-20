@@ -10,3 +10,4 @@ figures/
 *.ckpt
 *.npz
 *.nc
+crossarch_work/
