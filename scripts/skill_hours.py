@@ -3,9 +3,12 @@ equals the card's ERA5 RMSE at T (linear interpolation of FP32's RMSE-vs-lead cu
 D is in hours (6 h per step). Negative = the card is better than FP32 at that lead time.
 
 Rule: RMSE is averaged over initial dates first, per variable and lead. Where FP32's curve decreases with lead (2t has
-diurnal dips after 90 h), it is replaced by its running maximum, so the interpolation is well defined. Below the first
-lead the curve is extrapolated linearly (D >= -T); above the last lead D is undefined and excluded from the variable
-mean. D is a point estimate at the 6-h output resolution, not an uncertainty bound.
+diurnal dips after 90 h), it is replaced by its running maximum, so the interpolation is well defined. On a flat
+segment of this envelope the crossing is taken at its end, i.e. the latest lead with that RMSE (numpy.interp on a
+non-decreasing curve). Below the first lead the curve is extrapolated linearly from the first two leads (D >= -T);
+above the last lead D is undefined and the variable is excluded from the mean, so a mean with excluded variables is a
+lower bound. The row "n" gives the number of variables in each mean. D is a point estimate at the 6-h output
+resolution, not an uncertainty bound.
 
   python scripts/skill_hours.py --split test --steps 20 t7_mx c08_weight_only_gptq t7_g02_nodec_fold bf16
 """
@@ -62,6 +65,7 @@ def main():
                 mean_d[s].append(d)
             print(f"  {v:5s} " + " ".join(f"{x:>7s}" for x in row))
         print("  mean  " + " ".join(f"{np.nanmean(mean_d[s]):+7.1f}" for s in at))
+        print("  n     " + " ".join(f"{int(np.sum(~np.isnan(mean_d[s]))):7d}" for s in at))
         print("  lead  " + " ".join(f"{6 * s:6d}h" for s in at))
 
 
