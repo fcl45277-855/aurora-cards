@@ -8,10 +8,12 @@ skill, spectra at long lead and per-date robustness of the attention-replay pred
   C. FP32 absolute RMSE against ERA5 at 12, 24, 72 and 120 h for z500, t850, 2t, 10u and msl (root of the mean MSE
      over initial dates; z500 in m2 s-2, t850 and 2t in K, 10u in m s-1, msl in Pa).
   D. Zonal power spectra (20-70 deg) at 24, 72 and 120 h from _diag_fields_*: card / FP32 power per wavenumber bin and
-     the small-scale ratio (wavenumber >= 64), averaged over initial dates; FP32 / ERA5 for reference.
-  E. Attention-replay predictor: Spearman correlation between each replay date's predictor and the module damage
-     (squared-qerr excess over BF16 on the 12 development dates), with exact one-sided permutation p-values
-     (all n! orderings), per model variant; also against the damage of the replay date alone.
+     the small-scale ratio (wavenumber bins >= 64; the scalar err_small_share of diag_fields.py uses k > 50), averaged
+     over the initial dates each card shares with FP32 (paired by date); FP32 / ERA5 for reference.
+  E. Attention-replay predictor: Spearman correlation (average ranks for ties) between each replay date's predictor and
+     the module damage (squared-qerr excess over BF16 on the 12 development dates), with exact one-sided permutation
+     p-values (all n! orderings; the predictor was expected to correlate positively), per model variant; also against
+     the damage of the replay date alone. The parameter-count comparison has no expected sign and is two-sided.
 
     python scripts/extended_analyses.py [--results <dir>] [--pairs t7_mx:c08_t7set ...] > extended_analyses.txt
 
@@ -27,6 +29,7 @@ import os
 from pathlib import Path
 
 import numpy as np
+from scipy.stats import rankdata
 
 ROOT = Path(__file__).resolve().parents[1]
 VARS = ["2t", "10u", "10v", "msl", "z500", "t850", "u850", "v850", "q700"]
@@ -75,19 +78,22 @@ def common(fp, *cards, steps=None):
 
 
 def spearman(x, y):
-    rx, ry = np.argsort(np.argsort(x)), np.argsort(np.argsort(y))
+    """Spearman rho with average ranks for ties (equal to scipy.stats.spearmanr)."""
+    rx, ry = rankdata(x), rankdata(y)
     return float(np.corrcoef(rx, ry)[0, 1])
 
 
-def perm_p(x, y):
-    """Exact one-sided p of Spearman rho >= observed over all orderings of y (no ties expected)."""
+def perm_p(x, y, alternative='greater'):
+    """Exact permutation p of Spearman rho over all orderings of y's (average) ranks.
+    alternative: 'greater' (rho >= observed), 'less' (rho <= observed) or 'two-sided' (|rho| >= |observed|)."""
     obs = spearman(x, y)
-    rx = np.argsort(np.argsort(x)).astype(float)
-    ge = tot = 0
-    for p in itertools.permutations(range(len(y))):
-        tot += 1
-        ge += float(np.corrcoef(rx, np.array(p, float))[0, 1]) >= obs - 1e-12
-    return obs, ge / tot
+    rx, ry = rankdata(x), rankdata(y)
+    rhos = np.array([np.corrcoef(rx, ry[list(p)])[0, 1] for p in itertools.permutations(range(len(y)))])
+    if alternative == 'greater':
+        return obs, float(np.mean(rhos >= obs - 1e-12))
+    if alternative == 'less':
+        return obs, float(np.mean(rhos <= obs + 1e-12))
+    return obs, float(np.mean(np.abs(rhos) >= abs(obs) - 1e-12))
 
 
 def section_a(results, pairs, n=2000):
@@ -181,9 +187,10 @@ def section_d(results):
                 for name, r in d['recipes'].items():
                     if step not in r['per_date']:
                         continue
-                    cs = np.array([r['per_date'][step][x]['spectra'][v] for x in d['dates'] if x in r['per_date'][step]])
-                    ratio = np.mean(cs / fp[:len(cs)], 0)
-                    sm = np.mean(cs[:, small].sum(1) / fp[:len(cs), small].sum(1))
+                    idx = [i for i, x in enumerate(d['dates']) if x in r['per_date'][step]]    # pair by date
+                    cs = np.array([r['per_date'][step][d['dates'][i]]['spectra'][v] for i in idx])
+                    ratio = np.mean(cs / fp[idx], 0)
+                    sm = np.mean(cs[:, small].sum(1) / fp[idx][:, small].sum(1))
                     lines.append(f'{name} small {sm:.3f} bins ' + ' '.join(f'{x:.2f}' for x in ratio))
                 print(' | '.join(lines))
 
@@ -235,8 +242,9 @@ def section_e(results):
         if be.exists():
             pe = json.load(open(be))['pred']
             if all('params' in pe[m] for m in MODS):
-                rp, pp = perm_p(np.array([pe[m]['params'] for m in MODS], float), t)
-                print(f'   parameter count of the attention projections: rho {rp:+.2f} (p = {pp:.4f})')
+                rp, pp = perm_p(np.array([pe[m]['params'] for m in MODS], float), t, alternative='two-sided')
+                print(f'   parameter count of the attention projections (average ranks, ties present): rho {rp:+.2f} '
+                      f'(two-sided p = {pp:.4f})')
         print('   damage per date (rank order of modules is stable if the rows agree): ' +
               '; '.join(f"{d}: " + ' > '.join(sorted(MODS, key=lambda m: -tgt_d[m][d])[:3]) for d in sorted(tgt_d[MODS[0]])[:12:4]))
 

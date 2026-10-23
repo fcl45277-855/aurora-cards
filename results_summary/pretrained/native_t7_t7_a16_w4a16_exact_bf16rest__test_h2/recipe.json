@@ -1,0 +1,6 @@
+{
+ "name": "native_t7_t7_a16_w4a16_exact_bf16rest",
+ "kind": "native_t7",
+ "recipe": "t7_a16",
+ "act": "w4a16"
+}

@@ -4,12 +4,16 @@ The FP32 model (recipes/fp32.json) and one card model at a time share the GPU; p
 step the card is compared with FP32 and with ERA5 (FP32 vs ERA5 is the yardstick):
   spectra      zonal power spectra (rFFT along longitude, 20-70 deg both hemispheres, cos-lat weighted, log2 wavenumber
                bins) of msl, 2t, z500, t850, u850 for truth / fp32 / card and of the errors fp32-truth, card-fp32;
-               small-scale share of the error power (k > 50) says noise-like vs large-scale
+               small-scale share of the error power (k > 50) says noise-like vs large-scale. This scalar cut (k > 50)
+               differs from the binned small-scale ratio of scripts/extended_analyses.py section D (bins with k >= 64);
+               both are reported as defined
   extremes     10 m wind q99 / q99.9 / max, msl min, 2t q0.1 / q99.9 (|lat| <= 80); RMSE of card-fp32 restricted to the
                truth-wind top 1 % cells over the global RMSE ("does the error concentrate in extremes")
   vertical     hydrostatic residual RMS over the 12 layers (dz - R T ln(p1/p2)), superadiabatic-layer share (p >= 300),
                vertical correlation of adjacent-level errors (t and z) for card-fp32 and fp32-truth
-  geostrophic  500 hPa ageostrophic residual RMS (25-70 deg)
+  geostrophic  500 hPa ageostrophic residual RMS (25-70 deg); the zonal gradient is one-sided at the first and last
+               longitude (numpy.gradient), as for the paper's values; --wrap-lon uses periodic central differences
+               there, as scripts/physmetrics_fields.py does
   geography    2-deg maps of squared error (card-fp32, fp32-truth) for z500 / 2t / msl, zonal-mean squared error,
                spatial correlation of the two maps (flow dependence proxy)
   mass         lat-weighted global mean msl
@@ -76,6 +80,8 @@ def field(F: dict, name: str) -> np.ndarray:
 # ---- diagnostics -----------------------------------------------------------------------------------
 
 class Geo:
+    wrap_lon = False                 # periodic zonal gradient in geostrophic_residual (--wrap-lon)
+
     def __init__(self, lat: np.ndarray):
         self.lat = lat[:720].astype(np.float64)
         self.w = np.cos(np.deg2rad(self.lat)).clip(min=0.0)
@@ -116,7 +122,10 @@ class Geo:
         dy = self.dlat * M_PER_DEG
         dx = 0.25 * M_PER_DEG * np.cos(np.deg2rad(self.lat))[:, None]
         dz_dy = np.gradient(z, axis=0) / dy
-        dz_dx = np.gradient(z, axis=1) / dx
+        if self.wrap_lon:            # central differences everywhere (longitude is periodic)
+            dz_dx = (np.roll(z, -1, axis=1) - np.roll(z, 1, axis=1)) / (2.0 * dx)
+        else:                        # one-sided at the two edge columns (paper values)
+            dz_dx = np.gradient(z, axis=1) / dx
         f = np.where(self.geo, self.f, np.nan)[:, None]                        # rows outside 25-70 deg are not used
         with np.errstate(divide="ignore", invalid="ignore"):
             ug, vg = -dz_dy / f, dz_dx / f
@@ -206,7 +215,10 @@ def main():
     ap.add_argument("--dates", nargs="*", default=None)
     ap.add_argument("--results", default=None)
     ap.add_argument("--tag", default="")
+    ap.add_argument("--wrap-lon", action="store_true",
+                    help="periodic zonal gradient for the geostrophic residual (default off: one-sided edges, as in the paper)")
     a = ap.parse_args()
+    Geo.wrap_lon = a.wrap_lon
     res = Path(a.results) if a.results else ROOT / ("results" if H.MODEL == "pretrained" else f"results_{H.MODEL}")
     res.mkdir(parents=True, exist_ok=True)
     dates = a.dates or H.SPLITS[a.split][: a.max_dates]

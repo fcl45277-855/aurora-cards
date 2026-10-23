@@ -9,8 +9,8 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from cards.deployable import accumulate_stats, build_deployable_linear  # noqa: E402
-from cards.nvfp4 import qdq_blocks  # noqa: E402
-from cards.simlinear import qdq_mxfp8  # noqa: E402
+from cards.nvfp4 import block_scales, qdq_blocks  # noqa: E402
+from cards.simlinear import SimNVFP4Linear, qdq_mxfp8  # noqa: E402
 from cards.switching import switching_diagnostic  # noqa: E402
 
 E2M1 = {0.0, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0}
@@ -25,14 +25,15 @@ def _layer(seed=0, n_in=256, n_out=192, tokens=4096, outliers=4):
 
 
 def test_nvfp4_codes_on_grid():
-    x = torch.randn(64, 128)
+    g = torch.Generator().manual_seed(0)
+    x = torch.randn(64, 128, generator=g) * torch.logspace(-2, 2, 128)
     vals, pts = qdq_blocks(x, return_parts=True)
-    blocks = vals.reshape(64, 8, 16)
-    scales = blocks.abs().amax(-1, keepdim=True).clamp(min=1e-30) / 6.0
-    codes = (blocks / scales).abs()
-    # every element is an E2M1 magnitude times its block scale (the block max maps to 6 up to UE4M3 rounding)
     assert torch.isfinite(vals).all() and float(pts) > 0
-    assert codes.max() <= 6.0 + 1e-4
+    # recompute the UE4M3 block scales as qdq_blocks does; every code value / block scale must be on the E2M1 grid
+    bs = block_scales(x.float().reshape(64, 8, 16), pts)
+    assert torch.equal(bs, bs.to(torch.float8_e4m3fn).float())                 # scales are UE4M3 values
+    codes = (vals.reshape(64, 8, 16) / bs.unsqueeze(-1)).abs()
+    assert set(codes.unique().tolist()) <= E2M1, sorted(set(codes.unique().tolist()) - E2M1)
 
 
 def test_mxfp8_rceil_no_clipping():
@@ -44,13 +45,24 @@ def test_mxfp8_rceil_no_clipping():
     assert float(rel[big].max()) <= 2 ** -4 + 1e-6         # E4M3: 3 mantissa bits, no clipped block maxima
 
 
-def test_deployable_layer_beats_rtn_and_smoothing_is_exact():
+def test_repo_smoothing_matches_eq4_and_preserves_the_product():
+    w, x = _layer()
+    stats = accumulate_stats(x)
+    q = build_deployable_linear(w, None, stats, alpha=0.8, rank=0, act="bf16", method="rtn")
+    s = (stats["amax"].clamp(min=1e-5) ** 0.8 / w.abs().amax(0).clamp(min=1e-5) ** 0.2).clamp(min=1e-5)    # Eq. (4)
+    assert torch.allclose(q.smooth, s)
+    # the repository layer with the repository's s and unquantised weights computes (W S)(S^-1 x) = W x (BF16 GEMM)
+    lin = SimNVFP4Linear(w * q.smooth, torch.ones(()), None, rotation=None, smooth=q.smooth, act_bits="bf16")
+    ref = x @ w.t()
+    assert float((lin(x).float() - ref).norm() / ref.norm()) < 1e-2
+    unsmoothed = SimNVFP4Linear(w * q.smooth, torch.ones(()), None, rotation=None, smooth=None, act_bits="bf16")
+    assert float((unsmoothed(x).float() - ref).norm() / ref.norm()) > 0.1      # the test sees a missing divide
+
+
+def test_deployable_layer_beats_rtn():
     w, x = _layer()
     ref = x @ w.t()
     stats = accumulate_stats(x)
-    # smoothing identity, Eq. (4): (W S)(S^-1 x) = W x
-    s = (stats["amax"] ** 0.8 / w.abs().amax(0) ** 0.2)
-    assert torch.allclose((w * s) @ (x / s).t(), w @ x.t(), atol=1e-3)
     q_rtn = build_deployable_linear(w, None, stats, alpha=None, rank=0, act="nvfp4", method="rtn")
     q_dep = build_deployable_linear(w, None, stats, alpha=0.8, rank=32, act="mxfp8", method="gptq")
     err = lambda q: float(((q(x).float() - ref).pow(2).sum() / ref.pow(2).sum()).sqrt())

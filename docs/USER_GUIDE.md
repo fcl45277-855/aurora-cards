@@ -41,7 +41,7 @@ A recipe is a JSON object. Keys that are left out take the defaults below. Neste
 | `weight.scale_search` | none | List of block-scale multipliers chosen per block by squared error (RTN only) |
 | `weight.gptq_skip` | none | Substrings of layer names that use RTN even when `method` is `"gptq"` |
 | `act` | `"nvfp4"` | Activation format: `"nvfp4"`, `"mxfp8"` (round-to-ceiling scales, deployable), `"mxfp8_floor"` (OCP floor scales), `"fp8"` (FP32 scale per 16 elements, an optimistic upper bound), `"fp8_tensor"`, `"fp8_token"`, `"fp8_tile128"`, `"nvfp4_sr"` (stochastic rounding) or `"bf16"` (weight-only) |
-| `act_scale_search` | none | `[1.0, 1.5]` chooses the NVFP4 activation block scale per block by squared error |
+| `act_scale_search` | none | `[1.0, 1.5]` chooses the NVFP4 activation block scale per block by squared error. It acts only on layers whose activation format is `"nvfp4"` and is ignored for every other format; the field in `t7_mx.json` and `t7_a16.json` (MXFP8 and BF16 activations) therefore has no effect, and those recipes use no scale search |
 | `act_step_mults` | none | NVFP4 activation scale multiplier per rollout step; overrides the search |
 | `act_overrides` | `[]` | `[[substring, format], ...]` sets a per-layer activation format; the first match wins |
 | `rotation.block` | `"full"` | Randomised Hadamard rotation of the layer input: `"full"`, a block width (16, 32, 64 or 128), or `null` for none |
@@ -49,18 +49,23 @@ A recipe is a JSON object. Keys that are left out take the defaults below. Neste
 | `smooth` | none | `{"alpha": a}` applies SmoothQuant scaling s_j = amax(x_j)^a / max\|W_:,j\|^(1−a), paper Eq. (4) |
 | `low_rank` | none | `{"rank": r}` adds a BF16 rank-r branch of the smoothed weight; the residual is quantised (Eq. 5) |
 | `calib` | `{"split": "calib", "steps": 2, "budget_gib": 2.5}` | Dates and steps of the calibration pass. It is used only by GPTQ and smoothing. `budget_gib` bounds GPU memory for the statistics; layers are processed in groups |
-| `scale_min` | `"tiny"` | Smallest NVFP4 block scale: `"tiny"` (2^-6, as TorchAO) or `"subnormal"` (2^-9) |
+| `scale_min` | `"tiny"` | Smallest NVFP4 block scale: `"tiny"` (2^-6, as TorchAO) or `"subnormal"` (2^-9). Stored per layer, so recipes built one after another in one process keep their own floor |
 | `lowpass` | none | Scale-separated activation quantisation with a BF16 or FP8 coarse branch; a negative result in the paper |
 | `kv_split`, `k_centre` | none | Mechanism probes for `to_kv` layers: only some output rows carry quantisation error, or keys are centred over the context tokens |
 
-The deployable recipe of the paper, `recipes/t7_mx.json`:
+The recommended recipe of the paper, `recipes/t7_a16.json` (`t7_mx.json` is identical except `"act": "mxfp8"`):
 
 ```json
-{"name": "t7_mx",
+{"name": "t7_a16",
  "layers": "q0:exc=decoder.level_decoder,decoder.atmos_levels_embed,ln_modulation,time_mlp,_embed",
  "smooth": {"alpha": 0.8}, "low_rank": {"rank": 32}, "rotation": {"block": null},
- "weight": {"method": "gptq", "source": "fp32"}, "act_scale_search": [1.0, 1.5], "act": "mxfp8"}
+ "weight": {"method": "gptq", "source": "fp32"}, "act_scale_search": [1.0, 1.5], "act": "bf16"}
 ```
+
+`act_scale_search` is kept in these files so that they match the recipes that produced the paper's results; it is inert
+for BF16 and MXFP8 activations (see the table above). Built weights are cached in `results/_build_cache/`, keyed on the
+weight-relevant recipe fields, the model and checkpoint, the rotation seed and a hash of the quantisation code
+(`cards/recipe.py`, `CODE_FILES`); editing that code therefore triggers a rebuild.
 
 ### 2.3 Layer-set specifications
 
@@ -151,7 +156,7 @@ These are written by the analysis scripts. Their names start with an underscore 
 | One date, 2 steps | 5–30 s depending on the recipe (FP32 about 6 s; recipes with low-rank branches and many quantised layers are slower in simulation) |
 | One card on the test split (30 dates) | 3–15 min plus the build |
 | Peak GPU memory | 13–15 GiB with chunking, 24–27 GiB without |
-| Agreement of simulated and native NVFP4 | within 0.2 % on average (paper Sect. 4.6) |
+| Agreement of simulated and native NVFP4 | within 0.5 % on average (paper Sect. 4.7) |
 
 **Determinism.** The rotation seeds are fixed, and GPTQ, smoothing and the low-rank branch are deterministic given the calibration statistics. Re-runs on the same GPU type reproduce `summary.json` to the printed digits. A different GPU or library version can change the last digit.
 

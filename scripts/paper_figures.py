@@ -25,6 +25,7 @@ from pathlib import Path
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.stats import rankdata
 
 RES = Path(os.environ.get("AQ_RESULTS", str(Path(__file__).resolve().parents[1] / "results")))
 OUT = Path(__file__).resolve().parents[1] / "figures"
@@ -89,6 +90,9 @@ def plain_log(ax, axis="y"):
 
 def fig1():
     r = jload(RES / "results/_diag_fields_test_h20.json")
+    v14 = RES / "results/_diag_fields_test_h20_v14.json"            # t7_a16 on the same six initial dates
+    if v14.exists():
+        r["recipes"].update({k: v for k, v in jload(v14)["recipes"].items() if k == "t7_a16"})
     steps = sorted(int(s) for s in r["recipes"]["q0_sim"]["per_step"])
     h = [6 * s for s in steps]
     get = lambda name, key: np.array([r["recipes"][name]["per_step"][str(s)][key] for s in steps])
@@ -101,10 +105,14 @@ def fig1():
         ax.plot(h, ref(key, "truth"), color=C["era5"], ls="--", label="ERA5")
         ax.plot(h, ref(key, "fp32"), color=C["fp32"], label="FP32 Aurora")
         ax.plot(h, get("q0_sim", key), color=C["q0"], marker="o", label="Q0 (W4A4, all 195 layers)")
-        ax.plot(h, get("t7_mx", key), color=C["t7mx"], marker="s", label="t7_mx (W4A8, resamplers protected)")
+        ax.plot(h, get("t7_mx", key), color=C["dec"], marker="^", label="t7_mx (W4A8, resamplers protected)")
+        if "t7_a16" in r["recipes"]:
+            ax.plot(h, get("t7_a16", key), color=C["t7mx"], marker="s", ms=2.5, label="t7_a16 (W4A16, resamplers protected)")
         ax.set_ylabel(ylab)
     d.plot(h, [r["recipes"]["q0_sim"]["per_step"][str(s)]["vs_fp32"]["rmse"]["z500"] for s in steps], color=C["q0"], marker="o")
-    d.plot(h, [r["recipes"]["t7_mx"]["per_step"][str(s)]["vs_fp32"]["rmse"]["z500"] for s in steps], color=C["t7mx"], marker="s")
+    d.plot(h, [r["recipes"]["t7_mx"]["per_step"][str(s)]["vs_fp32"]["rmse"]["z500"] for s in steps], color=C["dec"], marker="^")
+    if "t7_a16" in r["recipes"]:
+        d.plot(h, [r["recipes"]["t7_a16"]["per_step"][str(s)]["vs_fp32"]["rmse"]["z500"] for s in steps], color=C["t7mx"], marker="s", ms=2.5)
     d.set_yscale("log")
     d.set_ylabel("z500 RMSE vs FP32 forecast (m$^{2}$ s$^{-2}$)")
     for ax in axs.ravel():
@@ -246,7 +254,8 @@ def fig3():
 # ---- Fig. 4: predictor ----------------------------------------------------------------------------
 
 def spearman(x, y):
-    rx, ry = np.argsort(np.argsort(x)), np.argsort(np.argsort(y))
+    """Spearman rho with average ranks for ties (equal to scipy.stats.spearmanr)."""
+    rx, ry = rankdata(x), rankdata(y)
     return float(np.corrcoef(rx, ry)[0, 1])
 
 

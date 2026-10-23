@@ -1,0 +1,34 @@
+{
+ "recipe": {
+  "kind": "sim",
+  "layers": "all314",
+  "surface_fp32": false,
+  "precision": "autocast",
+  "rotation": {
+   "block": null,
+   "dtype": "bf16"
+  },
+  "weight": {
+   "method": "fp8_channel",
+   "percdamp": 0.01,
+   "scale_mult": 1.0,
+   "source": "fp32"
+  },
+  "act": "bf16",
+  "smooth": null,
+  "act_scale_search": null,
+  "act_overrides": [],
+  "calib": {
+   "split": "calib",
+   "steps": 2,
+   "budget_gib": 2.5
+  },
+  "name": "u8_w8a16_ch"
+ },
+ "model": "pretrained",
+ "ckpt": "aurora-0.25-pretrained.ckpt",
+ "precision": "autocast",
+ "build_seconds": 23.276807069778442,
+ "perceiver_chunk": 16384,
+ "mem_frac": 0.68
+}

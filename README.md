@@ -1,18 +1,18 @@
 # aurora-cards: NVFP4 quantisation of Aurora
 
-Research code for studying how 4-bit quantisation affects [Microsoft Aurora](https://github.com/microsoft/aurora): forecast accuracy, attention sensitivity, physical consistency and inference cost.
+Research code for studying how low-precision post-training quantisation (NVFP4, MXFP8 and FP8) affects [Microsoft Aurora](https://github.com/microsoft/aurora): forecast accuracy, attention-module sensitivity, physical consistency and inference cost.
 
-This repository accompanies **NVFP4 quantisation of Aurora: attention sensitivity, forecast consistency and deployment**, by Y. Guan, J. Li, L. Lu, G. Pan, J. Song and Q. Hou, prepared for submission to *Computers & Geosciences*.
+This repository accompanies **NVFP4 quantisation of Aurora: attention-module sensitivity, forecast consistency and hardware evaluation**, by Y. Guan, J. Li, L. Lu, G. Pan, J. Song and Q. Hou, prepared for submission to *Computers & Geosciences*. Version 1.1.0 matches manuscript version v16/v17.
 
 ## What the repository provides
 
 - **Quantisation and evaluation.** Block-format NVFP4 and MXFP8 simulators, GPTQ, SmoothQuant scaling, low-rank branches, experiment recipes and rollout scoring. Evaluation separates error relative to full-precision Aurora from forecast error against ERA5, and includes block-bootstrap confidence intervals, lead-time loss and physical-consistency diagnostics.
-- **The `t7_mx` recipe.** NVFP4 weights and MXFP8 activations, with SmoothQuant scaling and a rank-32 branch; GPTQ is applied to 138 of Aurora's 314 linear layers. [cards/deployable.py](cards/deployable.py) exposes the layer construction for use with other PyTorch models. Its return value is a simulated quantised layer.
+- **The recommended `t7_a16` recipe.** NVFP4 weights (SmoothQuant 0.8, a rank-32 BF16 branch and GPTQ) with BF16 activations on 138 of Aurora's 314 linear layers; the resamplers, the state-independent layers and 60 inherited Swin and patch layers stay in high precision. It runs with TorchAO's native W4A16 kernel. `t7_mx` uses the same weights with MXFP8 activations and serves as a W4A8 feasibility example. FP8 baselines (uniform and with the resamplers protected) are in `recipes/u8_*`. [cards/deployable.py](cards/deployable.py) exposes the layer construction for use with other PyTorch models; its return value is a simulated quantised layer.
 - **An attention diagnostic.** [cards/switching.py](cards/switching.py) replays attention under a quantisation-induced key perturbation and measures the share of output error associated with a change in the highest-logit key. The paper evaluates its ability to rank module sensitivity across three Aurora variants. In an independent architecture, ClimaX, the analogous variable-aggregation module is again the most sensitive, but its attention is diffuse and the diagnostic does not rank the modules ([crossarch/](crossarch/)); treat it as specific to few-key, sharply attended cross-attention.
 - **Cross-architecture check.** [crossarch/](crossarch/) quantises ClimaX (fine-tuned by us on ERA5 at 5.625°) and FourCastNet module by module under a pre-run protocol, with code, protocol and result summaries.
-- **Hardware experiments.** Native NVFP4 builds with TorchAO/mslk on Blackwell GPUs, plus timing and profiling scripts. These experiments are separate from the simulated `t7_mx` activation path.
+- **Hardware experiments.** Native NVFP4 and FP8 builds with TorchAO/MSLK on Blackwell GPUs, timing against FP32- and BF16-resident references, and profiling scripts. The MXFP8 activation path of `t7_mx` has no native kernel and stays simulated.
 
-**Simulation and hardware coverage:** NVFP4 uses E2M1 values, a UE4M3 scale per 16 elements and an FP32 tensor scale. The simulator is checked for bit-exact agreement with TorchAO's `NVFP4Tensor`. MXFP8 uses E4M3 values and a power-of-two scale per 32 elements. In the native comparisons reported in Sect. 4.6, simulated and native results agree within 0.2% on average. The best `t7_mx` path uses simulated MXFP8 activations: no native NVFP4 × MXFP8 kernel was evaluated with TorchAO 0.18. It should not be interpreted as a demonstrated whole-model speedup.
+**Simulation and hardware coverage:** NVFP4 uses E2M1 values, a UE4M3 scale per 16 elements and an FP32 tensor scale; MXFP8 uses E4M3 values and a power-of-two scale per 32 elements. For RTN weights the simulator agrees element by element with TorchAO's `NVFP4Tensor`; GPTQ weights are re-quantised by TorchAO with slightly different block scales (Sect. 4.7 of the paper). In the native comparisons of Sect. 4.7, simulated and native forecasts agree within 0.5 % on average. Native execution did not accelerate whole-model inference, and the unfused native `t7_a16` build is slower than the BF16 reference.
 
 ## Installation
 
@@ -55,9 +55,9 @@ python examples/01_deployable_layer.py
 python examples/02_switching_diagnostic.py
 ```
 
-The self-test checks agreement with TorchAO when it is installed. The tutorial check executes the examples in [the tutorial](docs/TUTORIAL.md). The two standalone examples demonstrate layer construction and the attention diagnostic on small synthetic inputs; they do not establish forecast accuracy for another model.
+The bit-exact comparison with TorchAO runs only when TorchAO is installed; otherwise pytest reports it as skipped (`-rs` shows the reason), not as passed. The same tests run on every push in the CPU workflow [.github/workflows/cpu-tests.yml](.github/workflows/cpu-tests.yml), which also checks the paper tables with `scripts/paper_tables.py`. The tutorial check executes the examples in [the tutorial](docs/TUTORIAL.md). The two standalone examples demonstrate layer construction and the attention diagnostic on small synthetic inputs; they do not establish forecast accuracy for another model.
 
-To reconstruct Tables 2, 3 and S10 and the Sect. 4.5 comparisons from the released summaries:
+To reconstruct Tables 2, 3, 4, 6 and 8 and Table S10 and the Sect. 4.6 comparisons from the released summaries:
 
 ```bash
 python scripts/paper_tables.py
@@ -73,7 +73,7 @@ After configuring a [Copernicus Climate Data Store](https://cds.climate.copernic
 bash examples/03_one_date.sh
 ```
 
-The script downloads the checkpoint and required ERA5 days, then compares the reference, naive quantisation and a `t7_mx` example on one test date. It calibrates on one day, rather than the paper's full calibration split, so its output need not match the paper's averages. Allow roughly 30–40 minutes including downloads; transfer and CDS queue times vary. The script uses Bash and needs a GPU with at least 24 GB of memory under the chunked configuration below.
+The script downloads the checkpoint and required ERA5 days, then compares the reference, naive quantisation and a `t7_mx` example on one test date (replace the recipe by `t7_a16` for the recommended configuration). It calibrates on one day, rather than the paper's full calibration split, so its output need not match the paper's averages. Allow roughly 30–40 minutes including downloads; transfer and CDS queue times vary. The script uses Bash and needs a GPU with at least 24 GB of memory under the chunked configuration below.
 
 For complete experiments, follow [the reproduction guide](docs/REPRODUCE.md), which maps each table and figure to its scripts, recipes and data splits.
 
@@ -85,8 +85,8 @@ Set `AQ_CKPT_DIR` to the checkpoint directory and `AQ_ERA5_DIR` to the prepared 
 | --- | --- |
 | Aurora checkpoints | Download `aurora-0.25-pretrained.ckpt`, `aurora-0.25-finetuned.ckpt` and `aurora-0.25-small-pretrained.ckpt` as needed from [Microsoft's Aurora model repository](https://huggingface.co/microsoft/aurora). |
 | ERA5 inputs | Use `scripts/download_static.py` and `scripts/download_era5_day.py`. [docs/DATA.md](docs/DATA.md) specifies the variables, dates, split definitions and storage requirements. |
-| Released summaries | [results_summary/](results_summary/) contains the compact records used to reconstruct the paper's tables and aggregate diagnostics. |
-| Full result archive | Per-date records, diagnostic fields and figure maps are being prepared for Zenodo deposition. The data DOI is pending. |
+| Released summaries | [results_summary/](results_summary/) contains per-card summaries (`summary.json`, `recipe.json`, `build_info.json`), timing files and aggregate diagnostics (gzip-compressed under `_aggregates/diag/`). From these, Tables 2–8 and S10, Figs. 1, 2, 4 and 5 and the timing values can be rebuilt offline. Intervals printed in `summary.json` are i.i.d. date-bootstrap intervals; the paper's 3-day block-bootstrap intervals, paired differences and lead-time loss need the per-record files of the full archive. |
+| Full result archive | Per-record results (`records.jsonl`), the 2° error maps of Fig. 3 and the reference caches are being prepared for Zenodo deposition; the data DOI is pending. |
 
 The reference follows Aurora's own precision policy: a BF16 backbone under autocast, with FP32 encoder, decoder and input/output operations. Quantised layers replace selected `torch.nn.Linear` modules within that reference. Consult [the user guide](docs/USER_GUIDE.md) for the exact metrics, layer selections, inputs and outputs.
 
@@ -124,4 +124,4 @@ See [CITATION.cff](CITATION.cff) for the software and manuscript metadata. Pleas
 
 Repository code is released under the [MIT licence](LICENSE). Aurora code and weights remain subject to Microsoft's terms, and ERA5 to the applicable Copernicus licence; see [the data specification](docs/DATA.md) for the source links.
 
-Contact: Yue Guan, yue3.24@intl.zju.edu.cn
+Contact: Qingchun Hou (corresponding author), qingchunhou@intl.zju.edu.cn. Developers: Yue Guan and Guyang Pan; Guyang Pan carried out the main code revisions for version 1.1.

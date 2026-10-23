@@ -1,26 +1,32 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite the paper below."
-title: "aurora-cards: 4-bit (NVFP4/MXFP8) post-training quantisation harness for the Aurora weather foundation model"
-version: 1.0.0
+title: "aurora-cards: NVFP4, MXFP8 and FP8 post-training quantisation harness for the Aurora weather foundation model"
+version: 1.1.0
 license: MIT
 authors:
   - family-names: Guan
     given-names: Yue
     affiliation: "Zhejiang University - University of Illinois Urbana-Champaign Institute, Zhejiang University"
-    email: yue3.24@intl.zju.edu.cn
   - family-names: Li
     given-names: Jiaxuan
     affiliation: "Zhejiang University - University of Illinois Urbana-Champaign Institute, Zhejiang University"
   - family-names: Lu
     given-names: Liangchen
     affiliation: "Zhejiang University - University of Illinois Urbana-Champaign Institute, Zhejiang University"
+  - family-names: Pan
+    given-names: Guyang
+    affiliation: "Zhejiang University - University of Illinois Urbana-Champaign Institute, Zhejiang University"
+  - family-names: Song
+    given-names: Junfeng
+    affiliation: "Zhejiang University - University of Illinois Urbana-Champaign Institute, Zhejiang University"
   - family-names: Hou
     given-names: Qingchun
     affiliation: "Zhejiang University - University of Illinois Urbana-Champaign Institute, Zhejiang University"
+    email: qingchunhou@intl.zju.edu.cn
 repository-code: "https://github.com/fcl45277-855/aurora-cards"
 preferred-citation:
   type: article
-  title: "NVFP4 quantisation of Aurora: attention sensitivity, forecast consistency and deployment"
+  title: "NVFP4 quantisation of Aurora: attention-module sensitivity, forecast consistency and hardware evaluation"
   authors:
     - family-names: Guan
       given-names: Yue

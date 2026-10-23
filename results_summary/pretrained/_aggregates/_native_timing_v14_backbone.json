@@ -1,0 +1,130 @@
+{
+ "model": "pretrained",
+ "device": "NVIDIA GeForce RTX 5090",
+ "capability": [
+  12,
+  0
+ ],
+ "torch": "2.12.1+cu130",
+ "torchao": "0.18.0",
+ "perceiver_chunk": 16384,
+ "note": "t7_mx (smoothing + low rank + MXFP8 activations) is simulated only; not timed natively",
+ "configs": {
+  "bf16": {
+   "config": "bf16",
+   "layers": "q0:inc=backbone",
+   "n_layers": 187,
+   "date": "2024-02-02",
+   "warmup": 3,
+   "repeats": 10,
+   "step_seconds_median": 1.1432881355285645,
+   "step_seconds_min": 1.1419405937194824,
+   "step_seconds_all": [
+    1.1419405937194824,
+    1.1420917510986328,
+    1.142935037612915,
+    1.143151044845581,
+    1.1426990032196045,
+    1.1434252262115479,
+    1.1435749530792236,
+    1.1437714099884033,
+    1.1440253257751465,
+    1.144425630569458
+   ],
+   "rollout2_seconds": 3.5370287895202637,
+   "peak_gib": 14.9214768409729,
+   "gpu_mem_after_build_gib": 4.680086612701416,
+   "set_weight_bytes_before": 3497000960,
+   "set_weight_bytes_after": 3497000960,
+   "build_seconds": 21.94958233833313
+  },
+  "bf16_resident": {
+   "config": "bf16_resident",
+   "layers": "q0:inc=backbone",
+   "n_layers": 187,
+   "date": "2024-02-02",
+   "warmup": 3,
+   "repeats": 10,
+   "step_seconds_median": 1.141207218170166,
+   "step_seconds_min": 1.1391258239746094,
+   "step_seconds_all": [
+    1.1393671035766602,
+    1.1391258239746094,
+    1.1393651962280273,
+    1.1404354572296143,
+    1.1412532329559326,
+    1.1411612033843994,
+    1.1421055793762207,
+    1.1432843208312988,
+    1.1436574459075928,
+    1.143888235092163
+   ],
+   "rollout2_seconds": 2.8681817054748535,
+   "peak_gib": 13.29213571548462,
+   "gpu_mem_after_build_gib": 3.2669663429260254,
+   "set_weight_bytes_before": 3497000960,
+   "set_weight_bytes_after": 1748500480,
+   "build_seconds": 21.65837335586548
+  },
+  "w4a16": {
+   "config": "w4a16",
+   "layers": "q0:inc=backbone",
+   "n_layers": 187,
+   "date": "2024-02-02",
+   "warmup": 3,
+   "repeats": 10,
+   "step_seconds_median": 1.1842879056930542,
+   "step_seconds_min": 1.1805553436279297,
+   "step_seconds_all": [
+    1.1805553436279297,
+    1.1835789680480957,
+    1.1833994388580322,
+    1.1835613250732422,
+    1.1838293075561523,
+    1.184784173965454,
+    1.184746503829956,
+    1.1848118305206299,
+    1.1852288246154785,
+    1.1858420372009277
+   ],
+   "rollout2_seconds": 3.542781352996826,
+   "peak_gib": 12.12179946899414,
+   "gpu_mem_after_build_gib": 2.096630096435547,
+   "set_weight_bytes_before": 3497000960,
+   "set_weight_bytes_after": 491766508,
+   "build_seconds": 23.715670824050903
+  },
+  "w4a4": {
+   "config": "w4a4",
+   "layers": "q0:inc=backbone",
+   "n_layers": 187,
+   "date": "2024-02-02",
+   "warmup": 3,
+   "repeats": 10,
+   "step_seconds_median": 1.154348373413086,
+   "step_seconds_min": 1.1520614624023438,
+   "step_seconds_all": [
+    1.1520614624023438,
+    1.1520652770996094,
+    1.152298927307129,
+    1.1533799171447754,
+    1.1547324657440186,
+    1.1539642810821533,
+    1.1547412872314453,
+    1.1551790237426758,
+    1.155087947845459,
+    1.154951810836792
+   ],
+   "rollout2_seconds": 3.3068301677703857,
+   "peak_gib": 14.002208709716797,
+   "gpu_mem_after_build_gib": 3.977039337158203,
+   "set_weight_bytes_before": 3497000960,
+   "set_weight_bytes_after": 491766508,
+   "build_seconds": 20.633531093597412
+  }
+ },
+ "gpu_at_start": {
+  "utilization_memory": "0 %, 4 MiB",
+  "compute_apps": ""
+ }
+}

@@ -18,7 +18,8 @@ the simulation allows):
   k_centre       [substrings]: K half of the output (first half of to_kv rows) computed from the input centred over
                  the context tokens (dim -2); exact for attention keys
   act_overrides  [[substring, "bf16"|"fp8"|"nvfp4"], ...]  per-layer activation precision, first match wins
-  act_scale_search null | [1.0, 1.5]   per-block activation scale choice (4/6) by squared error
+  act_scale_search null | [1.0, 1.5]   per-block activation scale choice (4/6) by squared error; NVFP4 activations
+                 only, ignored for every other "act" (so inert in t7_mx / t7_a16)
   act_step_mults  null | [1.0, 1.5]   NVFP4 activation block-scale multiplier chosen by rollout step (overrides search)
   weight.scale_search null | [1.0, 1.5] | wider list   per-block weight scale choice (RTN only)
   lowpass        null | {"pool": 4, "patterns": ["mlp.fc1", "mlp.fc2"]}   N1: BF16 coarse (block-mean) branch + NVFP4 residual
@@ -53,13 +54,24 @@ BUILD_CACHE = Path(__file__).resolve().parents[1] / "results" / "_build_cache"
 
 
 WEIGHT_KEYS = ("kind", "layers", "precision", "surface_fp32", "rotation", "weight", "smooth", "low_rank", "calib", "scale_min")
+# source files whose content determines the built weights; their hash is part of the cache key (v1.1)
+CODE_FILES = ("nvfp4.py", "gptq.py", "rotation.py", "simlinear.py", "recipe.py")
+
+
+def code_hash() -> str:
+    h = hashlib.sha1()
+    for f in CODE_FILES:
+        h.update((Path(__file__).resolve().parent / f).read_bytes().replace(b"\r\n", b"\n"))
+    return h.hexdigest()[:12]
 
 
 def _cache_path(r: dict) -> Path:
     """Cache file of a recipe's built weights. Keyed on the fields that determine the weights (layer set, preprocessing,
-    weight method, calibration), not on activation settings, so e.g. t7_mx / t7_a16 / t7 share one build."""
+    weight method, calibration), the rotation seed and the hash of the quantisation code, not on activation settings,
+    so e.g. t7_mx / t7_a16 / t7 share one build. Any edit of CODE_FILES therefore triggers a rebuild."""
     sub = {k: r.get(k) for k in WEIGHT_KEYS}
-    key = hashlib.sha1(json.dumps({"weights": sub, "model": H.MODEL, "ckpt": H.CKPT.name}, sort_keys=True, default=str).encode()).hexdigest()
+    key = hashlib.sha1(json.dumps({"weights": sub, "model": H.MODEL, "ckpt": H.CKPT.name, "seed": H.SEED,
+                                   "code": code_hash()}, sort_keys=True, default=str).encode()).hexdigest()
     return BUILD_CACHE / f"w_{key[:16]}.pt"
 
 
@@ -130,9 +142,23 @@ def collect_stats(model, names: list[str], dates: list[str], steps: int, surface
 
 
 def build(recipe: dict, device: str = "cuda"):
+    """Build a recipe. The UE4M3 block-scale floor ("scale_min") applies while this recipe is built and is stored in
+    each of its quantised layers, so models built earlier in the same process keep their own floor."""
+    floor = NV.E4M3_SUBNORMAL_MIN if merged(recipe).get("scale_min") == "subnormal" else NV.E4M3_TINY
+    prev, NV.SCALE_MIN = NV.SCALE_MIN, floor
+    try:
+        model, info = _build(recipe, device)
+    finally:
+        NV.SCALE_MIN = prev
+    for m in model.modules():
+        if isinstance(m, SimNVFP4Linear):
+            m.scale_min = floor
+    return model, info
+
+
+def _build(recipe: dict, device: str = "cuda"):
     r = merged(recipe)
     info = {"recipe": r, "model": H.MODEL, "ckpt": str(H.CKPT)}
-    NV.SCALE_MIN = NV.E4M3_SUBNORMAL_MIN if r.get("scale_min") == "subnormal" else NV.E4M3_TINY
     if r["kind"] == "native_q0":
         raise NotImplementedError("native_q0 loaded a packaged model of an earlier internal study and is not part of the "
                                   "release; the on-device results of the paper use scripts/native_w4a16.py and native_t7.py")

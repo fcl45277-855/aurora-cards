@@ -1,0 +1,46 @@
+{
+ "model": "pretrained",
+ "device": "NVIDIA GeForce RTX 5090",
+ "capability": [
+  12,
+  0
+ ],
+ "torch": "2.12.1+cu130",
+ "torchao": "0.18.0",
+ "perceiver_chunk": 16384,
+ "note": "t7_mx (smoothing + low rank + MXFP8 activations) is simulated only; not timed natively",
+ "configs": {
+  "bf16": {
+   "config": "bf16",
+   "layers": "all314",
+   "n_layers": 314,
+   "date": "2024-02-02",
+   "warmup": 3,
+   "repeats": 10,
+   "step_seconds_median": 1.1424444913864136,
+   "step_seconds_min": 1.1414358615875244,
+   "step_seconds_all": [
+    1.1414358615875244,
+    1.1415231227874756,
+    1.1419010162353516,
+    1.1418988704681396,
+    1.1422669887542725,
+    1.142643690109253,
+    1.1426219940185547,
+    1.1438579559326172,
+    1.1439573764801025,
+    1.1442110538482666
+   ],
+   "rollout2_seconds": 3.4525394439697266,
+   "peak_gib": 14.9214768409729,
+   "gpu_mem_after_build_gib": 4.680086612701416,
+   "set_weight_bytes_before": 5020581888,
+   "set_weight_bytes_after": 5020581888,
+   "build_seconds": 21.98331117630005
+  }
+ },
+ "gpu_at_start": {
+  "utilization_memory": "0 %, 4 MiB",
+  "compute_apps": ""
+ }
+}

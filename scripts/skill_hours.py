@@ -10,7 +10,8 @@ above the last lead D is undefined and the variable is excluded from the mean, s
 lower bound. The row "n" gives the number of variables in each mean. D is a point estimate at the 6-h output
 resolution, not an uncertainty bound.
 
-  python scripts/skill_hours.py --split test --steps 20 t7_mx c08_weight_only_gptq t7_g02_nodec_fold bf16
+  python scripts/skill_hours.py --split test --steps 20 t7_a16 t7_mx c08_t7set u8_w8a16_mx_prot q0_sim
+(each card is paired with FP32 on the initial dates both cover)
 """
 import argparse
 import json
@@ -23,12 +24,22 @@ ROOT = Path(__file__).resolve().parents[1]
 VARS = ["2t", "10u", "10v", "msl", "z500", "t850", "u850", "v850", "q700"]
 
 
-def curve(name, split, steps, results):
-    by = defaultdict(list)
+def records(name, split, steps, results):
+    """{(date, var, step): rmse_truth}, one value per key (duplicates from resumed runs are dropped)."""
+    out = {}
     for line in (results / f"{name}__{split}_h{steps}" / "records.jsonl").read_text().splitlines():
         r = json.loads(line)
-        by[(r["var"], r["step"])].append(r["rmse_truth"])
-    return {k: float(np.mean(v)) for k, v in by.items()}
+        out.setdefault((r["date"], r["var"], r["step"]), r["rmse_truth"])
+    return out
+
+
+def curve(rec, dates):
+    """Date-mean RMSE per (var, step) over the given dates."""
+    by = defaultdict(list)
+    for (d, v, s), x in rec.items():
+        if d in dates:
+            by[(v, s)].append(x)
+    return {k: float(np.mean(x)) for k, x in by.items()}
 
 
 def main():
@@ -40,13 +51,17 @@ def main():
     ap.add_argument("--at", default="2,4,8,12,16,20", help="steps at which to report")
     a = ap.parse_args()
     res = Path(a.results)
-    fp = curve("fp32", a.split, a.steps, res)
+    fp_rec = records("fp32", a.split, a.steps, res)
     at = [int(s) for s in a.at.split(",")]
     hours = np.arange(1, a.steps + 1) * 6.0
     print(f"skill-hours lost (h); columns = lead time; rows = variable; '>' = beyond the {6 * a.steps:.0f} h curve")
     for name in a.cards:
-        c = curve(name, a.split, a.steps, res)
-        print(f"== {name}")
+        rec = records(name, a.split, a.steps, res)
+        dates = sorted({k[0] for k in rec} & {k[0] for k in fp_rec})      # pair the card with FP32 by date
+        if set(dates) != {k[0] for k in fp_rec} or set(dates) != {k[0] for k in rec}:
+            print(f"warning: {name} and fp32 cover different dates; using the {len(dates)} shared dates")
+        fp, c = curve(fp_rec, set(dates)), curve(rec, set(dates))
+        print(f"== {name} ({len(dates)} initial dates)")
         mean_d = defaultdict(list)
         for v in VARS:
             f = np.maximum.accumulate(np.array([fp[(v, s)] for s in range(1, a.steps + 1)]))   # monotone envelope

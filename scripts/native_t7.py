@@ -40,20 +40,30 @@ from scripts.native_w4a16 import read_jsonl, tensor_bytes        # noqa: E402
 
 
 class NativeT7Linear(nn.Module):
-    def __init__(self, sim: SimNVFP4Linear, cfg, act: str):
+    def __init__(self, sim: SimNVFP4Linear, cfg, act: str, exact: bool = False):
         super().__init__()
         assert sim.rotation is None, "native port covers rotation-free recipes only"
-        W = (sim.wq.float() * sim.w_pts).to(torch.bfloat16)             # dequantised NVFP4 weight (BF16-exact values)
+        W32 = sim.wq.float() * sim.w_pts                                  # simulated dequantised weight (FP32)
+        W = W32.to(torch.bfloat16)
         self.lin = nn.Linear(sim.in_features, sim.out_features, bias=False, device=W.device, dtype=torch.bfloat16)
         with torch.no_grad():
             self.lin.weight.copy_(W)
-        from torchao.quantization import quantize_
-        quantize_(self.lin, cfg)
+        if exact and act == "w4a16":
+            # TorchAO's weight-only transform with the simulator's tensor scale: quantize_ would derive the scale from
+            # the BF16 copy's maximum, which differs slightly from the FP32 one, and shift some block scales
+            from torchao.prototype.mx_formats.nvfp4_tensor import NVFP4Tensor, per_tensor_amax_to_scale
+            q = NVFP4Tensor.to_nvfp4(W, per_tensor_scale=per_tensor_amax_to_scale(W32.abs().max()),
+                                     is_swizzled_scales=True, act_quant_kwargs=None)
+            self.lin.weight = nn.Parameter(q, requires_grad=False)
+            W = W32
+        else:
+            from torchao.quantization import quantize_
+            quantize_(self.lin, cfg)
         self.is_quantized = hasattr(self.lin.weight, "qdata")
         # idempotence check: dequantise the NVFP4Tensor and compare with W
         with torch.no_grad():
             try:
-                Wd = self.lin.weight.dequantize().to(torch.bfloat16) if hasattr(self.lin.weight, "dequantize") else None
+                Wd = self.lin.weight.dequantize(torch.float32).to(W.dtype) if hasattr(self.lin.weight, "dequantize") else None
             except Exception:
                 Wd = None
             self.mismatch_frac = float((Wd != W).float().mean()) if Wd is not None else float("nan")
@@ -81,14 +91,14 @@ class NativeT7Linear(nn.Module):
         return y.to(x.dtype).reshape(*shape[:-1], self.out_features)
 
 
-def replace_sim_layers(model: nn.Module, cfg, act: str) -> dict:
+def replace_sim_layers(model: nn.Module, cfg, act: str, exact: bool = False) -> dict:
     stats = {"n": 0, "n_quantized": 0, "mismatch_frac": [], "mismatch_max_rel": [], "bytes_before": 0, "bytes_after": 0}
     mods = dict(model.named_modules())
     for name, m in list(mods.items()):
         if not isinstance(m, SimNVFP4Linear):
             continue
         stats["bytes_before"] += m.wq.numel() * 2
-        nat = NativeT7Linear(m, cfg, act)
+        nat = NativeT7Linear(m, cfg, act, exact=exact)
         parent_name, _, child = name.rpartition(".")
         setattr(mods[parent_name] if parent_name else model, child, nat)
         stats["n"] += 1; stats["n_quantized"] += int(nat.is_quantized)
@@ -111,6 +121,13 @@ def main():
     ap.add_argument("--twin", default=None, help="simulated card to pair with (default: the recipe itself)")
     ap.add_argument("--time-repeats", type=int, default=5)
     ap.add_argument("--results", default=None)
+    ap.add_argument("--exact-weights", action="store_true",
+                    help="quantise the FP32 dequantised weight, so that TorchAO derives the simulator's tensor scale and "
+                         "reproduces its block scales and codes; without it the BF16 copy's slightly different maximum "
+                         "shifts some block scales")
+    ap.add_argument("--bf16-rest", default=None,
+                    help="layer spec (e.g. q0:inc=backbone) whose layers that stay unquantised are cast to BF16, matching the "
+                         "bf16_resident reference of native_timing.py")
     a = ap.parse_args()
     import torchao
     from torchao.prototype.mx_formats import NVFP4DynamicActivationNVFP4WeightConfig, NVFP4WeightOnlyConfig
@@ -119,14 +136,20 @@ def main():
     if frac:
         torch.cuda.set_per_process_memory_fraction(frac)
     res = Path(a.results) if a.results else ROOT / ("results" if H.MODEL == "pretrained" else f"results_{H.MODEL}")
-    name = f"native_t7_{a.recipe}_{a.act}"
+    name = f"native_t7_{a.recipe}_{a.act}" + ("_exact" if a.exact_weights else "") + ("_bf16rest" if a.bf16_rest else "")
     out = res / f"{name}__{a.split}_h{a.steps}"
     out.mkdir(parents=True, exist_ok=True)
     rec = json.loads((ROOT / "recipes" / f"{a.recipe}.json").read_text(encoding="utf-8"))
     t0 = time.time()
     model, binfo = build(rec)                       # simulated model (calibration, GPTQ, smoothing, low rank)
     t_build_sim = time.time() - t0
-    stats = replace_sim_layers(model, cfg, a.act)
+    stats = replace_sim_layers(model, cfg, a.act, exact=a.exact_weights)
+    if a.bf16_rest:                                  # same residency as native_timing.py's bf16_resident reference
+        mods = dict(model.named_modules())
+        rest = [n for n in H.layer_set(a.bf16_rest) if isinstance(mods.get(n), nn.Linear)]
+        for n in rest:
+            mods[n].to(torch.bfloat16)
+        stats["bf16_rest"] = {"spec": a.bf16_rest, "n_cast": len(rest)}
     torch.cuda.synchronize(); H.free()
     info = {"name": name, "recipe": a.recipe, "act": a.act, "config": type(cfg).__name__, "torchao": torchao.__version__, "torch": torch.__version__,
             "device": torch.cuda.get_device_name(), "capability": torch.cuda.get_device_capability(), "sim_build_seconds": t_build_sim,

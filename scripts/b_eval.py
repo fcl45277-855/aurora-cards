@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+from scipy.stats import rankdata
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -23,7 +24,8 @@ STAGE = {"en0": "enc0", "en1": "enc1", "en2": "enc2", "de0": "dec0", "de1": "dec
 
 
 def spearman(x, y):
-    rx, ry = np.argsort(np.argsort(x)), np.argsort(np.argsort(y))
+    """Spearman rho with average ranks for ties (equal to scipy.stats.spearmanr)."""
+    rx, ry = rankdata(x), rankdata(y)
     return float(np.corrcoef(rx, ry)[0, 1])
 
 

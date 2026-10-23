@@ -11,9 +11,12 @@ rotation), see `transform_hessian`.
 """
 from __future__ import annotations
 
+import copy
+
 import torch
 
 from .nvfp4 import BLOCK, E2M1_MAX, block_scales, e2m1_round, per_tensor_scale
+from .rotation import _hadamard
 
 
 def transform_hessian(c: torch.Tensor, rotation=None, smooth: torch.Tensor | None = None) -> torch.Tensor:
@@ -23,7 +26,11 @@ def transform_hessian(c: torch.Tensor, rotation=None, smooth: torch.Tensor | Non
         inv = 1.0 / smooth.float().to(h.device)
         h = h * inv[:, None] * inv[None, :]
     if rotation is not None:
-        h = rotation.apply(rotation.apply(h).t().contiguous())     # Q C Q^T  (C symmetric)
+        r32 = copy.copy(rotation)          # the Hessian is always rotated in FP32 with the exact Hadamard matrices,
+        r32.compute_dtype = torch.float32  # also when the layer's activation rotation runs in BF16
+        r32.ha = _hadamard(rotation.fa).to(h.device)
+        r32.hb = None if rotation.hb is None else _hadamard(rotation.fb).to(h.device)
+        h = r32.apply(r32.apply(h).t().contiguous())     # Q C Q^T  (C symmetric)
         h = 0.5 * (h + h.t())
     return h
 
@@ -37,7 +44,7 @@ def gptq_nvfp4(w: torch.Tensor, h: torch.Tensor, *, percdamp: float = 0.01, bloc
         raise ValueError("blocksize must be a multiple of 16")
     W = w.float().clone()
     n_out, K = W.shape
-    pts = per_tensor_scale(W)
+    pts = per_tensor_scale(W).clamp(min=1e-30)       # an all-zero weight stays 0 instead of NaN
     H = h.float().clone().to(W.device)
     dead = torch.diag(H) == 0
     H[dead, dead] = 1.0

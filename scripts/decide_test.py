@@ -1,6 +1,6 @@
 """Pre-registered test-split checks for the mechanism cards (the experiment log, test criteria 7-8).
 
-  python scripts/decide_test.py [--split test]
+  python scripts/decide_test.py [--split test] [--results <dir>]
 """
 import argparse
 import json
@@ -16,10 +16,11 @@ UP5 = UP4 + ("q700",)
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--split", default="test")
+    ap.add_argument("--results", default=str(ROOT / "results"), help="directory with the <card>__<split>_h2 summaries")
     a = ap.parse_args()
 
     def L(n):
-        p = ROOT / "results" / f"{n}__{a.split}_h2" / "summary.json"
+        p = Path(a.results) / f"{n}__{a.split}_h2" / "summary.json"
         return json.loads(p.read_text()) if p.exists() else None
 
     rr = lambda s, v, t=1: s["per_var"][f"{v}_s{t}"]["rmse_ref"]

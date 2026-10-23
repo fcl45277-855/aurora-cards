@@ -16,9 +16,12 @@ Options (all default to the native Q0 behaviour except `rot_dtype`):
 """
 from __future__ import annotations
 
+import warnings
+
 import torch
 from torch import nn
 
+from . import nvfp4 as NV
 from .nvfp4 import qdq_blocks, qdq_blocks_search
 from .rotation import BlockHadamard
 
@@ -31,6 +34,9 @@ class SimNVFP4Linear(nn.Module):
         super().__init__()
         self.act_scale_search = tuple(act_scale_search) if act_scale_search else None
         self.act_step_mults = None     # e.g. [1.0, 1.5]: activation block-scale multiplier chosen by rollout step (09 #8)
+        # floor of the UE4M3 activation block scale for this layer (set by cards/recipe.build from the recipe's
+        # "scale_min"); None = the module default nvfp4.SCALE_MIN at call time
+        self.scale_min = None
         # N1 scale-separated activation quantization: set lowpass_pool (e.g. 4) and, at run time, grid = (C, H, W)
         # (filled by a forward pre-hook on the enclosing Swin block, see cards/recipe.py)
         self.lowpass_pool = None
@@ -153,6 +159,15 @@ class SimNVFP4Linear(nn.Module):
         return y
 
     def _forward(self, x: torch.Tensor) -> torch.Tensor:
+        if self.scale_min is None:
+            return self._forward_impl(x)
+        prev, NV.SCALE_MIN = NV.SCALE_MIN, self.scale_min     # this layer's block-scale floor, whatever was built later
+        try:
+            return self._forward_impl(x)
+        finally:
+            NV.SCALE_MIN = prev
+
+    def _forward_impl(self, x: torch.Tensor) -> torch.Tensor:
         shape = x.shape
         flat = x.reshape(-1, self.in_features)
         orig = flat
@@ -252,7 +267,9 @@ def qdq_mxfp8(x: torch.Tensor, block: int = 32, rounding: str = "rceil") -> torc
     2^(floor(log2 amax) - 8), block maxima in (448, 512) saturate at 448 (clips ~18% of blocks when channels have
     outliers; 2026-10-18 d06_mx with floor: qerr 119.5)."""
     shape = x.shape
-    if shape[-1] % block:
+    if shape[-1] % block:      # not an MX layout; kept for the diagnostic recipes, the paper's MXFP8 layers have K % 32 == 0
+        warnings.warn(f"qdq_mxfp8: last dim {shape[-1]} is not a multiple of {block}; using 16-element blocks, "
+                      "which is not the MXFP8 format", RuntimeWarning, stacklevel=2)
         block = 16
     xf = x.float().reshape(*shape[:-1], shape[-1] // block, block)
     amax = xf.abs().amax(-1, keepdim=True).clamp(min=2.0 ** -126)

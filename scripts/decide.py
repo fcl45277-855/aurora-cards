@@ -1,20 +1,22 @@
-"""Apply the pre-registered decision rules of the pre-registered decision rules to finished dev cards.
+"""Apply the pre-registered decision rules to finished dev cards.
 
-  python scripts/decide.py            # prints whichever decisions have all their cards finished
+  python scripts/decide.py [--results <dir>]     # prints whichever decisions have all their cards finished
 
 Shares are in MSE terms: S = (rmse_ref(card) / rmse_ref(ref_card))**2 per variable-step.
 """
+import argparse
 import json
 import statistics
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+RESULTS = ROOT / "results"
 UPPER = ("z500", "t850", "u850", "v850")
 VARS = ("2t", "10u", "10v", "msl", "z500", "t850", "u850", "v850", "q700")
 
 
 def load(name, split="dev", steps=2):
-    p = ROOT / "results" / f"{name}__{split}_h{steps}" / "summary.json"
+    p = RESULTS / f"{name}__{split}_h{steps}" / "summary.json"
     return json.loads(p.read_text()) if p.exists() else None
 
 
@@ -185,5 +187,8 @@ def tokv():
 
 
 if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--results", default=str(RESULTS), help="directory with the <card>__dev_h2/summary.json files")
+    RESULTS = Path(ap.parse_args().results)
     for f in (m01, g02_rescue, fold, closure, sens, tokv):
         f()

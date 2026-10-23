@@ -10,13 +10,15 @@ netCDF4==1.7.4
 einops==0.8.2
 timm==1.0.27
 matplotlib==3.11.0
-pyshtools              # spherical-harmonic spectra for the PhysMetrics.Weather metrics
-cdsapi                 # ERA5 download
-huggingface_hub        # checkpoint download
-numcodecs              # WeatherBench2 Zarr chunks (crossarch/ only)
-pytest
-# Aurora: the paper used the microsoft/aurora source of July 2026 (docs/aurora_package_md5.txt lists the file checksums;
-# scripts/check_env.py compares them with your installation)
+pyshtools==4.14.1      # spherical-harmonic spectra for the PhysMetrics.Weather metrics
+cdsapi==0.7.7          # ERA5 download
+huggingface_hub==1.21.0  # checkpoint download
+numcodecs              # WeatherBench2 Zarr chunks (crossarch/ only; the version used was not recorded)
+pytest==9.1.1
+# Aurora: the paper used an editable install of the microsoft/aurora source of July 2026, reported by pip as
+# microsoft-aurora 0.1.dev1+g3c31fcaab.d20260701 (setuptools-scm: commit 3c31fcaab with local changes, so the version
+# cannot be pinned to a public commit). docs/aurora_package_md5.txt lists the checksums of that source;
+# scripts/check_env.py compares them with your installation.
 microsoft-aurora
 # native NVFP4 W4A4 kernels (scripts/native_*.py only; Blackwell GPU):
 #   pip install mslk==1.2.0 --no-deps --index-url https://download.pytorch.org/whl/cu130

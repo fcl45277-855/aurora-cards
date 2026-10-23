@@ -5,7 +5,9 @@
   python scripts/run_card.py --recipe recipes/gptq_full.json --split dev
 
 Outputs results/<name>__<split>_h<steps>/{recipe.json, build_info.json, records.jsonl, summary.json}.
-Resumable per date. The FP32 card writes the reference cache results/_ref_fp32_h<steps>/ used for rmse_ref.
+Resumable per date: a date counts as done only when all its records (steps x variables) are present; records of
+a partly written date are dropped and the date is run again. A malformed line in records.jsonl other than an
+unterminated last line (an interrupted write) stops the run. The FP32 card writes the reference cache results/_ref_fp32_h<steps>/ used for rmse_ref.
 Summaries pair each card with results/fp32__<split>_h<steps> and native_q0__<split>_h<steps> when present.
 """
 from __future__ import annotations
@@ -26,15 +28,33 @@ from cards.recipe import build, merged  # noqa: E402
 
 
 def read_jsonl(p: Path) -> list[dict]:
+    """Records of a JSONL file. Only an unterminated last line (a write interrupted by a crash) is skipped, with a
+    message; any other malformed line raises."""
     if not p.exists():
         return []
+    text = p.read_text(encoding="utf-8")
+    lines = text.split("\n")
     out = []
-    for line in p.open(encoding="utf-8"):
+    for i, line in enumerate(lines):
+        if not line.strip():
+            continue
         try:
             out.append(json.loads(line))
-        except json.JSONDecodeError:
-            pass
+        except json.JSONDecodeError as e:
+            if i == len(lines) - 1:                       # no trailing newline: the interrupted last write
+                print(f"{p}: ignoring the incomplete last line", flush=True)
+                continue
+            raise ValueError(f"{p}: malformed line {i + 1}: {e}") from None
     return out
+
+
+def complete_dates(recs: list[dict], steps: int) -> set[str]:
+    """Dates with exactly one record per (step, variable)."""
+    seen = {}
+    for x in recs:
+        seen.setdefault(x["date"], set()).add((x["step"], x["var"]))
+    need = {(s, v) for s in range(1, steps + 1) for v in H.VARS}
+    return {d for d, k in seen.items() if k == need and sum(1 for x in recs if x["date"] == d) == len(need)}
 
 
 def main():
@@ -61,7 +81,12 @@ def main():
     (out / "recipe.json").write_text(json.dumps(r, indent=1), encoding="utf-8")
     dates = H.SPLITS[a.split][: a.max_dates]
     rec_path = out / "records.jsonl"
-    done = {x["date"] for x in read_jsonl(rec_path)}
+    old = read_jsonl(rec_path)
+    done = complete_dates(old, a.steps)
+    partial = sorted({x["date"] for x in old} - done)
+    if partial or (old and not rec_path.read_text(encoding="utf-8").endswith("\n")):
+        print(f"dropping the records of partly written dates {partial} and rewriting {rec_path}", flush=True)
+        rec_path.write_text("".join(json.dumps(x) + "\n" for x in old if x["date"] in done), encoding="utf-8")
     todo = [d for d in dates if d not in done]
     cache = res / f"_ref_fp32_h{a.steps}"
     is_ref = r["kind"] == "fp32"

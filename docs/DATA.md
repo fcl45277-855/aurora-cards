@@ -38,8 +38,8 @@ Each day takes about 1.15 GB on disk and a few minutes to download, depending on
 | --- | --- | --- | --- | --- |
 | `calib` | 2024-01-04 .. 01-10 | 7 | 8 GB | calibration statistics (GPTQ Hessians, smoothing maxima) |
 | `calib2` | 2024-01-18 .. 01-24 | 7 | 8 GB | calibration-week robustness |
-| `dev` | 2024-02-02 .. 02-13 | 12 | 14 GB | all recipe choices (Table 2, mechanism, protection order) |
-| `test` | 2024-03-01 .. 03-30 | 30 | 35 GB | held-out evaluation (Tables 3–7) |
+| `dev` | 2024-02-02 .. 02-13 | 12 | 14 GB | all recipe choices (Table 3, mechanism, protection order) |
+| `test` | 2024-03-01 .. 03-30 | 30 | 35 GB | held-out evaluation (Tables 4, 6 and 7; Figs. 2b and 3) |
 | `summer` | 2024-07-01 .. 07-08 | 8 | 9 GB | season check, Hurricane Beryl case |
 | `y2023` | 2023-03-01 .. 03-04 (+ 03-05, 03-06 for the 20-step truth) | 4 | 7 GB | cross-year check |
 | `calib1` | 2024-01-04 | 1 | 1.2 GB | examples only |

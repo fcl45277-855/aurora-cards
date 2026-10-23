@@ -34,7 +34,7 @@ def main():
         r = check_against_torchao()
         check("bit-exact vs TorchAO nvfp4", r["exact"], r)
     except ImportError as e:
-        print("SKIP torchao comparison:", e)
+        print("SKIP bit-exact TorchAO comparison (TorchAO not installed; not a pass):", e)
     # rotation: orthogonal, matches the existing QuaRot hadamard.py (if importable)
     for K, b in ((512, 512), (2048, 2048), (8192, 8192), (1024, 16), (1024, 128)):
         rot = BlockHadamard(K, b, seed=7)
@@ -80,7 +80,8 @@ def main():
     y = sim(x)
     xr = BlockHadamard(K, K, seed=1).apply(x.reshape(-1, K).float())
     ref = (qdq_blocks(xr) @ (p * s).t() + lin.bias.detach()).reshape(3, 10, O)
-    check("sim linear matches fake-quant reference", torch.allclose(y.float(), ref, rtol=2e-2, atol=2e-2),
+    # the BF16 GEMM of exact BF16 operands returns a BF16 output (8 significant bits): tolerance 2^-7 relative
+    check("sim linear matches fake-quant reference", torch.allclose(y.float(), ref, rtol=2 ** -7, atol=1e-3),
           (y.float() - ref).abs().max().item())
     yf = lin(x)
     check("sim linear close to FP linear", ((y.float() - yf).norm() / yf.norm()).item() < 0.2,

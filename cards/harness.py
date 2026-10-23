@@ -390,6 +390,8 @@ def summarize(records: list[dict], baselines: dict[str, list[dict]] | None = Non
         if "red" in main:
             out["qerr_reduction_vs_q0_pct"], out["qerr_reduction_vs_q0_pct_ci95"] = 100 * main["red"], ci("red")
         out["n_paired"] = len(keys)
+        out["ci_method"] = ("i.i.d. date bootstrap (2000 resamples) for the *_ci95 fields; the paper's intervals use "
+                            "3-day moving blocks (scripts/block_ci.py, scripts/extended_analyses.py)")
     return out
 
 

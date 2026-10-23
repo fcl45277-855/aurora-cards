@@ -2,10 +2,14 @@
 
     python scripts/paper_tables.py [--results results_summary]
 
-Prints the recipe path (Table 2, development split), the test-month evaluation (Table 3), the seasonal and
-cross-year checks (Sect. 4.5) and the cross-model localisation ratios (Table S10), each next to the value printed in
-the paper, and exits with status 1 if any value differs by more than the rounding of the paper. Re-running the
-experiments (docs/REPRODUCE.md) writes new summaries into results/; use --results results to compare a re-run.
+Table and section numbers follow manuscript version v17. Prints the recipe path (Table 3, development split), the
+test-month evaluation (Table 4), the protected configurations and 8-bit baselines (Table 6), the calibration-week,
+seasonal and cross-year checks (Sect. 4.6), the native timing and peak memory (Table 8) and the cross-model
+localisation ratios (Table S10), each next to the value printed in the paper, and exits with status 1 if any value
+differs by more than the rounding of the paper. The intervals in summary.json are i.i.d. date-bootstrap intervals;
+the paper's 3-day block-bootstrap intervals need the per-record archive (scripts/block_ci.py,
+scripts/extended_analyses.py). Re-running the experiments (docs/REPRODUCE.md) writes new summaries into results/;
+use --results results to compare a re-run.
 """
 import argparse
 import json
@@ -15,19 +19,29 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 # (card, split, paper qerr %, decimals, paper ERA5 excess % or None, decimals)
-TABLE2 = [("q0_sim", "dev", 147.5, 1, 84.8, 1), ("c04_no_rot", "dev", 164.0, 1, 101.3, 1), ("c11_norot_gptq", "dev", 156.9, 1, 95.2, 1),
+TABLE3 = [("q0_sim", "dev", 147.5, 1, 84.8, 1), ("c04_no_rot", "dev", 164.0, 1, 101.3, 1), ("c11_norot_gptq", "dev", 156.9, 1, 95.2, 1),
           ("c09_smooth05_gptq", "dev", 103.8, 1, 50.6, 1), ("g01_svdq_a05_r32", "dev", 32.8, 1, 6.8, 1),
           ("g02_svdq_a08_r32", "dev", 33.7, 1, 7.3, 1), ("g03_svdq_a08_r64", "dev", 28.6, 1, 5.9, 1),
-          ("t7_g02_nodec_fold", "dev", 17.3, 1, 1.3, 1), ("t7_mx", "dev", 10.5, 1, 0.65, 2),
+          ("t7_g02_nodec_fold", "dev", 17.3, 1, 1.3, 1), ("t7_mx", "dev", 10.5, 1, 0.65, 2), ("t7_a16", "dev", 9.4, 1, 0.54, 2),
           ("c08_weight_only_gptq", "dev", 14.1, 1, 0.9, 1), ("g02_mx", "dev", 16.2, 1, 1.8, 1)]
-TABLE3 = [("bf16", "test", 1.75, 2, 0.00, 2), ("q0_sim", "test", 147.24, 2, 84.50, 2), ("m01_q0_decoder_only", "test", 129.03, 2, 75.89, 2),
+TABLE4 = [("bf16", "test", 1.75, 2, 0.00, 2), ("q0_sim", "test", 147.24, 2, 84.50, 2), ("m01_q0_decoder_only", "test", 129.03, 2, 75.89, 2),
           ("m02_q0_no_decoder", "test", 46.36, 2, 10.53, 2), ("c08_weight_only_gptq", "test", 14.20, 2, 1.02, 2),
           ("g02_svdq_a08_r32", "test", 33.62, 2, 7.16, 2), ("t7_g02_nodec_fold", "test", 17.32, 2, 1.27, 2),
-          ("t7_mx", "test", 10.56, 2, 0.61, 2)]
-ROBUST = [("t7_mx_cal2", "test", 10.40, 2, None, 2), ("t7_mx_calsum", "test", 10.60, 2, 0.60, 2),
+          ("t7_mx", "test", 10.56, 2, 0.61, 2), ("t7_a16", "test", 9.46, 2, 0.50, 2)]
+TABLE6 = [("c08_t7set", "test", 10.61, 2, 0.50, 2), ("t7mx_all314_noenc", "test", 17.09, 2, 1.46, 2),
+          ("t7a16_all314_noenc", "test", 14.38, 2, 1.03, 2), ("u8_w8a16_mx_t7", "test", 5.12, 2, 0.14, 2),
+          ("u8_w8a16_mx", "test", 18.46, 2, 0.39, 2), ("u8_w8a16_ch", "test", 17.80, 2, 3.02, 2),
+          ("u8_w8a16_mx_prot", "test", 10.40, 2, 0.66, 2), ("u8_w8a8_mx", "test", 107.29, 2, 47.84, 2),
+          ("u8_w8a8_ch", "test", 97.71, 2, 41.53, 2), ("u8_w8a8_mx_prot", "test", 25.09, 2, 3.54, 2)]
+ROBUST = [("t7_a16_cal2", "test", 9.34, 2, 0.40, 2), ("t7_a16", "summer", 9.81, 2, 0.57, 2), ("t7_a16", "y2023", 9.84, 2, 0.42, 2),
+          ("t7_mx_cal2", "test", 10.40, 2, 0.51, 2), ("t7_mx_calsum", "test", 10.60, 2, 0.60, 2),
           ("t7_mx", "summer", 10.85, 2, 0.67, 2), ("q0_sim", "summer", 144.7, 1, None, 1),
           ("t7_mx", "y2023", 11.00, 2, 0.51, 2), ("c08_weight_only_gptq", "y2023", 14.89, 2, 1.11, 2),
           ("q0_sim", "y2023", 156.4, 1, 92.3, 1), ("bf16", "y2023", 1.81, 2, None, 2)]
+# Table 8: (timing file in _aggregates, config, paper step time s, paper peak GiB)
+TABLE8 = [("_native_timing_v14_backbone.json", "bf16", 1.143, 14.92), ("_native_timing_v14_backbone.json", "bf16_resident", 1.141, 13.29),
+          ("_native_timing_v14_backbone.json", "w4a16", 1.184, 12.12), ("_native_timing_v14_backbone.json", "w4a4", 1.154, 14.00),
+          ("_native_timing_v14_backbone_fp8.json", "fp8_w8a16", 1.201, 12.49), ("_native_timing_v14_backbone_mx.json", "mxfp8_w8a8", 1.430, 15.49)]
 CROSS = {"pretrained": ("m01_q0_decoder_only", 0.52, 0.54), "finetuned": ("x_dec_only", 0.42, 0.68), "small": ("x_dec_only", 0.70, 0.35)}
 
 
@@ -44,7 +58,7 @@ def close(value, paper, dec):
 
 
 def table(title, rows, res, bad):
-    print(f"\n{title}\n{'card':26s} {'split':7s} {'qerr %':>9s} {'paper':>8s} {'excess %':>9s} {'paper':>8s}  95% CI of excess")
+    print(f"\n{title}\n{'card':26s} {'split':7s} {'qerr %':>9s} {'paper':>8s} {'excess %':>9s} {'paper':>8s}  i.i.d. date-bootstrap 95% interval of excess")
     for card, split, pq, dq, pe, de in rows:
         s = load(res, "pretrained", card, split)
         if s is None:
@@ -65,9 +79,27 @@ def main():
     a = ap.parse_args()
     res = Path(a.results)
     bad = []
-    table("Table 2: path to the deployable recipe (development split, 12 dates x 2 steps)", TABLE2, res, bad)
-    table("Table 3: test month (2024-03-01..30, 30 dates x 2 steps)", TABLE3, res, bad)
-    table("Sect. 4.5: calibration week, season, calibration season and year", ROBUST, res, bad)
+    table("Table 3: development of the protected configuration (development split, 12 dates x 2 steps)", TABLE3, res, bad)
+    table("Table 4: test month (2024-03-01..30, 30 dates x 2 steps)", TABLE4, res, bad)
+    table("Table 6: protected configurations and 8-bit baselines (test month)", TABLE6, res, bad)
+    table("Sect. 4.6: calibration week, season, calibration season and year", ROBUST, res, bad)
+    print("\nTable 8: native timing (median step s) and peak memory (GiB), RTX 5090, GPU otherwise idle")
+    agg = res / "pretrained" / "_aggregates"
+    for fname, cfg, pt, pm in TABLE8:
+        f = agg / fname
+        if not f.exists():
+            print(f"  {cfg:14s} ({fname} not found)"); bad.append(f"timing/{cfg}"); continue
+        r = json.load(open(f, encoding="utf-8"))["configs"][cfg]
+        ok = close(r["step_seconds_median"], pt, 3) and close(r["peak_gib"], pm, 2)
+        if not ok:
+            bad.append(f"timing/{cfg}")
+        print(f"  {cfg:14s} step {r['step_seconds_median']:.3f} (paper {pt:.3f})  peak {r['peak_gib']:.2f} (paper {pm:.2f}){'' if ok else '   <-- differs'}")
+    nat = res / "pretrained" / "native_t7_t7_a16_w4a16_bf16rest__test_h2" / "build_info.json"
+    if nat.exists():
+        st = json.load(open(nat, encoding="utf-8"))["step_seconds_median"]
+        ok = close(st, 1.838, 3)
+        bad += [] if ok else ["timing/native_t7_a16"]
+        print(f"  {'native t7_a16':14s} step {st:.3f} (paper 1.838){'' if ok else '   <-- differs'}")
     print("\nTable S10, criterion 1 (dev): qerr(one resampler at W4A4) / qerr(all 314 layers at W4A4)")
     for model, (dec_card, pd, pe) in CROSS.items():
         f, d, e = (load(res, model, c, "dev") for c in ("x_all_q0num", dec_card, "m1enc"))
