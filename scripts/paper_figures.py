@@ -272,7 +272,7 @@ def fig4():
     a0 = axs[0]
     a0.text(0.33, 20000, "Perceiver resamplers →", fontsize=6, ha="left", va="center", color="0.3")
     a0.text(0.30, 150, "← Swin stages", fontsize=6, ha="left", va="center", color="0.3")
-    axs[0].set_ylabel("Attention-module sensitivity\n(excess MSE over BF16, dev)")
+    axs[0].set_ylabel("Attention-module sensitivity\n($\\mathrm{qerr}^2 - \\mathrm{qerr}^2_{\\mathrm{BF16}}$, dev)")
     fig.tight_layout(w_pad=2.0, rect=(0, 0, 1, 0.95))
     save(fig, "fig4_switching_predictor")
 
@@ -291,6 +291,20 @@ def excess_by_lead(split, name):
     return [6 * s for s in steps], [np.mean(ex[s]) for s in steps]
 
 
+def excess_range_by_lead(split, name):
+    """Per-initial-date ERA5 excess (mean over variables), min and max over dates at each lead."""
+    rows = lambda p: [json.loads(l) for l in open(p, encoding="utf-8") if l.strip()]
+    fp = {(r["date"], r["step"], r["var"]): r["rmse_truth"] for r in rows(RES / f"results/fp32__{split}_h20/records.jsonl")}
+    per = defaultdict(lambda: defaultdict(list))
+    for r in rows(RES / f"results/{name}__{split}_h20/records.jsonl"):
+        k = (r["date"], r["step"], r["var"])
+        if k in fp:
+            per[r["step"]][r["date"]].append(100 * (r["rmse_truth"] / fp[k] - 1))
+    steps = sorted(per)
+    means = [[np.mean(v) for v in per[s].values()] for s in steps]
+    return [6 * s for s in steps], [min(m) for m in means], [max(m) for m in means]
+
+
 STORAGE = [  # bytes accounted by memory_table.py and the test summaries
     ("BF16", 2396, 1.75, C["bf16"]), ("c08 (W4A16, 195 layers)", 1184, 14.20, C["c08"]), ("g02 (W4A4)", 1237, 33.62, C["q0"]),
     ("t7 (W4A4, 138 layers)", 1324, 17.32, C["t7"]), ("t7_mx (W4A8, 138 layers)", 1324, 10.56, C["t7mx"]), ("Q0 (W4A4)", 1184, 147.24, C["q0"]),
@@ -306,12 +320,14 @@ def fig5():
             a.plot(h, e, color=col, marker=mk, label=lab)
         except FileNotFoundError:
             pass
+    h, lo, hi = excess_range_by_lead("test", "t7_mx")
+    a.fill_between(h, lo, hi, color=C["t7mx"], alpha=0.15, lw=0, label="t7_mx, range over winter dates")
     h, e = excess_by_lead("summer", "t7_mx")
     a.plot(h, e, color=C["summer"], marker="s", ls="--", mfc="white", label="t7_mx (W4A8), summer")
     a.axhline(0, color="0.6", lw=0.6)
     a.set_xlabel("Lead time (h)"); a.set_ylabel("ERA5 RMSE excess over FP32 (%)")
     a.set_xticks([6, 24, 48, 72, 96, 120])
-    a.set_ylim(-0.8, 2.6)
+    a.set_ylim(-2.0, 2.8)
     a.legend(loc="upper left", fontsize=5.5, ncol=2, columnspacing=1.0)
     label(a, "a", x=-0.14)
     offsets = {"BF16": (-6, 4), "c08 (W4A16, 195 layers)": (-7, -2), "g02 (W4A4)": (5, 0), "t7 (W4A4, 138 layers)": (5, 2),
