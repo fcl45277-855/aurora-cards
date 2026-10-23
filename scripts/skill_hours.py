@@ -2,6 +2,11 @@
 equals the card's ERA5 RMSE at T (linear interpolation of FP32's RMSE-vs-lead curve, per variable, mean over dates).
 D is in hours (6 h per step). Negative = the card is better than FP32 at that lead time.
 
+Rule: RMSE is averaged over initial dates first, per variable and lead. Where FP32's curve decreases with lead (2t has
+diurnal dips after 90 h), it is replaced by its running maximum, so the interpolation is well defined. Below the first
+lead the curve is extrapolated linearly (D >= -T); above the last lead D is undefined and excluded from the variable
+mean. D is a point estimate at the 6-h output resolution, not an uncertainty bound.
+
   python scripts/skill_hours.py --split test --steps 20 t7_mx c08_weight_only_gptq t7_g02_nodec_fold bf16
 """
 import argparse
@@ -41,7 +46,7 @@ def main():
         print(f"== {name}")
         mean_d = defaultdict(list)
         for v in VARS:
-            f = np.array([fp[(v, s)] for s in range(1, a.steps + 1)])
+            f = np.maximum.accumulate(np.array([fp[(v, s)] for s in range(1, a.steps + 1)]))   # monotone envelope
             row = []
             for s in at:
                 target = c[(v, s)]
@@ -51,7 +56,7 @@ def main():
                 elif target >= f[-1]:
                     row.append(">"); mean_d[s].append(np.nan); continue
                 else:
-                    t_eq = float(np.interp(target, f, hours))        # f is increasing with lead time
+                    t_eq = float(np.interp(target, f, hours))        # f is non-decreasing (envelope)
                     d = t_eq - 6.0 * s
                 row.append(f"{d:+.1f}")
                 mean_d[s].append(d)
