@@ -1,0 +1,1 @@
+{"name": "u8_w8a8_mx", "layers": "all314", "rotation": {"block": null}, "weight": {"method": "mxfp8", "source": "fp32"}, "act": "mxfp8"}

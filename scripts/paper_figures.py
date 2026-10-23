@@ -97,7 +97,7 @@ def fig1():
     (a, b), (c, d) = axs
     for ax, key, ylab in ((a, "hydrostatic_residual_rms", "Hydrostatic residual (m$^{2}$ s$^{-2}$)"),
                           (b, "geostrophic_residual_rms", "500 hPa ageostrophic residual (m s$^{-1}$)"),
-                          (c, "ws_max", "Maximum 10 m wind speed (m s$^{-1}$)")):
+                          (c, "ws_q999", "99.9th-percentile 10 m wind speed (m s$^{-1}$)")):
         ax.plot(h, ref(key, "truth"), color=C["era5"], ls="--", label="ERA5")
         ax.plot(h, ref(key, "fp32"), color=C["fp32"], label="FP32 Aurora")
         ax.plot(h, get("q0_sim", key), color=C["q0"], marker="o", label="Q0 (W4A4, all 195 layers)")
@@ -131,32 +131,37 @@ def fig2():
     gs_top = fig.add_gridspec(1, 4, top=0.90, bottom=0.60, left=0.06, right=0.90, wspace=0.10)
     gs_bot = fig.add_gridspec(1, 2, top=0.47, bottom=0.17, left=0.08, right=0.98, wspace=0.42)
     gs = {(0, i): gs_top[0, i] for i in range(4)}
-    gs[(1, slice(None, 2))] = gs_bot[0, 0]; gs[(1, slice(2, None))] = gs_bot[0, 1]
+    gs["bottom_left"] = gs_bot[0, 0]; gs["bottom_right"] = gs_bot[0, 1]    # str keys: slices are unhashable before 3.12
     lat = np.linspace(90, -90, 90, endpoint=False) - 1.0
     lon = np.arange(-180, 180, 2.0)
-    vmax = None
+    mean_map = lambda n: np.roll(np.mean([maps[f"{n}_vs_fp32__s2__{d}__z500"] for d in dates], axis=0), 90, axis=1)
+    mm = {n: mean_map(n) for n, _ in names}                          # 0..360 -> -180..180
+    # one logarithmic scale for all four maps: from the t7_mx 2nd to the q0 99.5th percentile
+    norm = mpl.colors.LogNorm(vmin=max(np.percentile(mm["t7_mx"], 2), 1e-3), vmax=np.percentile(mm["q0_sim"], 99.5))
+    lsm_p = RES / "results/_lsm_2deg.npz"                            # 2-deg land fraction from Aurora's static fields
+    lsm = np.roll(np.load(lsm_p)["lsm"], 90, axis=1) if lsm_p.exists() else None
     axes = []
     for i, (n, title) in enumerate(names):
-        m = np.mean([maps[f"{n}_vs_fp32__s2__{d}__z500"] for d in dates], axis=0)
-        m = np.roll(m, 90, axis=1)                                   # 0..360 -> -180..180
-        if vmax is None:
-            vmax = np.percentile(np.mean([maps[f"q0_sim_vs_fp32__s2__{d}__z500"] for d in dates], axis=0), 98)
         ax = fig.add_subplot(gs[(0, i)])
-        im = ax.pcolormesh(lon, lat, m, cmap="magma_r", vmin=0, vmax=vmax, shading="auto", rasterized=True)
+        im = ax.pcolormesh(lon, lat, np.clip(mm[n], norm.vmin, None), cmap="magma_r", norm=norm, shading="auto", rasterized=True)
+        if lsm is not None:
+            ax.contour(lon, lat, lsm, levels=[0.5], colors="0.35", linewidths=0.3)
+        ax.set_aspect("equal"); ax.set_xlim(-180, 180); ax.set_ylim(-90, 90)
         ax.set_title(title, fontsize=6.5)
-        ax.tick_params(labelsize=6)
-        ax.set_xticks([]); ax.set_yticks([])
+        ax.tick_params(labelsize=5.5, length=1.5, pad=1)
+        ax.set_xticks([-120, 0, 120]); ax.set_xticklabels(["120°W", "0°", "120°E"])
+        ax.set_yticks([-60, 0, 60]); ax.set_yticklabels(["60°S", "0°", "60°N"] if i == 0 else [])
         for sp in ax.spines.values():
             sp.set_visible(True); sp.set_linewidth(0.4)
         axes.append(ax)
     cax = fig.add_axes([0.92, 0.60, 0.012, 0.25])
     cb = fig.colorbar(im, cax=cax)
-    cb.set_label("z500 squared error\nvs FP32, step 2 (m$^{4}$ s$^{-4}$)", fontsize=7.5)
+    cb.set_label("z500 squared error\nvs FP32, step 2 (m$^{4}$ s$^{-4}$, log)", fontsize=7.5)
     cb.ax.tick_params(labelsize=6)
     # spectra
     edges = r["k_edges"]
     kmid = [np.sqrt(edges[i] * edges[i + 1]) for i in range(len(edges) - 1)]
-    ax = fig.add_subplot(gs[(1, slice(None, 2))])
+    ax = fig.add_subplot(gs["bottom_left"])
     fp_err = np.mean([r["fp32"]["2"][d]["vs_truth"]["err_spectra"]["z500"] for d in dates], axis=0)
     ax.plot(kmid, fp_err, color=C["fp32"], ls="--", label="FP32 forecast error (vs ERA5)")
     for (n, title), col, mk in zip(names, (C["q0"], C["dec"], C["nodec"], C["t7mx"]), "osD^"):
@@ -171,7 +176,7 @@ def fig2():
     handles, labels_ = ax.get_legend_handles_labels()
     fig.legend(handles, labels_, loc="lower center", ncol=5, fontsize=6, bbox_to_anchor=(0.5, -0.02), columnspacing=1.2)
     label(ax, "e", x=-0.14)
-    ax2 = fig.add_subplot(gs[(1, slice(2, None))])
+    ax2 = fig.add_subplot(gs["bottom_right"])
     keys = [("hydrostatic_residual_rms", "hydrostatic\nresidual"), ("superadiabatic_share", "super-adiabatic\nshare"),
             ("geostrophic_residual_rms", "ageostrophic\nresidual")]
     x = np.arange(len(keys)); w = 0.2
@@ -279,66 +284,95 @@ def fig4():
 
 # ---- Fig. 5: deployment ---------------------------------------------------------------------------
 
-def excess_by_lead(split, name):
-    rows = lambda p: [json.loads(l) for l in open(p, encoding="utf-8") if l.strip()]
-    fp = {(r["date"], r["step"], r["var"]): r["rmse_truth"] for r in rows(RES / f"results/fp32__{split}_h20/records.jsonl")}
-    ex = defaultdict(list)
-    for r in rows(RES / f"results/{name}__{split}_h20/records.jsonl"):
-        k = (r["date"], r["step"], r["var"])
-        if k in fp:
-            ex[r["step"]].append(100 * (r["rmse_truth"] / fp[k] - 1))
-    steps = sorted(ex)
-    return [6 * s for s in steps], [np.mean(ex[s]) for s in steps]
+def h20_rows(split, name):
+    return [json.loads(l) for l in open(RES / f"results/{name}__{split}_h20/records.jsonl", encoding="utf-8") if l.strip()]
 
 
-def excess_range_by_lead(split, name):
-    """Per-initial-date ERA5 excess (mean over variables), min and max over dates at each lead."""
-    rows = lambda p: [json.loads(l) for l in open(p, encoding="utf-8") if l.strip()]
-    fp = {(r["date"], r["step"], r["var"]): r["rmse_truth"] for r in rows(RES / f"results/fp32__{split}_h20/records.jsonl")}
+def excess_by_date(split, name, dates=None):
+    """{step: {date: mean ERA5 excess over the nine variables (%)}} for a 20-step card, paired with FP32 by date."""
+    fp = {(r["date"], r["step"], r["var"]): r["rmse_truth"] for r in h20_rows(split, "fp32")}
     per = defaultdict(lambda: defaultdict(list))
-    for r in rows(RES / f"results/{name}__{split}_h20/records.jsonl"):
+    for r in h20_rows(split, name):
         k = (r["date"], r["step"], r["var"])
-        if k in fp:
+        if k in fp and (dates is None or r["date"] in dates):
             per[r["step"]][r["date"]].append(100 * (r["rmse_truth"] / fp[k] - 1))
-    steps = sorted(per)
-    means = [[np.mean(v) for v in per[s].values()] for s in steps]
-    return [6 * s for s in steps], [min(m) for m in means], [max(m) for m in means]
+    return {s_: {d: float(np.mean(v)) for d, v in dd.items()} for s_, dd in per.items()}
 
 
-STORAGE = [  # bytes accounted by memory_table.py and the test summaries
-    ("BF16", 2396, 1.75, C["bf16"]), ("c08 (W4A16, 195 layers)", 1184, 14.20, C["c08"]), ("g02 (W4A4)", 1237, 33.62, C["q0"]),
-    ("t7 (W4A4, 138 layers)", 1324, 17.32, C["t7"]), ("t7_mx (W4A8, 138 layers)", 1324, 10.56, C["t7mx"]), ("Q0 (W4A4)", 1184, 147.24, C["q0"]),
+def block_interval(vals_by_date, n=2000, L=3, seed=0):
+    """3-day non-circular moving-block bootstrap of the mean over initial dates (same rule as the tables)."""
+    dates = sorted(vals_by_date)
+    rng = np.random.default_rng(seed)
+    out = []
+    for _ in range(n):
+        pick = []
+        while len(pick) < len(dates):
+            st = int(rng.integers(0, len(dates) - L + 1))
+            pick.extend(dates[st:st + L])
+        out.append(np.mean([vals_by_date[d] for d in pick[:len(dates)]]))
+    return np.percentile(out, [2.5, 97.5])
+
+
+WINTER12 = [f"2024-03-{d:02d}" for d in range(1, 13)]
+# (label, storage relative to BF16 from scripts/memory_table.py, test-month qerr %, group)
+STORAGE = [
+    ("BF16", 1.00, 1.75, "ref"),
+    ("q0", 0.49, 147.24, "w4u"), ("g02", 0.52, 33.62, "w4u"), ("c08 (Q0 set)", 0.49, 14.20, "w4u"),
+    ("t7 (W4A4)", 0.55, 17.32, "w4p"), ("t7_mx (W4A8)", 0.55, 10.56, "w4p"), ("t7_a16 (W4A16)", 0.55, 9.46, "w4p"),
+    ("c08@t7", 0.53, 10.61, "w4p"), ("all-layer W4A8", 0.39, 17.09, "w4p"), ("all-layer W4A16", 0.39, 14.38, "w4p"),
+    ("W8A16 MX", 0.52, 18.46, "w8u"), ("W8A16 per-ch.", 0.50, 17.80, "w8u"), ("W8A8 MX", 0.52, 107.29, "w8u"),
+    ("W8A8 per-ch.", 0.50, 97.71, "w8u"), ("protected W8A16", 0.57, 10.40, "w8p"), ("protected W8A8", 0.57, 25.09, "w8p"),
 ]
+GROUP = {"ref": ("BF16 autocast", C["bf16"], "o"), "w4u": ("NVFP4, resamplers quantised", C["q0"], "o"),
+         "w4p": ("NVFP4, resamplers protected", C["t7mx"], "s"), "w8u": ("FP8, all 314 layers", "#2980b9", "D"),
+         "w8p": ("FP8, resamplers protected", "#7fb3d5", "D")}
 
 
 def fig5():
-    fig, (a, b) = plt.subplots(1, 2, figsize=(180 * MM, 62 * MM), gridspec_kw={"width_ratios": [1.3, 1]})
-    for name, col, lab, mk in (("bf16", C["bf16"], "BF16", "."), ("c08_weight_only_gptq", C["c08"], "c08 (W4A16)", "D"),
-                               ("t7_g02_nodec_fold", C["t7"], "t7 (W4A4)", "^"), ("t7_mx", C["t7mx"], "t7_mx (W4A8), winter", "s")):
+    fig, (a, b) = plt.subplots(1, 2, figsize=(180 * MM, 66 * MM), gridspec_kw={"width_ratios": [1.25, 1]})
+    curves = (("t7_a16", C["t7mx"], "t7_a16 (W4A16)", "s", "-"), ("t7_mx", C["dec"], "t7_mx (W4A8)", "^", "-"),
+              ("c08_t7set", C["c08"], "c08@t7 (W4A16)", "D", "-"), ("u8_w8a16_mx_prot", "#2980b9", "protected FP8 W8A16", "o", "-"))
+    for name, col, lab, mk, ls in curves:
         try:
-            h, e = excess_by_lead("test", name)
-            a.plot(h, e, color=col, marker=mk, label=lab)
+            per = excess_by_date("test", name, set(WINTER12))
         except FileNotFoundError:
-            pass
-    h, lo, hi = excess_range_by_lead("test", "t7_mx")
-    a.fill_between(h, lo, hi, color=C["t7mx"], alpha=0.15, lw=0, label="t7_mx, range over winter dates")
-    h, e = excess_by_lead("summer", "t7_mx")
-    a.plot(h, e, color=C["summer"], marker="s", ls="--", mfc="white", label="t7_mx (W4A8), summer")
+            continue
+        steps = sorted(per)
+        h = [6 * s_ for s_ in steps]
+        a.plot(h, [np.mean(list(per[s_].values())) for s_ in steps], color=col, marker=mk, ls=ls, label=lab)
+        if name == "t7_a16":
+            ci = np.array([block_interval(per[s_]) for s_ in steps])
+            a.fill_between(h, ci[:, 0], ci[:, 1], color=col, alpha=0.15, lw=0, label="t7_a16, 95 % block bootstrap")
+    try:
+        per = excess_by_date("summer", "t7_mx")
+        steps = sorted(per)
+        a.plot([6 * s_ for s_ in steps], [np.mean(list(per[s_].values())) for s_ in steps], color=C["dec"], marker="^",
+               ls="--", mfc="white", label="t7_mx, July (3 dates)")
+    except FileNotFoundError:
+        pass
     a.axhline(0, color="0.6", lw=0.6)
     a.set_xlabel("Lead time (h)"); a.set_ylabel("ERA5 RMSE excess over FP32 (%)")
     a.set_xticks([6, 24, 48, 72, 96, 120])
-    a.set_ylim(-2.0, 2.8)
-    a.legend(loc="upper left", fontsize=5.5, ncol=2, columnspacing=1.0)
+    a.legend(loc="lower left", fontsize=5.5, ncol=1)
     label(a, "a", x=-0.14)
-    offsets = {"BF16": (-6, 4), "c08 (W4A16, 195 layers)": (-7, -2), "g02 (W4A4)": (5, 0), "t7 (W4A4, 138 layers)": (5, 2),
-               "t7_mx (W4A8, 138 layers)": (5, -6), "Q0 (W4A4)": (5, 0)}
-    for lab, mib, q, col in STORAGE:
-        b.scatter(mib / 2396, q, color=col, s=22, edgecolor="white", linewidth=0.4, zorder=3)
-        off = offsets[lab]
-        b.annotate(lab, (mib / 2396, q), xytext=off, textcoords="offset points", fontsize=5.5, ha="right" if off[0] < 0 else "left")
+    seen = set()
+    for lab, st, q, g in STORAGE:
+        name, col, mk = GROUP[g]
+        b.scatter(st, q, color=col, marker=mk, s=20, edgecolor="white", linewidth=0.4, zorder=3,
+                  label=None if g in seen else name)
+        seen.add(g)
+    # labels in free space with thin leader lines (data coordinates of the text)
+    place = {"t7_a16 (W4A16)": (0.66, 6.6), "t7_mx (W4A8)": (0.66, 15.5), "protected W8A16": (0.66, 10.0),
+             "W8A16 MX": (0.66, 24), "all-layer W4A16": (0.31, 7.0), "all-layer W4A8": (0.31, 30),
+             "c08 (Q0 set)": (0.40, 4.3), "W8A8 MX": (0.58, 62), "q0": (0.36, 150), "BF16": (0.86, 2.6)}
+    for lab, st, q, g in STORAGE:
+        if lab in place:
+            b.annotate(lab, (st, q), xytext=place[lab], textcoords="data", fontsize=5.3, va="center",
+                       arrowprops=dict(arrowstyle="-", color="0.55", lw=0.4, shrinkA=0, shrinkB=2.5))
     b.set_yscale("log"); b.set_yticks([2, 5, 10, 20, 50, 100, 200]); plain_log(b)
     b.set_xlabel("Weight storage relative to BF16"); b.set_ylabel("qerr on the test month (%)")
-    b.set_xlim(0.0, 1.15); b.set_xticks([0, 0.25, 0.5, 0.75, 1.0])
+    b.set_xlim(0.3, 1.08); b.set_xticks([0.4, 0.5, 0.6, 0.8, 1.0])
+    b.legend(loc="upper right", fontsize=5.3, handletextpad=0.3)
     label(b, "b", x=-0.2)
     fig.tight_layout(w_pad=2.5)
     save(fig, "fig5_deployment")

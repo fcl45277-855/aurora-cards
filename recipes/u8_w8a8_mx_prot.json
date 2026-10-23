@@ -1,0 +1,1 @@
+{"name": "u8_w8a8_mx_prot", "layers": "all314:exc=decoder.level_decoder,decoder.atmos_levels_embed,ln_modulation,time_mlp,_embed,encoder.level_agg", "rotation": {"block": null}, "weight": {"method": "mxfp8", "source": "fp32"}, "act": "mxfp8"}

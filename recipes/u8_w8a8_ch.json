@@ -1,0 +1,1 @@
+{"name": "u8_w8a8_ch", "layers": "all314", "rotation": {"block": null}, "weight": {"method": "fp8_channel", "source": "fp32"}, "act": "fp8_token"}

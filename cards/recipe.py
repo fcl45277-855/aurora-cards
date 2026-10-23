@@ -8,10 +8,10 @@ the simulation allows):
                  BF16) | "bf16_cast" (old regime: whole model .to(bf16); raw physical inputs/outputs rounded to BF16)
   surface_fp32   false (Q0's FP32 surface-input patch; only meaningful with precision = "bf16_cast")
   rotation       {"block": "full" | 16 | 32 | 64 | 128 | null, "dtype": "bf16" | "fp32"}
-  weight         {"method": "rtn" | "gptq" | "none", "percdamp": 0.01, "scale_mult": 1.0, "source": "fp32" | "bf16"}
-                 (none = BF16 weights, only the activations are quantized)
+  weight         {"method": "rtn" | "gptq" | "none" | "mxfp8" | "fp8_channel", "percdamp": 0.01, "scale_mult": 1.0, "source": "fp32" | "bf16"}
+                 (none = BF16 weights, only the activations are quantized; mxfp8 / fp8_channel = FP8 E4M3 weight baselines)
                  weight.gptq_skip: [substrings]  layers that use RTN even when method = gptq
-  act            "nvfp4" | "fp8" (optimistic per-16 FP32 scale) | "mxfp8" | "fp8_tensor" | "bf16"
+  act            "nvfp4" | "fp8" (optimistic per-16 FP32 scale) | "mxfp8" | "fp8_tensor" | "fp8_token" | "bf16"
   scale_min      "tiny" (default, TorchAO: block scale >= 2^-6) | "subnormal" (block scale >= 2^-9, E4M3 subnormals)
   kv_split       {"pattern", "quant_rows": [a, b] | "K" | "V", "alpha"} or a list of such: only those output rows carry
                  alpha x quantization error (K/V = first/second half of to_kv's rows)
@@ -30,7 +30,9 @@ the simulation allows):
 """
 from __future__ import annotations
 
+import hashlib
 import json
+import os
 from pathlib import Path
 
 import torch
@@ -39,11 +41,32 @@ from . import harness as H
 from . import nvfp4 as NV
 from .gptq import gptq_nvfp4, proxy_error, transform_hessian
 from .rotation import BlockHadamard
-from .simlinear import SimNVFP4Linear, rtn_weight
+from .simlinear import SimNVFP4Linear, fp8_token_parts, qdq_mxfp8, rtn_weight
 
 DEFAULT = {"kind": "sim", "layers": "q0", "surface_fp32": False, "precision": "autocast", "rotation": {"block": "full", "dtype": "bf16"},
            "weight": {"method": "rtn", "percdamp": 0.01, "scale_mult": 1.0, "source": "bf16"}, "act": "nvfp4",
            "smooth": None, "act_scale_search": None, "act_overrides": [], "calib": {"split": "calib", "steps": 2, "budget_gib": 2.5}}
+# Build cache (2026-10-24): the quantised buffers of every built layer (wq, w_pts, smooth, low-rank factors) are saved once
+# per recipe/model/checkpoint and reloaded bit-exactly, so GPTQ and calibration are not repeated when the same recipe is
+# evaluated on several splits or by several scripts. AQ_BUILD_CACHE=0 disables it.
+BUILD_CACHE = Path(__file__).resolve().parents[1] / "results" / "_build_cache"
+
+
+WEIGHT_KEYS = ("kind", "layers", "precision", "surface_fp32", "rotation", "weight", "smooth", "low_rank", "calib", "scale_min")
+
+
+def _cache_path(r: dict) -> Path:
+    """Cache file of a recipe's built weights. Keyed on the fields that determine the weights (layer set, preprocessing,
+    weight method, calibration), not on activation settings, so e.g. t7_mx / t7_a16 / t7 share one build."""
+    sub = {k: r.get(k) for k in WEIGHT_KEYS}
+    key = hashlib.sha1(json.dumps({"weights": sub, "model": H.MODEL, "ckpt": H.CKPT.name}, sort_keys=True, default=str).encode()).hexdigest()
+    return BUILD_CACHE / f"w_{key[:16]}.pt"
+
+
+def _legacy_cache_path(r: dict) -> Path:
+    """Name used by the first cache version (whole recipe in the key), kept so its files can be re-linked."""
+    key = hashlib.sha1(json.dumps({"recipe": r, "model": H.MODEL, "ckpt": H.CKPT.name}, sort_keys=True, default=str).encode()).hexdigest()
+    return BUILD_CACHE / f"{r['name']}_{key[:12]}.pt"
 
 
 def merged(recipe: dict) -> dict:
@@ -132,8 +155,14 @@ def build(recipe: dict, device: str = "cuda"):
         return model, info
     idx = {n: i for i, n in enumerate(H.manifest_layers(), 1)}
     need = r["weight"]["method"] == "gptq" or r["smooth"]
+    cpath = _cache_path(r)
+    use_cache = bool(need) and os.environ.get("AQ_BUILD_CACHE", "1") != "0"
+    cached = torch.load(cpath, map_location=device) if use_cache and cpath.exists() else None
+    if cached is not None:
+        info["build_cache"] = str(cpath)
+        print(f"[{H.now()}] build cache hit: {cpath.name}", flush=True)
     stats = {}
-    if need:
+    if need and cached is None:
         c = r["calib"]
         stats = collect_stats(model, names, H.SPLITS[c["split"]], c["steps"], r["surface_fp32"], c["budget_gib"],
                               want_hessian=r["weight"]["method"] == "gptq")
@@ -144,6 +173,21 @@ def build(recipe: dict, device: str = "cuda"):
     for n in names:
         lin = mods[n]
         K = lin.in_features
+        if cached is not None:              # reload the built layer bit-exactly; only the rotation object is rebuilt
+            c = cached[n]
+            rot = None
+            if blk:
+                rot = BlockHadamard(K, K if blk == "full" else int(blk), seed=H.SEED + idx[n], device=device,
+                                    compute_dtype=rot_dtype)
+            act = next((a for pat, a in r.get("act_overrides", []) if pat in n), r["act"])
+            parent, child = H.parent_of(model, n)
+            setattr(parent, child, SimNVFP4Linear(c["wq"], c["w_pts"], lin.bias, rotation=rot, smooth=c["smooth"],
+                                                  act_bits=act, rot_dtype=rot_dtype,
+                                                  low_rank=None if c["lr_a"] is None else (c["lr_a"], c["lr_b"]),
+                                                  act_scale_search=r.get("act_scale_search")))
+            if r.get("act_step_mults"):
+                getattr(parent, child).act_step_mults = [float(x) for x in r["act_step_mults"]]
+            continue
         w = w32[n].to(device)
         if r["weight"].get("source", "fp32") == "bf16":
             w = w.to(torch.bfloat16).float()
@@ -183,6 +227,10 @@ def build(recipe: dict, device: str = "cuda"):
             del h
         elif r["weight"]["method"] == "none":       # activation-only attribution: BF16 weights (what autocast uses)
             parts, pts = w, torch.ones((), device=w.device)
+        elif r["weight"]["method"] == "mxfp8":      # FP8 baseline: MXFP8 E4M3, E8M0 scale per 32 inputs (RCEIL), BF16-exact
+            parts, pts = qdq_mxfp8(w), torch.ones((), device=w.device)
+        elif r["weight"]["method"] == "fp8_channel":   # FP8 baseline: E4M3 with an FP32 scale per output channel (TorchAO PerRow)
+            parts, pts = fp8_token_parts(w)
         else:
             parts, pts = rtn_weight(w, r["weight"]["scale_mult"], r["weight"].get("scale_search"))
         act = next((a for pat, a in r.get("act_overrides", []) if pat in n), r["act"])
@@ -193,6 +241,17 @@ def build(recipe: dict, device: str = "cuda"):
         if r.get("act_step_mults"):
             getattr(parent, child).act_step_mults = [float(x) for x in r["act_step_mults"]]
         del w
+    if cached is not None:
+        layer_info = cached.get("_layer_info", {})
+    elif use_cache:
+        built = dict(model.named_modules())
+        blob = {n: {k: (None if getattr(built[n], k) is None else getattr(built[n], k).detach().cpu())
+                    for k in ("wq", "w_pts", "smooth", "lr_a", "lr_b")} for n in names}
+        blob["_layer_info"] = layer_info
+        BUILD_CACHE.mkdir(parents=True, exist_ok=True)
+        torch.save(blob, str(cpath) + ".tmp")
+        os.replace(str(cpath) + ".tmp", cpath)
+        info["build_cache"] = str(cpath)
     ks = r.get("kv_split")
     for spec in ([ks] if isinstance(ks, dict) else (ks or [])):        # one dict or a list of dicts
         for n in names:

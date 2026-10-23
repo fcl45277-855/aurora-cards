@@ -41,7 +41,8 @@ class SimNVFP4Linear(nn.Module):
         self.coarse_bits = "bf16"          # precision of the kept coarse/low band: "bf16" | "fp8"
         self.out_features, self.in_features = wq.shape
         self.register_buffer("wq", wq.to(torch.bfloat16), persistent=False)
-        self.register_buffer("w_pts", w_pts.float().reshape(()), persistent=False)
+        # FP32 weight scale: per tensor (NVFP4), or per output channel [out] (FP8 E4M3 with per-row scales)
+        self.register_buffer("w_pts", w_pts.float().reshape(()) if w_pts.numel() == 1 else w_pts.float().reshape(-1), persistent=False)
         self.register_buffer("bias", None if bias is None else bias.detach().clone(), persistent=False)
         self.register_buffer("smooth", None if smooth is None else smooth.float(), persistent=False)
         self.rotation, self.act_bits, self.chunk_tokens = rotation, act_bits, chunk_tokens

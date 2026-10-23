@@ -8,12 +8,14 @@ Here every SimNVFP4Linear of a built simulated model is replaced by NativeT7Line
   activation  --act native : TorchAO/mslk W4A4 kernel (dynamic NVFP4 activations, no scale search) -> fully native t7;
               --act mxfp8_sim : TorchAO W4A16 kernel on MXFP8-rounded BF16 inputs (the MXFP8 x NVFP4 GEMM of t7_mx has
               no kernel in this toolchain, so the activation format stays simulated while weights and GEMM are real);
+              --act w4a16 : TorchAO W4A16 kernel on BF16 inputs -> fully native weight-only recipe (t7_a16, 2026-10-24);
   smoothing   one BF16 per-channel multiply before the GEMM; low rank: two small BF16 GEMMs; bias added in FP32.
 Simulated twins for the paired comparison: rne_t7 (t7 without activation scale search) for --act native, t7_mx for
 --act mxfp8_sim. Scored exactly like native_w4a16.py (dev split, FP32 reference cache); per-step timing like native_timing.py.
 
   AQ_MODEL=pretrained AQ_PERCEIVER_CHUNK=16384 python scripts/native_t7.py --recipe rne_t7 --act native
   AQ_MODEL=pretrained AQ_PERCEIVER_CHUNK=16384 python scripts/native_t7.py --recipe t7_mx --act mxfp8_sim
+  AQ_MODEL=pretrained AQ_PERCEIVER_CHUNK=16384 python scripts/native_t7.py --recipe t7_a16 --act w4a16 --split test
 Outputs results/native_t7_<recipe>_<act>__<split>_h<steps>/{build_info.json, recipe.json, records.jsonl, summary.json}
 """
 from __future__ import annotations
@@ -102,7 +104,7 @@ def replace_sim_layers(model: nn.Module, cfg, act: str) -> dict:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--recipe", default="rne_t7")
-    ap.add_argument("--act", default="native", choices=["native", "mxfp8_sim"])
+    ap.add_argument("--act", default="native", choices=["native", "mxfp8_sim", "w4a16"])
     ap.add_argument("--split", default="dev", choices=list(H.SPLITS))
     ap.add_argument("--steps", type=int, default=2)
     ap.add_argument("--max-dates", type=int, default=None)
@@ -131,6 +133,7 @@ def main():
             "convert_seconds": time.time() - t0 - t_build_sim, "gpu_mem_after_build_gib": torch.cuda.memory_allocated() / 2 ** 30,
             "perceiver_chunk": int(os.environ.get("AQ_PERCEIVER_CHUNK", "0")), **stats,
             "note": ("fully native W4A4: NVFP4 weights + mslk dynamic NVFP4 activations; smoothing and low rank in BF16" if a.act == "native"
+                     else "fully native W4A16: NVFP4 weights with the W4A16 kernel, BF16 activations; smoothing and low rank in BF16" if a.act == "w4a16"
                      else "NVFP4 weights with the W4A16 kernel; MXFP8 activations rounded in software (no NVFP4 x MXFP8 kernel in this toolchain)")}
     (out / "build_info.json").write_text(json.dumps(info, indent=1, default=str), encoding="utf-8")
     (out / "recipe.json").write_text(json.dumps({"name": name, "kind": "native_t7", "recipe": a.recipe, "act": a.act}, indent=1))
