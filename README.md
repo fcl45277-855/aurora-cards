@@ -114,9 +114,9 @@ GPU memory use and per-card times were measured on an RTX 5090 with 32 GB of mem
 | [crossarch/](crossarch/) | ClimaX and FourCastNet cross-architecture check: protocol, scripts, result summaries |
 | [docs/](docs/) | [User guide](docs/USER_GUIDE.md), [tutorial](docs/TUTORIAL.md), [reproduction guide](docs/REPRODUCE.md) and [data specification](docs/DATA.md) |
 
-## AI-assisted development
+## AI-assisted experiments and development
 
-Claude Code (Anthropic) assisted development of this repository. The authors manually reviewed and verified the AI-assisted code and take responsibility for the final implementation.
+Claude Code (Anthropic), working as an AI agent under the authors' direction, developed this repository, executed the experiments and kept the study's dated research log, including the record of acceptance criteria. The authors set the research questions and approved the experimental plans; they reviewed and verified the code, results and log and take responsibility for the implementation and the reported experiments (paper Sect. 3.6).
 
 ## Citation and licence
 
