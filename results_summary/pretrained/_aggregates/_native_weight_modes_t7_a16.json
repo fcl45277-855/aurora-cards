@@ -1,0 +1,24 @@
+[2026-10-24 07:55:55] build cache hit: w_35e1df56894aae4e.pt
+{
+ "recipe": "t7_a16",
+ "n_layers": 138,
+ "tolerance": "1e-6 x layer max |W|",
+ "modes": {
+  "torchao": {
+   "changed_frac": 0.2150775590499588,
+   "any_bit_diff_frac": 0.2150775590499588,
+   "max_change_rel_to_layer_max": 0.018292682245373726
+  },
+  "fp32-tensor-scale": {
+   "changed_frac": 5.005099249224291e-07,
+   "any_bit_diff_frac": 0.10139535879446067,
+   "max_change_rel_to_layer_max": 0.017857138067483902
+  },
+  "from-codes": {
+   "changed_frac": 0.0,
+   "any_bit_diff_frac": 0.091094314849075,
+   "max_change_rel_to_layer_max": 1.1704249658350818e-07
+  }
+ },
+ "blocks_with_max_code_below_6": 7.280144362508059e-07
+}

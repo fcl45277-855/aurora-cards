@@ -3,8 +3,14 @@
 The simulated t7 / t7_mx layer is y = Q4(x / s) @ Wq^T * pts + (x @ A^T) @ B^T + b (cards/simlinear.py: smoothing s,
 GPTQ-quantised NVFP4 weight Wq * pts, rank-32 low-rank branch on the unsmoothed input, activation Q4 = NVFP4 or MXFP8).
 Here every SimNVFP4Linear of a built simulated model is replaced by NativeT7Linear:
-  weight      the dequantised NVFP4 weight re-quantised by TorchAO into a real NVFP4Tensor (idempotence is measured and
-              written to build_info: fraction of elements whose dequantised value differs);
+  weight      a real TorchAO NVFP4Tensor, built in one of three ways (--weights); build_info records the fraction of
+              elements whose dequantised value differs from the simulated weight:
+                torchao            TorchAO's quantize_ of the BF16 copy of the dequantised weight (re-quantisation);
+                fp32-tensor-scale  TorchAO's to_nvfp4 with the simulator's FP32 tensor scale (still re-quantisation:
+                                   TorchAO re-derives every block scale from the block maximum, whereas GPTQ fixes a
+                                   block's scale before its error-feedback updates, so GPTQ weights change);
+                from-codes         the simulator's own E2M1 codes, UE4M3 block scales and FP32 tensor scale packed into the
+                                   NVFP4Tensor without re-quantisation (identical codes and scales);
   activation  --act native : TorchAO/mslk W4A4 kernel (dynamic NVFP4 activations, no scale search) -> fully native t7;
               --act mxfp8_sim : TorchAO W4A16 kernel on MXFP8-rounded BF16 inputs (the MXFP8 x NVFP4 GEMM of t7_mx has
               no kernel in this toolchain, so the activation format stays simulated while weights and GEMM are real);
@@ -16,6 +22,9 @@ Simulated twins for the paired comparison: rne_t7 (t7 without activation scale s
   AQ_MODEL=pretrained AQ_PERCEIVER_CHUNK=16384 python scripts/native_t7.py --recipe rne_t7 --act native
   AQ_MODEL=pretrained AQ_PERCEIVER_CHUNK=16384 python scripts/native_t7.py --recipe t7_mx --act mxfp8_sim
   AQ_MODEL=pretrained AQ_PERCEIVER_CHUNK=16384 python scripts/native_t7.py --recipe t7_a16 --act w4a16 --split test
+  ... --recipe t7_a16 --act w4a16 --split test --bf16-rest q0:inc=backbone --weights from-codes
+The released directory native_t7_t7_a16_w4a16_exact_bf16rest__test_h2 was written by the former --exact-weights flag,
+which is --weights fp32-tensor-scale (directory suffix _fp32ts since v1.1).
 Outputs results/native_t7_<recipe>_<act>__<split>_h<steps>/{build_info.json, recipe.json, records.jsonl, summary.json}
 """
 from __future__ import annotations
@@ -39,8 +48,43 @@ from cards.simlinear import SimNVFP4Linear, qdq_mxfp8            # noqa: E402
 from scripts.native_w4a16 import read_jsonl, tensor_bytes        # noqa: E402
 
 
+def codes_and_scales(parts: torch.Tensor):
+    """Split block-scaled E2M1 values parts [M, K] (= code * UE4M3 block scale, as stored by SimNVFP4Linear.wq) into
+    (codes [M, K] float32 on the E2M1 grid, block scales [M, K/16] float32, each a UE4M3 value) with codes * scales ==
+    parts exactly. The block maximum is code_max * scale for some grid value code_max; the largest code_max whose scale
+    is a UE4M3 value and puts every element of the block on the grid is taken (a zero block gets scale 2^-6)."""
+    from cards.nvfp4 import E4M3_TINY, e2m1_round
+    M, K = parts.shape
+    pb = parts.float().reshape(M, K // 16, 16)
+    amax = pb.abs().amax(-1)
+    scale = torch.full_like(amax, float("nan"))
+    for cmax in (6.0, 4.0, 3.0, 2.0, 1.5, 1.0, 0.5):
+        s = amax / cmax
+        c = pb / s.clamp(min=1e-30).unsqueeze(-1)
+        ok = (s.to(torch.float8_e4m3fn).float() == s) & (c.abs() <= 6.0).all(-1) & (e2m1_round(c.clamp(-6, 6)) == c).all(-1)
+        scale = torch.where(torch.isnan(scale) & ok & (amax > 0), s, scale)
+    scale = torch.where(amax == 0, torch.full_like(amax, E4M3_TINY), scale)
+    if torch.isnan(scale).any():
+        raise ValueError(f"{int(torch.isnan(scale).sum())} blocks are not E2M1 codes times a UE4M3 scale")
+    codes = (pb / scale.unsqueeze(-1)).reshape(M, K)
+    return codes, scale
+
+
+def nvfp4_from_codes(parts: torch.Tensor, pts: torch.Tensor):
+    """TorchAO NVFP4Tensor (swizzled scales, BF16 original dtype) holding exactly the simulator's codes, block scales and
+    FP32 tensor scale; its dequantised value is codes * block scale * tensor scale."""
+    from torchao.prototype.mx_formats import nvfp4_tensor as N
+    M, K = parts.shape
+    codes, scale = codes_and_scales(parts)
+    qdata = N.pack_uint4(N.f32_to_f4_unpacked(codes.contiguous()))
+    sc = N.to_blocked(scale.to(torch.float8_e4m3fn).view(M, K // 16)).flatten()
+    sm, sk = N.hp_data_dims_to_swizzled_scale_dims_nvfp4(M, K)
+    return N.NVFP4Tensor(qdata, sc.view(sm, sk), 16, torch.bfloat16, pts.float().reshape(()).to(parts.device), None,
+                         True, False, None)
+
+
 class NativeT7Linear(nn.Module):
-    def __init__(self, sim: SimNVFP4Linear, cfg, act: str, exact: bool = False):
+    def __init__(self, sim: SimNVFP4Linear, cfg, act: str, weights: str = "torchao"):
         super().__init__()
         assert sim.rotation is None, "native port covers rotation-free recipes only"
         W32 = sim.wq.float() * sim.w_pts                                  # simulated dequantised weight (FP32)
@@ -48,13 +92,18 @@ class NativeT7Linear(nn.Module):
         self.lin = nn.Linear(sim.in_features, sim.out_features, bias=False, device=W.device, dtype=torch.bfloat16)
         with torch.no_grad():
             self.lin.weight.copy_(W)
-        if exact and act == "w4a16":
-            # TorchAO's weight-only transform with the simulator's tensor scale: quantize_ would derive the scale from
-            # the BF16 copy's maximum, which differs slightly from the FP32 one, and shift some block scales
+        if weights != "torchao" and act != "w4a16":
+            raise ValueError("--weights fp32-tensor-scale / from-codes are implemented for --act w4a16 only")
+        if weights == "fp32-tensor-scale":
+            # TorchAO's to_nvfp4 with the simulator's FP32 tensor scale. TorchAO still re-derives each block scale from
+            # the block maximum, so GPTQ weights (whose largest code can lie below 6) are re-rounded in some blocks
             from torchao.prototype.mx_formats.nvfp4_tensor import NVFP4Tensor, per_tensor_amax_to_scale
             q = NVFP4Tensor.to_nvfp4(W, per_tensor_scale=per_tensor_amax_to_scale(W32.abs().max()),
                                      is_swizzled_scales=True, act_quant_kwargs=None)
             self.lin.weight = nn.Parameter(q, requires_grad=False)
+            W = W32
+        elif weights == "from-codes":                # no re-quantisation: the simulator's codes and scales
+            self.lin.weight = nn.Parameter(nvfp4_from_codes(sim.wq, sim.w_pts), requires_grad=False)
             W = W32
         else:
             from torchao.quantization import quantize_
@@ -66,7 +115,11 @@ class NativeT7Linear(nn.Module):
                 Wd = self.lin.weight.dequantize(torch.float32).to(W.dtype) if hasattr(self.lin.weight, "dequantize") else None
             except Exception:
                 Wd = None
-            self.mismatch_frac = float((Wd != W).float().mean()) if Wd is not None else float("nan")
+            # changed values beyond FP32 rounding (code x block scale x tensor scale is rounded in a different order than
+            # the simulator's (code x block scale) x tensor scale, which alone changes the last bit of some values)
+            tol = 1e-6 * float(W.float().abs().max())
+            self.mismatch_frac = float(((Wd.float() - W.float()).abs() > tol).float().mean()) if Wd is not None else float("nan")
+            self.ulp_diff_frac = float((Wd != W).float().mean()) if Wd is not None else float("nan")
             self.mismatch_max_rel = float(((Wd.float() - W.float()).abs().max() / W.float().abs().max().clamp(min=1e-30))) if Wd is not None else float("nan")
         self.register_buffer("smooth_inv", None if sim.smooth is None else (1.0 / sim.smooth.float()).to(torch.bfloat16), persistent=False)
         self.register_buffer("lr_a", None if sim.lr_a is None else sim.lr_a.to(torch.bfloat16), persistent=False)
@@ -91,23 +144,26 @@ class NativeT7Linear(nn.Module):
         return y.to(x.dtype).reshape(*shape[:-1], self.out_features)
 
 
-def replace_sim_layers(model: nn.Module, cfg, act: str, exact: bool = False) -> dict:
-    stats = {"n": 0, "n_quantized": 0, "mismatch_frac": [], "mismatch_max_rel": [], "bytes_before": 0, "bytes_after": 0}
+def replace_sim_layers(model: nn.Module, cfg, act: str, weights: str = "torchao") -> dict:
+    stats = {"n": 0, "n_quantized": 0, "mismatch_frac": [], "mismatch_max_rel": [], "ulp_diff_frac": [], "bytes_before": 0,
+             "bytes_after": 0}
     mods = dict(model.named_modules())
     for name, m in list(mods.items()):
         if not isinstance(m, SimNVFP4Linear):
             continue
         stats["bytes_before"] += m.wq.numel() * 2
-        nat = NativeT7Linear(m, cfg, act, exact=exact)
+        nat = NativeT7Linear(m, cfg, act, weights=weights)
         parent_name, _, child = name.rpartition(".")
         setattr(mods[parent_name] if parent_name else model, child, nat)
         stats["n"] += 1; stats["n_quantized"] += int(nat.is_quantized)
         stats["mismatch_frac"].append(nat.mismatch_frac); stats["mismatch_max_rel"].append(nat.mismatch_max_rel)
+        stats["ulp_diff_frac"].append(nat.ulp_diff_frac)
         stats["bytes_after"] += tensor_bytes(nat.lin.weight) + sum(t.numel() * t.element_size() for t in (nat.smooth_inv, nat.lr_a, nat.lr_b) if t is not None)
     stats["mismatch_frac_mean"] = float(sum(stats["mismatch_frac"]) / max(1, len(stats["mismatch_frac"])))
     stats["mismatch_frac_max"] = float(max(stats["mismatch_frac"])) if stats["mismatch_frac"] else float("nan")
     stats["mismatch_max_rel_max"] = float(max(stats["mismatch_max_rel"])) if stats["mismatch_max_rel"] else float("nan")
-    del stats["mismatch_frac"], stats["mismatch_max_rel"]
+    stats["ulp_diff_frac_mean"] = float(sum(stats["ulp_diff_frac"]) / max(1, len(stats["ulp_diff_frac"])))
+    del stats["mismatch_frac"], stats["mismatch_max_rel"], stats["ulp_diff_frac"]
     return stats
 
 
@@ -121,14 +177,16 @@ def main():
     ap.add_argument("--twin", default=None, help="simulated card to pair with (default: the recipe itself)")
     ap.add_argument("--time-repeats", type=int, default=5)
     ap.add_argument("--results", default=None)
+    ap.add_argument("--weights", default="torchao", choices=["torchao", "fp32-tensor-scale", "from-codes"],
+                    help="how the NVFP4Tensor is built (module docstring); from-codes keeps the simulator's codes and scales")
     ap.add_argument("--exact-weights", action="store_true",
-                    help="quantise the FP32 dequantised weight, so that TorchAO derives the simulator's tensor scale and "
-                         "reproduces its block scales and codes; without it the BF16 copy's slightly different maximum "
-                         "shifts some block scales")
+                    help="deprecated alias of --weights fp32-tensor-scale (it does not reproduce GPTQ codes)")
     ap.add_argument("--bf16-rest", default=None,
                     help="layer spec (e.g. q0:inc=backbone) whose layers that stay unquantised are cast to BF16, matching the "
                          "bf16_resident reference of native_timing.py")
     a = ap.parse_args()
+    if a.exact_weights:
+        a.weights = "fp32-tensor-scale"
     import torchao
     from torchao.prototype.mx_formats import NVFP4DynamicActivationNVFP4WeightConfig, NVFP4WeightOnlyConfig
     cfg = NVFP4DynamicActivationNVFP4WeightConfig() if a.act == "native" else NVFP4WeightOnlyConfig()
@@ -136,14 +194,16 @@ def main():
     if frac:
         torch.cuda.set_per_process_memory_fraction(frac)
     res = Path(a.results) if a.results else ROOT / ("results" if H.MODEL == "pretrained" else f"results_{H.MODEL}")
-    name = f"native_t7_{a.recipe}_{a.act}" + ("_exact" if a.exact_weights else "") + ("_bf16rest" if a.bf16_rest else "")
+    name = (f"native_t7_{a.recipe}_{a.act}" + {"torchao": "", "fp32-tensor-scale": "_fp32ts", "from-codes": "_codes"}[a.weights]
+            + ("_bf16rest" if a.bf16_rest else ""))
     out = res / f"{name}__{a.split}_h{a.steps}"
     out.mkdir(parents=True, exist_ok=True)
     rec = json.loads((ROOT / "recipes" / f"{a.recipe}.json").read_text(encoding="utf-8"))
     t0 = time.time()
     model, binfo = build(rec)                       # simulated model (calibration, GPTQ, smoothing, low rank)
     t_build_sim = time.time() - t0
-    stats = replace_sim_layers(model, cfg, a.act, exact=a.exact_weights)
+    stats = replace_sim_layers(model, cfg, a.act, weights=a.weights)
+    stats["weights"] = a.weights
     if a.bf16_rest:                                  # same residency as native_timing.py's bf16_resident reference
         mods = dict(model.named_modules())
         rest = [n for n in H.layer_set(a.bf16_rest) if isinstance(mods.get(n), nn.Linear)]

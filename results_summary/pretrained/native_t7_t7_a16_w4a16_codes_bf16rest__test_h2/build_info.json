@@ -1,0 +1,39 @@
+{
+ "name": "native_t7_t7_a16_w4a16_codes_bf16rest",
+ "recipe": "t7_a16",
+ "act": "w4a16",
+ "config": "NVFP4WeightOnlyConfig",
+ "torchao": "0.18.0",
+ "torch": "2.12.1+cu130",
+ "device": "NVIDIA GeForce RTX 5090",
+ "capability": [
+  12,
+  0
+ ],
+ "sim_build_seconds": 23.14494752883911,
+ "convert_seconds": 1.3039796352386475,
+ "gpu_mem_after_build_gib": 2.0232739448547363,
+ "perceiver_chunk": 16384,
+ "n": 138,
+ "n_quantized": 138,
+ "bytes_before": 1626341376,
+ "bytes_after": 501832232,
+ "mismatch_frac_mean": 0.0,
+ "mismatch_frac_max": 0.0,
+ "mismatch_max_rel_max": 1.1704249658350818e-07,
+ "ulp_diff_frac_mean": 0.08785970932871535,
+ "weights": "from-codes",
+ "bf16_rest": {
+  "spec": "q0:inc=backbone",
+  "n_cast": 49
+ },
+ "note": "fully native W4A16: NVFP4 weights with the W4A16 kernel, BF16 activations; smoothing and low rank in BF16",
+ "step_seconds_median": 1.835618019104004,
+ "step_seconds_all": [
+  1.8346705436706543,
+  1.8352940082550049,
+  1.835618019104004,
+  1.8361537456512451,
+  1.8365318775177002
+ ]
+}

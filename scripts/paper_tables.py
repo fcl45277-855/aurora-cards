@@ -4,7 +4,7 @@
 
 Table and section numbers follow manuscript version v17. Prints the recipe path (Table 3, development split), the
 test-month evaluation (Table 4), the protected configurations and 8-bit baselines (Table 6), the calibration-week,
-seasonal and cross-year checks (Sect. 4.6), the native timing and peak memory (Table 8) and the cross-model
+seasonal and cross-year checks (Sect. 4.6), native t7_a16 by weight construction (Table S14j), the native timing and peak memory (Table 8) and the cross-model
 localisation ratios (Table S10), each next to the value printed in the paper, and exits with status 1 if any value
 differs by more than the rounding of the paper. The intervals in summary.json are i.i.d. date-bootstrap intervals;
 the paper's 3-day block-bootstrap intervals need the per-record archive (scripts/block_ci.py,
@@ -38,6 +38,9 @@ ROBUST = [("t7_a16_cal2", "test", 9.34, 2, 0.40, 2), ("t7_a16", "summer", 9.81, 
           ("t7_mx", "summer", 10.85, 2, 0.67, 2), ("q0_sim", "summer", 144.7, 1, None, 1),
           ("t7_mx", "y2023", 11.00, 2, 0.51, 2), ("c08_weight_only_gptq", "y2023", 14.89, 2, 1.11, 2),
           ("q0_sim", "y2023", 156.4, 1, 92.3, 1), ("bf16", "y2023", 1.81, 2, None, 2)]
+# Table S14j: native t7_a16 by construction of the TorchAO weights (re-quantised, FP32 tensor scale, from codes)
+TABLE_S14J = [("native_t7_t7_a16_w4a16_bf16rest", "test", 9.50, 2, 0.52, 2), ("native_t7_t7_a16_w4a16_exact_bf16rest", "test", 9.52, 2, 0.51, 2),
+              ("native_t7_t7_a16_w4a16_codes_bf16rest", "test", 9.52, 2, 0.51, 2)]
 # Table 8: (timing file in _aggregates, config, paper step time s, paper peak GiB)
 TABLE8 = [("_native_timing_v14_backbone.json", "bf16", 1.143, 14.92), ("_native_timing_v14_backbone.json", "bf16_resident", 1.141, 13.29),
           ("_native_timing_v14_backbone.json", "w4a16", 1.184, 12.12), ("_native_timing_v14_backbone.json", "w4a4", 1.154, 14.00),
@@ -83,6 +86,7 @@ def main():
     table("Table 4: test month (2024-03-01..30, 30 dates x 2 steps)", TABLE4, res, bad)
     table("Table 6: protected configurations and 8-bit baselines (test month)", TABLE6, res, bad)
     table("Sect. 4.6: calibration week, season, calibration season and year", ROBUST, res, bad)
+    table("Table S14j: native t7_a16 (TorchAO W4A16) by weight construction", TABLE_S14J, res, bad)
     print("\nTable 8: native timing (median step s) and peak memory (GiB), RTX 5090, GPU otherwise idle")
     agg = res / "pretrained" / "_aggregates"
     for fname, cfg, pt, pm in TABLE8:
