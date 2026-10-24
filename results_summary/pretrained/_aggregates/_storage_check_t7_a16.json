@@ -1,0 +1,74 @@
+{
+ "recipe": "t7_a16",
+ "construction": "from-codes, W4A16, remaining backbone layers BF16-resident",
+ "inventory_as_run": {
+  "bytes_by_kind": {
+   "float32": 1527722560,
+   "bfloat16": 166820864,
+   "nvfp4_codes": 406585344,
+   "e4m3_block_scales": 50823168,
+   "fp32_tensor_scale": 552
+  },
+  "total_bytes": 2151952488,
+  "n_tensors": 1082,
+  "tensors": []
+ },
+ "file_bytes_as_run": 2152442689,
+ "inventory_packed_linear": {
+  "bytes_by_kind": {
+   "float32": 2394112,
+   "bfloat16": 929485088,
+   "nvfp4_codes": 406585344,
+   "e4m3_block_scales": 50823168,
+   "fp32_tensor_scale": 552
+  },
+  "total_bytes": 1389288264,
+  "n_tensors": 1082
+ },
+ "file_bytes_packed_linear": 1389786189,
+ "inventory_packed_all": {
+  "bytes_by_kind": {
+   "bfloat16": 930682144,
+   "nvfp4_codes": 406585344,
+   "e4m3_block_scales": 50823168,
+   "fp32_tensor_scale": 552
+  },
+  "total_bytes": 1388091208,
+  "n_tensors": 1082
+ },
+ "file_bytes_packed_all": 1388585489,
+ "bf16_linear_weight_bytes_reference": 2510290944,
+ "reload_as_run_tensors": 1082,
+ "reload_as_run": {
+  "qerr_pct": 9.514932261996085,
+  "excess_pct": 0.5125858191301491,
+  "excess_pct_ci95": [
+   0.48403104210775266,
+   0.5406169070550083
+  ],
+  "n_dates": 30,
+  "seconds": 181.90955424308777
+ },
+ "reload_packed_linear_tensors": 1082,
+ "reload_packed_linear": {
+  "qerr_pct": 10.037394901768279,
+  "excess_pct": 0.4656143813990943,
+  "excess_pct_ci95": [
+   0.43898254782927554,
+   0.4908868497305647
+  ],
+  "n_dates": 30,
+  "seconds": 176.6939013004303
+ },
+ "reload_packed_all_tensors": 1082,
+ "reload_packed_all": {
+  "qerr_pct": 10.46684568075918,
+  "excess_pct": 0.7370366485994272,
+  "excess_pct_ci95": [
+   0.6994418728577795,
+   0.7739362752934658
+  ],
+  "n_dates": 30,
+  "seconds": 176.0490243434906
+ }
+}

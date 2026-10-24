@@ -5,7 +5,10 @@ MIT) recomputed with their definitions on our rollouts, so the paper can report 
                      Tv = T (1 + (R_v/R_d - 1) q), Tv_mean = mean of the two levels (their compute_hydrostatic_imbalance)
   geostrophic_rmse   500 hPa: u_g = -(dPhi/dphi)/(f a), v_g = (dPhi/dlambda)/(f a cos phi); dPhi/dphi by central
                      differences in latitude (degrees -> radians), dPhi/dlambda by central differences with wrap-around;
-                     RMSE of |(u,v) - (u_g,v_g)| over 20 <= |lat| < 89.9, area weighted (their compute_geostrophic_imbalance)
+                     RMSE of |(u,v) - (u_g,v_g)| over 20 <= |lat| < 89.9, area weighted (their compute_geostrophic_imbalance;
+                     20 deg is the default of their code at commit 3203f27, while their paper text states 10 deg, so
+                     geostrophic_rmse_10 over 10 <= |lat| < 89.9 is reported as well)
+  areas              exact cell areas |sin(lat_north) - sin(lat_south)| with edges at mid-latitudes (their code), since v1.1
   L_eff (km)         spherical-harmonic KE spectrum E(l) at 500 hPa (pyshtools SHExpandDH, Driscoll-Healy 720x1440,
                      lmax = 359); first l >= 10 where E_pred/E_ref < 0.5 for 5 consecutive l; L = 2 pi a / l
                      (their _find_effective_resolution); also the small-scale energy ratio, spectral divergence (W1) and
@@ -36,20 +39,25 @@ from cards.recipe import build          # noqa: E402
 from scripts.diag_fields import from_pred, truth_full, field   # noqa: E402
 
 R_DRY, R_V, EARTH_RADIUS, OMEGA = 287.05, 461.5, 6.371e6, 7.2921e-5
-P_TOP, P_BOT, GEO_LEVEL, LAT_CUTOFF = 500.0, 850.0, 500.0, 20.0
+P_TOP, P_BOT, GEO_LEVEL, LAT_CUTOFF, LAT_CUTOFF_TEXT = 500.0, 850.0, 500.0, 20.0, 10.0
 K_MIN, THRESH, N_CONSEC = 10, 0.5, 5
 
 
 class Grid:
     def __init__(self, lat: np.ndarray):
         self.lat = lat[:720].astype(np.float64)
-        self.area = np.cos(np.deg2rad(self.lat)).clip(min=0.0)[:, None] * np.ones((1, 1440))   # cell area ∝ cos(lat)
+        edges = np.concatenate([[90.0], 0.5 * (self.lat[:-1] + self.lat[1:]), [max(-90.0, self.lat[-1] - 0.125)]])
+        a = np.abs(np.sin(np.deg2rad(edges[:-1])) - np.sin(np.deg2rad(edges[1:])))       # exact cell areas (their code)
+        self.area = a[:, None] * np.ones((1, 1440))
         self.w_all = self.area / self.area.sum()
         self.f = 2.0 * OMEGA * np.sin(np.deg2rad(self.lat))
         self.cos = np.cos(np.deg2rad(self.lat))
         self.geo_mask = (np.abs(self.lat) >= LAT_CUTOFF) & (np.abs(self.lat) < 89.9)
         wg = np.where(self.geo_mask[:, None], self.area, 0.0)
         self.w_geo = wg / wg.sum()
+        self.geo_mask10 = (np.abs(self.lat) >= LAT_CUTOFF_TEXT) & (np.abs(self.lat) < 89.9)
+        wg = np.where(self.geo_mask10[:, None], self.area, 0.0)
+        self.w_geo10 = wg / wg.sum()
         self.dlat = np.deg2rad(np.gradient(self.lat))                 # radians per row (negative when lat decreases)
         self.dlon = np.deg2rad(0.25)
 
@@ -65,7 +73,7 @@ def hydrostatic_rmse(F: dict, g: Grid) -> float:
     return float(np.sqrt(np.sum(g.w_all * err ** 2)))
 
 
-def geostrophic_rmse(F: dict, g: Grid) -> float:
+def geostrophic_rmse(F: dict, g: Grid, cutoff: float = LAT_CUTOFF) -> float:
     i = H.LEVELS.index(int(GEO_LEVEL))
     phi = F["atmos"]["z"][i].astype(np.float64)
     u, v = F["atmos"]["u"][i].astype(np.float64), F["atmos"]["v"][i].astype(np.float64)
@@ -76,8 +84,9 @@ def geostrophic_rmse(F: dict, g: Grid) -> float:
     u_g = -dphi_dlat / (f * EARTH_RADIUS)
     v_g = dphi_dlon / (f * EARTH_RADIUS * cos)
     err2 = (u - u_g) ** 2 + (v - v_g) ** 2
-    err2 = np.where(g.geo_mask[:, None], np.nan_to_num(err2), 0.0)
-    return float(np.sqrt(np.sum(g.w_geo * err2)))
+    mask, w = (g.geo_mask, g.w_geo) if cutoff == LAT_CUTOFF else (g.geo_mask10, g.w_geo10)
+    err2 = np.where(mask[:, None], np.nan_to_num(err2), 0.0)
+    return float(np.sqrt(np.sum(w * err2)))
 
 
 def ke_spectrum(u: np.ndarray, v: np.ndarray) -> np.ndarray:
@@ -121,6 +130,7 @@ def spectral_scores(e_pred: np.ndarray, e_true: np.ndarray, eps: float = 1e-12):
 def metrics_of(F: dict, g: Grid) -> dict:
     i = H.LEVELS.index(500)
     return {"hydrostatic_rmse": hydrostatic_rmse(F, g), "geostrophic_rmse": geostrophic_rmse(F, g),
+            "geostrophic_rmse_10": geostrophic_rmse(F, g, LAT_CUTOFF_TEXT),
             "ke500": ke_spectrum(F["atmos"]["u"][i], F["atmos"]["v"][i])}
 
 
@@ -129,7 +139,8 @@ def relative(a: dict, b: dict) -> dict:
     div, res = spectral_scores(a["ke500"], b["ke500"])
     return {"L_eff_km": L, "small_scale_ratio": ssr, "k_cut": kc, "spectral_divergence": div, "spectral_residual": res,
             "hydrostatic_excess": a["hydrostatic_rmse"] - b["hydrostatic_rmse"],
-            "geostrophic_excess": a["geostrophic_rmse"] - b["geostrophic_rmse"]}
+            "geostrophic_excess": a["geostrophic_rmse"] - b["geostrophic_rmse"],
+            "geostrophic_excess_10": a["geostrophic_rmse_10"] - b["geostrophic_rmse_10"]}
 
 
 def rollout_fields(model, date, steps, surface_fp32):
@@ -148,11 +159,12 @@ def main():
     ap.add_argument("--max-dates", type=int, default=None)
     ap.add_argument("--dates", nargs="*", default=None)
     ap.add_argument("--results", default=None)
+    ap.add_argument("--tag", default="")
     a = ap.parse_args()
     res = Path(a.results) if a.results else ROOT / ("results" if H.MODEL == "pretrained" else f"results_{H.MODEL}")
     dates = a.dates or H.SPLITS[a.split][: a.max_dates]
-    out_json = res / f"_physmetrics_{a.split}_h{a.steps}.json"
-    report = {"model": H.MODEL, "split": a.split, "steps": a.steps, "dates": dates, "definitions": "PhysMetrics.Weather (arXiv:2606.10642) hydrostatic 500-850 hPa with virtual temperature, geostrophic 500 hPa |lat|>=20, L_eff from spherical-harmonic KE(500) with threshold 0.5 over 5 consecutive l >= 10",
+    out_json = res / f"_physmetrics_{a.split}_h{a.steps}{a.tag}.json"
+    report = {"model": H.MODEL, "split": a.split, "steps": a.steps, "dates": dates, "definitions": "PhysMetrics.Weather (arXiv:2606.10642) hydrostatic 500-850 hPa with virtual temperature, geostrophic 500 hPa |lat|>=20 (code default, commit 3203f27) and >=10 (paper text), exact cell areas, L_eff from spherical-harmonic KE(500) with threshold 0.5 over 5 consecutive l >= 10",
               "truth": {}, "fp32": {}, "recipes": {}}
     t0 = time.time()
     # Phase 1 (2026-10-20, shared GPU): FP32 and ERA5 metrics for every date with only the FP32 model resident.
@@ -168,8 +180,8 @@ def main():
             T = truth_full(when)
             mt, mf = metrics_of(T, g), metrics_of(Ffp, g)
             M[(s, d)] = (mt, mf)
-            report["truth"].setdefault(str(s), {})[d] = {k: mt[k] for k in ("hydrostatic_rmse", "geostrophic_rmse")}
-            report["fp32"].setdefault(str(s), {})[d] = {**{k: mf[k] for k in ("hydrostatic_rmse", "geostrophic_rmse")}, "vs_truth": relative(mf, mt),
+            report["truth"].setdefault(str(s), {})[d] = {k: mt[k] for k in ("hydrostatic_rmse", "geostrophic_rmse", "geostrophic_rmse_10")}
+            report["fp32"].setdefault(str(s), {})[d] = {**{k: mf[k] for k in ("hydrostatic_rmse", "geostrophic_rmse", "geostrophic_rmse_10")}, "vs_truth": relative(mf, mt),
                                                       "ke500": [float(x) for x in mf["ke500"]], "ke500_truth": [float(x) for x in mt["ke500"]]}
             del T
         del fp_steps
@@ -185,7 +197,7 @@ def main():
             for s, (when, Fc) in enumerate(steps, 1):
                 mt, mf = M[(s, d)]
                 mc = metrics_of(Fc, g)
-                R["per_date"].setdefault(str(s), {})[d] = {**{k: mc[k] for k in ("hydrostatic_rmse", "geostrophic_rmse")},
+                R["per_date"].setdefault(str(s), {})[d] = {**{k: mc[k] for k in ("hydrostatic_rmse", "geostrophic_rmse", "geostrophic_rmse_10")},
                                                             "vs_truth": relative(mc, mt), "vs_fp32": relative(mc, mf),
                                                             "ke500": [float(x) for x in mc["ke500"]]}
             del steps
@@ -198,11 +210,12 @@ def main():
             ds_ = list(per)
             agg = {"hydrostatic_rmse": float(np.mean([per[d]["hydrostatic_rmse"] for d in ds_])),
                    "geostrophic_rmse": float(np.mean([per[d]["geostrophic_rmse"] for d in ds_])),
-                   "truth": {k: float(np.mean([report["truth"][s][d][k] for d in ds_])) for k in ("hydrostatic_rmse", "geostrophic_rmse")},
-                   "fp32": {k: float(np.mean([report["fp32"][s][d][k] for d in ds_])) for k in ("hydrostatic_rmse", "geostrophic_rmse")}}
+                   "geostrophic_rmse_10": float(np.mean([per[d]["geostrophic_rmse_10"] for d in ds_])),
+                   "truth": {k: float(np.mean([report["truth"][s][d][k] for d in ds_])) for k in ("hydrostatic_rmse", "geostrophic_rmse", "geostrophic_rmse_10")},
+                   "fp32": {k: float(np.mean([report["fp32"][s][d][k] for d in ds_])) for k in ("hydrostatic_rmse", "geostrophic_rmse", "geostrophic_rmse_10")}}
             for rel in ("vs_truth", "vs_fp32"):
-                agg[rel] = {k: float(np.mean([per[d][rel][k] for d in ds_])) for k in ("L_eff_km", "small_scale_ratio", "spectral_divergence", "spectral_residual", "hydrostatic_excess", "geostrophic_excess")}
-            agg["fp32_vs_truth"] = {k: float(np.mean([report["fp32"][s][d]["vs_truth"][k] for d in ds_])) for k in ("L_eff_km", "small_scale_ratio", "spectral_divergence", "spectral_residual", "hydrostatic_excess", "geostrophic_excess")}
+                agg[rel] = {k: float(np.mean([per[d][rel][k] for d in ds_])) for k in ("L_eff_km", "small_scale_ratio", "spectral_divergence", "spectral_residual", "hydrostatic_excess", "geostrophic_excess", "geostrophic_excess_10")}
+            agg["fp32_vs_truth"] = {k: float(np.mean([report["fp32"][s][d]["vs_truth"][k] for d in ds_])) for k in ("L_eff_km", "small_scale_ratio", "spectral_divergence", "spectral_residual", "hydrostatic_excess", "geostrophic_excess", "geostrophic_excess_10")}
             R["per_step"][s] = agg
         out_json.parent.mkdir(parents=True, exist_ok=True)
         out_json.write_text(json.dumps(report, indent=1), encoding="utf-8")

@@ -1,0 +1,23 @@
+{
+ "name": "t7_a16_maskE",
+ "layers": "recipes/t7_a16_maskE_layers.txt",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "act": "bf16",
+ "_note": "t7_a16 with the 60-layer inherited BF16 mask replaced by a same-budget mask chosen by relative W4A16 output error on the corrected pipeline (scripts/mask_select.py)"
+}

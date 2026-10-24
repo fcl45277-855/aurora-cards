@@ -58,6 +58,7 @@ SPLITS = {
     "calib1": ["2024-01-04"],                                       # 1 date: examples only
     "summer": [f"2024-07-{d:02d}" for d in range(1, 9)],           # 8 dates, July 2024 (CDS, scripts/download_era5_day.py):
     "y2023": [f"2023-03-{d:02d}" for d in range(1, 5)],            # 4 dates, March 2023 (CDS, 2026-10-20): cross-year check
+    "oct": [f"2024-10-{d:02d}" for d in range(1, 15)],            # 14 dates, October 2024: frozen confirmation of t7_a16
 }                                                                   # seasonal robustness of winter-calibrated recipes
 
 

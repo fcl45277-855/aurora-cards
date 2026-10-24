@@ -1,0 +1,35 @@
+{
+ "kind": "sim",
+ "layers": "recipes/t7_a16_maskE_layers.txt",
+ "surface_fp32": false,
+ "precision": "autocast",
+ "rotation": {
+  "block": null,
+  "dtype": "bf16"
+ },
+ "weight": {
+  "method": "gptq",
+  "percdamp": 0.01,
+  "scale_mult": 1.0,
+  "source": "fp32"
+ },
+ "act": "bf16",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "act_overrides": [],
+ "calib": {
+  "split": "calib",
+  "steps": 2,
+  "budget_gib": 2.5
+ },
+ "name": "t7_a16_maskE",
+ "low_rank": {
+  "rank": 32
+ },
+ "_note": "t7_a16 with the 60-layer inherited BF16 mask replaced by a same-budget mask chosen by relative W4A16 output error on the corrected pipeline (scripts/mask_select.py)"
+}

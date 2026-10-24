@@ -42,6 +42,7 @@ Each day takes about 1.15 GB on disk and a few minutes to download, depending on
 | `test` | 2024-03-01 .. 03-30 | 30 | 35 GB | held-out evaluation (Tables 4, 6 and 7; Figs. 2b and 3) |
 | `summer` | 2024-07-01 .. 07-08 | 8 | 9 GB | season check, Hurricane Beryl case |
 | `y2023` | 2023-03-01 .. 03-04 (+ 03-05, 03-06 for the 20-step truth) | 4 | 7 GB | cross-year check |
+| `oct` | 2024-10-01 .. 10-14 (`scripts/download_era5_day.py`) | 14 | 16 GB | frozen confirmation of t7_a16 (criteria logged before download; Table S7b) |
 | `calib1` | 2024-01-04 | 1 | 1.2 GB | examples only |
 
 Each forecast starts from the 00 and 06 UTC states of a date. Step 1 is verified at 12 UTC and step 2 at 18 UTC of the same date; 20-step rollouts need the following five days as well. Days are scored only when their verifying ERA5 fields exist.
