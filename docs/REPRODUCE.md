@@ -30,12 +30,13 @@ unzip aurora-cards-results-v1.zip -d .
 | Table 6 intervals, paired differences (S14h), rollout intervals (S14c), FP32 reference skill (S7), 120-h spectra, predictor p-values and date robustness (S14d) | `python scripts/extended_analyses.py --results <archive>` (sections A–E) | test `__test_h2` and `__test_h20` cards, `_diag_fields_test_h20*.json`, `_replay_*.json` and `_b_eval.json` of the three models |
 | Fig. 2 (a: excess by lead on 12 winter dates with the block-bootstrap band, b: storage) | `AQ_RESULTS=. python scripts/paper_figures.py --only 5` | `*__test_h20`, `*__summer_h20`; storage values from Table S14f |
 | Figs. 3–5 | `AQ_RESULTS=. python scripts/paper_figures.py --only 2 3 1` | `_diag_fields_test_h2.json` and maps, `_diag_fields_dev_h2*.json`, `_diag_fields_test_h20.json` |
+| Fig. 6 (Earth Science Informatics version: departure maps of the six 20-step rollouts) and the values quoted with it | `AQ_RESULTS=. python scripts/paper_figures.py --only 6` | `_diag_fields_test_h20_v14_maps.npz` (FP32 against ERA5, t7_a16), `_diag_fields_test_h20_maps.npz` (q0), `_lsm_2deg.npz` |
 | Table 7 (PhysMetrics.Weather) | `python scripts/physmetrics_table.py results/_physmetrics_test_h2.json` | `_physmetrics_test_h2.json` |
 | Table 8 (device) and the profile shares (Sect. 4.7) | values printed from `_native_timing.json` and `_profile_step.json` | `_native_timing.json`, `_profile_step.json` |
 | Sect. 4.2 `to_kv` checks (8a–8k in S4) | `python scripts/decide_test.py` | `m1_to_kv`, `m1kv_*`, `m01_*` test cards |
 | Table 5, S13 (ClimaX and FourCastNet) | see `crossarch/README.md` | `crossarch/results_summary/` (in the repository) |
 | Table S14f (storage accounting) | `python scripts/memory_table.py` (needs the checkpoint, CPU only) | the checkpoint |
-| Fig. 3 coastlines | `results/_lsm_2deg.npz` (2° land fraction from Aurora's `static.nc`) | — |
+| Figs. 3 and 6 coastlines | `results/_lsm_2deg.npz` (2° land fraction from Aurora's `static.nc`) | — |
 
 ## Main tables (re-running the forecasts)
 
@@ -92,7 +93,11 @@ unzip aurora-cards-results-v1.zip -d .
 
 ## Figures
 
-`python scripts/paper_figures.py` draws Figs. 1–5 into `figures/`. It reads `results/_diag_fields_*`, the three `_b_eval.json` files and the `records.jsonl` of the 20-step cards below the directory `AQ_RESULTS`; with the archive unpacked in the repository root, run it with `AQ_RESULTS=.` to redraw the figures without re-running anything. The script's internal figure names follow an earlier numbering: `fig4_switching_predictor` is Fig. 1, `fig5_deployment` Fig. 2, `fig2_fingerprints_attribution` Fig. 3, `fig3_dose_response` Fig. 4 and `fig1_rollout_balances` Fig. 5 (`--only` uses the internal numbers).
+`python scripts/paper_figures.py` draws Figs. 1–6 into `figures/`. It reads `results/_diag_fields_*`, the three `_b_eval.json` files and the `records.jsonl` of the 20-step cards below the directory `AQ_RESULTS`; with the archive unpacked in the repository root, run it with `AQ_RESULTS=.` to redraw the figures without re-running anything. The script's internal figure names follow an earlier numbering: `fig4_switching_predictor` is Fig. 1, `fig5_deployment` Fig. 2, `fig2_fingerprints_attribution` Fig. 3, `fig3_dose_response` Fig. 4, `fig1_rollout_balances` Fig. 5 and `fig6_spatial_departure` Fig. 6 (`--only` uses the internal numbers). Fig. 6 appears only in the Earth Science Informatics version of the manuscript.
+
+### Earth Science Informatics artwork
+
+`AQ_RESULTS=. python scripts/paper_figures.py --esi` writes the figures in the form Earth Science Informatics requires to `figures_esi/`. The figures are 174 mm wide, with lettering of at least 8 pt and lines of at least 0.5 pt. They are named Fig1–Fig6 in order of citation and written as `.pdf`, `.eps`, `.tiff` (600 dpi) and `.png`. Before writing, every text and line below these limits is raised to them, the layout is refitted to 174 mm, and every element is audited. The run stops instead of writing a figure that violates a limit. The font is Arial, or Liberation Sans, which has the same metrics, where Arial is missing (on Debian/Ubuntu: `apt install fonts-liberation`, then delete `~/.cache/matplotlib`). Without `--esi` the output of Figs. 1–5 is pixel-identical to version 1.1.0.
 
 ## Determinism
 

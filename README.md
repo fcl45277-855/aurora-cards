@@ -2,7 +2,7 @@
 
 Research code for studying how low-precision post-training quantisation (NVFP4, MXFP8 and FP8) affects [Microsoft Aurora](https://github.com/microsoft/aurora): forecast accuracy, attention-module sensitivity, physical consistency and inference cost.
 
-This repository accompanies **NVFP4 quantisation of Aurora: attention-module sensitivity, forecast consistency and hardware evaluation**, by Y. Guan, J. Li, L. Lu, G. Pan, J. Song and Q. Hou, prepared for submission to *Computers & Geosciences*. Version 1.1.0 matches manuscript version v16/v17.
+This repository accompanies **NVFP4 quantisation of Aurora: attention-module sensitivity, forecast consistency and hardware evaluation**, by Y. Guan, J. Li, L. Lu, G. Pan, J. Song and Q. Hou, prepared for submission to *Computers & Geosciences*. Version 1.1.0 matches manuscript version v16/v17 and version 1.1.1 manuscript version v19. Version 1.1.2 adds the Earth Science Informatics figure export (`scripts/paper_figures.py --esi`) and Fig. 6 of that version, drawn from archived results; it changes no recipe or result.
 
 ## What the repository provides
 
