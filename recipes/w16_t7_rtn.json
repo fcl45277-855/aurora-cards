@@ -1,0 +1,13 @@
+{
+ "name": "w16_t7_rtn",
+ "layers": "q0:exc=decoder.level_decoder,decoder.atmos_levels_embed,ln_modulation,time_mlp,_embed",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "rtn",
+  "source": "fp32"
+ },
+ "act": "bf16",
+ "_note": "W4A16 ablation, recipe components (Table 7): t7 set, RTN only (no smoothing, no low rank)"
+}

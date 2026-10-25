@@ -1,0 +1,23 @@
+{
+ "name": "w16_ref_t7_a16",
+ "layers": "q0:exc=decoder.level_decoder,decoder.atmos_levels_embed,ln_modulation,time_mlp,_embed",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act_scale_search": [
+  1.0,
+  1.5
+ ],
+ "act": "bf16",
+ "_note": "S0 of the prespecified W4A16 ablation (Online Resource 1, S15): identical to t7_a16 under a new name; run with AQ_BUILD_CACHE=0 it must reproduce the dev result of t7_a16"
+}

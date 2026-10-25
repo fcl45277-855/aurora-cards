@@ -1,0 +1,19 @@
+{
+ "name": "w16_t7_res2",
+ "layers": "recipes/sets/w16_t7_res2.txt",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "bf16",
+ "_note": "W4A16 ablation (Table 5, descriptive): t7_a16 + both resamplers (11 layers)"
+}

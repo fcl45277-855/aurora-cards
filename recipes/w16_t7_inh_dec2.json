@@ -1,0 +1,19 @@
+{
+ "name": "w16_t7_inh_dec2",
+ "layers": "recipes/sets/w16_t7_inh_dec2.txt",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "bf16",
+ "_note": "Inherited BF16 layers by group (Table 5 lower block, Online Resource 1, S17b; descriptive): t7_a16 + group dec2"
+}

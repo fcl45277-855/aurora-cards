@@ -1,0 +1,13 @@
+{
+ "name": "w16g_t7_dec",
+ "layers": "recipes/sets/w16_t7_dec.txt",
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "bf16",
+ "_note": "W4A16 ablation, stage 2 branch a1 (not triggered in the paper): GPTQ-only t7 + decoder resampler"
+}

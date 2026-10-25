@@ -66,8 +66,8 @@ ESI_RC = {"font.sans-serif": ["Arial", "Helvetica", "Liberation Sans", "DejaVu S
 ESI_HEIGHT_MM = {"fig1_rollout_balances": 132, "fig2_fingerprints_attribution": 110, "fig3_dose_response": 128,
                  "fig4_switching_predictor": 72, "fig5_deployment": 84, "fig6_spatial_departure": 86}
 # internal figure names -> ESI file names (order of citation in the ESI manuscript)
-ESI_NAME = {"fig4_switching_predictor": "Fig1", "fig5_deployment": "Fig2", "fig2_fingerprints_attribution": "Fig3",
-            "fig3_dose_response": "Fig4", "fig1_rollout_balances": "Fig5", "fig6_spatial_departure": "Fig6"}
+ESI_NAME = {"fig4_switching_predictor": "Fig2", "fig5_deployment": "Fig3", "fig2_fingerprints_attribution": "Fig4",
+            "fig3_dose_response": "Fig5", "fig1_rollout_balances": "Fig6", "fig6_spatial_departure": "Fig7"}
 
 
 def fsize(name, h_mm):
@@ -256,10 +256,15 @@ def fig2():
     dates = r["dates"]
     names = [("q0_sim", "Q0: all 195 layers"), ("m01_q0_decoder_only", "decoder resampler only"),
              ("m02_q0_no_decoder", "all except decoder resampler"), ("t7_mx", "t7_mx")]
-    fig = plt.figure(figsize=fsize("fig2_fingerprints_attribution", 100))
-    gs_top = fig.add_gridspec(1, 4, top=0.90, bottom=0.60, left=0.06, right=0.90, wspace=0.10)
-    gs_bot = fig.add_gridspec(1, 2, top=0.47, bottom=0.22 if ESI else 0.17, left=0.08, right=0.98, wspace=0.42)
-    gs = {(0, i): gs_top[0, i] for i in range(4)}
+    fig = plt.figure(figsize=fsize("fig2_fingerprints_attribution", 160 if ESI else 100))
+    if ESI:                                    # 2 x 2 maps (revised ESI manuscript, Fig. 4)
+        gs_top = fig.add_gridspec(2, 2, top=0.96, bottom=0.53, left=0.16, right=0.80, wspace=0.04, hspace=0.30)
+        gs_bot = fig.add_gridspec(1, 2, top=0.42, bottom=0.21, left=0.08, right=0.98, wspace=0.42)
+        gs = {(0, i): gs_top[i // 2, i % 2] for i in range(4)}
+    else:
+        gs_top = fig.add_gridspec(1, 4, top=0.90, bottom=0.60, left=0.06, right=0.90, wspace=0.10)
+        gs_bot = fig.add_gridspec(1, 2, top=0.47, bottom=0.17, left=0.08, right=0.98, wspace=0.42)
+        gs = {(0, i): gs_top[0, i] for i in range(4)}
     gs["bottom_left"] = gs_bot[0, 0]; gs["bottom_right"] = gs_bot[0, 1]    # str keys: slices are unhashable before 3.12
     lat = np.linspace(90, -90, 90, endpoint=False) - 1.0
     lon = np.arange(-180, 180, 2.0)
@@ -279,12 +284,12 @@ def fig2():
         ax.set_title({"m01_q0_decoder_only": "decoder only", "m02_q0_no_decoder": "all but decoder"}.get(n, title)
                      if ESI else title, fontsize=6.5)
         ax.tick_params(labelsize=5.5, length=1.5, pad=1)
-        ax.set_xticks([-120, 0, 120]); ax.set_xticklabels(["120°W", "0°", "120°E"])
-        ax.set_yticks([-60, 0, 60]); ax.set_yticklabels(["60°S", "0°", "60°N"] if i == 0 else [])
+        ax.set_xticks([-120, 0, 120]); ax.set_xticklabels(["120°W", "0°", "120°E"] if not ESI or i >= 2 else [])
+        ax.set_yticks([-60, 0, 60]); ax.set_yticklabels(["60°S", "0°", "60°N"] if (i % 2 == 0 if ESI else i == 0) else [])
         for sp in ax.spines.values():
             sp.set_visible(True); sp.set_linewidth(0.4)
         axes.append(ax)
-    cax = fig.add_axes([0.92, 0.58, 0.012, 0.32] if ESI else [0.92, 0.60, 0.012, 0.25])
+    cax = fig.add_axes([0.83, 0.55, 0.015, 0.39] if ESI else [0.92, 0.60, 0.012, 0.25])
     cb = fig.colorbar(im, cax=cax)
     cb.set_label("z500 squared error\nvs FP32 (m$^{4}$ s$^{-4}$)" if ESI else
                  "z500 squared error\nvs FP32, step 2 (m$^{4}$ s$^{-4}$, log)", fontsize=7.5)
@@ -323,7 +328,7 @@ def fig2():
     ax2.set_yticks([1, 2, 4, 8]); plain_log(ax2)
     label(ax2, "f", x=-0.16)
     for ax, s in zip(axes, "abcd"):
-        ax.text(0.0, 1.12, s, transform=ax.transAxes, fontsize=8.5, fontweight="bold", va="bottom")
+        ax.text(0.0, 1.04 if ESI else 1.12, s, transform=ax.transAxes, fontsize=8.5, fontweight="bold", va="bottom")
     save(fig, "fig2_fingerprints_attribution", panels=False)
 
 
@@ -453,6 +458,7 @@ def block_interval(vals_by_date, n=2000, L=3, seed=0):
 
 
 WINTER12 = [f"2024-03-{d:02d}" for d in range(1, 13)]
+MARCH25 = [f"2024-03-{d:02d}" for d in range(1, 26)]               # ESI revision: all dates verified to 120 h
 # (label, storage relative to BF16 from scripts/memory_table.py, test-month qerr %, group)
 STORAGE = [
     ("BF16", 1.00, 1.75, "ref"),
@@ -471,9 +477,13 @@ def fig5():
     fig, (a, b) = plt.subplots(1, 2, figsize=fsize("fig5_deployment", 66), gridspec_kw={"width_ratios": [1.25, 1]})
     curves = (("t7_a16", C["t7mx"], "t7_a16 (W4A16)", "s", "-"), ("t7_mx", C["dec"], "t7_mx (W4A8)", "^", "-"),
               ("c08_t7set", C["c08"], "c08@t7 (W4A16)", "D", "-"), ("u8_w8a16_mx_prot", "#2980b9", "protected FP8 W8A16", "o", "-"))
+    if ESI:                                    # revised ESI manuscript, Fig. 3a: 25 dates; t7_mx has 12 (Table S14c)
+        curves = (("t7_a16", C["t7mx"], "t7_a16 (W4A16)", "s", "-"),
+                  ("w16_t7_gptq_sq", "#7d3c98", "t7_a16 without low rank", "v", "-"),
+                  ("c08_t7set", C["c08"], "c08@t7 (W4A16)", "D", "-"), ("u8_w8a16_mx_prot", "#2980b9", "protected FP8 W8A16", "o", "-"))
     for name, col, lab, mk, ls in curves:
         try:
-            per = excess_by_date("test", name, set(WINTER12))
+            per = excess_by_date("test", name, set(MARCH25 if ESI else WINTER12))
         except FileNotFoundError:
             continue
         steps = sorted(per)
@@ -495,8 +505,9 @@ def fig5():
     a.set_xticks([6, 24, 48, 72, 96, 120])
     a.legend(loc="lower left", fontsize=5.5, ncol=1)
     label(a, "a", x=-0.14)
+    storage = STORAGE + [("t7_a16 w/o low rank", 0.54, 11.04, "w4p")] if ESI else STORAGE
     seen = set()
-    for lab, st, q, g in STORAGE:
+    for lab, st, q, g in storage:
         name, col, mk = GROUP[g]
         b.scatter(st, q, color=col, marker=mk, s=20, edgecolor="white", linewidth=0.4, zorder=3,
                   label=None if g in seen else name)
@@ -506,8 +517,10 @@ def fig5():
              "W8A16 MX": (0.66, 24), "all-layer W4A16": (0.31, 7.0), "all-layer W4A8": (0.31, 30),
              "c08 (Q0 set)": (0.40, 4.3), "W8A8 MX": (0.58, 62), "q0": (0.36, 150), "BF16": (0.86, 2.6)}
     if ESI:
-        place["W8A8 MX"] = (0.33, 75)
-    for lab, st, q, g in STORAGE:
+        place.update({"W8A8 MX": (0.33, 75), "t7_a16 (W4A16)": (0.66, 6.2), "t7_mx (W4A8)": (0.66, 16.5),
+                      "protected W8A16": (0.66, 9.3), "t7_a16 w/o low rank": (0.66, 12.4), "W8A16 MX": (0.66, 26),
+                      "all-layer W4A16": (0.31, 6.5), "all-layer W4A8": (0.31, 24), "c08 (Q0 set)": (0.50, 3.3)})
+    for lab, st, q, g in storage:
         if lab in place:
             b.annotate(lab, (st, q), xytext=place[lab], textcoords="data", fontsize=5.3, va="center",
                        arrowprops=dict(arrowstyle="-", color="0.55", lw=0.4, shrinkA=0, shrinkB=2.5))

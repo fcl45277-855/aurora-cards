@@ -1,0 +1,16 @@
+{
+ "name": "w16_t7_gptq_lr",
+ "layers": "q0:exc=decoder.level_decoder,decoder.atmos_levels_embed,ln_modulation,time_mlp,_embed",
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "bf16",
+ "_note": "W4A16 ablation (Table 7, descriptive): t7_a16 without smoothing"
+}

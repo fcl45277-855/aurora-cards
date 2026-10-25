@@ -11,3 +11,7 @@ figures/
 *.npz
 *.nc
 crossarch_work/
+data_clim/
+results_timing_*/
+figures_esi*/
+release_archive/

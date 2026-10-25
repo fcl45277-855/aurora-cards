@@ -1,0 +1,19 @@
+{
+ "name": "w16_t7_enc",
+ "layers": "recipes/sets/w16_t7_enc.txt",
+ "smooth": {
+  "alpha": 0.8
+ },
+ "low_rank": {
+  "rank": 32
+ },
+ "rotation": {
+  "block": null
+ },
+ "weight": {
+  "method": "gptq",
+  "source": "fp32"
+ },
+ "act": "bf16",
+ "_note": "W4A16 ablation, criterion B-2 (Table 5): t7_a16 + encoder resampler (5 layers)"
+}
