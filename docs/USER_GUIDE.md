@@ -156,7 +156,7 @@ These are written by the analysis scripts. Their names start with an underscore 
 | One date, 2 steps | 5–30 s depending on the recipe (FP32 about 6 s; recipes with low-rank branches and many quantised layers are slower in simulation) |
 | One card on the test split (30 dates) | 3–15 min plus the build |
 | Peak GPU memory | 13–15 GiB with chunking, 24–27 GiB without |
-| Agreement of simulated and native NVFP4 | t7_a16 with identical weights (`--weights from-codes`): qerr 9.52 against 9.46, mean paired difference +0.6 % (paper Sect. 4.7, Table S14j) |
+| Agreement of simulated and native NVFP4 | t7_a16 with identical weights (`--weights from-codes`): qerr 9.52 against 9.46, mean paired difference +0.6 % (Sect. 4.5 and Table S14j of the Earth Science Informatics manuscript) |
 
 **Determinism.** The rotation seeds are fixed, and GPTQ, smoothing and the low-rank branch are deterministic given the calibration statistics. Re-runs on the same GPU type reproduce `summary.json` to the printed digits. A different GPU or library version can change the last digit.
 
