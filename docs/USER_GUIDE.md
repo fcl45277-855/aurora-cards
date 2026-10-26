@@ -1,6 +1,6 @@
 # User guide
 
-This guide describes the inputs, outputs and options of the harness and what to expect when it runs. For installation see `README.md`, for data see `docs/DATA.md`, for worked examples see `docs/TUTORIAL.md`, and for the commands behind each table see `docs/REPRODUCE.md`.
+This guide describes the inputs, outputs and options of the harness and what to expect when it runs. For installation, see `README.md`; for data, `docs/DATA.md`; for worked examples, `docs/TUTORIAL.md`; and for the commands behind each table see `docs/REPRODUCE.md`.
 
 ## 1. Concepts
 
@@ -49,7 +49,7 @@ A recipe is a JSON object. Keys that are left out take the defaults below. Neste
 | `smooth` | none | `{"alpha": a}` applies SmoothQuant scaling s_j = amax(x_j)^a / max\|W_:,j\|^(1−a), paper Eq. (4) |
 | `low_rank` | none | `{"rank": r}` adds a BF16 rank-r branch of the smoothed weight; the residual is quantised (Eq. 5) |
 | `calib` | `{"split": "calib", "steps": 2, "budget_gib": 2.5}` | Dates and steps of the calibration pass. It is used only by GPTQ and smoothing. `budget_gib` bounds GPU memory for the statistics; layers are processed in groups |
-| `scale_min` | `"tiny"` | Smallest NVFP4 block scale: `"tiny"` (2^-6, as TorchAO) or `"subnormal"` (2^-9). Stored per layer, so recipes built one after another in one process keep their own floor |
+| `scale_min` | `"tiny"` | Smallest NVFP4 block scale: `"tiny"` (2^-6, as in TorchAO) or `"subnormal"` (2^-9). Stored per layer, so recipes built one after another in one process keep their own floor |
 | `lowpass` | none | Scale-separated activation quantisation with a BF16 or FP8 coarse branch; a negative result in the paper |
 | `kv_split`, `k_centre` | none | Mechanism probes for `to_kv` layers: only some output rows carry quantisation error, or keys are centred over the context tokens |
 
@@ -140,7 +140,7 @@ Every script documents its usage at the top of the file; the scripts with option
 
 ### 4.2 Aggregate files: `results/_*.json`, `_*.npz`
 
-These are written by the analysis scripts. Their names start with an underscore and their structure is documented at the top of the writing script. The two most used:
+These are written by the analysis scripts. Their names start with an underscore and their structure is documented at the top of the writing script. The two most used are:
 
 | File | Writer | Content |
 | --- | --- | --- |
@@ -165,7 +165,7 @@ These are written by the analysis scripts. Their names start with an underscore 
 | Message | Cause and fix |
 | --- | --- |
 | `Aurora checkpoint not found` | Set `AQ_CKPT_DIR` |
-| `FileNotFoundError ... surface_<date>.npz` | A day of the split or its verifying day is missing in `AQ_ERA5_DIR` |
+| `FileNotFoundError ... surface_<date>.npz` | A day of the split or its verifying day is missing from `AQ_ERA5_DIR` |
 | `no FP32 reference cache` / `qerr` missing in the summary | Run the `fp32` card on that split first |
 | `results ... belongs to ...` | The results directory was created for another `AQ_MODEL`; pass `--results` |
 | `manifest does not match the loaded model` | A different Aurora version or checkpoint; run `scripts/check_env.py` |
